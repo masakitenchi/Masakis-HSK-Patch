@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_155mmHowitzerShell"]/ammoTypes</xpath>
+		<value>
+			<Ammo_155mmHowitzerShell_AM>Bullet_155mmHowitzerShell_AM</Ammo_155mmHowitzerShell_AM>
+		</value>
+	</Operation>
+</Patch>

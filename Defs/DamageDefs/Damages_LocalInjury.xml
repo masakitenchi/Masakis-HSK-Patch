@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<DamageDef Name="Annihilation" ParentName="LocalInjuryBase">
+		<defName>Annihilation</defName>
+		<label>Annihilation</label>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} annihilated.</deathMessage>
+		<hediff>Burn</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Blunt</impactSoundType>
+		<defaultDamage>1000</defaultDamage>
+		<defaultArmorPenetration>100</defaultArmorPenetration>
+		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
+		<explosionCellFleck>BlastFlame</explosionCellFleck>
+		<explosionColorCenter>(0.6, 0.9, 0.6)</explosionColorCenter>
+		<explosionColorEdge>(0.3, 0.65, 0.3)</explosionColorEdge>
+		<soundExplosion>Explosion_Flame</soundExplosion>
+		<isRanged>true</isRanged>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+		<externalViolenceForMechanoids>true</externalViolenceForMechanoids>
+	</DamageDef>
+</Defs>

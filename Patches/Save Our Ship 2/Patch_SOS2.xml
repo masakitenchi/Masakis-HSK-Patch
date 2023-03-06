@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+	<mods>
+		<li>Save Our Ship 2</li>
+	</mods>
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="HiTechResearchBench"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+					<value>
+						<li>ArchotechUplink</li>
+					</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="Earthquake"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="GeoStorm"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="SkyFall"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="MoonFall"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="Drought"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="ToxicWeather"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="FleaRaid"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="BoulderMassHit"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="NuclearIncident"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="NuclearFallout"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="EclipseFeral"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="EclipseMeteorImpact"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="BombardmentIncident"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="Tornado"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/IncidentDef[defName="PowerBeamStrikeIncident"]</xpath>
+				<value>
+					<disallowedBiomes>OuterSpaceBiome</disallowedBiomes>
+				</value>
+			</li>
+			</operations>
+	</match>
+	</Operation>
+	<Operation Class="PatchOperationFindMod">
+	<mods>
+		<li>Save Our Ship 2</li>
+	</mods>
+	<match Class="PatchOperationSequence">
+	<operations>
+		<!-- <li Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="ShipHeatsink"]</xpath>
+			<value>
+				<CoolingCapacityWatts>25000</CoolingCapacityWatts>
+				<thingClass>Rimatomics.Radiator</thingClass>
+			</value>
+		</li> -->
+		<li Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="ShipHeatsink"]/comps</xpath>
+			<value>
+				<li Class="Rimatomics.CompProperties_Pipe">
+					<mode>Cooling</mode>
+				</li>
+			</value>
+		</li>
+	</operations>
+	</match>
+	</Operation>
+</Patch>

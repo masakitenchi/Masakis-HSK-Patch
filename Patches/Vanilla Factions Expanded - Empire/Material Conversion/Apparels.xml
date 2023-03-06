@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or defName="VFEE_Apparel_JanissaryHelmet"]/recipeMaker/recipeUsers</xpath>
+        <value>
+            <recipeUsers Inherit="False">
+                <li>HyperTailoringBench</li>
+            </recipeUsers>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or defName="VFEE_Apparel_JanissaryHelmet"]/recipeMaker/skillRequirements</xpath>
+        <value>
+            <skillRequirements>
+                <Crafting>16</Crafting>
+            </skillRequirements>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAttributeSet">
+        <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or defName="VFEE_Apparel_JanissaryHelmet"]</xpath>
+        <attribute>ParentName</attribute>
+        <value>ArmorSpacerBase</value>
+    </Operation>
+
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or 
+                    defName="VFEE_Apparel_JanissaryHelmet"]/statBases</xpath>
+                <value>
+                    <StuffEffectMultiplierInsulation_Cold>1</StuffEffectMultiplierInsulation_Cold>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or 
+                    defName="VFEE_Apparel_JanissaryHelmet"]/statBases</xpath>
+                <value>
+                    <StuffEffectMultiplierInsulation_Heat>1</StuffEffectMultiplierInsulation_Heat>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or 
+                    defName="VFEE_Apparel_JanissaryHelmet"]/statBases</xpath>
+                <value>
+                    <StuffEffectMultiplierArmor>4.67</StuffEffectMultiplierArmor>
+                </value>
+            </li>
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryHelmet"]/costList</xpath>
+                <value>
+                    <costList>
+                        <Carbon>12</Carbon>
+                        <Compaste>20</Compaste>
+                        <SyntheticFibers>8</SyntheticFibers>
+                        <MagneticMaterial>2</MagneticMaterial>
+                        <Hexcell>5</Hexcell>
+                    </costList>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryHelmet"]</xpath>
+                <value>
+                    <stuffCategories>
+                        <li>StrongMetallic</li>
+                    </stuffCategories>
+                    <costStuffCount>55</costStuffCount>
+                </value>
+            </li>
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass"]/costList</xpath>
+                <value>
+                    <costList>
+                        <Carbon>25</Carbon>
+                        <Compaste>20</Compaste>
+                        <SyntheticFibers>15</SyntheticFibers>
+                        <MagneticMaterial>6</MagneticMaterial>
+                        <Hexcell>13</Hexcell>
+                    </costList>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass"]</xpath>
+                <value>
+                    <stuffCategories>
+                        <li>StrongMetallic</li>
+                    </stuffCategories>
+                    <costStuffCount>110</costStuffCount>
+                </value>
+            </li>
+        </operations>
+    </Operation>
+
+</Patch>

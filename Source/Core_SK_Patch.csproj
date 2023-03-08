@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.props" Condition="Exists('..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -35,71 +33,260 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\Mods\Harmony\Current\Assemblies\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="AlienRace">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\Mods\AlienRaces\1.4\Assemblies\AlienRace.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Androids">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\Mods\Androids\Assemblies\Androids.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Core_SK">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\Mods\Core_SK\Assemblies\Core_SK.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="ShipsHaveInsides">
-      <HintPath>D:\SteamLibrary\steamapps\workshop\content\294100\1909914131\1.3\Assemblies\ShipsHaveInsides.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SurvivalToolsLite">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\Mods\SurvivalToolsLite\Assemblies\SurvivalToolsLite.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Core_SK_Patch\Source\Class1.cs" />
+    <Compile Include="Core_SK_Patch\Source\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="Core_SK_Patch\Source\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Core_SK_Patch\Source\obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="Core_SK_Patch\Source\obj\Release\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
+    <Compile Include="Core_SK_Patch\Source\PawnColumnWorker_AllowedArea.cs" />
+    <Compile Include="Core_SK_Patch\Source\Properties\AssemblyInfo.cs" />
+    <Compile Include="PawnColumnWorker_AllowedArea.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="Krafs.Publicizer">
+      <Version>2.2.1</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+      <Version>1.4.3641</Version>
+    </PackageReference>
+    <PackageReference Include="Lib.Harmony">
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+      <Version>2.2.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Core_SK">
+      <HintPath>..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ShipsHaveInsides">
+      <HintPath>..\..\..\..\..\workshop\content\294100\1909914131\1.3\Assemblies\ShipsHaveInsides.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core_SK_Patch\.gitattributes" />
+    <Content Include="Core_SK_Patch\.gitignore" />
+    <Content Include="Core_SK_Patch\.git\ms-persist.xml" />
+    <Content Include="Core_SK_Patch\About\About.xml" />
+    <Content Include="Core_SK_Patch\About\PublishedFileId.txt" />
+    <Content Include="Core_SK_Patch\Assemblies\AnotherTweaks.dll" />
+    <Content Include="Core_SK_Patch\Assemblies\Core_SK_Patch.dll" />
+    <Content Include="Core_SK_Patch\Biotech\Patches\Biotech_Patch.xml" />
+    <Content Include="Core_SK_Patch\Defs\CombatExtended\Ammo\Shell\155mmHowitzer.xml" />
+    <Content Include="Core_SK_Patch\Defs\DamageDefs\Damages_LocalInjury.xml" />
+    <Content Include="Core_SK_Patch\Defs\Drugs\Methadone.xml" />
+    <Content Include="Core_SK_Patch\Defs\ThingCategoryDef\FoodCategoryDef.xml" />
+    <Content Include="Core_SK_Patch\LICENSE.txt" />
+    <Content Include="Core_SK_Patch\LoadFolders.xml" />
+    <Content Include="Core_SK_Patch\Patches\Core_SK\Patch_155mmHowitzerShell.xml" />
+    <Content Include="Core_SK_Patch\Patches\Core_SK\Patch_Recipes.xml" />
+    <Content Include="Core_SK_Patch\Patches\Core_SK\Patch_TraderKindDef.xml" />
+    <Content Include="Core_SK_Patch\Patches\HediffDef_Anesthetic_patches.xml" />
+    <Content Include="Core_SK_Patch\Patches\Save Our Ship 2\Patch_SOS2.xml" />
+    <Content Include="Core_SK_Patch\Patches\ShiftClick_SelectArea.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Ammo\ChargeThumperRound.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Ammo\FletcherRifleRound.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Apparel_Headgear.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Apparel_Royal.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Apparel_Various.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Buildings_Security_Turrets.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Damages_Empire.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\MeleeUltratech.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\PawnKinds.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\RangedSpacer.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\CombatExtended\Patches\Scenario_Empire.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\Core_SK\Patches\Apparels.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Factions Expanded - Empire\Core_SK\Patches\Weapons.xml" />
+    <Content Include="Core_SK_Patch\Patches\Vanilla Nutrient Paste Expanded\Buildings.xml" />
+    <Content Include="Core_SK_Patch\Source\bin\Debug\Core_SK_Patch.dll" />
+    <Content Include="Core_SK_Patch\Source\bin\Debug\Core_SK_Patch.pdb" />
+    <Content Include="Core_SK_Patch\Source\bin\Release\Core_SK_Patch.dll" />
+    <Content Include="Core_SK_Patch\Source\bin\Release\Core_SK_Patch.pdb" />
+    <Content Include="Core_SK_Patch\Source\Core_SK_Patch.sln" />
+    <Content Include="Core_SK_Patch\Source\MigrationBackup\162deee6\Core_SK_Patch\NuGetUpgradeLog.html" />
+    <Content Include="Core_SK_Patch\Source\obj\Debug\Core_SK_Patch.csproj.FileListAbsolute.txt" />
+    <Content Include="Core_SK_Patch\Source\obj\Debug\Core_SK_Patch.dll" />
+    <Content Include="Core_SK_Patch\Source\obj\Debug\Core_SK_Patch.pdb" />
+    <Content Include="Core_SK_Patch\Source\obj\Release\Core_SK_Patch.csproj.FileListAbsolute.txt" />
+    <Content Include="Core_SK_Patch\Source\obj\Release\Core_SK_Patch.dll" />
+    <Content Include="Core_SK_Patch\Textures\Things\Ammo\Cannon\AM.dds" />
+    <Content Include="Core_SK_Patch\Textures\Things\Ammo\Cannon\AM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core_SK_Patch\.git\COMMIT_EDITMSG" />
+    <None Include="Core_SK_Patch\.git\config" />
+    <None Include="Core_SK_Patch\.git\description" />
+    <None Include="Core_SK_Patch\.git\FETCH_HEAD" />
+    <None Include="Core_SK_Patch\.git\HEAD" />
+    <None Include="Core_SK_Patch\.git\hooks\applypatch-msg.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\commit-msg.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\post-update.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\pre-applypatch.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\pre-commit.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\pre-merge-commit.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\pre-push.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\pre-rebase.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\pre-receive.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\push-to-checkout.sample" />
+    <None Include="Core_SK_Patch\.git\hooks\update.sample" />
+    <None Include="Core_SK_Patch\.git\index" />
+    <None Include="Core_SK_Patch\.git\info\exclude" />
+    <None Include="Core_SK_Patch\.git\logs\HEAD" />
+    <None Include="Core_SK_Patch\.git\logs\refs\heads\master" />
+    <None Include="Core_SK_Patch\.git\logs\refs\remotes\origin\master" />
+    <None Include="Core_SK_Patch\.git\objects\0c\f0f8486ac63be0056a71c624bab798602b90e2" />
+    <None Include="Core_SK_Patch\.git\objects\0d\935ad54c023924184f8f136a0831116c777f9b" />
+    <None Include="Core_SK_Patch\.git\objects\14\1ffedbd488cc4b57e9ecdfdb04a65c5ab5e8cf" />
+    <None Include="Core_SK_Patch\.git\objects\19\adee55086e398fa36bdd589d9951df0637c8e9" />
+    <None Include="Core_SK_Patch\.git\objects\1b\531292e7392c1f5f8c64bff63c3461380678cb" />
+    <None Include="Core_SK_Patch\.git\objects\1f\f0c423042b46cb1d617b81efb715defbe8054d" />
+    <None Include="Core_SK_Patch\.git\objects\20\d9a6507a42f8cf795a4959eb250672ed6edada" />
+    <None Include="Core_SK_Patch\.git\objects\26\db61c8be7dd9cd7fa328758d8f86f7f04acb1f" />
+    <None Include="Core_SK_Patch\.git\objects\28\a60ae14667869c2be36dd30e23e3462f1ac07a" />
+    <None Include="Core_SK_Patch\.git\objects\2d\6142ca8aeea8d13b152d2bd840285e6bb81245" />
+    <None Include="Core_SK_Patch\.git\objects\2d\f45140c8679fa1fd45d87cd3264ab7dd46a054" />
+    <None Include="Core_SK_Patch\.git\objects\2e\d1bc392394284d15608dca494ae44e49e777a7" />
+    <None Include="Core_SK_Patch\.git\objects\35\5b5bc67a8c8ad60c580cd2fc3d7708a3ab3599" />
+    <None Include="Core_SK_Patch\.git\objects\35\605b319e87356febb85792f90f6fa2172b640d" />
+    <None Include="Core_SK_Patch\.git\objects\36\4cbd98eb8e7fd91749b830c4ac0c425cb205e5" />
+    <None Include="Core_SK_Patch\.git\objects\36\aa19f99421307f95bc4762f12362cab688fba1" />
+    <None Include="Core_SK_Patch\.git\objects\37\acd568d68f3c49de9b1e096c8e4d92972e9613" />
+    <None Include="Core_SK_Patch\.git\objects\38\86c16ed344888f98e191afa2831f7992c938f4" />
+    <None Include="Core_SK_Patch\.git\objects\3d\b6d2b5012c902233d4bbf204758712124b435a" />
+    <None Include="Core_SK_Patch\.git\objects\3e\f30e8aa7533ea2cedc6863ce21d4aa19740180" />
+    <None Include="Core_SK_Patch\.git\objects\40\454a64e5245c8471a369cc6ecf1fcf44115137" />
+    <None Include="Core_SK_Patch\.git\objects\40\fdd8f56377fb76cf875adf218f884ffdad2a57" />
+    <None Include="Core_SK_Patch\.git\objects\42\abd836c569c551d9f7fd229553679626c39ec5" />
+    <None Include="Core_SK_Patch\.git\objects\42\b1e463b2d47c09f135ccdf1f5729bff0929880" />
+    <None Include="Core_SK_Patch\.git\objects\43\33277882c8ddca62507637ad639cb0e6da4978" />
+    <None Include="Core_SK_Patch\.git\objects\49\99064486bd9303f17a3b89ea0ea248a1c80630" />
+    <None Include="Core_SK_Patch\.git\objects\4a\8a03887b6174fda93523f6f26e83ee1732d039" />
+    <None Include="Core_SK_Patch\.git\objects\55\51768176c3d77451f6a7a3d8e7d965e0826c52" />
+    <None Include="Core_SK_Patch\.git\objects\58\625cf52347ca6d38621647b3d57f460ed1b592" />
+    <None Include="Core_SK_Patch\.git\objects\5b\45501ef18a061630ddfb7fa277e564e08880c9" />
+    <None Include="Core_SK_Patch\.git\objects\5b\a2687e7a805629c87824df694e45410ae432ae" />
+    <None Include="Core_SK_Patch\.git\objects\5c\44440660b47bc4ea39ad2efc1bd98edd789fd2" />
+    <None Include="Core_SK_Patch\.git\objects\60\1052db9f13564e5a2ad6f0b08db707f91cbe29" />
+    <None Include="Core_SK_Patch\.git\objects\68\583a963a594cc2004cd6b3f5b70155b2552894" />
+    <None Include="Core_SK_Patch\.git\objects\68\a538cac7c3b736e752eb6a580c2073a2c34040" />
+    <None Include="Core_SK_Patch\.git\objects\6d\2577d466071a0e9eadd948769a83ef32550b9b" />
+    <None Include="Core_SK_Patch\.git\objects\6e\ef0a9ffa6197a209d4763a4ab70e73c77482eb" />
+    <None Include="Core_SK_Patch\.git\objects\70\f21f654fedc70b363576d7b7f2a1271fce8d3e" />
+    <None Include="Core_SK_Patch\.git\objects\73\1e0ca46ea274a92617e3b838c5cc5ebd003b65" />
+    <None Include="Core_SK_Patch\.git\objects\73\76659cff0a7f44a1aae64b76ee368c26f469b9" />
+    <None Include="Core_SK_Patch\.git\objects\75\2cfaa09384ac484170e4fbae7b268002056c0c" />
+    <None Include="Core_SK_Patch\.git\objects\75\c9b52a1b9bf6660b382ed7b18b77fae690175b" />
+    <None Include="Core_SK_Patch\.git\objects\76\f024fd0113022d3d140c1414ab4a3464dcb618" />
+    <None Include="Core_SK_Patch\.git\objects\7b\775f4b37678890aec65ab8a5180821e0695c6c" />
+    <None Include="Core_SK_Patch\.git\objects\7d\7849fc7f4b82d41839b442f890c5d94bc593bc" />
+    <None Include="Core_SK_Patch\.git\objects\82\f00b4e4f5661dd69a75210f0bb03e004d47c34" />
+    <None Include="Core_SK_Patch\.git\objects\83\e0d494deff1463c8dae7ac7a3d6d5dbad6318b" />
+    <None Include="Core_SK_Patch\.git\objects\86\72230713e8baccb901451b0970390176b00ce3" />
+    <None Include="Core_SK_Patch\.git\objects\87\3f4ccf5e1042b961036abc6d147e1c5f29e40b" />
+    <None Include="Core_SK_Patch\.git\objects\8a\a26455d23acf904be3ed9dfb3a3efe3e49245a" />
+    <None Include="Core_SK_Patch\.git\objects\8d\afd5331bac30369fdb9bba3582a890321002d7" />
+    <None Include="Core_SK_Patch\.git\objects\8e\19fdeb056290fb61752555f589bf68ae34533b" />
+    <None Include="Core_SK_Patch\.git\objects\90\94b4ec59308d61a32f9b7d32585fa36a7f0aa5" />
+    <None Include="Core_SK_Patch\.git\objects\92\a60cacf00e88d3b00db233858a60e2162e140d" />
+    <None Include="Core_SK_Patch\.git\objects\94\91a2fda28342ab358eaf234e1afe0c07a53d62" />
+    <None Include="Core_SK_Patch\.git\objects\96\29a83fae1a0e9807dbda9b48efb52feab51597" />
+    <None Include="Core_SK_Patch\.git\objects\97\22aee12d57dbf811688a809962658cb5d63521" />
+    <None Include="Core_SK_Patch\.git\objects\97\afb04b01c336bfea65743667dfb4068c55bda3" />
+    <None Include="Core_SK_Patch\.git\objects\9b\bbea17c48ef779ca5ff8947e1f847d4a5101be" />
+    <None Include="Core_SK_Patch\.git\objects\9f\509562524e0561644d11437a2f06515061ba95" />
+    <None Include="Core_SK_Patch\.git\objects\a0\2851e696e5c036ebbde3ab4f9bcbe40e9a57b6" />
+    <None Include="Core_SK_Patch\.git\objects\a2\38e8aae35c139e88784af0725132acbe02a241" />
+    <None Include="Core_SK_Patch\.git\objects\a3\3b85a386ec874088a6da48a4d72de205de55fa" />
+    <None Include="Core_SK_Patch\.git\objects\a4\4df5bdc7a7e9bd4b1716dd69bed0d5df75d6c1" />
+    <None Include="Core_SK_Patch\.git\objects\a6\19d0a40715571a348901e5d7c6df3b21cbbc6f" />
+    <None Include="Core_SK_Patch\.git\objects\a9\14009bc3e9e3c4b7aa97029db173cd674ce0c1" />
+    <None Include="Core_SK_Patch\.git\objects\ac\da3f996822f495d0b54edbc20b5c1b952a0eba" />
+    <None Include="Core_SK_Patch\.git\objects\af\4fb81e1b4cc56ef566bc38a2af38d5123a38ed" />
+    <None Include="Core_SK_Patch\.git\objects\af\7e79d1252f67e79b4b1b0c5c47d7400740a8cb" />
+    <None Include="Core_SK_Patch\.git\objects\b0\d0adc8a95ff4969a30afce9aa1a7923e1b571c" />
+    <None Include="Core_SK_Patch\.git\objects\b1\36b7ef579081b46a8dec571091876aff39227f" />
+    <None Include="Core_SK_Patch\.git\objects\b1\75efe38a245863a798d0c309301bae1340e2d7" />
+    <None Include="Core_SK_Patch\.git\objects\b1\92660eae32a6cbc806b482404802368b291105" />
+    <None Include="Core_SK_Patch\.git\objects\c0\1d9e57cb551e241b9200ffe1abb40b63a357b6" />
+    <None Include="Core_SK_Patch\.git\objects\c2\67c633b6bc3e9d57b9087dfb95ab07328d3b76" />
+    <None Include="Core_SK_Patch\.git\objects\c3\2404b4efae3fcd41ed033f7d26bcbdb456e049" />
+    <None Include="Core_SK_Patch\.git\objects\c8\c41bc6d99fff88b657c4d3052f641e5a87ee05" />
+    <None Include="Core_SK_Patch\.git\objects\c9\608ae6079dc41b464e773e727d1c98be52abb3" />
+    <None Include="Core_SK_Patch\.git\objects\d1\9d383df4ebc190acd86a7f6ef7dfbb54b213ab" />
+    <None Include="Core_SK_Patch\.git\objects\d1\c4221c0e6ac6bbe9e4dec731d8122731827318" />
+    <None Include="Core_SK_Patch\.git\objects\d3\c8f110fda755b06d53f2f7513af5fadee34cd1" />
+    <None Include="Core_SK_Patch\.git\objects\d5\f2236fb9715ca58581abb77dae0dc40ffd9878" />
+    <None Include="Core_SK_Patch\.git\objects\d7\0e572909121113f50866f5ac80832d27ef5882" />
+    <None Include="Core_SK_Patch\.git\objects\d8\1a386f99da4c80f04efe4fc288c6e576aec385" />
+    <None Include="Core_SK_Patch\.git\objects\d8\fa530c1b97d5345e07abeedc7c731dfd20cef4" />
+    <None Include="Core_SK_Patch\.git\objects\db\92c492c3d843a88dcd52f63baf0b1184b5890c" />
+    <None Include="Core_SK_Patch\.git\objects\e0\e42ad1cd7907120dbb54767897a52d2e63dad2" />
+    <None Include="Core_SK_Patch\.git\objects\e3\603b64e69ece76d4ee80cce8953b2e4de7da80" />
+    <None Include="Core_SK_Patch\.git\objects\e3\eb12f48a477e83a8a7922ce1481e9564400dd1" />
+    <None Include="Core_SK_Patch\.git\objects\e4\3e392090d41f1422e88a4c45a38d7ddabd0bef" />
+    <None Include="Core_SK_Patch\.git\objects\e5\4ba09426a05176a025d1ff3c1502dec95a6db3" />
+    <None Include="Core_SK_Patch\.git\objects\e6\77233f23aceb590b01b6d7e9dc8a9595712bd4" />
+    <None Include="Core_SK_Patch\.git\objects\ea\d5d1df9861d8eded38a2ec6e9c383cb3903af5" />
+    <None Include="Core_SK_Patch\.git\objects\eb\27f4a959c58840b0adf80193a3b4e120d06318" />
+    <None Include="Core_SK_Patch\.git\objects\ec\3c1937a96c332069ea0b45f53f07fc942fdd9b" />
+    <None Include="Core_SK_Patch\.git\objects\ee\a15d8470fdb8804c72288f8e531359b7e7ca1c" />
+    <None Include="Core_SK_Patch\.git\objects\ef\5dd1bcb278c1c855ad3999bb6e97784d854650" />
+    <None Include="Core_SK_Patch\.git\objects\f4\1087419cd92d3055cbaa613936abac4ac3e5f3" />
+    <None Include="Core_SK_Patch\.git\objects\fa\4bce9acd2d15a7bc5590d5365cb6afce1ee0c0" />
+    <None Include="Core_SK_Patch\.git\objects\fa\6a34f4d1e2bfead32484dcef98ac25c20b7fd1" />
+    <None Include="Core_SK_Patch\.git\objects\fb\becedecf232ee3a5cdd1d3dfc59568512e1d61" />
+    <None Include="Core_SK_Patch\.git\objects\fd\548d1ca1ea1b965c72d6e976aaf4a715be9609" />
+    <None Include="Core_SK_Patch\.git\ORIG_HEAD" />
+    <None Include="Core_SK_Patch\.git\refs\heads\master" />
+    <None Include="Core_SK_Patch\.git\refs\remotes\origin\master" />
+    <None Include="Core_SK_Patch\.git\refs\tags\0.0.1" />
+    <None Include="Core_SK_Patch\Patches\Core_SK\Patch_MealCategories.xml.bak" />
+    <None Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\DesignTimeBuild\.dtbcache.v2" />
+    <None Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\FileContentIndex\4a1517cc-aa70-46f7-8938-213d2b617b20.vsidx" />
+    <None Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\FileContentIndex\7806a3ec-3068-457b-bcb3-9c5d11f9c124.vsidx" />
+    <None Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\FileContentIndex\ece7fc6f-63d0-4e27-b680-eeb9a43929da.vsidx" />
+    <None Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\FileContentIndex\ff518158-4ce1-4eb1-8afd-911f838be81b.vsidx" />
+    <None Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\FileContentIndex\read.lock" />
+    <None Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\v17\.suo" />
+    <None Include="Core_SK_Patch\Source\.vs\ProjectEvaluation\core_sk_patch.metadata.v5.2" />
+    <None Include="Core_SK_Patch\Source\.vs\ProjectEvaluation\core_sk_patch.projects.v5.2" />
+    <None Include="Core_SK_Patch\Source\Core_SK_Patch.csproj" />
+    <None Include="Core_SK_Patch\Source\MigrationBackup\162deee6\Core_SK_Patch\Core_SK_Patch.csproj" />
+    <None Include="Core_SK_Patch\Source\MigrationBackup\162deee6\Core_SK_Patch\packages.config" />
+    <None Include="Core_SK_Patch\Source\obj\Core_SK_Patch.csproj.nuget.dgspec.json" />
+    <None Include="Core_SK_Patch\Source\obj\Core_SK_Patch.csproj.nuget.g.props" />
+    <None Include="Core_SK_Patch\Source\obj\Core_SK_Patch.csproj.nuget.g.targets" />
+    <None Include="Core_SK_Patch\Source\obj\Debug\Core_SK_Patch.csproj.AssemblyReference.cache" />
+    <None Include="Core_SK_Patch\Source\obj\Debug\Core_SK_Patch.csproj.CoreCompileInputs.cache" />
+    <None Include="Core_SK_Patch\Source\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="Core_SK_Patch\Source\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Core_SK_Patch\Source\obj\project.assets.json" />
+    <None Include="Core_SK_Patch\Source\obj\project.nuget.cache" />
+    <None Include="Core_SK_Patch\Source\obj\Release\Core_SK_Patch.csproj.AssemblyReference.cache" />
+    <None Include="Core_SK_Patch\Source\obj\Release\Core_SK_Patch.csproj.CoreCompileInputs.cache" />
+    <None Include="Core_SK_Patch\Source\obj\Release\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="Core_SK_Patch\Source\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core_SK_Patch\.git\objects\info\" />
+    <Folder Include="Core_SK_Patch\.git\objects\pack\" />
+    <Folder Include="Core_SK_Patch\Source\.vs\Core_SK_Patch\FileContentIndex\merges\" />
+    <Folder Include="Core_SK_Patch\Source\obj\Debug\TempPE\" />
+    <Folder Include="Core_SK_Patch\Source\obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.props'))" />
-    <Error Condition="!Exists('..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.targets'))" />
   </Target>
   <Import Project="..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.targets" Condition="Exists('..\packages\Krafs.Publicizer.2.1.0\build\Krafs.Publicizer.targets')" />
 </Project>

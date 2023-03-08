@@ -25,6 +25,7 @@
 	</loadBefore>
 	<loadAfter>
 		<li>skyarkhangel.HSK</li>	
+		<li>vanillaexpanded.vnutriente</li>
 	</loadAfter>
 	<incompatibleWith>
 	</incompatibleWith>

@@ -154,7 +154,7 @@
                 <!-- 营养膏冷储藏罐 -->
                 <li Class="PatchOperationRemove">
                     <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteVat"]/constructEffect</xpath>
-                </li>-
+                </li>
                 <li Class="PatchOperationReplace">
                     <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteVat"]/costList</xpath>
                     <value>

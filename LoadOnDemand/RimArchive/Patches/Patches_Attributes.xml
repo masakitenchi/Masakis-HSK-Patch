@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationAttributeSet">
+        <xpath>Defs/FactionDef[defName="Shale"]</xpath>
+        <attribute>ParentName</attribute>
+        <value>SK_HumanFactionBase</value>
+    </Operation>
+
+    <Operation Class="PatchOperationAttributeSet">
+        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]</xpath>
+        <attribute>ParentName</attribute>
+        <value>BaseHumanlikePawn</value>
+    </Operation>
+
+    <Operation Class="PatchOperationAttributeSet">
+        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/race/litterSizeCurve |
+            Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/race/lifeStageAges
+        </xpath>
+        <attribute>Inherit</attribute>
+        <value>False</value>
+    </Operation>
+
+    
+</Patch>

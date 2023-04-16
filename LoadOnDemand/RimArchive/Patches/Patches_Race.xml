@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/tools</xpath>
+        <value>
+            <tools>
+                <li Class="CombatExtended.ToolCE">
+                    <label>left fist</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>8</power>
+                    <cooldownTime>1.2</cooldownTime>
+                    <chanceFactor>0.5</chanceFactor>
+                    <surpriseAttack>
+                        <extraMeleeDamages>
+                            <li>
+                                <def>Stun</def>
+                                <amount>22</amount>
+                            </li>
+                        </extraMeleeDamages>
+                    </surpriseAttack>
+                    <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+                    <armorPenetrationBlunt>1.8</armorPenetrationBlunt>
+                </li>
+                <li Class="CombatExtended.ToolCE">
+                    <label>right fist</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>8</power>
+                    <cooldownTime>1.2</cooldownTime>
+                    <chanceFactor>0.5</chanceFactor>
+                    <surpriseAttack>
+                        <extraMeleeDamages>
+                            <li>
+                                <def>Stun</def>
+                                <amount>22</amount>
+                            </li>
+                        </extraMeleeDamages>
+                    </surpriseAttack>
+                    <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+                    <armorPenetrationBlunt>1.8</armorPenetrationBlunt>
+                </li>
+                <li Class="CombatExtended.ToolCE">
+                    <label>head</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>8</power>
+                    <cooldownTime>2.4</cooldownTime>
+                    <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+                    <chanceFactor>0.2</chanceFactor>
+                    <armorPenetrationBlunt>2</armorPenetrationBlunt>
+                    <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+                </li>
+            </tools>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationRemove">
+                <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/comps/li[@MayRequire="ceteam.combatextended" and compClass="CombatExtended.CompPawnGizmo"]</xpath>
+            </li>
+            <li Class="PatchOperationRemove">
+                <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/comps/li[@Class="CombatExtended.CompProperties_Suppressable" and @MayRequire="ceteam.combatextended"]</xpath>
+            </li>
+        </operations>
+    </Operation>
+
+</Patch>

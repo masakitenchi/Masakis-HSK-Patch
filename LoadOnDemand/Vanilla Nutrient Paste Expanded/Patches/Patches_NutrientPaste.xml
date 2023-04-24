@@ -2,7 +2,7 @@
 <Patch>
     <Operation Class="PatchOperationFindMod">
         <mods>
-            <li>Vanilla Expanded Framework</li>
+            <li>Vanilla Nutrient Paste Expanded</li>
         </mods>
         <match Class="PatchOperationSequence">
             <operations>

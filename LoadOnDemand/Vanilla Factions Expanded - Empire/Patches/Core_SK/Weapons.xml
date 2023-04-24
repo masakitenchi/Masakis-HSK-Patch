@@ -27,6 +27,35 @@
                     </recipeUsers>
                 </value>
             </li>
+            
+            <li Class="PatchOperationRemove">
+                <xpath>Defs/ThingDef[defName="VFEE_Gun_ChargeThumper"]/costList | 
+                    Defs/ThingDef[defName="VFEE_Gun_ChargeThumper"]/stuffCategories |
+                    Defs/ThingDef[defName="VFEE_Gun_ChargeThumper"]/costStuffCount |
+                    Defs/ThingDef[defName="VFEE_Gun_ChargeThumper"]/smeltProducts
+                </xpath>
+            </li>
+
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="VFEE_Gun_ChargeThumper"]</xpath>
+                <value>
+                    <stuffCategories>
+                        <li>StrongMetallic</li>
+                    </stuffCategories>
+                    <costStuffCount>40</costStuffCount>
+                    <costList>
+                        <AdvSniper_Component>2</AdvSniper_Component>
+                        <Plasma_Component>5</Plasma_Component>
+                        <Weapon_Parts>14</Weapon_Parts>
+                        <ComponentSpacer>18</ComponentSpacer>
+                        <Plastic>70</Plastic>
+                    </costList>
+                    <smeltProducts>
+                        <Plasma_Component>1</Plasma_Component>
+                        <Weapon_Parts>7</Weapon_Parts>
+                    </smeltProducts>
+                </value>
+            </li>
 
             <li Class="PatchOperationRemove">
                 <xpath>Defs/ThingDef[defName="VEE_Gun_Fletcher"]/costList</xpath>
@@ -44,7 +73,7 @@
                         <workSkill>Crafting</workSkill>
                         <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
                         <skillRequirements>
-                            <Crafting>19</Crafting>
+                            <Crafting>15</Crafting>
                         </skillRequirements>
                         <recipeUsers Inherit="False">
                             <li>MechWeaponCraftingWorkTable</li>
@@ -60,12 +89,16 @@
                     </stuffCategories>
                     <costStuffCount>40</costStuffCount>
                     <costList>
-                        <AdvSniper_Component>10</AdvSniper_Component>
-                        <Laser_Component>1</Laser_Component>
+                        <AdvSniper_Component>2</AdvSniper_Component>
+                        <Laser_Component>5</Laser_Component>
                         <Weapon_Parts>14</Weapon_Parts>
                         <ComponentSpacer>18</ComponentSpacer>
                         <Plastic>70</Plastic>
                     </costList>
+                    <smeltProducts>
+                        <Weapon_Parts>7</Weapon_Parts>
+                        <Laser_Component>1</Laser_Component>
+                    </smeltProducts>
                 </value>
             </li>
         </operations>

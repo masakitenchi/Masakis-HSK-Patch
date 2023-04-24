@@ -7,14 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core_SK_Patch", "Core_SK_Pa
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		1.3|Any CPU = 1.3|Any CPU
+		1.4|Any CPU = 1.4|Any CPU
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.3|Any CPU.ActiveCfg = 1.3|Any CPU
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.3|Any CPU.Build.0 = 1.3|Any CPU
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.ActiveCfg = 1.4|Any CPU
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.Build.0 = 1.4|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

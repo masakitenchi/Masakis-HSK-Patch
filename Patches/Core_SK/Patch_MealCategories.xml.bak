@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <!-- <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="XmlExtensions.PatchOperationSafeAdd">
+                <xpath>Defs/ThingDef/[ingestible/preferability="MealSimple"]</xpath>
+                <safetyDepth>1</safetyDepth>
+                <value>
+                    <thingCategories>
+                        <li>Meal_Simple</li>
+                    </thingCategories>
+                </value>
+            </li>
+        </operations>
+    </Operation> -->
+
+    <Operation Class="XmlExtensions.ForEach">
+        <xpath>Defs/ThingDef[ingestible]</xpath>
+        <storeIn>TDef</storeIn>
+        <apply>
+            <Operation Class="PatchOperationSequence">
+                <operations>
+                    <li Class="XmlExtensions.AggregateValues">
+                        <valueOperations>
+                            <Operation Class="XmlExtensions.FindNodeInherited">
+                                <xpathDef>{TDef}</xpathDef>
+                                <xpathLocal>ingestible/preferability</xpathLocal>
+                                <storeIn>Pre</storeIn>
+                            </Operation>
+                        </valueOperations>
+                    </li>
+                </operations>
+            </Operation>
+        </apply>
+    </Operation>
+
+    <Operation Class="XmlExtensions.FindNodeInherited">
+        <xpathDef>Defs/ThingDef</xpathDef>
+        <xpathLocal>ingestible/preferability[text() = "MealSimple" or
+            text() = "MealFine" or
+            text() = "MealLavish"]</xpathLocal>
+        <storeIn>Pre</storeIn>
+        <caseTrue>
+            <Operation Class="PatchOperationSequence">
+                <operations>
+                    <li Class="XmlExtensions.Log"/>
+                    <li Class="XmlExtensions.PatchByCase">
+                        <value></value>
+                    </li>
+                </operations>
+            </Operation>
+        </caseTrue>
+    </Operation>
+
+    <!-- <Operation Class="XmlExtensions.ForEachDescendant">
+        <xpathParent>Defs/ThingDef[@Name="EdibleBase"]</xpathParent>
+        <storeIn>path</storeIn>
+        <concreteOnly>true</concreteOnly>
+        <apply>
+            <Operation Class="PatchOperationSequence">
+                <operations>
+                    <!-- <li Class="XmlExtensions.Log">
+                        <xpath>{path}/ingestible/preferability</xpath>
+                    </li> -->
+                    <li Class="XmlExtensions.ConditionalInherited">
+                        <xpathDef>{path}</xpathDef>
+                        <xpathLocal>ingestible/preferability</xpathLocal>
+                        <caseTrue>
+                            <Operation Class="PatchOperationSequence">
+                                <operations>
+                                    <li Class="XmlExtensions.Log">
+                                        <xpath>{path}/defName/text()</xpath>
+                                    </li>
+                                    <li Class="XmlExtensions.Log">
+                                        <xpath>{path}/ingestible</xpath>
+                                    </li>
+                                    <li Class="XmlExtensions.FindNodeInherited">
+                                        <xpathDef>{path}</xpathDef>
+                                        <xpathLocal>ingestible/preferability</xpathLocal>
+                                        <storeIn>Pre</storeIn>
+                                        <apply>
+                                            <Operation Class="PatchOperationSequence">
+                                                <operations>
+                                                    <li Class="XmlExtensions.PatchByCase">
+                                                        <value>{Pre}</value>
+                                                        <cases>
+                                                            <li>
+                                                                <value>MealSimple</value>
+                                                                <apply>
+                                                                    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+                                                                        <xpath>{path}</xpath>
+                                                                        <value>
+                                                                            <thingCategories>
+                                                                                <li>Meal_Simple</li>
+                                                                            </thingCategories>
+                                                                        </value>
+                                                                    </Operation>
+                                                                </apply>
+                                                            </li>
+                                                            <li>
+                                                                <value>MealFine</value>
+                                                                <apply>
+                                                                    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+                                                                        <xpath>{path}</xpath>
+                                                                        <value>
+                                                                            <thingCategories>
+                                                                                <li>Meal_Fine</li>
+                                                                            </thingCategories>
+                                                                        </value>
+                                                                    </Operation>
+                                                                </apply>
+                                                            </li>
+                                                            <li>
+                                                                <value>MealLavish</value>
+                                                                <apply>
+                                                                    <Operation Class="XmlExtensions.PatchOperationSafeAdd">
+                                                                        <xpath>{path}</xpath>
+                                                                        <value>
+                                                                            <thingCategories>
+                                                                                <li>Meal_Lavish</li>
+                                                                            </thingCategories>
+                                                                        </value>
+                                                                    </Operation>
+                                                                </apply>
+                                                            </li>
+                                                        </cases>
+                                                    </li>
+                                                    <li Class="XmlExtensions.Log">
+                                                        <xpath>{path}/thingCategories</xpath>
+                                                    </li>
+                                                </operations>
+                                            </Operation>
+                                        </apply>
+                                    </li>
+                                </operations>
+                            </Operation>
+                        </caseTrue>
+                    </li>
+                </operations>
+            </Operation>
+        </apply>
+    </Operation> -->
+
+    <!-- <Operation Class="XmlExtensions.ForEach">
+        <xpath>Defs/ThingDef[ingestible/preferability = "MealFine" or ingestible/preferabiliey = "MealSimple" or ingestible/preferability = "MealLavish"]/defName</xpath>
+        <prefixLength>4</prefixLength>
+        <storeIn>defName</storeIn>
+        <apply>
+            <Operation Class="PatchOperationSequence">
+                <operations>
+                    <li Class="XmlExtensions.Log">
+                        <xpath>Defs/ThingDef[defName= "{defName}"]/defName</xpath>
+                    </li>
+                    <li Class="XmlExtensions.Log">
+                        <xpath>Defs/ThingDef[defName= "{defName}"]/thingCategories</xpath>
+                    </li>
+                </operations>
+            </Operation>
+            
+        </apply>
+    </Operation> -->
+    <!-- <Operation Class="XmlExtensions.DefDatabaseLog">
+        <objPath>ThingCategoryDef/[defName="Meal_Simple" or defName="Meal_Fine" or defName="Meal_Lavish"]/SortedChildThingDefs</objPath>
+    </Operation> -->
+</Patch>

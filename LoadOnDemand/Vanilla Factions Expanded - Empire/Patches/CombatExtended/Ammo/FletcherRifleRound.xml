@@ -17,8 +17,8 @@
         <label>Fletcher Dart</label>
         <ammoTypes>
           <Ammo_FletcherDart>Bullet_FletcherDart</Ammo_FletcherDart>
-        </ammoTypes>
-        <similarTo>AmmoSet_ChargedHeavy</similarTo>
+        </ammoTypes><!--
+        <similarTo>AmmoSet_ChargedHeavy</similarTo>-->
       </CombatExtended.AmmoSetDef>
 
       <ThingDef Class="CombatExtended.AmmoDef" ParentName="12x64mmChargedBase">

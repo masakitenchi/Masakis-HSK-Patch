@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingCategoryDef>
+		<defName>Meal_Simple</defName>
+		<label>Simple</label>
+		<parent>Foods</parent>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+	</ThingCategoryDef>
+    <ThingCategoryDef>
+		<defName>Meal_Fine</defName>
+		<label>Fine</label>
+		<parent>Foods</parent>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+	</ThingCategoryDef>
+    <ThingCategoryDef>
+		<defName>Meal_Lavish</defName>
+		<label>Lavish</label>
+		<parent>Foods</parent>
+		<resourceReadoutRoot>true</resourceReadoutRoot>
+		<iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+	</ThingCategoryDef>
+</Defs>

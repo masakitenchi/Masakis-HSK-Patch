@@ -29,6 +29,14 @@
                         <costStuffCount>50</costStuffCount>
                     </value>
                 </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteMiniGrinder"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>Food_C3</li>
+                        </researchPrerequisites>
+                    </value>
+                </li>
             </operations>
         </match>
     </Operation>

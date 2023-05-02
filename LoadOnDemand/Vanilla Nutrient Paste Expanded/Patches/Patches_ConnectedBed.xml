@@ -10,9 +10,6 @@
                 <li Class="PatchOperationRemove">
                     <xpath>Defs/ThingDef[defName="VNPE_ConnectedBed"]/costStuffCount</xpath>
                 </li>
-                <li Class="PatchOperationRemove">
-                    <xpath>Defs/ThingDef[defName="VNPE_ConnectedBed"]/stuffCategories</xpath>
-                </li>
 
                 <li Class="PatchOperationReplace">
                     <xpath>Defs/ThingDef[defName="VNPE_ConnectedBed"]/costList</xpath>
@@ -42,7 +39,17 @@
                         <designationCategory>Furniture</designationCategory>
                     </value>
                 </li>
-                
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VNPE_ConnectedBed"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>HospitalBed</li>
+                            <li>Food_C3</li>
+                        </researchPrerequisites>
+                    </value>
+                </li>
+
+
             </operations>
         </match>
     </Operation>

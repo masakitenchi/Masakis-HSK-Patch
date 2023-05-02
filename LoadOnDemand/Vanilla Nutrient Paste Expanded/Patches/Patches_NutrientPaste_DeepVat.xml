@@ -28,6 +28,14 @@
                         <costStuffCount>900</costStuffCount>
                     </value>
                 </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteVat_Giant"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>Food_C3</li>
+                        </researchPrerequisites>
+                    </value>
+                </li>
 
                 <!-- 小型营养膏冷贮罐 -->
                 <li Class="PatchOperationRemove">
@@ -51,7 +59,14 @@
                         <costStuffCount>100</costStuffCount>
                     </value>
                 </li>
-                
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteVat_Small"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>Food_C3</li>
+                        </researchPrerequisites>
+                    </value>
+                </li>
             </operations>
         </match>
     </Operation>

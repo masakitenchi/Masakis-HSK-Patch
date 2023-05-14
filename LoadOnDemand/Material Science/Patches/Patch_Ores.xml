@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/GenStepDef[defName = "PreciousLump"]/genStep[@Class = "GenStep_PreciousLump"]/mineables</xpath>
+		<value>
+			<li>MineableSphalerite</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/GenStepDef[defName="PreciousLump"]/genStep[@Class="GenStep_PreciousLump"]/totalValueRange</xpath>
+		<value>
+			<totalValueRange>
+				<min>3000</min>
+				<max>30000</max>
+			</totalValueRange>
+		</value>
+	</Operation>
+</Patch>

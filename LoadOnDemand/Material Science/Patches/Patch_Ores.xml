@@ -4,6 +4,7 @@
 		<xpath>Defs/GenStepDef[defName = "PreciousLump"]/genStep[@Class = "GenStep_PreciousLump"]/mineables</xpath>
 		<value>
 			<li>MineableSphalerite</li>
+			<li>MineableQuartz</li>
 		</value>
 	</Operation>
 

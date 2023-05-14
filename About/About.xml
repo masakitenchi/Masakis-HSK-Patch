@@ -26,6 +26,7 @@
 	<loadAfter>
 		<li>skyarkhangel.HSK</li>	
 		<li>vanillaexpanded.vnutriente</li>
+		<li>vitech.materialsscience</li>
 	</loadAfter>
 	<incompatibleWith>
 	</incompatibleWith>

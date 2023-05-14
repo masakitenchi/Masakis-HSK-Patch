@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<ThingDef ParentName="SK_RockBase">
+		<defName>MineableSphalerite</defName>
+		<label>Sphalerite Deposits</label>
+		<graphicData>
+			<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<color>(89,83,68)</color>
+			<colorTwo>(147,144,134)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>3500</MaxHitPoints>
+		</statBases>
+		<description>Deposits of Sphalerite Ore.</description>
+		<building>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>Sphalerite</mineableThing>
+			<mineableYield>250</mineableYield>
+			<mineableScatterCommonality>0.25</mineableScatterCommonality>
+			<mineableScatterLumpSizeRange>
+				<min>7</min>
+				<max>15</max>
+			</mineableScatterLumpSizeRange>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="SK_RockBase">
+		<defName>MineableQuartz</defName>
+		<label>Quartz Deposits</label>
+		<graphicData>
+			<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<color>(255,255,255)</color>
+			<colorTwo>(147,144,134)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>3500</MaxHitPoints>
+		</statBases>
+		<description>Deposits of Quartz.</description>
+		<building>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>Quartz</mineableThing>
+			<mineableYield>10</mineableYield>
+			<mineableScatterCommonality>0.25</mineableScatterCommonality>
+			<mineableScatterLumpSizeRange>
+				<min>7</min>
+				<max>15</max>
+			</mineableScatterLumpSizeRange>
+		</building>
+	</ThingDef>
+</Defs>

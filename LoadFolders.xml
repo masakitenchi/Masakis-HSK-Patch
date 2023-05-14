@@ -15,5 +15,6 @@
     <li IfModActive="oskarpotocki.vfe.empire">LoadOnDemand/Vanilla Factions Expanded - Empire</li>
     <li IfModActive="auxia.weaponpack.bluearchive">LoadOnDemand/RimArchive</li>
     <li IfModActive="VanillaExpanded.VNutrientE">LoadOnDemand/Vanilla Nutrient Paste Expanded</li>
+    <li IfModActive="vitech.materialsscience">LoadOnDemand/Material Science</li>
   </v1.4>
 </loadFolders>

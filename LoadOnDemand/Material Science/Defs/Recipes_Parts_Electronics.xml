@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<RecipeDef>
+		<defName>MakeSilicon_Electric_Bulk</defName>
+		<label>Bulk Make semiconductor material x50</label>
+		<description>Doesn't quite conduct, doesn't quite not. Critical component for electronics. Typically made from silicon.</description>
+		<jobString>Making semiconductor material.</jobString>
+		<workAmount>8000</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>GlassBatch</li>
+					</thingDefs>
+				</filter>
+				<count>150</count>
+			</li>
+		</ingredients>
+		<products>
+			<Silicon>50</Silicon>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>GlassBatch</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+        <recipeUsers>
+			<li>GlassworkTable</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Crafting>5</Crafting>
+		</skillRequirements>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.8</workSkillLearnFactor>
+        <researchPrerequisite>Electronics_D1</researchPrerequisite>
+	</RecipeDef>
+
+</Defs>

@@ -62,7 +62,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Publicize Include="Assembly-CSharp:RimWorld.CompRefuelable" />
+    <!-- <Publicize Include="Assembly-CSharp:RimWorld.CompRefuelable" /> -->
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Core_SK">

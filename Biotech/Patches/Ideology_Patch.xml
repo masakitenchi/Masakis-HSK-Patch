@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Ideology</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThoughtDef[defName="ProsthophileNoProsthetic"]</xpath>
+					<value>
+						<developmentalStageFilter>Adult</developmentalStageFilter>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThoughtDef[defName="HasNoProsthetic_Disapproved_Social"]</xpath>
+					<value>
+						<socialTargetDevelopmentalStageFilter>Adult</socialTargetDevelopmentalStageFilter>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

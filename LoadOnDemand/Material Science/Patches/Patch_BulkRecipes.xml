@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/RecipeDef[defName="MakeMildSteel"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.ModExtension_BulkRecipe">
+				<MaterialMultiplier>2.0</MaterialMultiplier>
+				<ProductMultiplier>2.0</ProductMultiplier>
+				<WorkAmountMultiplier>2.0</WorkAmountMultiplier>
+			</li>
+		</value>
+	</Operation>
+</Patch>

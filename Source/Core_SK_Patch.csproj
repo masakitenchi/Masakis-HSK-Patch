@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="PawnGroupKindWorker_Async.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

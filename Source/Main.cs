@@ -35,8 +35,8 @@ namespace Core_SK_Patch
             //SOS2 Compatibility Patch
             if (ModsConfig.IsActive("kentington.saveourship2"))
             {
-                sb.Append("Save Our Ship 2\n");
                 harmony.Patch(AccessTools.Method(typeof(IncidentWorker_SeismicActivity), "CanFireNowSub"), null, new HarmonyMethod(patchType, "CanFireNowSubPostfix"));
+                sb.Append(" - Save Our Ship 2 Patched");
             }
             //Methadone Fix (Disabled in 1.4 since 1.4 has already added Methadone back)
 #if ODT
@@ -71,7 +71,7 @@ namespace Core_SK_Patch
                         for (int j = 0; j < RecipesToAdd[i].recipeUsers.Count; j++)
                         {
                             RecipesToAdd[i].recipeUsers[j].AllRecipes.Add(RecipesToAdd[i]);
-                            Tuples.AppendLine(" - " + RecipesToAdd[i].defName + " to " + RecipesToAdd[i].recipeUsers[j].defName);
+                            Tuples.AppendLine("  - " + RecipesToAdd[i].defName + " to " + RecipesToAdd[i].recipeUsers[j].defName);
                         }
                     }
                     else
@@ -79,7 +79,7 @@ namespace Core_SK_Patch
                         foreach (var thing in DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.recipes != null && x.recipes.Any(y => RecipesToAdd[i].defName.Contains(y.defName))))
                         {
                             thing.AllRecipes.Add(RecipesToAdd[i]);
-                            Tuples.AppendLine(" - " + RecipesToAdd[i].defName + " to " + thing.defName);
+                            Tuples.AppendLine("  - " + RecipesToAdd[i].defName + " to " + thing.defName);
                         }
                     }
                     ++count;

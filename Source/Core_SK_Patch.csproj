@@ -71,7 +71,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="ShipsHaveInsides">
-      <HintPath>..\..\..\..\..\workshop\content\294100\1909914131\1.3\Assemblies\ShipsHaveInsides.dll</HintPath>
+      <HintPath>..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

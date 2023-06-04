@@ -5,9 +5,20 @@
 		<xpath>Defs/RecipeDef[defName="MakeMildSteel"]</xpath>
 		<value>
 			<li Class="Core_SK_Patch.ModExtension_BulkRecipe">
-				<MaterialMultiplier>2.0</MaterialMultiplier>
-				<ProductMultiplier>2.0</ProductMultiplier>
-				<WorkAmountMultiplier>2.0</WorkAmountMultiplier>
+				<MaterialMultiplier>10.0</MaterialMultiplier>
+				<ProductMultiplier>10.0</ProductMultiplier>
+				<WorkAmountMultiplier>15.0</WorkAmountMultiplier>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/RecipeDef[defName="SmeltNativeGold_Basic"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.ModExtension_BulkRecipe">
+				<MaterialMultiplier>10.0</MaterialMultiplier>
+				<ProductMultiplier>10.0</ProductMultiplier>
+				<WorkAmountMultiplier>15.0</WorkAmountMultiplier>
 			</li>
 		</value>
 	</Operation>

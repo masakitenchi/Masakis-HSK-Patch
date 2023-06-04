@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<!-- <RecipeDef>
+		<defName>Make_SubCoreBasic</defName>
+		<label>Make basic subcore</label>
+		<description>The simplest possible mechanoid brain, this is a tiny psychodynamic substrate unit housing a dull subpersona. Since this is only a basic-tier subcore, it can only drive the simplest of mechanoids.\n\nLike all mechanoid subcores, it contains a subpersona with a psychic presence, albeit a very faint one.</description>
+		<jobString>Making basic subcore.</jobString>
+		<workSpeedStat>SubcoreEncodingSpeed</workSpeedStat>
+		<workAmount>3000</workAmount>
+		<soundWorking>SubcoreEncoder_Working</soundWorking>
+		<allowMixingIngredients>false</allowMixingIngredients>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Metallic</li>
+					</categories>
+				</filter>
+				<count>30</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ElectronicComponents</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Mechanism</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Electronics</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</defaultIngredientFilter>
+		<products>
+			<SubcoreBasic>1</SubcoreBasic>
+		</products>
+		<recipeUsers>
+			<li>SubcoreEncoder</li>
+		</recipeUsers>
+		<mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+		<unfinishedThingDef>UnfinishedSubcore</unfinishedThingDef>
+		<workSkill>Crafting</workSkill>
+		<researchPrerequisite>BasicMechtech</researchPrerequisite>
+	</RecipeDef> -->
+</Defs>

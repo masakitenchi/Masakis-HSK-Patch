@@ -36,7 +36,7 @@ namespace Core_SK_Patch
             if (ModsConfig.IsActive("kentington.saveourship2"))
             {
                 harmony.Patch(AccessTools.Method(typeof(IncidentWorker_SeismicActivity), "CanFireNowSub"), null, new HarmonyMethod(patchType, "CanFireNowSubPostfix"));
-                sb.Append(" - Save Our Ship 2 Patched");
+                sb.AppendLine(" - Save Our Ship 2 Patched");
             }
             //Methadone Fix (Disabled in 1.4 since 1.4 has already added Methadone back)
 #if ODT

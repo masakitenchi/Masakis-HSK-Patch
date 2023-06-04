@@ -19,6 +19,12 @@
         </value>
     </Operation>
 
+
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or defName="VFEE_Apparel_JanissaryHelmet"]/comps/li[@Class="CompProperties_Biocodable"]</xpath>
+    </Operation>
+
+
     <Operation Class="PatchOperationAttributeSet">
         <xpath>Defs/ThingDef[defName="VFEE_Apparel_JanissaryCuirass" or defName="VFEE_Apparel_JanissaryHelmet"]</xpath>
         <attribute>ParentName</attribute>

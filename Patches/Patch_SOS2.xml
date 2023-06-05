@@ -12,6 +12,10 @@
 						<li>ArchotechUplink</li>
 					</value>
 				</li>
+				<!-- <li Class="PatchOperationTest">
+					<xpath>Defs/ThingDef[defName="HiTechResearchBench"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+					<success>Invert</success>
+				</li> -->
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident") and not(disallowedBiomes)]</xpath>
 					<value>
@@ -29,28 +33,4 @@
 			</operations>
 		</match>
 	</Operation>
-	<!-- <Operation Class="PatchOperationFindMod">
-	<mods>
-		<li>Save Our Ship 2</li>
-	</mods>
-	<match Class="PatchOperationSequence">
-	<operations>
-		<li Class="PatchOperationAdd">
-			<xpath>Defs/ThingDef[defName="ShipHeatsink"]</xpath>
-			<value>
-				<CoolingCapacityWatts>25000</CoolingCapacityWatts>
-				<thingClass>Rimatomics.Radiator</thingClass>
-			</value>
-		</li>
-	<li Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[defName="ShipHeatsink"]/comps</xpath>
-		<value>
-			<li Class="Rimatomics.CompProperties_Pipe">
-				<mode>Cooling</mode>
-			</li>
-		</value>
-	</li>
-</operations>
-</match>
-</Operation> -->
 </Patch>

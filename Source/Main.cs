@@ -24,6 +24,7 @@ public static class HediffDefOfLocal
 public class Core_SK_Patch : Mod
 {
     public static Harmony harmony;
+    public static ModSettings settings;
     internal static StringBuilder sb = new StringBuilder("Core_SK Patch is initializing:\n");
     public Core_SK_Patch(ModContentPack content) : base(content)
     {
@@ -31,6 +32,7 @@ public class Core_SK_Patch : Mod
 			Harmony.DEBUG = true;
 #endif
         harmony = new Harmony("com.reggex.HSKPatch");
+        settings = this.GetSettings<Settings>();
         //SOS2 Compatibility Patch - now using xml patch for better compatibility
         /*if (ModsConfig.IsActive("kentington.saveourship2"))
         {
@@ -117,7 +119,13 @@ public class Core_SK_Patch : Mod
     }
 
     public override string SettingsCategory() => this.Content.Name;
-
+    public override void WriteSettings()
+    {
+        if(settings != null)
+        {
+            settings.Write();
+        }
+    }
 
     public override void DoSettingsWindowContents(Rect inRect)
     {

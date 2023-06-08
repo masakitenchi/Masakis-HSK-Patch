@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="MatterConverter"]/recipes</xpath>
+		<value>
+			<li>ConvertToTitanomagnetite</li>
+			<li>ConvertToSphalerite</li>
+		</value>
+	</Operation>
+</Patch>

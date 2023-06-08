@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/HediffDef[defName="PsychoHigh" or 
+					defName="YayoHigh" or
+					defName="GoJuiceHigh" or
+					defName="SynchronisityHigh" or 
+					defName="Alzheimers" or
+					defName="Bruise" or
+					defName="Berserk_herb_high" or
+					defName="RadiationIncurable" or
+					defName="Crack"
+				</xpath>
+				<value>
+					<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+
+
+</Patch>

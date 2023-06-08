@@ -42,10 +42,12 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BetterInfestation.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="PawnGroupKindWorker_Async.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">

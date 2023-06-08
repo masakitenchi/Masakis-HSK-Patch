@@ -17,7 +17,7 @@
 					<success>Invert</success>
 				</li> -->
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity") and not(disallowedBiomes)]</xpath>
+					<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain") and not(disallowedBiomes)]</xpath>
 					<value>
 						<disallowedBiomes>
 							<li>OuterSpaceBiome</li>
@@ -25,7 +25,7 @@
 					</value>
 				</li>
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity") and disallowedBiomes]/disallowedBiomes</xpath>
+					<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain") and disallowedBiomes]/disallowedBiomes</xpath>
 					<value>
 						<li>OuterSpaceBiome</li>
 					</value>

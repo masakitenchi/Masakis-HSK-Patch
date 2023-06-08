@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<RecipeDef>
+		<defName>ConvertToSphalerite</defName>
+		<label>Convert to sphalerite</label>
+		<description>Convert inorganic matter into sphalerite, the ore of zinc. Produces 50.</description>
+		<jobString>Converting matter into wolframite ore.</jobString>
+		<workSpeedStat>ElectronicCraftingSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<workAmount>12000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Matter</li>
+					</thingDefs>
+				</filter>
+				<count>250</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Matter</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Sphalerite>50</Sphalerite>
+		</products>
+		<skillRequirements>
+			<Crafting>15</Crafting>
+		</skillRequirements>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.8</workSkillLearnFactor>
+		<researchPrerequisite>Super_matter_E1</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>ConvertToTitanomagnetite</defName>
+		<label>Convert to titanomagnetite</label>
+		<description>Convert inorganic matter into titanomagnetite. Produces 25.</description>
+		<jobString>Converting matter into wolframite ore.</jobString>
+		<workSpeedStat>ElectronicCraftingSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<workAmount>12000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Matter</li>
+					</thingDefs>
+				</filter>
+				<count>250</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Matter</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Titanomagnetite>25</Titanomagnetite>
+		</products>
+		<skillRequirements>
+			<Crafting>15</Crafting>
+		</skillRequirements>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.8</workSkillLearnFactor>
+		<researchPrerequisite>Super_matter_E1</researchPrerequisite>
+	</RecipeDef>
+
+</Defs>

@@ -12,7 +12,7 @@
 					defName="Bruise" or
 					defName="Berserk_herb_high" or
 					defName="RadiationIncurable" or
-					defName="Crack"
+					defName="Crack"]
 				</xpath>
 				<value>
 					<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>

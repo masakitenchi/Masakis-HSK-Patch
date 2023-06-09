@@ -119,13 +119,11 @@ public class Core_SK_Patch : Mod
     }
 
     public override string SettingsCategory() => this.Content.Name;
-    public override void WriteSettings()
+    /*public override void WriteSettings()
     {
-        if(settings != null)
-        {
-            settings.Write();
-        }
-    }
+        base.WriteSettings();
+        settings?.Write();
+    }*/
 
     public override void DoSettingsWindowContents(Rect inRect)
     {
@@ -133,7 +131,7 @@ public class Core_SK_Patch : Mod
         Listing_Standard ls = new Listing_Standard();
         ls.Begin(inRect);
         ls.CheckboxLabeled("Enable Bulk Recipe", ref Settings.EnableBulkRecipe, "Check to generate bulk recipes for patched recipes (Needs restart)");
-        Settings.InfestationPreventionRadius = ls.SliderLabeled($"Deep Infestation Radius : {Settings.InfestationPreventionRadius.ToString("F2")}", Settings.InfestationPreventionRadius, 10f, 75f, tooltip: "If one deep drill has an infestation recently, it will prevent all deep drills in a certain radius from being infested again. This slider lets you change how big that circle is");
+        Settings.InfestationPreventionRadius = ls.SliderLabeled($"Deep Infestation Radius : {Settings.InfestationPreventionRadius:F2}", Settings.InfestationPreventionRadius, 10f, 75f, tooltip: "If one deep drill has an infestation recently, it will prevent all deep drills in a certain radius from being infested again. This slider lets you change how big that circle is");
         ls.End();
     }
     #region Bulk Recipe

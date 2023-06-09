@@ -11,7 +11,6 @@ public class Settings : ModSettings
 
     public override void ExposeData()
     {
-        base.ExposeData();
         Scribe_Values.Look(ref BetterInfestation, "BetterInfestation");
         Scribe_Values.Look(ref EnableBulkRecipe, "EnableBulkRecipe", false);
         Scribe_Values.Look(ref InfestationPreventionRadius, "InfestationPreventionRadius");

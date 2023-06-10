@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+
+			<!-- Original Patch -->
+			<!-- <li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Shell_AntigrainWarhead"]</xpath>
+				<value>
+					<costList>
+						<Steel>20</Steel>
+						<ArchotechExoticParticles>6</ArchotechExoticParticles>
+						<ComponentSpacer>2</ComponentSpacer>
+					</costList>
+					<recipeMaker>
+						<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Machining</soundWorking>
+						<workAmount>2000</workAmount>
+						<targetCountAdjustment>5</targetCountAdjustment>
+						<workSkill>Crafting</workSkill>
+						<recipeUsers>
+							<li>TableMachining</li>
+						</recipeUsers>
+						<skillRequirements>
+							<Crafting>12</Crafting>
+						</skillRequirements>
+						<researchPrerequisite>ArchotechAntimatter</researchPrerequisite>
+					</recipeMaker>
+				</value>
+			</li> -->
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="Shell_AntigrainWarhead"]/costList</xpath>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="Shell_AntigrainWarhead"]/recipeMaker</xpath>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[@Name="ShipTorpedoBase"]/recipeMaker</xpath>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[@ParentName="ShipTorpedoBase" and contains(defName,'ShipTorpedo_')]/recipeMaker</xpath>
+			</li>
+
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[@ParentName="ShipTorpedoBase" and contains(defName,'ShipTorpedo_')]/costList</xpath>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

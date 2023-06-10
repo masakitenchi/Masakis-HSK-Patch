@@ -24,10 +24,11 @@
 	<loadBefore>
 	</loadBefore>
 	<loadAfter>
-		<li>skyarkhangel.HSK</li>	
+		<li>skyarkhangel.HSK</li>
 		<li>vanillaexpanded.vnutriente</li>
 		<li>vitech.materialsscience</li>
 	</loadAfter>
 	<incompatibleWith>
+		<li>XxNelsonxX.NsLP</li>
 	</incompatibleWith>
 </ModMetaData>

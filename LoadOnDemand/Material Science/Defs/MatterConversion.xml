@@ -5,7 +5,7 @@
 		<defName>ConvertToSphalerite</defName>
 		<label>Convert to sphalerite</label>
 		<description>Convert inorganic matter into sphalerite, the ore of zinc. Produces 50.</description>
-		<jobString>Converting matter into wolframite ore.</jobString>
+		<jobString>Converting matter into sphalerite ore.</jobString>
 		<workSpeedStat>ElectronicCraftingSpeed</workSpeedStat>
 		<effectWorking>Smelt</effectWorking>
 		<soundWorking>Recipe_Smelt</soundWorking>
@@ -40,7 +40,7 @@
 		<defName>ConvertToTitanomagnetite</defName>
 		<label>Convert to titanomagnetite</label>
 		<description>Convert inorganic matter into titanomagnetite. Produces 25.</description>
-		<jobString>Converting matter into wolframite ore.</jobString>
+		<jobString>Converting matter into titanomagnetite ore.</jobString>
 		<workSpeedStat>ElectronicCraftingSpeed</workSpeedStat>
 		<effectWorking>Smelt</effectWorking>
 		<soundWorking>Recipe_Smelt</soundWorking>

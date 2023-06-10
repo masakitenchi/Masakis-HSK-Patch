@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<RecipeDef Name="Base_TorpedoRecipe" Abstract="True">
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>1600</workAmount>
+		<targetCountAdjustment>5</targetCountAdjustment>
+		<workSkill>Crafting</workSkill>
+		<recipeUsers>
+			<li>FabricationBench</li>
+			<li>AdvToolBench</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>
+		<researchPrerequisite>ShipTorpedoes</researchPrerequisite>
+	</RecipeDef>
+	<RecipeDef ParentName="Base_TorpedoRecipe">
+		<defName>MakeTorpedo_HE</defName>
+		<label>make HE torpedo</label>
+		<description>Craft high explosive torpedo.</description>
+		<jobString>Making HE torpedo.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ShuttleFuelPods</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Shell_HighExplosive</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Metallic</li>
+					</categories>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</defaultIngredientFilter>
+		<products>
+			<ShipTorpedo_HighExplosive>1</ShipTorpedo_HighExplosive>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="Base_TorpedoRecipe">
+		<defName>MakeTorpedo_EMP</defName>
+		<label>make EMP torpedo</label>
+		<description>Craft EMP torpedo.</description>
+		<jobString>Making EMP torpedo.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ShuttleFuelPods</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Shell_EMP</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Metallic</li>
+					</categories>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</defaultIngredientFilter>
+		<products>
+			<ShipTorpedo_EMP>1</ShipTorpedo_EMP>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="Base_TorpedoRecipe">
+		<defName>MakeTorpedo_AM</defName>
+		<label>make antimatter torpedo</label>
+		<description>Craft antimatter torpedo.</description>
+		<jobString>Making antimatter torpedo.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ShuttleFuelPods</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Shell_AntigrainWarhead</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Metallic</li>
+					</categories>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</defaultIngredientFilter>
+		<products>
+			<ShipTorpedo_Antimatter>1</ShipTorpedo_Antimatter>
+		</products>
+	</RecipeDef>
+
+</Defs>

@@ -12,7 +12,10 @@
 					defName="Bruise" or
 					defName="Berserk_herb_high" or
 					defName="RadiationIncurable" or
-					defName="Crack"]
+					defName="Crack" or
+					defName="PsychoCrash" or
+					defName="HedNutritiousFood" or
+					defName="ToxicBuildup"]
 				</xpath>
 				<value>
 					<allowMothballIfLowPriorityWorldPawn>true</allowMothballIfLowPriorityWorldPawn>

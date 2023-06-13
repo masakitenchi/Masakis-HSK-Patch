@@ -262,6 +262,20 @@
 				</li>
 
 				<!-- ========== Shuttles Armor & Melee ========== -->
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>SK_BasePawn</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
+					<value>
+						<comps Inherit="False"/>
+					</value>
+				</li>
+				
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
 					defName="ShuttleCargoRace" or

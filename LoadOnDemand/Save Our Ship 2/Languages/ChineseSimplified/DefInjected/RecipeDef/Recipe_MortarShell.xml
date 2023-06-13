@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<MakeTorpedo_HE.label>制造高爆鱼雷</MakeTorpedo_HE.label>
+	<MakeTorpedo_HE.description>制造高爆鱼雷。</MakeTorpedo_HE.description>
+	<MakeTorpedo_HE.jobString>正在制造高爆鱼雷。</MakeTorpedo_HE.jobString>
+
+	<MakeTorpedo_EMP.label>制造EMP鱼雷</MakeTorpedo_EMP.label>
+	<MakeTorpedo_EMP.description>制造EMP鱼雷。</MakeTorpedo_EMP.description>
+	<MakeTorpedo_EMP.jobString>正在制造EMP鱼雷。</MakeTorpedo_EMP.jobString>
+
+	<MakeTorpedo_AM.label>制造反粒子鱼雷</MakeTorpedo_AM.label>
+	<MakeTorpedo_AM.description>制造反粒子鱼雷。</MakeTorpedo_AM.description>
+	<MakeTorpedo_AM.jobString>正在制造反粒子鱼雷。</MakeTorpedo_AM.jobString>
+</LanguageData>

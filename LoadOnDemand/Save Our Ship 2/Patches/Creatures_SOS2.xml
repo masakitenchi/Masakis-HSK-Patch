@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 	<Operation Class="PatchOperationFindMod">
-    <mods>
-		<li>Save Our Ship 2</li>
-    </mods>
+		<mods>
+			<li>Save Our Ship 2</li>
+		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-				
+
 				<!-- ========== Base Space Insect ========== -->
 				<li Class="PatchOperationAddModExtension">
 					<xpath>Defs/ThingDef[@Name="BaseInsectSpace"]</xpath>
@@ -82,7 +82,7 @@
 						<baseHealthScale>1.3</baseHealthScale>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Astromite"]/statBases/ComfyTemperatureMin</xpath>
 					<value>
@@ -269,13 +269,17 @@
 					<value>SK_BasePawn</value>
 				</li>
 
+				<!-- Still need that CAI comp-->
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
 					<value>
-						<comps Inherit="False"/>
+						<comps Inherit="False">
+							<li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_CombatAI"/>
+							<li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_Statistics"/>
+						</comps>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
 					defName="ShuttleCargoRace" or
@@ -334,7 +338,7 @@
 						</tools>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archospider ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archospider"]/tools</xpath>

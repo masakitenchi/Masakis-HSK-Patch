@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			
+			<!-- Change enemy ship all steel to plasteel-->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/EnemyShipDef/symbolTable/li/value[stuff="Steel"]/stuff</xpath>
+				<value>
+					<stuff>Plasteel</stuff>
+				</value>
+			</li>
+
+			<!-- This is the true shelf in hsk-->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="Shelf"]/shapeOrDef</xpath>
+				<value>
+					<shapeOrDef>JDSMetal_Shelf_A_Full</shapeOrDef>
+				</value>
+			</li>
+
+		</operations>
+	</Operation>
+</Patch>

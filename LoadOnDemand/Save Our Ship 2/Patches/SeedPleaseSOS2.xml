@@ -2,96 +2,96 @@
 <Patch>
 
 	<Operation Class="PatchOperationFindMod">
-	<mods>
-		<li>Save Our Ship 2</li>
-	</mods>
+		<mods>
+			<li>Save Our Ship 2</li>
+		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-		
+
 				<!-- ========== SeedDef ========== -->
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs</xpath>
 					<value>
 						<SeedsPlease.SeedDef ParentName="SeedBase">
-						  <defName>Seed_Vanoroot</defName>
-						  <label>vanoroot seeds</label>
-						  <descriptionHyperlinks>
-							<ThingDef>Plant_Vanoroot</ThingDef>
-						  </descriptionHyperlinks>
-						  <sources>
-							<li>Plant_Vanoroot</li>
-						  </sources>
+							<defName>Seed_Vanoroot</defName>
+							<label>vanoroot seeds</label>
+							<descriptionHyperlinks>
+								<ThingDef>Plant_Vanoroot</ThingDef>
+							</descriptionHyperlinks>
+							<sources>
+								<li>Plant_Vanoroot</li>
+							</sources>
 						</SeedsPlease.SeedDef>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs</xpath>
 					<value>
 						<SeedsPlease.SeedDef ParentName="SeedBase">
-						  <defName>Seed_Slaughtermelon</defName>
-						  <label>slaughtermelon seeds</label>
-						  <descriptionHyperlinks>
-							<ThingDef>Plant_Slaughtermelon</ThingDef>
-						  </descriptionHyperlinks>
-						  <sources>
-							<li>Plant_Slaughtermelon</li>
-						  </sources>
+							<defName>Seed_Slaughtermelon</defName>
+							<label>slaughtermelon seeds</label>
+							<descriptionHyperlinks>
+								<ThingDef>Plant_Slaughtermelon</ThingDef>
+							</descriptionHyperlinks>
+							<sources>
+								<li>Plant_Slaughtermelon</li>
+							</sources>
 						</SeedsPlease.SeedDef>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs</xpath>
 					<value>
 						<SeedsPlease.SeedDef ParentName="SeedBase">
-						  <defName>Seed_Pharma</defName>
-						  <label>pharma seeds</label>
-						  <descriptionHyperlinks>
-							<ThingDef>Plant_Pharmatree</ThingDef>
-						  </descriptionHyperlinks>
-						  <sources>
-							<li>Plant_Pharmatree</li>
-						  </sources>
+							<defName>Seed_Pharma</defName>
+							<label>pharma seeds</label>
+							<descriptionHyperlinks>
+								<ThingDef>Plant_Pharmatree</ThingDef>
+							</descriptionHyperlinks>
+							<sources>
+								<li>Plant_Pharmatree</li>
+							</sources>
 						</SeedsPlease.SeedDef>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs</xpath>
 					<value>
 						<SeedsPlease.SeedDef ParentName="SeedBase">
-						  <defName>Seed_AmbrosiaArchotech</defName>
-						  <label>ambrosiaarchotech seeds</label>
-						  <descriptionHyperlinks>
-							<ThingDef>Plant_AmbrosiaArchotech</ThingDef>
-						  </descriptionHyperlinks>
-						  <sources>
-							<li>Plant_AmbrosiaArchotech</li>
-						  </sources>
+							<defName>Seed_AmbrosiaArchotech</defName>
+							<label>ambrosiaarchotech seeds</label>
+							<descriptionHyperlinks>
+								<ThingDef>Plant_AmbrosiaArchotech</ThingDef>
+							</descriptionHyperlinks>
+							<sources>
+								<li>Plant_AmbrosiaArchotech</li>
+							</sources>
 						</SeedsPlease.SeedDef>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs</xpath>
 					<value>
 						<SeedsPlease.SeedDef ParentName="SeedBase">
-						  <defName>Seed_Meatbush</defName>
-						  <label>meatbush seeds</label>
-						  <descriptionHyperlinks>
-							<ThingDef>Plant_Meatbush</ThingDef>
-						  </descriptionHyperlinks>
-						  <sources>
-							<li>Plant_Meatbush</li>
-						  </sources>
+							<defName>Seed_Meatbush</defName>
+							<label>meatbush seeds</label>
+							<descriptionHyperlinks>
+								<ThingDef>Plant_Meatbush</ThingDef>
+							</descriptionHyperlinks>
+							<sources>
+								<li>Plant_Meatbush</li>
+							</sources>
 						</SeedsPlease.SeedDef>
 					</value>
 				</li>
-				
+
 			</operations>
 		</match>
-    </Operation>
-	
+	</Operation>
+
 </Patch>

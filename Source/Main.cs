@@ -1,13 +1,14 @@
-﻿using System;
-using RimWorld;
-using Verse;
-using HarmonyLib;
+﻿global using System;
+global using RimWorld;
+global using Verse;
+global using HarmonyLib;
+global using UnityEngine;
+global using System.Collections.Generic;
+global using System.Text;
+global using System.Linq;
+
 using SK.Events;
 using RimworldMod;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using UnityEngine;
 
 namespace Core_SK_Patch;
 
@@ -112,19 +113,8 @@ public class Core_SK_Patch : Mod
             __result = false;
     }
 #endif
-    public static void CanFireNowSubPostfix(ref bool __result, IncidentParms parms)
-    {
-        Map obj = (Map)parms.target;
-        __result = !obj.IsSpace() && __result;
-    }
 
     public override string SettingsCategory() => this.Content.Name;
-    /*public override void WriteSettings()
-    {
-        base.WriteSettings();
-        settings?.Write();
-    }*/
-
     public override void DoSettingsWindowContents(Rect inRect)
     {
         base.DoSettingsWindowContents(inRect);

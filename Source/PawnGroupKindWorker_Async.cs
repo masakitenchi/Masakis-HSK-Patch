@@ -1,14 +1,4 @@
-﻿using System;
-using RimWorld;
-using Verse;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
-using Unity.Jobs;
-
-
-namespace Core_SK_Patch;
+﻿namespace Core_SK_Patch;
 
 public class PawnGroupKindWorker_Coroutine : PawnGroupKindWorker
 {

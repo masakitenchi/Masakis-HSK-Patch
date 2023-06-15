@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<Seed_Vanoroot.label>虚空根种子</Seed_Vanoroot.label>
+	<Seed_Slaughtermelon.label>屠戮瓜种子</Seed_Slaughtermelon.label>
+	<Seed_Pharma.label>药树种子</Seed_Pharma.label>
+	<Seed_AmbrosiaArchotech.label>仙馐果灌木种子</Seed_AmbrosiaArchotech.label>
+	<Seed_Meatbush.label>肉丛种子</Seed_Meatbush.label>
+
+	<ExtractSeed_Vanoroot.label>提取虚空根种子</ExtractSeed_Vanoroot.label>
+	<ExtractSeed_Vanoroot.description>从虚空根中提取种子</ExtractSeed_Vanoroot.description>
+	
+	<ExtractSeed_Pharma.label>提取药树种子</ExtractSeed_Pharma.label>
+	<ExtractSeed_Pharma.description>从中性胺中提取药树种子</ExtractSeed_Pharma.description>
+
+	<ExtractSeed_AmbrosiaArchotech.label>提取仙馐果灌木种子</ExtractSeed_AmbrosiaArchotech.label>
+	<ExtractSeed_AmbrosiaArchotech.description>从仙馐果中提取种子</ExtractSeed_AmbrosiaArchotech.description>
+
+	<ExtractSeed_Meatbush.label>提取肉丛种子</ExtractSeed_Meatbush.label>
+	<ExtractSeed_Meatbush.description>从精肉中提取肉丛种子</ExtractSeed_Meatbush.description>
+
+	<ExtractSeed_Vanoroot.label>提取屠戮瓜种子</ExtractSeed_Vanoroot.label>
+	<ExtractSeed_Vanoroot.description>从FSX中提取屠戮瓜种子</ExtractSeed_Vanoroot.description>
+	
+</LanguageData>

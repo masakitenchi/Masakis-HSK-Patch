@@ -23,6 +23,12 @@
 					</value>
 				</li>
 
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[@ParentName="AnimalThingBase" and @Name="BaseInsectSpace"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>SK_AnimalThingBase</value>
+				</li>
+
 				<!-- ========== Astromite ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Astromite"]/statBases/MoveSpeed</xpath>

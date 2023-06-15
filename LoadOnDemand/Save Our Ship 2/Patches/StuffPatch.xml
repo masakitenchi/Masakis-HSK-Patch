@@ -15,10 +15,27 @@
 			<li Class="PatchOperationReplace">
 				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="Shelf"]/shapeOrDef</xpath>
 				<value>
-					<shapeOrDef>JDSMetal_Shelf_A_Full</shapeOrDef>
+					<shapeOrDef>PalletSmall</shapeOrDef>
+				</value>
+			</li>
+			
+			<!-- Add stuff to stuffable buildings in hsk-->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="Ship_CryptosleepCasket" or 
+					shapeOrDef="CryptosleepCasket" or
+					shapeOrDef="ShipTurret_Plasma" or
+					shapeOrDef="ShipTurret_Laser"]</xpath>
+				<value>
+					<stuff>Plasteel</stuff>
 				</value>
 			</li>
 
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/EnemyShipDef/core[shapeOrDef="ShipPilotSeatMini"]</xpath>
+				<value>
+					<stuff>Plasteel</stuff>
+				</value>
+			</li>
 		</operations>
 	</Operation>
 </Patch>

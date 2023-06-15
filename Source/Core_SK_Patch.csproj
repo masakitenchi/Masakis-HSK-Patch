@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BetterInfestation.cs" />
+    <Compile Include="CrossCompat_Minerals_SOS2.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="PawnGroupKindWorker_Async.cs" />
@@ -70,6 +71,10 @@
   <ItemGroup>
     <Reference Include="Core_SK">
       <HintPath>..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Minerals">
+      <HintPath>..\..\Minerals\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ShipsHaveInsides">

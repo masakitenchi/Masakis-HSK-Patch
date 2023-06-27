@@ -160,6 +160,37 @@
 						<ComfyTemperatureMin>-100</ComfyTemperatureMin>
 					</value>
 				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]</xpath>
+					<value>
+						<tab>ResearchTabShip</tab>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]</xpath>
+					<value>
+						<requiredResearchFacilities Inherit="False">
+							<li>LabStation</li>
+							<li>MultiAnalyzer</li>
+						</requiredResearchFacilities>
+					</value>
+				</li>
+
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]/researchViewX |
+						Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]/researchViewY
+					</xpath>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]</xpath>
+					<value>
+						<researchViewX>0</researchViewX>
+						<researchViewY>0</researchViewY>
+					</value>
+				</li>
 			</operations>
 		</match>
     </Operation>

@@ -9,6 +9,7 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		1.3|Any CPU = 1.3|Any CPU
 		1.4|Any CPU = 1.4|Any CPU
+		1.4-debug|Any CPU = 1.4-debug|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -16,6 +17,8 @@ Global
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.3|Any CPU.Build.0 = 1.3|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.ActiveCfg = 1.4|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.Build.0 = 1.4|Any CPU
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4-debug|Any CPU.ActiveCfg = 1.4-debug|Any CPU
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4-debug|Any CPU.Build.0 = 1.4-debug|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection

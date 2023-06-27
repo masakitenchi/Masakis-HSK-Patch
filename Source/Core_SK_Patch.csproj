@@ -41,14 +41,24 @@
     <LangVersion>10.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '1.4-debug|AnyCPU'">
+    <OutputPath>..\v1.4\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>10.0</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="BetterInfestation.cs" />
     <Compile Include="CrossCompat_Minerals_SOS2.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
+    <Compile Include="OutputLoadfolders.cs" />
     <Compile Include="PawnGroupKindWorker_Async.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="TestClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">
@@ -66,7 +76,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <!-- <Publicize Include="Assembly-CSharp:RimWorld.CompRefuelable" /> -->
+    <Publicize Include="Assembly-CSharp:Verse.ResearchProjectDef.researchMods" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Core_SK">

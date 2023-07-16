@@ -127,7 +127,7 @@ public class Core_SK_Patch : Mod
     #region Bulk Recipe
     static RecipeDef GenerateBulkRecipe(ModExtension_BulkRecipe ModExt, RecipeDef Recipe)
     {
-        RecipeDef BulkRecipe = new RecipeDef();
+        RecipeDef BulkRecipe = new();
         DeepCopy(BulkRecipe, Recipe);
         // Adjust the values based on the mod extension
         foreach (var ingredient in Recipe.ingredients)

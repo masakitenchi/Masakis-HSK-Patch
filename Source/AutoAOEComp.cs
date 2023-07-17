@@ -5,63 +5,6 @@ using Verse;
 
 namespace Core_SK_Patch;
 
-public class TestSeparateDefComp : ThingComp
-{
-    public override IEnumerable<Gizmo> CompGetGizmosExtra()
-    {
-        yield return new Command_Action()
-        {
-            defaultDesc = "Report ID & def.label",
-            defaultLabel = "Report ID & def.label",
-            icon = BaseContent.BadTex,
-            action = () =>
-            {
-                Log.Message($"ID:{this.parent.ThingID}, def.label{this.parent.def.label}");
-            }
-        };
-        yield return new Command_Action()
-        {
-            defaultDesc = "Change def.label between true & false",
-            defaultLabel = "Change def.label between true & false",
-            icon = BaseContent.GreyTex,
-            action = () =>
-            {
-                this.parent.def.label = this.parent.def.label == "true" ? "false" : "true";
-            }
-        };
-    }
-}
-
-public class WeaponAutoCastComp : ThingComp
-{
-    public override IEnumerable<Gizmo> CompGetGizmosExtra()
-    {
-        yield return new Command_Action()
-        {
-            defaultDesc = "Report ID & verb.onlyManualCast",
-            defaultLabel = "Report ID & verb.onlyManualCast",
-            icon = BaseContent.BadTex,
-            action = () =>
-            {
-                Log.Message($"ID: {this.parent.ThingID}, verb.onlyManualCast {this.parent.def.Verbs.First().onlyManualCast}");
-            }
-        };
-        yield return new Command_Action()
-        {
-            defaultDesc = "Toggle verb.onlyManualCast",
-            defaultLabel = "Toggle verb.onlyManualCast",
-            icon = BaseContent.GreyTex,
-            action = () =>
-            {
-                ThingDef def = AccessTools.MakeDeepCopy(this.parent.def, typeof(ThingDef)) as ThingDef;
-                def.Verbs.First().onlyManualCast = false;
-                Log.Message("DeepCopy Made!");
-                this.parent.def = def;
-            }
-        };
-    }
-}
-
 //Only on Pawn. Use with a transpiler for control each pawn's behavior
 public class ManualCastOverride : ThingComp
 {

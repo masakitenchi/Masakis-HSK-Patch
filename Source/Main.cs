@@ -92,6 +92,10 @@ public class Core_SK_Patch : Mod
             }
         }
         harmony.PatchAll();
+        /*LongEventHandler.ExecuteWhenFinished(() =>
+        {
+            harmony.Patch(AccessTools.Method("DubsMintMenus.Patch_BillStack_DoListing:DoClones"), transpiler: new HarmonyMethod(typeof(MintMenuPatch), nameof(MintMenuPatch.Transpiler)));
+        });*/
         sb.AppendLine("Initialization Complete");
         Log.Message(sb.ToString());
     }

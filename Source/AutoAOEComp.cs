@@ -102,7 +102,7 @@ public class ManualCastOverride : ThingComp
 	IL_003c: ldfld class Verse.VerbProperties Verse.Verb::verbProps
 	IL_0041: ldfld bool Verse.VerbProperties::onlyManualCast
 	IL_0046: brfalse.s IL_006a
-    <- insert here
+                                                                                <- insert here
 	IL_0048: ldarg.0
 	IL_0049: call instance class Verse.AI.Job Verse.Pawn::get_CurJob()
 	IL_004e: brfalse.s IL_0067
@@ -131,7 +131,7 @@ public static class AllowAutoCastAOEWeapon
 {
     [HarmonyPatch(typeof(Pawn), nameof(Pawn.TryGetAttackVerb))]
     [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         bool Found = false;
         List<CodeInstruction> ins = instructions.ToList();

@@ -1,4 +1,6 @@
 ﻿
+using System.IO;
+using System.Reflection;
 using System.Reflection.Emit;
 
 namespace Core_SK_Patch;
@@ -36,17 +38,50 @@ namespace Core_SK_Patch;
 	IL_002e: ldfld class Verse.ThingDef Verse.ThingDefCountClass::thingDef
 	IL_0033: ret
 */
-[HarmonyPatch]
+
+//Commented for integrated into Core_SK
+/*[HarmonyPatch]
 public class AlwaysReturnTheFirstProduct
 {
-    [HarmonyPatch(typeof(RecipeDef), nameof(RecipeDef.ProducedThingDef), MethodType.Getter)]
-    [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    {
+	[HarmonyPatch(typeof(RecipeDef), nameof(RecipeDef.ProducedThingDef), MethodType.Getter)]
+	[HarmonyTranspiler]
+	public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+	{
 		List<CodeInstruction> inst = instructions.ToList();
 		int index = inst.FindIndex(x => x.Is(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(List<ThingDefCountClass>), nameof(List<ThingDefCountClass>.Count))));
 		inst[index + 2].opcode = OpCodes.Br_S;
 		inst.RemoveRange(index - 2, 4);
 		return inst;
-    }
-}
+	}
+}*/
+
+//Could patch, but will result in "All assets must be load in the main thread warning", so currently only the above patch seems fine without any knowing problem
+/*public class MintMenuPatch
+{
+	[HarmonyTargetMethod]
+	public static MethodInfo TargetMethod()
+	{
+		return AccessTools.Method("DubsMintMenus.Patch_BillStack_DoListing:DoClones");
+	}
+
+	public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+	{
+		Log.Message("Patching Dubs Mint Menu");
+		List<CodeInstruction> inst = instructions.ToList();
+		int index = inst.FindIndex(x => x.Is(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(RecipeDef), nameof(RecipeDef.ProducedThingDef))));
+		Label UIIconThing = generator.DefineLabel();
+		inst[index + 2].labels.Add(UIIconThing);
+		index -= 3;
+		inst.InsertRange(index, new CodeInstruction[]
+		{
+			new CodeInstruction(OpCodes.Ldloc_S, 10),
+			new CodeInstruction(OpCodes.Ldfld, AccessTools.Field("DubsMintMenus.Patch_BillStack_DoListing+<>c__DisplayClass24_1:fBill")),
+			new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(Bill), nameof(Bill.recipe))),
+			new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(RecipeDef), nameof(RecipeDef.UIIconThing))),
+			new CodeInstruction(OpCodes.Brtrue_S, UIIconThing)
+		});
+		File.WriteAllText("E:\\before.txt", string.Join("\n", instructions.Select(x => x.ToString())));
+		File.WriteAllText("E:\\after.txt",string.Join("\n",inst.Select(x => x.ToString())));
+		return inst;
+	}
+}*/

@@ -1,4 +1,5 @@
 ﻿
+using HarmonyLib;
 using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -40,48 +41,91 @@ namespace Core_SK_Patch;
 */
 
 //Commented for integrated into Core_SK
-/*[HarmonyPatch]
+[HarmonyPatch]
 public class AlwaysReturnTheFirstProduct
 {
-	[HarmonyPatch(typeof(RecipeDef), nameof(RecipeDef.ProducedThingDef), MethodType.Getter)]
-	[HarmonyTranspiler]
-	public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-	{
-		List<CodeInstruction> inst = instructions.ToList();
-		int index = inst.FindIndex(x => x.Is(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(List<ThingDefCountClass>), nameof(List<ThingDefCountClass>.Count))));
-		inst[index + 2].opcode = OpCodes.Br_S;
-		inst.RemoveRange(index - 2, 4);
-		return inst;
-	}
-}*/
+    [HarmonyPrepare]
+    public static bool Prepare()
+    {
+        return false;
+    }
+
+    [HarmonyPatch(typeof(RecipeDef), nameof(RecipeDef.ProducedThingDef), MethodType.Getter)]
+    [HarmonyTranspiler]
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    {
+        List<CodeInstruction> inst = instructions.ToList();
+        int index = inst.FindIndex(x => x.opcode == OpCodes.Beq_S);
+        inst[index].opcode = OpCodes.Bge_S;
+        return inst;
+    }
+}
 
 //Could patch, but will result in "All assets must be load in the main thread warning", so currently only the above patch seems fine without any knowing problem
-/*public class MintMenuPatch
+//Need this Attribute to patch the patch before applying patch
+[StaticConstructorOnStartup]
+public static class MintMenuPatch
 {
-	[HarmonyTargetMethod]
-	public static MethodInfo TargetMethod()
-	{
-		return AccessTools.Method("DubsMintMenus.Patch_BillStack_DoListing:DoClones");
-	}
+    static MethodBase Doclones = AccessTools.Method("DubsMintMenus.Patch_BillStack_DoListing:DoClones");
+    static MethodBase DoRow = AccessTools.Method("DubsMintMenus.Patch_BillStack_Dolisting:DoRow");
 
-	public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
-	{
-		Log.Message("Patching Dubs Mint Menu");
-		List<CodeInstruction> inst = instructions.ToList();
-		int index = inst.FindIndex(x => x.Is(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(RecipeDef), nameof(RecipeDef.ProducedThingDef))));
-		Label UIIconThing = generator.DefineLabel();
-		inst[index + 2].labels.Add(UIIconThing);
-		index -= 3;
-		inst.InsertRange(index, new CodeInstruction[]
-		{
-			new CodeInstruction(OpCodes.Ldloc_S, 10),
-			new CodeInstruction(OpCodes.Ldfld, AccessTools.Field("DubsMintMenus.Patch_BillStack_DoListing+<>c__DisplayClass24_1:fBill")),
-			new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(Bill), nameof(Bill.recipe))),
-			new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(RecipeDef), nameof(RecipeDef.UIIconThing))),
-			new CodeInstruction(OpCodes.Brtrue_S, UIIconThing)
-		});
-		File.WriteAllText("E:\\before.txt", string.Join("\n", instructions.Select(x => x.ToString())));
-		File.WriteAllText("E:\\after.txt",string.Join("\n",inst.Select(x => x.ToString())));
-		return inst;
-	}
-}*/
+    static MintMenuPatch()
+    {
+        Core_SK_Patch.harmony.Patch(AccessTools.Method("DubsMintMenus.Patch_BillStack_DoListing:DoClones"), transpiler: new HarmonyMethod(typeof(MintMenuPatch), nameof(MintMenuPatch.Transpiler)));
+        Core_SK_Patch.harmony.Patch(AccessTools.Method("DubsMintMenus.Patch_BillStack_DoListing:DoRow"), transpiler: new HarmonyMethod(typeof(MintMenuPatch), nameof(MintMenuPatch.Transpiler)));
+    }
+
+
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator, MethodBase __original)
+    {
+        Log.Message("Patching Dubs Mint Menu");
+        List<CodeInstruction> inst = instructions.ToList();
+        bool found = false;
+        int i;
+        for (i = 0; i < inst.Count; i++)
+        {
+            //For all if(recipe.ProducedThingDef != null)
+            if (inst[i].Is(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(RecipeDef), nameof(RecipeDef.ProducedThingDef))) && inst[i + 1].Branches(out var _))
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            Log.Error($"Old transpiler in {nameof(MintMenuPatch)}");
+            return instructions;
+        }
+        Label UIIconThing = generator.DefineLabel();
+        inst[i + 2].labels.Add(UIIconThing);
+        //Need to insert the instructions before recipe.ProducedThingDef != null
+        while (!inst[i].IsLdloc() && !inst[i].IsLdarg()) i--;
+        //DoRow has RecipeDef as its parameter while DoClones uses an enumerator
+        if (__original == Doclones)
+        {
+            inst.InsertRange(i, new CodeInstruction[]
+            {
+                //Ldloc_S -> the enumerator
+                new CodeInstruction(OpCodes.Ldloc_S, inst[i].operand),
+                new CodeInstruction(OpCodes.Ldfld, AccessTools.Field("DubsMintMenus.Patch_BillStack_DoListing+<>c__DisplayClass24_1:fBill")),
+                new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(Bill), nameof(Bill.recipe))),
+                new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(RecipeDef), nameof(RecipeDef.UIIconThing))),
+                new CodeInstruction(OpCodes.Brtrue_S, UIIconThing)
+            });
+        }
+        else
+        {
+            inst.InsertRange(i, new CodeInstruction[]
+            {
+				//Ldarg.0 -> RecipeDef
+                new CodeInstruction(inst[i].opcode),
+                new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(RecipeDef), nameof(RecipeDef.UIIconThing))),
+                new CodeInstruction(OpCodes.Brtrue_S, UIIconThing)
+            });
+        }
+        //File.WriteAllText($"E:\\before{__original.Name}.txt", string.Join("\n", instructions.Select(x => x.ToString())));
+        //File.WriteAllText($"E:\\after{__original.Name}.txt", string.Join("\n", inst.Select(x => x.ToString())));
+        return inst;
+    }
+
+}

@@ -459,6 +459,17 @@
 						</recipeMaker>
 					</value>
 				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorHelmetMechanitorBase"]</xpath>
+					<value>
+						<apparel>
+							<tags>
+								<li>EVA</li>
+							</tags>
+						</apparel>
+					</value>
+				</li>
 		
 			</operations>
 		</match>

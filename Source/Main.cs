@@ -45,48 +45,51 @@ public class Core_SK_Patch : Mod
 #endif
         if(Settings.EnableBulkRecipe)
         {
-            sb.AppendLine(" - Generating Recipes for:");
-            int count = 0;
-            List<RecipeDef> RecipesToAdd = new();
-            foreach (var recipe in DefDatabase<RecipeDef>.AllDefs.Where(x => x.HasModExtension<ModExtension_BulkRecipe>()))
+            LongEventHandler.QueueLongEvent(() =>
             {
-                sb.AppendLine("  - " + recipe.defName);
-                var ModExt = recipe.GetModExtension<ModExtension_BulkRecipe>();
-                if (ModExt.MaterialMultiplier == 1 && ModExt.ProductMultiplier == 1 && ModExt.WorkAmountMultiplier == 1)
-                    continue;
-                var BulkRecipe = GenerateBulkRecipe(ModExt, recipe);
-                BulkRecipe.ResolveReferences();
-                RecipesToAdd.Add(BulkRecipe);
-                ++count;
-            }
-            count = 0;
-            if (RecipesToAdd.Count > 0)
-            {
-                StringBuilder Tuples = new StringBuilder();
-                for (int i = 0; i < RecipesToAdd.Count; i++)
+                StringBuilder sb = new StringBuilder();
+                int count = 0;
+                List<RecipeDef> RecipesToAdd = new();
+                foreach (var recipe in DefDatabase<RecipeDef>.AllDefs.Where(x => x.HasModExtension<ModExtension_BulkRecipe>()))
                 {
-                    DefGenerator.AddImpliedDef<RecipeDef>(RecipesToAdd[i]);
-                    if (RecipesToAdd[i].recipeUsers != null)
-                    {
-                        for (int j = 0; j < RecipesToAdd[i].recipeUsers.Count; j++)
-                        {
-                            RecipesToAdd[i].recipeUsers[j].AllRecipes.Add(RecipesToAdd[i]);
-                            Tuples.AppendLine("  - " + RecipesToAdd[i].defName + " to " + RecipesToAdd[i].recipeUsers[j].defName);
-                        }
-                    }
-                    else
-                    {
-                        foreach (var thing in DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.recipes != null && x.recipes.Any(y => RecipesToAdd[i].defName.Contains(y.defName))))
-                        {
-                            thing.AllRecipes.Add(RecipesToAdd[i]);
-                            Tuples.AppendLine("  - " + RecipesToAdd[i].defName + " to " + thing.defName);
-                        }
-                    }
+                    var ModExt = recipe.GetModExtension<ModExtension_BulkRecipe>();
+                    if (ModExt.MaterialMultiplier == 1 && ModExt.ProductMultiplier == 1 && ModExt.WorkAmountMultiplier == 1)
+                        continue;
+                    var BulkRecipe = GenerateBulkRecipe(ModExt, recipe);
+                    BulkRecipe.ResolveReferences();
+                    RecipesToAdd.Add(BulkRecipe);
                     ++count;
                 }
-                sb.AppendLine($" - Added {count} bulk recipes :");
-                sb.Append(Tuples);
-            }
+                count = 0;
+                if (RecipesToAdd.Count > 0)
+                {
+                    StringBuilder Tuples = new StringBuilder();
+                    for (int i = 0; i < RecipesToAdd.Count; i++)
+                    {
+                        DefGenerator.AddImpliedDef<RecipeDef>(RecipesToAdd[i]);
+                        if (RecipesToAdd[i].recipeUsers != null)
+                        {
+                            for (int j = 0; j < RecipesToAdd[i].recipeUsers.Count; j++)
+                            {
+                                RecipesToAdd[i].recipeUsers[j].AllRecipes.Add(RecipesToAdd[i]);
+                                Tuples.AppendLine("  - " + RecipesToAdd[i].defName + " to " + RecipesToAdd[i].recipeUsers[j].defName);
+                            }
+                        }
+                        else
+                        {
+                            foreach (var thing in DefDatabase<ThingDef>.AllDefsListForReading.Where(x => x.recipes != null && x.recipes.Any(y => RecipesToAdd[i].defName.Contains(y.defName))))
+                            {
+                                thing.AllRecipes.Add(RecipesToAdd[i]);
+                                Tuples.AppendLine("  - " + RecipesToAdd[i].defName + " to " + thing.defName);
+                            }
+                        }
+                        ++count;
+                    }
+                    sb.AppendLine($" - Added {count} bulk recipes :");
+                    sb.Append(Tuples);
+                }
+                Log.Message("[Core SK Patch]" + sb.ToString());
+            }, "BulkRecipe", false, null);
         }
         harmony.PatchAll();
         //harmony.Unpatch(AccessTools.Method(typeof(RegionTypeUtility), nameof(RegionTypeUtility.GetExpectedRegionType)), HarmonyPatchType.All, "skyarkhangel.HSK");

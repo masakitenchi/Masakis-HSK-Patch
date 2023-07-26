@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<!-- Vanilla has Jaw as the TalkingSource -->
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/BodyPartDef[defName="Jaw"]/tags/li[1]</xpath>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/BodyPartDef[defName="Tongue"]/tags</xpath>
+		<value>
+			<li>TalkingSource</li>
+		</value>
+	</Operation>
+</Patch>

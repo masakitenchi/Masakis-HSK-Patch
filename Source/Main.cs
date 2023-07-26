@@ -89,6 +89,7 @@ public class Core_SK_Patch : Mod
             }
         }
         harmony.PatchAll();
+        //harmony.Unpatch(AccessTools.Method(typeof(RegionTypeUtility), nameof(RegionTypeUtility.GetExpectedRegionType)), HarmonyPatchType.All, "skyarkhangel.HSK");
         sb.AppendLine("Initialization Complete");
         Log.Message(sb.ToString());
     }

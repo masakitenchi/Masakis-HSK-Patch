@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CSP_AllowMealSimple.label>允许简单食物</CSP_AllowMealSimple.label>
+	<CSP_AllowMealFine.label>允许精致食物</CSP_AllowMealFine.label>
+	<CSP_AllowMealLavish.label>允许奢侈食物</CSP_AllowMealLavish.label>
+	<CSP_AllowMealSimple.description>允许简单食物</CSP_AllowMealSimple.description>
+	<CSP_AllowMealFine.description>允许精致食物</CSP_AllowMealFine.description>
+	<CSP_AllowMealLavish.description>允许奢侈食物</CSP_AllowMealLavish.description>
+</LanguageData>

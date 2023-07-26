@@ -9,6 +9,7 @@
 		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
 		<impactSoundType>Blunt</impactSoundType>
 		<defaultDamage>1000</defaultDamage>
+		<armorCategory>Electric</armorCategory>
 		<defaultArmorPenetration>100</defaultArmorPenetration>
 		<canUseDeflectMetalEffect>false</canUseDeflectMetalEffect>
 		<explosionCellFleck>BlastFlame</explosionCellFleck>

@@ -4,19 +4,24 @@
         <mods>
             <li>Royalty</li>
         </mods>
-        <match Class="PatchOperationSequence">
-            <operations>
-                <li Class="PatchOperationRemove">
-                    <xpath>Defs/QuestScriptDef[defName="BuildMonument_Basic" or
+        <match Class="PatchOperationFindMod">
+            <mods>
+                <li>HMC Nobility Expanded</li>
+            </mods>
+            <nomatch Class="PatchOperationSequence">
+                <operations>
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/QuestScriptDef[defName="BuildMonument_Basic" or
                         defName="BuildMonument_TimeProtect"]
                     </xpath>
-                </li>
-                <li Class="PatchOperationRemove">
-                    <xpath>Defs/RulePackDef[defName="QuestConstructionNameCommon" or 
+                    </li>
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/RulePackDef[defName="QuestConstructionNameCommon" or 
                         defName="QuestConstructionDescriptionCommon" or
                         defName="BuildMonumentWorker"]</xpath>
-                </li>
-            </operations>
+                    </li>
+                </operations>
+            </nomatch>
         </match>
     </Operation>
 </Patch>

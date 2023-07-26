@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<SpecialThingFilterDef>
+		<defName>CSP_AllowMealSimple</defName>
+		<label>allow simple meal</label>
+		<description>Allow simple meals</description>
+		<parentCategory>FoodMeals</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowMealSimple</saveKey>
+		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealSimple</workerClass>
+	</SpecialThingFilterDef>
+
+	<SpecialThingFilterDef>
+		<defName>CSP_AllowMealFine</defName>
+		<label>allow fine meal</label>
+		<description>Allow fine meals</description>
+		<parentCategory>FoodMeals</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowMealFine</saveKey>
+		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealFine</workerClass>
+	</SpecialThingFilterDef>
+
+	<SpecialThingFilterDef>
+		<defName>CSP_AllowMealLavish</defName>
+		<label>allow lavish meal</label>
+		<description>Allow lavish meals</description>
+		<parentCategory>FoodMeals</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowMealLavish</saveKey>
+		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealLavish</workerClass>
+	</SpecialThingFilterDef>
+
+</Defs>

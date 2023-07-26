@@ -59,13 +59,57 @@
         </value>
     </Operation>
 
+    <!-- <Operation Class="PatchOperationReplace">
+        <xpath>Defs/AlienRace.ThingDef_AlienRace[defName="RA_Race_Sensei"]/tools</xpath>
+        <value>
+            <tools>
+                <li Class="CombatExtended.ToolCE">
+                    <label>左手</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>2</power>
+                    <armorPenetrationBlunt>2</armorPenetrationBlunt>
+                    <cooldownTime>2</cooldownTime>
+                    <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+                    <surpriseAttack>
+                        <extraMeleeDamages>
+                            <li>
+                                <def>Stun</def>
+                                <amount>14</amount>
+                            </li>
+                        </extraMeleeDamages>
+                    </surpriseAttack>
+                </li>
+                <li Class="CombatExtended.ToolCE">
+                    <label>右手</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>2</power>
+                    <armorPenetrationBlunt>2</armorPenetrationBlunt>
+                    <cooldownTime>2</cooldownTime>
+                    <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+                    <surpriseAttack>
+                        <extraMeleeDamages>
+                            <li>
+                                <def>Stun</def>
+                                <amount>14</amount>
+                            </li>
+                        </extraMeleeDamages>
+                    </surpriseAttack>
+                </li>
+            </tools>
+        </value>
+    </Operation> -->
+
     <Operation Class="PatchOperationSequence">
         <operations>
             <li Class="PatchOperationRemove">
-                <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/comps/li[@MayRequire="ceteam.combatextended" and compClass="CombatExtended.CompPawnGizmo"]</xpath>
+                <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]/comps/li[@MayRequire="ceteam.combatextended" and compClass="CombatExtended.CompPawnGizmo"]</xpath>
             </li>
             <li Class="PatchOperationRemove">
-                <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/comps/li[@Class="CombatExtended.CompProperties_Suppressable" and @MayRequire="ceteam.combatextended"]</xpath>
+                <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]/comps/li[@Class="CombatExtended.CompProperties_Suppressable" and @MayRequire="ceteam.combatextended"]</xpath>
             </li>
         </operations>
     </Operation>

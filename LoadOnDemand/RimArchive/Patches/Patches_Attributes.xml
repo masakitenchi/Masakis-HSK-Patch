@@ -8,14 +8,14 @@
     </Operation>
 
     <Operation Class="PatchOperationAttributeSet">
-        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]</xpath>
+        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]</xpath>
         <attribute>ParentName</attribute>
         <value>BaseHumanlikePawn</value>
     </Operation>
 
     <Operation Class="PatchOperationAttributeSet">
-        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/race/litterSizeCurve |
-            Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase"]/race/lifeStageAges
+        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]/race/litterSizeCurve |
+            Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]/race/lifeStageAges
         </xpath>
         <attribute>Inherit</attribute>
         <value>False</value>

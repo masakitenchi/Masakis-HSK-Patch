@@ -41,12 +41,13 @@ namespace Core_SK_Patch;
 */
 
 //Commented for integrated into Core_SK
-[HarmonyPatch]
+/*[HarmonyPatch]
 public class AlwaysReturnTheFirstProduct
 {
     [HarmonyPrepare]
     public static bool Prepare()
     {
+        //Not patching when returing false
         return false;
     }
 
@@ -59,11 +60,11 @@ public class AlwaysReturnTheFirstProduct
         inst[index].opcode = OpCodes.Bge_S;
         return inst;
     }
-}
+}*/
 
-//Could patch, but will result in "All assets must be load in the main thread warning", so currently only the above patch seems fine without any knowing problem
-//Need this Attribute to patch the patch before applying patch
-[StaticConstructorOnStartup]
+
+
+/*[StaticConstructorOnStartup]
 public static class MintMenuPatch
 {
     static MethodBase Doclones = AccessTools.Method("DubsMintMenus.Patch_BillStack_DoListing:DoClones");
@@ -128,4 +129,4 @@ public static class MintMenuPatch
         return inst;
     }
 
-}
+}*/

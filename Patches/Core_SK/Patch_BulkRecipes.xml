@@ -2,7 +2,7 @@
 <Patch>
 
 	<Operation Class="PatchOperationAddModExtension">
-		<xpath>Defs/RecipeDef[defName="MakeCeramics"]</xpath>
+		<xpath>Defs/RecipeDef[defName="MakeCeramics" or defName="MakeGlassBatch"]</xpath>
 		<value>
 			<li Class="Core_SK_Patch.ModExtension_BulkRecipe">
 				<MaterialMultiplier>10.0</MaterialMultiplier>

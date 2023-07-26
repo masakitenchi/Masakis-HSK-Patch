@@ -104,7 +104,58 @@
 				<li Class="PatchOperationRemove">	
 					<xpath>Defs/ThingDef[defName="ShipTurret_ACIII"]/designatorDropdown</xpath>
 				</li>
-			
+
+				<!-- Change to VerbProperties_CE-->
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[@ParentName="BaseShipArtilleryWeapon"]/verbs/li</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.VerbPropertiesCE</value>
+				</li>
+
+				<!-- Projectile to ProjectilePropertiesCE-->
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[contains(defName,'Proj_Ship')]/projectile</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.ProjectilePropertiesCE</value>
+				</li>
+
+				<!-- Projectile ArmorCategory Patch -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/DamageDef[contains(defName,'ShipPlasma')]/armorCategory</xpath>
+					<value>
+						<armorCategory>Heat</armorCategory>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/DamageDef[contains(defName,'ShipLaser')]/armorCategory</xpath>
+					<value>
+						<armorCategory>Heat</armorCategory>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/DamageDef[contains(defName,'BombAC')]/armorCategory</xpath>
+					<value>
+						<armorCategory>Blunt</armorCategory>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/DamageDef[contains(defName,'BombAC')]/defaultArmorPenetration</xpath>
+					<value>
+						<defaultArmorPenetration>1000</defaultArmorPenetration>>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/DamageDef[contains(defName,'BombKinetic')]/armorCategory</xpath>
+					<value>
+						<armorCategory>Blunt</armorCategory>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/DamageDef[contains(defName,'BombKinetic')]/defaultArmorPenetration</xpath>
+					<value>
+						<defaultArmorPenetration>1000</defaultArmorPenetration>>
+					</value>
+				</li>
 			</operations>
 		</match>
     </Operation>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[@ParentName="WorkTable"]/comps</xpath>
+		<value>
+			<li Class="Core_SK_Patch.CompProperties_Engine">
+				<EnginesCanUse>
+					<li>EngineLight</li>
+					<li>EngineSteam</li>
+					<li>EngineMedium</li>
+					<li>EngineTurbine</li>
+				</EnginesCanUse>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="EngineLight"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.EngineModExtension">
+				<EngineEfficiency>1.2</EngineEfficiency>
+				<PowerConsumptionMultiplier>1.2</PowerConsumptionMultiplier>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="EngineSteam"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.EngineModExtension">
+				<EngineEfficiency>1.4</EngineEfficiency>
+				<PowerConsumptionMultiplier>1.4</PowerConsumptionMultiplier>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="EngineMedium"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.EngineModExtension">
+				<EngineEfficiency>1.6</EngineEfficiency>
+				<PowerConsumptionMultiplier>1.6</PowerConsumptionMultiplier>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="EngineTurbine"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.EngineModExtension">
+				<EngineEfficiency>1.8</EngineEfficiency>
+				<PowerConsumptionMultiplier>1.8</PowerConsumptionMultiplier>
+			</li>
+		</value>
+	</Operation>
+</Patch>

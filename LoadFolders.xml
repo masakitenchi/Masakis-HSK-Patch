@@ -15,5 +15,6 @@
     <li IfModActive="auxia.weaponpack.bluearchive">LoadOnDemand/RimArchive</li>
     <li IfModActive="VanillaExpanded.VNutrientE">LoadOnDemand/Vanilla Nutrient Paste Expanded</li>
     <li IfModActive="vitech.materialsscience">LoadOnDemand/Material Science</li>
+    <li IfModActive="aoba.motorization.engine">LoadOnDemand/Engine Industries</li>
   </v1.4>
 </loadFolders>

@@ -3,7 +3,7 @@
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="MatterConverter"]/recipes</xpath>
 			<value>
-				<li>ConvertToWolframite</li>
+				<li>CSP_ConvertToWolframite</li>
 			</value>
 	</Operation>
 </Patch>

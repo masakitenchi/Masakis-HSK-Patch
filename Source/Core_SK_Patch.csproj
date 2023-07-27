@@ -52,7 +52,10 @@
   <ItemGroup>
     <Compile Include="AlwaysReturnTheFirstProduct.cs" />
     <Compile Include="BetterInfestation.cs" />
+    <Compile Include="CompProperties_Engine.cs" />
     <Compile Include="CrossCompat_Minerals_SOS2.cs" />
+    <Compile Include="EngineModExtension.cs" />
+    <Compile Include="ITab_Engine.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="OutputLoadfolders.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SpecialThingFilters.cs" />
+    <Compile Include="StatPart_Engine.cs" />
     <Compile Include="TestClasses.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

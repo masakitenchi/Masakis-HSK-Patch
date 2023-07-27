@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/StatDef[defName="WorkTableWorkSpeedFactor"]/parts</xpath>
+		<value>
+			<li Class="Core_SK_Patch.StatPart_Engine"/>
+		</value>
+	</Operation>
+</Patch>

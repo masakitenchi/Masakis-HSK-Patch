@@ -57,13 +57,13 @@
 							<WornBulk>10</WornBulk>
 							<EquipDelay>22</EquipDelay>
 							<Insulation_Heat>45</Insulation_Heat>
-							<Insulation_Cold>85</Insulation_Cold>
+							<Insulation_Cold>90</Insulation_Cold>
 							<StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold>
 							<StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat>
-							<StuffEffectMultiplierArmor>3</StuffEffectMultiplierArmor>
-							<ArmorRating_Sharp>6.5</ArmorRating_Sharp>
-							<ArmorRating_Blunt>32</ArmorRating_Blunt>
-							<ArmorRating_Heat>0.75</ArmorRating_Heat>
+							<StuffEffectMultiplierArmor>1</StuffEffectMultiplierArmor>
+							<ArmorRating_Sharp>5</ArmorRating_Sharp>
+							<ArmorRating_Blunt>25</ArmorRating_Blunt>
+							<ArmorRating_Heat>1.5</ArmorRating_Heat>
 						</statBases>
 					 </value>
 				</li>
@@ -156,13 +156,13 @@
 							<WornBulk>0</WornBulk>
 							<EquipDelay>2.5</EquipDelay>
 							<Insulation_Heat>25</Insulation_Heat>
-							<Insulation_Cold>55</Insulation_Cold>
+							<Insulation_Cold>90</Insulation_Cold>
 							<StuffEffectMultiplierInsulation_Cold>0.2</StuffEffectMultiplierInsulation_Cold>
 							<StuffEffectMultiplierInsulation_Heat>0.2</StuffEffectMultiplierInsulation_Heat>
-							<StuffEffectMultiplierArmor>3</StuffEffectMultiplierArmor>
-							<ArmorRating_Sharp>7</ArmorRating_Sharp>
-							<ArmorRating_Blunt>21</ArmorRating_Blunt>
-							<ArmorRating_Heat>0.6</ArmorRating_Heat>
+							<StuffEffectMultiplierArmor>1</StuffEffectMultiplierArmor>
+							<ArmorRating_Sharp>2.5</ArmorRating_Sharp>
+							<ArmorRating_Blunt>15</ArmorRating_Blunt>
+							<ArmorRating_Heat>1.5</ArmorRating_Heat>
 						</statBases>
 					</value>
 				</li>
@@ -246,10 +246,10 @@
 							<Insulation_Cold>120</Insulation_Cold>
 							<StuffEffectMultiplierInsulation_Cold>0.3</StuffEffectMultiplierInsulation_Cold>
 							<StuffEffectMultiplierInsulation_Heat>0.3</StuffEffectMultiplierInsulation_Heat>
-							<StuffEffectMultiplierArmor>4</StuffEffectMultiplierArmor>
-							<ArmorRating_Sharp>26</ArmorRating_Sharp>
-							<ArmorRating_Blunt>55</ArmorRating_Blunt>
-							<ArmorRating_Heat>0.95</ArmorRating_Heat>
+							<StuffEffectMultiplierArmor>1</StuffEffectMultiplierArmor>
+							<ArmorRating_Sharp>5</ArmorRating_Sharp>
+							<ArmorRating_Blunt>30</ArmorRating_Blunt>
+							<ArmorRating_Heat>2</ArmorRating_Heat>
 						</statBases>
 					 </value>
 				</li>
@@ -345,13 +345,13 @@
 							<WornBulk>0</WornBulk>
 							<EquipDelay>5</EquipDelay>
 							<Insulation_Heat>50</Insulation_Heat>
-							<Insulation_Cold>80</Insulation_Cold>
+							<Insulation_Cold>110</Insulation_Cold>
 							<StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
 							<StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>
-							<StuffEffectMultiplierArmor>4.5</StuffEffectMultiplierArmor>
-							<ArmorRating_Sharp>20</ArmorRating_Sharp>
-							<ArmorRating_Blunt>38</ArmorRating_Blunt>
-							<ArmorRating_Heat>0.95</ArmorRating_Heat>
+							<StuffEffectMultiplierArmor>1</StuffEffectMultiplierArmor>
+							<ArmorRating_Sharp>5</ArmorRating_Sharp>
+							<ArmorRating_Blunt>20</ArmorRating_Blunt>
+							<ArmorRating_Heat>2</ArmorRating_Heat>
 						</statBases>
 				    </value>
 				</li>

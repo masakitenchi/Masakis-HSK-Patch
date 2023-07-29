@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<RecipeDef>
+		<defName>Make_ExoticParticle</defName>
+		<label>Make Exotic Particle x10</label>
+		<description>Make exotic particle out of antimatter. Produces 10.</description>
+		<jobString>Fabricating exotic particle.</jobString>
+		<workAmount>10000</workAmount>
+		<targetCountAdjustment>10</targetCountAdjustment>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Antimatter</li>
+					</thingDefs>
+				</filter>
+				<count>100</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Magneticmaterial</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Metallic</li>
+					</categories>
+				</filter>
+				<count>100</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+		</fixedIngredientFilter>
+		<products>
+			<ArchotechExoticParticles>10</ArchotechExoticParticles>
+		</products>
+		<researchPrerequisite>ArchotechExotics</researchPrerequisite>
+	</RecipeDef>
+</Defs>

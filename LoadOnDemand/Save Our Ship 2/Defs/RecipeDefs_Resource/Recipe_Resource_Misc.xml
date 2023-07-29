@@ -39,6 +39,9 @@
 				<li>Metallic</li>
 			</categories>
 		</fixedIngredientFilter>
+		<recipeUsers>
+			<li>Matterfab</li>
+		</recipeUsers>
 		<products>
 			<ArchotechExoticParticles>10</ArchotechExoticParticles>
 		</products>

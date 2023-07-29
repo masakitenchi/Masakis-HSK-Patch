@@ -2,7 +2,7 @@
 
 public class StatPart_Engine : StatPart
 {
-    public bool Applies(Thing t) => t.TryGetComp<CompEngine>()?.HasEngine ?? false;
+    public bool Applies(Thing t) => t.Spawned && (t.TryGetComp<CompEngine>()?.HasEngine ?? false);
     public override string ExplanationPart(StatRequest req)
     {
         ThingDef def = req.Thing.TryGetComp<CompEngine>().CurrentEngine;

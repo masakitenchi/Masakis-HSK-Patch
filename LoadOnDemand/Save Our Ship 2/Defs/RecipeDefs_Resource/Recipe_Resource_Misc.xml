@@ -8,6 +8,7 @@
 		<jobString>Fabricating exotic particle.</jobString>
 		<workAmount>10000</workAmount>
 		<targetCountAdjustment>10</targetCountAdjustment>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
 		<ingredients>
 			<li>
 				<filter>
@@ -20,7 +21,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>Magneticmaterial</li>
+						<li>MagneticMaterial</li>
 					</thingDefs>
 				</filter>
 				<count>50</count>
@@ -38,6 +39,10 @@
 			<categories>
 				<li>Metallic</li>
 			</categories>
+			<thingDefs>
+				<li>Antimatter</li>
+				<li>MagneticMaterial</li>
+			</thingDefs>
 		</fixedIngredientFilter>
 		<recipeUsers>
 			<li>Matterfab</li>

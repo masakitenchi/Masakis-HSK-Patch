@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<AddOrChangeEngineDesc>Click to add or change engine.</AddOrChangeEngineDesc>
+	<AddEngine>Add engine to this building</AddEngine>
+	<RemoveEngineDesc>Click to remove current installed engine.</RemoveEngineDesc>
+	<RemoveEngine>Remove Engine</RemoveEngine>
+	<NoAvailableEngine> No available engine on the map</NoAvailableEngine>
+</LanguageData>

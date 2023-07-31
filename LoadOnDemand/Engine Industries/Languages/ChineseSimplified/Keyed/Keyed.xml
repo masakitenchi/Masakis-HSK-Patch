@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<AddOrChangeEngineDesc>安装或替换引擎</AddOrChangeEngineDesc>
+	<AddEngine>给当前建筑安装引擎</AddEngine>
+	<RemoveEngineDesc>点击以移除当前建筑安装的引擎</RemoveEngineDesc>
+	<RemoveEngine>移除引擎</RemoveEngine>
+	<NoAvailableEngine> 地图上没有可用引擎</NoAvailableEngine>
+</LanguageData>

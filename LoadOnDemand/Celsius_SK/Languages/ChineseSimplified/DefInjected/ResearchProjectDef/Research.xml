@@ -5,6 +5,6 @@
 	<CSP_TempOptimizationI.description>使用未知科技改进工作台的最佳工作温度范围。\n温度下限：-1°C\n温度上限： +1°C</CSP_TempOptimizationI.description>
 	<CSP_TempOptimizationII.label>温度升级II</CSP_TempOptimizationII.label>
 	<CSP_TempOptimizationII.description>使用未知科技改进工作台的最佳工作温度范围。\n温度下限：-2°C\n温度上限： +2°C</CSP_TempOptimizationII.description>
-	<CSP_TempOptimizationIII.label>温度升级II</CSP_TempOptimizationIII.label>
+	<CSP_TempOptimizationIII.label>温度升级III</CSP_TempOptimizationIII.label>
 	<CSP_TempOptimizationIII.description>使用未知科技改进工作台的最佳工作温度范围。\n温度下限：-3°C\n温度上限： +3°C</CSP_TempOptimizationIII.description>
 </LanguageData>

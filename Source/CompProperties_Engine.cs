@@ -75,7 +75,7 @@ public class CompEngine : ThingComp
             {
                 defaultDesc = "DEV_SETEngine",
                 defaultLabel = "DEV_SETEngine",
-                icon = HasEngine ? _currentEngine.uiIcon : BaseContent.BadTex,
+                icon = HasEngine ? _currentEngine.uiIcon : BaseContent.WhiteTex,
                 action = () => FloatMenuUtility.MakeMenu(Props.EnginesCanUse, (x) => x.label, x => () =>
                 {
                     SetEngine(x);
@@ -89,7 +89,7 @@ public class CompEngine : ThingComp
             {
                 defaultDesc = "AddOrChangeEngineDesc".Translate(),
                 defaultLabel = HasEngine? _currentEngine.label : "AddEngine".Translate(),
-                icon = HasEngine ? _currentEngine.uiIcon : BaseContent.BadTex,
+                icon = HasEngine ? _currentEngine.uiIcon : BaseContent.WhiteTex,
                 action = () =>
                 {
                     Find.WindowStack.Add(new FloatMenu(GetAvailableEngines().ToList()));

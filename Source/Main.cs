@@ -93,6 +93,14 @@ public class Core_SK_Patch : Mod
         }
         harmony.PatchAll();
         //harmony.Unpatch(AccessTools.Method(typeof(RegionTypeUtility), nameof(RegionTypeUtility.GetExpectedRegionType)), HarmonyPatchType.All, "skyarkhangel.HSK");
+        /*
+        LongEventHandler.ExecuteWhenFinished(() =>
+        {
+            DefDatabase<ThingDef>.AllDefs.AsParallel().ForAll(x =>
+            {
+                if (x.IsBuildingArtificial && !x.IsFrame && x.selectable && x.useHitPoints && x.statBases is null) Log.Warning($"{x.defName} is building with null statBases");
+            });
+        });*/
         sb.AppendLine("Initialization Complete");
         Log.Message(sb.ToString());
     }

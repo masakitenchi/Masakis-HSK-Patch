@@ -5,7 +5,7 @@ public class ITab_Engine : ITab
     public CompEngine CompEngine;
 
 
-    protected override void FillTab()
+    public override void FillTab()
     {
         Rect inRect = new Rect(0f, 0f, size.x, size.y).ContractedBy(5f);
         Widgets.BeginGroup(inRect);

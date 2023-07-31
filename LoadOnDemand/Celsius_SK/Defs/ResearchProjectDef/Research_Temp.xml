@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	
+	<ResearchProjectDef ParentName="HitechLabStationBase">
+		<defName>CSP_TempOptimizationI</defName>
+		<label>Temp OptimizationI</label>
+		<description>Use unknown technology to increase the optimal temperature range of worktables.\nMin optimal temp: -1 °C\nMax optimal temp: +1 °C</description>
+		<baseCost>10000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>Electrical_engineering_E2</li>
+		</prerequisites>
+		<researchViewX>23.00</researchViewX>
+		<researchViewY>17.00</researchViewY>
+		<tab>Buildings_SK</tab>
+		<researchMods>
+			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
+		</researchMods>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="HitechLabStationBase">
+		<defName>CSP_TempOptimizationII</defName>
+		<label>Temp OptimizationII</label>
+		<description>Use unknown technology to increase the optimal temperature range of worktables.\nMin optimal temp: -2 °C\nMax optimal temp: +2 °C</description>
+		<baseCost>15000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>CSP_TempOptimizationI</li>
+		</prerequisites>
+		<researchViewX>24.00</researchViewX>
+		<researchViewY>17.00</researchViewY>
+		<tab>Buildings_SK</tab>
+		<researchMods>
+			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
+		</researchMods>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="HitechLabStationBase">
+		<defName>CSP_TempOptimizationIII</defName>
+		<label>Temp OptimizationIII</label>
+		<description>Use unknown technology to increase the optimal temperature range of worktables.\nMin optimal temp: -3 °C\nMax optimal temp: +3 °C</description>
+		<baseCost>20000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>CSP_TempOptimizationII</li>
+		</prerequisites>
+		<researchViewX>25.00</researchViewX>
+		<researchViewY>17.00</researchViewY>
+		<tab>Buildings_SK</tab>
+		<researchMods>
+			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
+		</researchMods>
+	</ResearchProjectDef>
+
+</Defs>

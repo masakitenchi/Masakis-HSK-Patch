@@ -16,5 +16,6 @@
     <li IfModActive="VanillaExpanded.VNutrientE">LoadOnDemand/Vanilla Nutrient Paste Expanded</li>
     <li IfModActive="vitech.materialsscience">LoadOnDemand/Material Science</li>
     <li IfModActive="aoba.motorization.engine">LoadOnDemand/Engine Industries</li>
+    <li IfModActive="garwel.celsius.sk">LoadOnDemand/Celsius_SK</li>
   </v1.4>
 </loadFolders>

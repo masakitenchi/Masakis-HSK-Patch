@@ -5,8 +5,15 @@ public class StatPart_Engine : StatPart
     public bool Applies(Thing t) => t.Spawned && (t.TryGetComp<CompEngine>()?.HasEngine ?? false);
     public override string ExplanationPart(StatRequest req)
     {
-        ThingDef def = req.Thing.TryGetComp<CompEngine>().CurrentEngine;
-        return req.HasThing && Applies(req.Thing) ? def.LabelCap + " : x" + def.GetModExtension<EngineModExtension>().EngineEfficiency.ToString("P2") : "NoEngine".Translate() + " : x" + 1.ToString("P0");
+        if (req.HasThing && Applies(req.Thing))
+        {
+            ThingDef def = req.Thing.TryGetComp<CompEngine>()?.CurrentEngine;
+            return def.LabelCap + " : x" + def.GetModExtension<EngineModExtension>().EngineEfficiency.ToString("P2");
+        }
+        else
+        {
+            return "NoEngine".Translate() + " : x" + 1.ToString("P0");
+        }
     }
 
     public override void TransformValue(StatRequest req, ref float val)

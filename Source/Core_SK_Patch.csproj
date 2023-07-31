@@ -59,8 +59,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="OutputLoadfolders.cs" />
-    <Compile Include="PawnGroupKindWorker_Async.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResearchMod_IncreaseOptimalTempRange.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SpecialThingFilters.cs" />
     <Compile Include="StatPart_Engine.cs" />
@@ -74,7 +74,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.4.3641</Version>
+      <Version>1.4.3704</Version>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
       <ExcludeAssets>runtime</ExcludeAssets>
@@ -93,10 +93,6 @@
     </Reference>
     <Reference Include="Minerals">
       <HintPath>..\..\Minerals\Assemblies\Minerals.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ShipsHaveInsides">
-      <HintPath>..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

@@ -2,7 +2,7 @@
 <Patch>
 
 	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@ParentName="WorkTable"]/comps</xpath>
+		<xpath>Defs/ThingDef[@ParentName="WorkTable" and comps/li[@Class="CompProperties_Power"]]/comps</xpath>
 		<value>
 			<li Class="Core_SK_Patch.CompProperties_Engine">
 				<EnginesCanUse>

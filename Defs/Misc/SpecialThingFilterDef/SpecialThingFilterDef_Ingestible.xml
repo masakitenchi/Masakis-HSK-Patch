@@ -31,4 +31,34 @@
 		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealLavish</workerClass>
 	</SpecialThingFilterDef>
 
+	<SpecialThingFilterDef>
+		<defName>CSP_AllowMeatRaw</defName>
+		<label>allow raw meat animal</label>
+		<description>Allow animals whose meat is raw meat when butchered.</description>
+		<parentCategory>CorpsesAnimal</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowMeatRaw</saveKey>
+		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_RawMeat</workerClass>
+	</SpecialThingFilterDef>
+	
+	<SpecialThingFilterDef>
+		<defName>CSP_AllowMeatPrime</defName>
+		<label>allow prime meat animal</label>
+		<description>Allow animals whose meat is prime meat when butchered.</description>
+		<parentCategory>CorpsesAnimal</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowMeatPrime</saveKey>
+		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_PrimeMeat</workerClass>
+	</SpecialThingFilterDef>
+	
+	<!-- <SpecialThingFilterDef>
+		<defName>CSP_AllowMeatFish</defName>
+		<label>allow fish meat animal</label>
+		<description>Allow animals whose meat is fish mest when butchered.</description>
+		<parentCategory>CorpsesAnimal</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowMeatFish</saveKey>
+		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealLavish</workerClass>
+	</SpecialThingFilterDef> -->
+
 </Defs>

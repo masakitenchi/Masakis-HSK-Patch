@@ -7,4 +7,9 @@
 	<CSP_AllowMealSimple.description>允许简单食物</CSP_AllowMealSimple.description>
 	<CSP_AllowMealFine.description>允许精致食物</CSP_AllowMealFine.description>
 	<CSP_AllowMealLavish.description>允许奢侈食物</CSP_AllowMealLavish.description>
+	<CSP_AllowMeatRaw.label>生肉动物</CSP_AllowMeatRaw.label>
+	<CSP_AllowMeatPrime.label>精肉动物</CSP_AllowMeatPrime.label>
+	<CSP_AllowMeatRaw.description>允许产出生肉的动物</CSP_AllowMeatRaw.description>
+	<CSP_AllowMeatPrime.description>允许产出精肉的动物</CSP_AllowMeatPrime.description>
+
 </LanguageData>

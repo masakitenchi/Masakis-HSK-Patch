@@ -28,20 +28,20 @@ public class SpecialThingFilterWorker_MealLavish : SpecialThingFilterWorker
 
 public class SpecialThingFilterWorker_PrimeMeat : SpecialThingFilterWorker
 {
-    public override bool CanEverMatch(ThingDef def) => def.race is not null;
+    //public override bool CanEverMatch(ThingDef def) => def is ThingDef_Corpse corpse && corpse.InnerPawn.def.race is not null;
 
-    public override bool AlwaysMatches(ThingDef def) => def.race.meatDef.defName == "Meat_Muffalo";
+    //public override bool AlwaysMatches(ThingDef def) => 
 
-    public override bool Matches(Thing t) => CanEverMatch(t.def) && AlwaysMatches(t.def);
+    public override bool Matches(Thing t) => t is Corpse corpse && corpse.InnerPawn.def.race.meatDef.defName == "Meat_Muffalo";
 }
 
 public class SpecialThingFilterWorker_RawMeat : SpecialThingFilterWorker
 {
-    public override bool CanEverMatch(ThingDef def) => def.race is not null;
+    //public override bool CanEverMatch(ThingDef def) => def.race is not null;
 
-    public override bool AlwaysMatches(ThingDef def) => def.race.meatDef.defName == "Meat_Elephant";
+    //public override bool AlwaysMatches(ThingDef def) => ;
 
-    public override bool Matches(Thing t) => CanEverMatch(t.def) && AlwaysMatches(t.def);
+    public override bool Matches(Thing t) => t is Corpse corpse && corpse.InnerPawn.def.race.meatDef.defName == "Meat_Muffalo";
 }
 
 /*public class SpecialThingFilterWorker_FishMeat : SpecialThingFilterWorker

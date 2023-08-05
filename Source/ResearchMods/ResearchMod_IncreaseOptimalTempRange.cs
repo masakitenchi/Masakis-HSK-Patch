@@ -1,8 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Core_SK_Patch;
+﻿namespace Core_SK_Patch;
 
 public class ResearchMod_ExpandOptimalTempRange : ResearchMod
 {

@@ -1,5 +1,6 @@
 ﻿namespace Core_SK_Patch;
 
+//WIP, or I haven't sorted my mind of how this would look like
 public class ITab_Engine : ITab
 {
     public CompEngine CompEngine;

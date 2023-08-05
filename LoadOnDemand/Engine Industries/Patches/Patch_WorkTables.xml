@@ -9,7 +9,9 @@
 					<li>EngineLight</li>
 					<li>EngineSteam</li>
 					<li>EngineMedium</li>
+					<li>EngineHeavy</li>
 					<li>EngineTurbine</li>
+					<li>EngineJet</li>
 				</EnginesCanUse>
 			</li>
 		</value>
@@ -19,7 +21,7 @@
 		<xpath>Defs/ThingDef[defName="EngineLight"]</xpath>
 		<value>
 			<li Class="Core_SK_Patch.EngineModExtension">
-				<EngineEfficiency>1.2</EngineEfficiency>
+				<EngineEfficiency>1.05</EngineEfficiency>
 				<PowerConsumptionMultiplier>1.2</PowerConsumptionMultiplier>
 			</li>
 		</value>
@@ -28,8 +30,8 @@
 		<xpath>Defs/ThingDef[defName="EngineSteam"]</xpath>
 		<value>
 			<li Class="Core_SK_Patch.EngineModExtension">
-				<EngineEfficiency>1.4</EngineEfficiency>
-				<PowerConsumptionMultiplier>1.4</PowerConsumptionMultiplier>
+				<EngineEfficiency>1.1</EngineEfficiency>
+				<PowerConsumptionMultiplier>1.3</PowerConsumptionMultiplier>
 			</li>
 		</value>
 	</Operation>
@@ -37,8 +39,17 @@
 		<xpath>Defs/ThingDef[defName="EngineMedium"]</xpath>
 		<value>
 			<li Class="Core_SK_Patch.EngineModExtension">
-				<EngineEfficiency>1.6</EngineEfficiency>
+				<EngineEfficiency>1.3</EngineEfficiency>
 				<PowerConsumptionMultiplier>1.6</PowerConsumptionMultiplier>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="EngineHeavy"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.EngineModExtension">
+				<EngineEfficiency>1.7</EngineEfficiency>
+				<PowerConsumptionMultiplier>2.0</PowerConsumptionMultiplier>
 			</li>
 		</value>
 	</Operation>
@@ -47,7 +58,16 @@
 		<value>
 			<li Class="Core_SK_Patch.EngineModExtension">
 				<EngineEfficiency>1.8</EngineEfficiency>
-				<PowerConsumptionMultiplier>1.8</PowerConsumptionMultiplier>
+				<PowerConsumptionMultiplier>2.2</PowerConsumptionMultiplier>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="EngineJet"]</xpath>
+		<value>
+			<li Class="Core_SK_Patch.EngineModExtension">
+				<EngineEfficiency>2.0</EngineEfficiency>
+				<PowerConsumptionMultiplier>2.4</PowerConsumptionMultiplier>
 			</li>
 		</value>
 	</Operation>

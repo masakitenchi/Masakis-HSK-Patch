@@ -57,6 +57,7 @@
     <Compile Include="EngineModExtension.cs" />
     <Compile Include="ITab_Engine.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="MechChargerPatch.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="OutputLoadfolders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	
+	<ResearchProjectDef ParentName="IndustrialBase">
+		<defName>CSP_MechEnergyReductionI</defName>
+		<label>Mech Energy Optimization I</label>
+		<description>Optimize the battery of all mechanoids, decrease their energy consumption.</description>
+		<baseCost>3000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>StandardMechtech</li>
+		</prerequisites>
+		<researchViewX>16.00</researchViewX>
+		<researchViewY>22.00</researchViewY>
+		<tab>Buildings_SK</tab>
+		<researchMods>
+			<li Class="Core_SK_Patch.ResearchMod_ChangeDef">
+				<defName>MechEnergyUsageFactor</defName>
+				<defType>StatDef</defType>
+				<field>defaultBaseValue</field>
+				<value>0.1</value>
+				<mode>Subtract</mode>
+			</li>
+		</researchMods>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="HitechBase">
+		<defName>CSP_MechChargerUpgrade</defName>
+		<label>Mech Charger Upgrade</label>
+		<description>Upgrade the internal power adapter, double its charging rate.</description>
+		<baseCost>6000</baseCost>
+		<techLevel>Spacer</techLevel>
+		<prerequisites>
+			<li>HighMechtech</li>
+		</prerequisites>
+		<researchViewX>20.00</researchViewX>
+		<researchViewY>26.00</researchViewY>
+		<tab>Buildings_SK</tab>
+		<researchMods>
+			<li Class="Core_SK_Patch.MechChargerUpgrade"/>
+		</researchMods>
+	</ResearchProjectDef>
+</Defs>

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 
-	<!-- Remove-->
-	<!-- <Operation Class="PatchOperationSequence">
-		<operations>
-			<li Class="PatchOperationRemove">
-				<xpath>Defs/ThingDef[defName="SubcoreBasic"]/recipeMaker</xpath>
-			</li>
-			<li Class="PatchOperationRemove">
-				<xpath>Defs/ThingDef[defName="SubcoreBasic"]/costList</xpath>
-			</li>
-		</operations>
-	</Operation>
- -->
+	<Opeartion Class="PatchOperationAdd">
+		<xpath>Defs/StatDef[@Name="MechStatBase"]</xpath>
+		<value>
+			<displayAllByDefault>true</displayAllByDefault>
+		</value>
+	</Opeartion>
 
 </Patch>

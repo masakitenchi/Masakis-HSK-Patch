@@ -50,18 +50,18 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AlwaysReturnTheFirstProduct.cs" />
     <Compile Include="BetterInfestation.cs" />
     <Compile Include="CompProperties_Engine.cs" />
     <Compile Include="CrossCompat_Minerals_SOS2.cs" />
     <Compile Include="EngineModExtension.cs" />
     <Compile Include="ITab_Engine.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="MechChargerPatch.cs" />
+    <Compile Include="ResearchMods\MechChargerPatch.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="OutputLoadfolders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResearchMod_IncreaseOptimalTempRange.cs" />
+    <Compile Include="ResearchMods\ResearchMod_IncreaseOptimalTempRange.cs" />
+    <Compile Include="ResearchMods\ResearchMod_ManipulateField.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SpecialThingFilters.cs" />
     <Compile Include="StatPart_Engine.cs" />

@@ -32,7 +32,7 @@ public static class ResearchScriber
     [HarmonyPrefix]
     public static bool DoNotApplyModMoreThanOnce(ResearchProjectDef __instance)
     {
-        return modLister.TryAdd(__instance, __instance.researchMods?.ToHashSet());
+        return modLister.TryAdd(__instance, __instance.researchMods?.ToHashSet() ?? new HashSet<ResearchMod>());
     }
 
     [HarmonyPatch(typeof(MemoryUtility), nameof(MemoryUtility.ClearAllMapsAndWorld))]

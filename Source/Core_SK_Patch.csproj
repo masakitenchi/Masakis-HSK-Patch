@@ -65,6 +65,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SpecialThingFilters.cs" />
     <Compile Include="StatPart_Engine.cs" />
+    <None Include="StatPart_MechBuff.cs" />
     <Compile Include="TestClasses.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

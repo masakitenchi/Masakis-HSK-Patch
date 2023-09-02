@@ -53,7 +53,9 @@ public class ResearchMod_ChangeDef : ResearchMod_ManipulateField
                 break;
             default: throw new InvalidOperationException($"Must define a mode. Available: {string.Join("\n", Enum.GetNames(typeof(TargetMode)))}");
         }
+#if DEBUG
         Log.Message($"Applied {mode} to {defName}.{field}, current value is: {fieldInfo.GetValue(instance)}");
+#endif
     }
 }
 

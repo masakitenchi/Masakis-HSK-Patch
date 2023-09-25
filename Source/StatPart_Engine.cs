@@ -10,9 +10,13 @@ public class StatPart_Engine : StatPart
             ThingDef def = req.Thing.TryGetComp<CompEngine>()?.CurrentEngine;
             return def.LabelCap + " : x" + def.GetModExtension<EngineModExtension>().EngineEfficiency.ToString("P2");
         }
+        else if (req.Thing.def.HasComp(typeof(CompEngine)))
+        {
+            return "NoEngine".Translate() + " : x " + 1.ToString("P0");
+        }
         else
         {
-            return "NoEngine".Translate() + " : x" + 1.ToString("P0");
+            return "";
         }
     }
 

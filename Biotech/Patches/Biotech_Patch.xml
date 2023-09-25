@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 
-	<Operation Class="PatchOperationReplace">
+	<!-- <Operation Class="PatchOperationReplace">
 		<xpath>Defs/StatDef[defName="MechEnergyUsageFactor"]/showIfUndefined</xpath>
 		<value>
 			<showIfUndefined>true</showIfUndefined>
 		</value>
-	</Operation>
+	</Operation> -->
 
 </Patch>

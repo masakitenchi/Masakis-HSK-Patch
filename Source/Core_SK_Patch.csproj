@@ -56,6 +56,8 @@
     <Compile Include="EngineModExtension.cs" />
     <Compile Include="ITab_Engine.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="ModExtension_FixedValue.cs" />
+    <Compile Include="NeverDieByLowHealth.cs" />
     <Compile Include="ResearchMods\MechChargerPatch.cs" />
     <Compile Include="ModExtension_BulkRecipe.cs" />
     <Compile Include="OutputLoadfolders.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="StatPart_Engine.cs" />
     <None Include="StatPart_MechBuff.cs" />
     <Compile Include="TestClasses.cs" />
+    <Compile Include="Transition_LowIdlePowerDraw.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>

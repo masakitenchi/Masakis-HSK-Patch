@@ -131,6 +131,7 @@ public class Core_SK_Patch : Mod
         ls.Begin(inRect);
         ls.CheckboxLabeled("Enable Bulk Recipe", ref Settings.EnableBulkRecipe, "Check to generate bulk recipes for patched recipes (Needs restart)");
         Settings.InfestationPreventionRadius = ls.SliderLabeled($"Deep Infestation Radius : {Settings.InfestationPreventionRadius:F2}", Settings.InfestationPreventionRadius, 10f, 150f, tooltip: "If one deep drill has an infestation recently, it will prevent all deep drills in a certain radius from being infested again. This slider lets you change how big that circle is");
+        ls.CheckboxLabeled("Never die by low health", ref Settings.NeverDieByLowHealth, "Removes the health check for death.\n(Need restart after chaning the value)");
         ls.End();
     }
     #region Bulk Recipe

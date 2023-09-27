@@ -16,7 +16,7 @@ public abstract class ResearchMod_ManipulateField : ResearchMod
 }
 
 
-public class ResearchMod_ChangeDef : ResearchMod_ManipulateField
+public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
 {
     public string defName;
     public Type defType;
@@ -56,6 +56,49 @@ public class ResearchMod_ChangeDef : ResearchMod_ManipulateField
 #if DEBUG
         Log.Message($"Applied {mode} to {defName}.{field}, current value is: {fieldInfo.GetValue(instance)}");
 #endif
+    }
+}
+
+public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
+{
+    public string defName;
+    public Type defType;
+    public string statName;
+    public float value;
+    public TargetMode mode;
+    private StatModifier statModifier;
+
+    public override void CacheField()
+    {
+        instance = GenDefDatabase.GetDefSilentFail(defType, defName);
+        //List<StatModifier>
+        fieldInfo = AccessTools.Field(instance.GetType(), "statBases");
+        statModifier = (fieldInfo.GetValue(instance) as List<StatModifier>).Find(x => x.stat.defName == statName);
+        originalvalue = statModifier.value;
+    }
+
+    public override void Apply()
+    {
+        this.CacheField();
+        switch(mode)
+        {
+            case TargetMode.Add:
+                statModifier.value += value;
+                break;
+            case TargetMode.Subtract:
+                statModifier.value -= value;
+                break;
+            case TargetMode.Multiply:
+                statModifier.value *= value;
+                break;
+            case TargetMode.Divide:
+                statModifier.value /= value;
+                break;
+            case TargetMode.Set:
+                statModifier.value = value;
+                break;
+            default: throw new InvalidOperationException($"Must define a mode. Available: {string.Join("\n", Enum.GetNames(typeof(TargetMode)))}");
+        }
     }
 }
 

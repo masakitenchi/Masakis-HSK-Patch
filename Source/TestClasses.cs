@@ -53,7 +53,7 @@ public static class TestPatches
     }
 }*/
 
-[HarmonyPatch]
+//[HarmonyPatch]
 [StaticConstructorOnStartup]
 public class ErrorChecker
 {
@@ -80,7 +80,7 @@ public class ErrorChecker
         Log.Message(sb.ToString());
     }
 
-    [HarmonyPatch(typeof(ResearchProjectDef),nameof(ResearchProjectDef.ReapplyAllMods))]
+    //[HarmonyPatch(typeof(ResearchProjectDef),nameof(ResearchProjectDef.ReapplyAllMods))]
     public static void Postfix()
     {
         Log.Message(StackTraceUtility.ExtractStackTrace());

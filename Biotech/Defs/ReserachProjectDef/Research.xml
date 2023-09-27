@@ -14,7 +14,7 @@
 		<researchViewY>22.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
-			<li Class="Core_SK_Patch.ResearchMod_ChangeDef">
+			<li Class="Core_SK_Patch.ResearchMod_ChangeDefSimple">
 				<defName>MechEnergyUsageFactor</defName>
 				<defType>StatDef</defType>
 				<field>defaultBaseValue</field>
@@ -38,6 +38,43 @@
 		<tab>Buildings_SK</tab>
 		<researchMods>
 			<li Class="Core_SK_Patch.MechChargerUpgrade"/>
+		</researchMods>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="IndustrialBase">
+		<defName>CSP_MechCarryBulkUpgrade</defName>
+		<label>Mech Carry Bulk Upgrade I</label>
+		<description>Increases all Lifter's carry bulk, carry weight &amp; carrying capacity by 10.</description>
+		<baseCost>3000</baseCost>
+		<techLevel>Industrial</techLevel>
+		<prerequisites>
+			<li>StandardMechtech</li>
+		</prerequisites>
+		<researchViewX>16.00</researchViewX>
+		<researchViewY>23.00</researchViewY>
+		<tab>Buildings_SK</tab>
+		<researchMods>
+			<li Class="Core_SK_Patch.ResearchMod_ChangeStatBase">
+				<defName>Mech_Lifter</defName>
+				<defType>ThingDef</defType>
+				<statName>CarryWeight</statName>
+				<value>10</value>
+				<mode>Add</mode>
+			</li>
+			<li Class="Core_SK_Patch.ResearchMod_ChangeStatBase">
+				<defName>Mech_Lifter</defName>
+				<defType>ThingDef</defType>
+				<statName>CarryBulk</statName>
+				<value>10</value>
+				<mode>Add</mode>
+			</li>
+			<li Class="Core_SK_Patch.ResearchMod_ChangeStatBase">
+				<defName>Mech_Lifter</defName>
+				<defType>ThingDef</defType>
+				<statName>CarryingCapacity</statName>
+				<value>10</value>
+				<mode>Add</mode>
+			</li>
 		</researchMods>
 	</ResearchProjectDef>
 </Defs>

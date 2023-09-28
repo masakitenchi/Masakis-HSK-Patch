@@ -4,7 +4,6 @@ namespace Core_SK_Patch;
 #if DEBUG
 
 
-namespace Core_SK_Patch;
 [HarmonyPatch]
 public static class TestPatches
 {

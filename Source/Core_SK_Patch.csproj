@@ -102,6 +102,7 @@
       <HintPath>..\..\Minerals\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
+	  <!--<Publicize Include="Assembly-CSharp:RimWorld.ResearchManager.progress"/>-->
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

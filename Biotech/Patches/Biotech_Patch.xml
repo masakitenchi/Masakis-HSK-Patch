@@ -8,4 +8,11 @@
 		</value>
 	</Operation> -->
 
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Mech_Lifter"]/statBases</xpath>
+		<value>
+			<CarryingCapacity>75</CarryingCapacity>
+		</value>
+	</Operation>
+	
 </Patch>

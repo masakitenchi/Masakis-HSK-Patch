@@ -76,5 +76,10 @@
 				<mode>Add</mode>
 			</li>
 		</researchMods>
+		<modExtensions>
+			<li Class="Core_SK_Patch.ModExtension_RepeatableResearch">
+				<MaxRepeatableCount>5</MaxRepeatableCount>
+			</li>
+		</modExtensions>
 	</ResearchProjectDef>
 </Defs>

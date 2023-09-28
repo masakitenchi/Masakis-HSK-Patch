@@ -44,6 +44,13 @@ public class GameComponent_ResearchManager : GameComponent
     {
         base.ExposeData();
         Scribe_Collections.Look(ref _repeatCount, "researchCounts", LookMode.Def, LookMode.Value);
+        if(Scribe.mode == LoadSaveMode.PostLoadInit)
+        {
+            foreach (var def in _repeatCount)
+                for (var i = 0; i < def.Value; i++)
+                    foreach (var mod in def.Key.researchMods)
+                        mod.Apply();
+        }
     }
 
     public override void StartedNewGame()

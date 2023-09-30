@@ -7,7 +7,15 @@
 	</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
+				<!-- Refuel Cost: ACI - 50, ACII - 200, ACIII - 400 -->
 
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="ShipTurret_ACIII"]/comps/li[@Class="CompProperties_Refuelable"]/fuelMultiplier</xpath>
+					<value>
+						<fuelMultiplier>0.0625</fuelMultiplier>
+					</value>
+				</li>
+				
 				<!-- Change fuel to Depleted Uranium-->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[contains(defName, 'ShipTurret_AC') and comps/li[@Class="CompProperties_Refuelable"]]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter</xpath>
@@ -28,7 +36,7 @@
 							<ComponentAdvanced>4</ComponentAdvanced>
 							<ComponentSpacer>2</ComponentSpacer>
 							<Microchips>2</Microchips>
-							<DepletedUranium>60</DepletedUranium>
+							<DepletedUranium>50</DepletedUranium>
 						</costList>
 					</value>
 				</li>
@@ -57,7 +65,7 @@
 							<AdvMechanism>6</AdvMechanism>
 							<CarbonAlloy>40</CarbonAlloy>
 							<Microchips>3</Microchips>
-							<DepletedUranium>110</DepletedUranium>
+							<DepletedUranium>200</DepletedUranium>
 						</costList>
 					</value>
 				</li>
@@ -86,7 +94,7 @@
 							<ComponentSpacer>12</ComponentSpacer>
 							<CarbonAlloy>90</CarbonAlloy>
 							<Microchips>4</Microchips>
-							<DepletedUranium>230</DepletedUranium>
+							<DepletedUranium>400</DepletedUranium>
 						</costList>
 					</value>
 				</li>

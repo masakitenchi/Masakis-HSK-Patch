@@ -9,10 +9,16 @@ public abstract class ResearchMod_ManipulateField : ResearchMod
     protected Type type;
     protected FieldInfo fieldInfo;
     protected float originalvalue;
+    protected bool cached;
 
     public virtual void ResetField() => fieldInfo.SetValue(instance, originalvalue);
 
     public abstract void CacheField();
+
+    public override void Apply()
+    {
+        if (!cached) this.CacheField();
+    }
 }
 
 
@@ -29,11 +35,12 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
         instance = GenDefDatabase.GetDefSilentFail(defType, defName);
         fieldInfo = AccessTools.Field(instance.GetType(), field);
         originalvalue = (float)fieldInfo.GetValue(instance);
+        cached = true;
     }
 
     public override void Apply()
     {
-        this.CacheField();
+        base.Apply();
         switch (mode)
         {
             case TargetMode.Add:
@@ -78,6 +85,7 @@ public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
         InitStatModifier();
 
         originalvalue = statModifier.value;
+        cached = true;
     }
 
     private void InitStatModifier()
@@ -100,7 +108,7 @@ public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
 
     public override void Apply()
     {
-        this.CacheField();
+        base.Apply();
         switch(mode)
         {
             case TargetMode.Add:

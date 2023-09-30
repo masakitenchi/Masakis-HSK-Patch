@@ -22,8 +22,7 @@ public class GameComponent_ResearchManager : GameComponent
     {
         var ext = def.GetModExtension<ModExtension_RepeatableResearch>();
         if (ext is null) return;
-        int count;
-        if (_repeatCount.TryGetValue(def, out count))
+        if (_repeatCount.TryGetValue(def, out int count))
             ++_repeatCount[def];
         else
         {
@@ -36,7 +35,7 @@ public class GameComponent_ResearchManager : GameComponent
             def.label.Replace(labelEndReg.Match(def.label).Value, $"+{count}");
         else
             def.label += $" +{count}";*/
-        if(ext.MaxRepeatableCount > count)
+        if (ext.MaxRepeatableCount > count)
             ResetProgressAndAdjustCost(def);
     }
 
@@ -51,9 +50,11 @@ public class GameComponent_ResearchManager : GameComponent
                 var Key = def.Key;
                 var Value = def.Value;
                 for (var i = 0; i < Value; i++)
+                {
                     foreach (var mod in Key.researchMods)
                         mod.Apply();
-                Key.baseCost *= Key.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
+                    Key.baseCost *= Key.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
+                }
             }
         }
     }

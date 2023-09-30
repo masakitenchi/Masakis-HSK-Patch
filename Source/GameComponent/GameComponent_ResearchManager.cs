@@ -37,7 +37,7 @@ public class GameComponent_ResearchManager : GameComponent
         else
             def.label += $" +{count}";*/
         if(ext.MaxRepeatableCount > count)
-            Find.ResearchManager.progress[def] = 0f;
+            ResetProgressAndAdjustCost(def);
     }
 
     public override void ExposeData()
@@ -47,9 +47,14 @@ public class GameComponent_ResearchManager : GameComponent
         if(Scribe.mode == LoadSaveMode.PostLoadInit)
         {
             foreach (var def in _repeatCount)
-                for (var i = 0; i < def.Value; i++)
-                    foreach (var mod in def.Key.researchMods)
+            {
+                var Key = def.Key;
+                var Value = def.Value;
+                for (var i = 0; i < Value; i++)
+                    foreach (var mod in Key.researchMods)
                         mod.Apply();
+                Key.baseCost *= Key.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
+            }
         }
     }
 
@@ -69,9 +74,16 @@ public class GameComponent_ResearchManager : GameComponent
             if (def.IsFinished && !this._repeatCount.TryGetValue(def, out _))
             {
                 _repeatCount.Add(def, 1);
-                Find.ResearchManager.progress[def] = 0f;
+                ResetProgressAndAdjustCost(def);
             }
         }
+    }
+
+
+    private static void ResetProgressAndAdjustCost(ResearchProjectDef def)
+    {
+        Find.ResearchManager.progress[def] = 0f;
+        def.baseCost *= def.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier; 
     }
 
     [HarmonyPatch(typeof(ResearchManager),nameof(ResearchManager.FinishProject))]

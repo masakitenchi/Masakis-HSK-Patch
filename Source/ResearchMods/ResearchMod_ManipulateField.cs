@@ -66,6 +66,8 @@ public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
     public string statName;
     public float value;
     public TargetMode mode;
+
+    private List<StatModifier> statBases;
     private StatModifier statModifier;
 
     public override void CacheField()
@@ -73,8 +75,27 @@ public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
         instance = GenDefDatabase.GetDefSilentFail(defType, defName);
         //List<StatModifier>
         fieldInfo = AccessTools.Field(instance.GetType(), "statBases");
-        statModifier = (fieldInfo.GetValue(instance) as List<StatModifier>).Find(x => x.stat.defName == statName);
+        InitStatModifier();
+
         originalvalue = statModifier.value;
+    }
+
+    private void InitStatModifier()
+    {
+        statBases = fieldInfo.GetValue(instance) as List<StatModifier>;
+        statModifier = statBases.Find(x => x.stat.defName == statName);
+
+        //Generate new statModifier at runtime if target uses defaultBaseValue of that StatDef
+        if (statModifier is null)
+        {
+            StatModifier stat = new StatModifier()
+            {
+                stat = DefDatabase<StatDef>.AllDefs.First(x => x.defName == statName),
+                value = DefDatabase<StatDef>.AllDefs.First(x => x.defName == statName).defaultBaseValue
+            };
+            statModifier = stat;
+            statBases.Add(statModifier);
+        }
     }
 
     public override void Apply()

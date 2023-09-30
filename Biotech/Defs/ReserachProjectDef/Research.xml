@@ -43,8 +43,8 @@
 
 	<ResearchProjectDef ParentName="IndustrialBase">
 		<defName>CSP_MechCarryBulkUpgrade</defName>
-		<label>Mech Carry Bulk Upgrade I</label>
-		<description>Increases all Lifter's carry bulk, carry weight &amp; carrying capacity by 10.</description>
+		<label>Mech Carry Bulk Upgrade</label>
+		<description>Increases all Lifter's carry bulk, carry weight &amp; carrying capacity by 10. Can be researched up to 5 times.</description>
 		<baseCost>3000</baseCost>
 		<techLevel>Industrial</techLevel>
 		<prerequisites>
@@ -79,6 +79,7 @@
 		<modExtensions>
 			<li Class="Core_SK_Patch.ModExtension_RepeatableResearch">
 				<MaxRepeatableCount>5</MaxRepeatableCount>
+				<CostMultiplier>1.1</CostMultiplier>
 			</li>
 		</modExtensions>
 	</ResearchProjectDef>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/TraderKindDef[defName="DeepSpaceMiningShip"]/stockGenerators</xpath>
+		<value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Quartz</thingDef>
+				<countRange>100~500</countRange>
+			</li>
+		</value>
+	</Operation>
+</Patch>

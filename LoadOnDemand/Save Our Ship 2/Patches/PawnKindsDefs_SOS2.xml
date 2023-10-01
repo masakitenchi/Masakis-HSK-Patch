@@ -53,9 +53,33 @@
 					</value>
 				</li>
 				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/apparelMoney</xpath>
+					<value>
+						<apparelMoney>2000~4000</apparelMoney>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/weaponMoney</xpath>
+					<value>
+						<weaponMoney>1000~2500</weaponMoney>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarineHeavy"]/apparelMoney</xpath>
+					<value>
+						<apparelMoney>5000~6000</apparelMoney>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarineHeavy"]/weaponMoney</xpath>
+					<value>
+						<apparelMoney>2000~3000</apparelMoney>
+					</value>
+				</li>
 			</operations>
 		</match>
 	</Operation>
 	
 </Patch>
-

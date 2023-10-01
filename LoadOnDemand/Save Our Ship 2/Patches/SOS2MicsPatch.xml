@@ -95,12 +95,12 @@
 					</value>
 				</li>
 				
-				<li Class="PatchOperationReplace">
+				<!-- <li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/weaponMoney</xpath>
 					<value>
 						<weaponMoney>1500~1800</weaponMoney>
 					</value>
-				</li>
+				</li> -->
 				
 				<!-- ========== SoilShip ========== -->
 				<li Class="PatchOperationReplace">

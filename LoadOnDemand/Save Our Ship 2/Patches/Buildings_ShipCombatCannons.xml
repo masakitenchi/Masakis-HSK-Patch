@@ -164,6 +164,14 @@
 						<defaultArmorPenetration>1000</defaultArmorPenetration>
 					</value>
 				</li>
+
+				<!-- Kinetic Projectile Rework-->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[contains(defName,'Proj_ShipTurretKinetic')]/thingClass</xpath>
+					<value>
+						<thingClass>Projectile_ExplosiveShipCombatKinetic</thingClass>
+					</value>
+				</li>
 			</operations>
 		</match>
     </Operation>

@@ -26,9 +26,6 @@ public class Core_SK_Patch : Mod
     internal static StringBuilder sb = new StringBuilder("Core_SK Patch is initializing:\n");
     public Core_SK_Patch(ModContentPack content) : base(content)
     {
-#if DEBUG
-			Harmony.DEBUG = true;
-#endif
         harmony = new Harmony("com.reggex.HSKPatch");
         settings = this.GetSettings<Settings>();
         //SOS2 Compatibility Patch - now using xml patch for better compatibility
@@ -96,8 +93,7 @@ public class Core_SK_Patch : Mod
         /*
         LongEventHandler.ExecuteWhenFinished(() =>
         {
-            DefDatabase<ThingDef>.AllDefs.AsParallel().ForAll(x =>
-            {
+            DefDatabase<ThingDef>.AllDefs.AsParallel().ForAll(x =>            {
                 if (x.IsBuildingArtificial && !x.IsFrame && x.selectable && x.useHitPoints && x.statBases is null) Log.Warning($"{x.defName} is building with null statBases");
             });
         });*/

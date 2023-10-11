@@ -49,6 +49,19 @@
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[@ParentName="ShipTorpedoBase" and contains(defName,'ShipTorpedo_')]/costList</xpath>
 			</li>
+
+			<!-- Adjust EMP Torpedo's DamageBase, otherwise it's nothing more than useless-->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Bullet_Torpedo_EMP"]/projectile</xpath>
+				<value>
+					<projectile>
+						<explosionRadius>15.9</explosionRadius>
+						<damageDef>Electrical</damageDef>
+						<speed>60</speed>
+						<damageAmountBase>300</damageAmountBase>
+					</projectile>
+				</value>
+			</li>
 		</operations>
 	</Operation>
 </Patch>

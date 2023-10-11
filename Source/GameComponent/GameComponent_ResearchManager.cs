@@ -48,13 +48,15 @@ public class GameComponent_ResearchManager : GameComponent
             foreach (var def in _repeatCount)
             {
                 var Key = def.Key;
-                var Value = def.Value;
+                var Value = def.Value - 1; //Game re-apply all ResearchMods when loading 
                 for (var i = 0; i < Value; i++)
                 {
                     foreach (var mod in Key.researchMods)
                         mod.Apply();
                     Key.baseCost *= Key.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
                 }
+                //The extra cost when game applies mods
+                Key.baseCost *= Key.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
             }
         }
     }

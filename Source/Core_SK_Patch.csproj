@@ -50,28 +50,31 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BetterInfestation.cs" />
+    <Compile Include="Comp\HediffCompProperties_Fever.cs" />
+    <Compile Include="Patches\BetterInfestation.cs" />
     <Compile Include="Comp\CompProperties_Engine.cs" />
-    <Compile Include="CrossCompat_Minerals_SOS2.cs" />
-    <Compile Include="EngineModExtension.cs" />
+    <Compile Include="Patches\CrossCompat_Minerals_SOS2.cs" />
+    <Compile Include="Misc\EngineModExtension.cs" />
     <Compile Include="GameComponent\GameComponent_ResearchManager.cs" />
-    <Compile Include="ITab_Engine.cs" />
+    <Compile Include="Misc\ITab_Engine.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="ModExt\ModExtension_FixedValue.cs" />
     <Compile Include="ModExt\ModExtension_RepeatableResearch.cs" />
-    <Compile Include="NeverDieByLowHealth.cs" />
+    <Compile Include="Patches\NeverDieByLowHealth.cs" />
+    <Compile Include="Patches\Patch_NonStunnableMannedTurret.cs" />
+    <Compile Include="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
     <Compile Include="ResearchMods\MechChargerPatch.cs" />
     <Compile Include="ModExt\ModExtension_BulkRecipe.cs" />
-    <Compile Include="OutputLoadfolders.cs" />
+    <Compile Include="Misc\OutputLoadfolders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResearchMods\ResearchMod_IncreaseOptimalTempRange.cs" />
     <Compile Include="ResearchMods\ResearchMod_ManipulateField.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="SpecialThingFilters.cs" />
+    <Compile Include="Misc\SpecialThingFilters.cs" />
     <Compile Include="StatPart\StatPart_Engine.cs" />
     <None Include="StatPart\StatPart_MechBuff.cs" />
     <Compile Include="TestClasses.cs" />
-    <Compile Include="Transition_LowIdlePowerDraw.cs" />
+    <Compile Include="Misc\Transition_LowIdlePowerDraw.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,7 +105,11 @@
       <HintPath>..\..\Minerals\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
-	  <!--<Publicize Include="Assembly-CSharp:RimWorld.ResearchManager.progress"/>-->
+    <Reference Include="ShipsHaveInsides">
+      <HintPath>..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <!--<Publicize Include="Assembly-CSharp:RimWorld.ResearchManager.progress"/>-->
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

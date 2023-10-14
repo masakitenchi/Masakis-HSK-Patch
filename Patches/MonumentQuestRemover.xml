@@ -2,13 +2,13 @@
 <Patch>
     <Operation Class="PatchOperationFindMod">
         <mods>
-            <li>Royalty</li>
+            <li>HMC Nobility Expanded</li>
         </mods>
-        <match Class="PatchOperationFindMod">
+        <nomatch Class="PatchOperationFindMod">
             <mods>
-                <li>HMC Nobility Expanded</li>
+                <li>Royalty</li>
             </mods>
-            <nomatch Class="PatchOperationSequence">
+            <match Class="PatchOperationSequence">
                 <operations>
                     <li Class="PatchOperationRemove">
                         <xpath>Defs/QuestScriptDef[defName="BuildMonument_Basic" or
@@ -21,7 +21,7 @@
                         defName="BuildMonumentWorker"]</xpath>
                     </li>
                 </operations>
-            </nomatch>
-        </match>
+            </match>
+        </nomatch>
     </Operation>
 </Patch>

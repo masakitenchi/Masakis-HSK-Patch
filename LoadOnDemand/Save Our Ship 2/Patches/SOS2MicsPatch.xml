@@ -191,6 +191,31 @@
 						<researchViewY>0</researchViewY>
 					</value>
 				</li>
+
+				<li Class="PatchOpeartionAdd">
+					<xpath>Defs/ThingDef[defName="ShipTorpedo_HighExplosive"]</xpath>
+					<value>
+						<statBases>
+							<MarketValue>2000</MarketValue>
+						</statBases>
+					</value>
+				</li>
+				<li Class="PatchOpeartionAdd">
+					<xpath>Defs/ThingDef[defName="ShipTorpedo_EMP"]</xpath>
+					<value>
+						<statBases>
+							<MarketValue>1500</MarketValue>
+						</statBases>
+					</value>
+				</li>
+				<li Class="PatchOpeartionAdd">
+					<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]</xpath>
+					<value>
+						<statBases>
+							<MarketValue>5000</MarketValue>
+						</statBases>
+					</value>
+				</li>
 			</operations>
 		</match>
     </Operation>

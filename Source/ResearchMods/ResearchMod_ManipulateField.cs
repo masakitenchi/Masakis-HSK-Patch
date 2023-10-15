@@ -8,10 +8,13 @@ public abstract class ResearchMod_ManipulateField : ResearchMod
 #nullable disable
     protected Type type;
     protected FieldInfo fieldInfo;
-    protected float originalvalue;
+    protected ValueType originalvalue;
     protected bool cached;
 
-    public virtual void ResetField() => fieldInfo.SetValue(instance, originalvalue);
+    public virtual void ResetField()
+    {
+        fieldInfo.SetValue(instance, originalvalue);
+    }
 
     public abstract void CacheField();
 
@@ -27,14 +30,15 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
     public string defName;
     public Type defType;
     public string field;
-    public float value;
+    public float valueFloat;
+    public int valueInt;
     public TargetMode mode;
 
     public override void CacheField()
     {
         instance = GenDefDatabase.GetDefSilentFail(defType, defName);
         fieldInfo = AccessTools.Field(instance.GetType(), field);
-        originalvalue = (float)fieldInfo.GetValue(instance);
+        originalvalue = fieldInfo.GetValue(instance) as ValueType;
         cached = true;
     }
 
@@ -44,19 +48,19 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
         switch (mode)
         {
             case TargetMode.Add:
-                fieldInfo.SetValue(instance, originalvalue + value);
+                fieldInfo.SetValue(instance, (float)originalvalue + (originalvalue is float? Convert.ToSingle(originalvalue): Convert.ToInt32(originalvalue)));
                 break;
             case TargetMode.Subtract:
-                fieldInfo.SetValue(instance, originalvalue - value);
+                fieldInfo.SetValue(instance, (float)originalvalue - (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
                 break;
             case TargetMode.Multiply:
-                fieldInfo.SetValue(instance, originalvalue * value);
+                fieldInfo.SetValue(instance, (float)originalvalue * (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
                 break;
             case TargetMode.Divide:
-                fieldInfo.SetValue(instance, originalvalue / value);
+                fieldInfo.SetValue(instance, (float)originalvalue / (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
                 break;
             case TargetMode.Set:
-                fieldInfo.SetValue(instance, value);
+                fieldInfo.SetValue(instance, (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
                 break;
             default: throw new InvalidOperationException($"Must define a mode. Available: {string.Join("\n", Enum.GetNames(typeof(TargetMode)))}");
         }
@@ -77,6 +81,10 @@ public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
     private List<StatModifier> statBases;
     private StatModifier statModifier;
 
+    public override void ResetField()
+    {
+        this.statModifier.value = Convert.ToSingle(originalvalue);
+    }
     public override void CacheField()
     {
         instance = GenDefDatabase.GetDefSilentFail(defType, defName);

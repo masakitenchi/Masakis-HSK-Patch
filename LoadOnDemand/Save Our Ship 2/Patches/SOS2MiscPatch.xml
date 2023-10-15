@@ -192,7 +192,7 @@
 					</value>
 				</li>
 
-				<li Class="PatchOpeartionAdd">
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipTorpedo_HighExplosive"]</xpath>
 					<value>
 						<statBases>
@@ -200,7 +200,7 @@
 						</statBases>
 					</value>
 				</li>
-				<li Class="PatchOpeartionAdd">
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipTorpedo_EMP"]</xpath>
 					<value>
 						<statBases>
@@ -208,7 +208,7 @@
 						</statBases>
 					</value>
 				</li>
-				<li Class="PatchOpeartionAdd">
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]</xpath>
 					<value>
 						<statBases>

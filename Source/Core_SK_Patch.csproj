@@ -51,6 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Comp\HediffCompProperties_Fever.cs" />
+    <Compile Include="Hotswap.cs" />
     <Compile Include="Patches\BetterInfestation.cs" />
     <Compile Include="Comp\CompProperties_Engine.cs" />
     <Compile Include="Patches\CrossCompat_Minerals_SOS2.cs" />

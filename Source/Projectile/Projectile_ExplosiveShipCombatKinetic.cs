@@ -16,7 +16,7 @@ public class Projectile_ExplosiveShipCombatKinetic : Projectile_ExplosiveShipCom
     private static readonly float _radiusFactor = 5f;
     private int _ExplosionCounter = 5;
 
-    public override void Tick()
+    /*public override void Tick()
     {
         ThingWithCompsReversePatch.Tick(this);
         #region Vanilla Copied
@@ -52,7 +52,7 @@ public class Projectile_ExplosiveShipCombatKinetic : Projectile_ExplosiveShipCom
             }
         }
         #endregion
-    }
+    }*/
     public override void Impact(Thing hitThing, bool blockedByShield = false)
     {
         if (blockedByShield) this.Destroy();

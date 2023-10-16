@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Mono.Cecil;
+using System.Reflection;
 
 namespace Core_SK_Patch;
 public abstract class ResearchMod_ManipulateField : ResearchMod
@@ -30,10 +31,10 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
     public string defName;
     public Type defType;
     public string field;
-    public float valueFloat;
-    public int valueInt;
+    public float value;
     public TargetMode mode;
 
+    private AccessTools.FieldRef<float> fieldRef;
     public override void CacheField()
     {
         instance = GenDefDatabase.GetDefSilentFail(defType, defName);
@@ -48,19 +49,19 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
         switch (mode)
         {
             case TargetMode.Add:
-                fieldInfo.SetValue(instance, (float)originalvalue + (originalvalue is float? Convert.ToSingle(originalvalue): Convert.ToInt32(originalvalue)));
+                fieldInfo.SetValue(instance, (originalvalue is float? Convert.ToSingle(originalvalue): Convert.ToInt32(originalvalue)) + value);
                 break;
             case TargetMode.Subtract:
-                fieldInfo.SetValue(instance, (float)originalvalue - (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
+                fieldInfo.SetValue(instance, (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)) - value);
                 break;
             case TargetMode.Multiply:
-                fieldInfo.SetValue(instance, (float)originalvalue * (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
+                fieldInfo.SetValue(instance, (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)) * value);
                 break;
             case TargetMode.Divide:
-                fieldInfo.SetValue(instance, (float)originalvalue / (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
+                fieldInfo.SetValue(instance, (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)) / value);
                 break;
             case TargetMode.Set:
-                fieldInfo.SetValue(instance, (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)));
+                fieldInfo.SetValue(instance, value);
                 break;
             default: throw new InvalidOperationException($"Must define a mode. Available: {string.Join("\n", Enum.GetNames(typeof(TargetMode)))}");
         }

@@ -19,12 +19,12 @@ public static class HediffDefOfLocal
 }
 #endif
 
-public class Core_SK_Patch : Mod
+public class Main : Mod
 {
     public static Harmony harmony;
     public static ModSettings settings;
     internal static StringBuilder sb = new StringBuilder("Core_SK Patch is initializing:\n");
-    public Core_SK_Patch(ModContentPack content) : base(content)
+    public Main(ModContentPack content) : base(content)
     {
         harmony = new Harmony("com.reggex.HSKPatch");
         settings = this.GetSettings<Settings>();

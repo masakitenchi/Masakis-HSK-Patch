@@ -25,7 +25,7 @@ public static class Patch_NonStunnableMannedTurret
     /*
              * // stunner.Notify_DamageApplied(dinfo);
 	        IL_000d: ldarg.0
-                call bool Core_SK_Patch.Patch_NonStunnableMannedTurret::HasPowerTrader()
+                call bool Main.Patch_NonStunnableMannedTurret::HasPowerTrader()
                 brfalse.s ldarg2
                 ldarg.0
 	        IL_000e: ldfld class RimWorld.StunHandler RimWorld.Building_Turret::stunner

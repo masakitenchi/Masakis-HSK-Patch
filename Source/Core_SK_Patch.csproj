@@ -66,6 +66,8 @@
     <Compile Include="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
     <Compile Include="Replacement\CompBecomeBuilding.cs" />
     <Compile Include="Replacement\CompBecomePawn.cs" />
+    <Compile Include="Replacement\CompProperties_BecomeBuilding.cs" />
+    <Compile Include="Replacement\CompProperties_BecomePawn.cs" />
     <Compile Include="ResearchMods\MechChargerPatch.cs" />
     <Compile Include="ModExt\ModExtension_BulkRecipe.cs" />
     <Compile Include="Misc\OutputLoadfolders.cs" />
@@ -112,7 +114,7 @@
       <HintPath>..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Publicize Include="ShipsHaveInsides"/>
+    <Publicize Include="ShipsHaveInsides" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

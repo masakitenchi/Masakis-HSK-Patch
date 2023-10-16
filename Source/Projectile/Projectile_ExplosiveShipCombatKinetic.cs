@@ -87,6 +87,7 @@ public class Projectile_ExplosiveShipCombatKinetic : Projectile_ExplosiveShipCom
         FloatRange range = new FloatRange(degrees - 30f, degrees + 30f);
         CoroutineDummy._coroutineDummy.StartCoroutine(CoroutineDummy.ExplosionCoroutine(this.Position,
                                                                                         this.origin,
+                                                                                        this.destination,
                                                                                         this.Map,
                                                                                         this.def.projectile.explosionRadius / 3,
                                                                                         def.projectile.damageDef,
@@ -129,6 +130,7 @@ internal class CoroutineDummy : MonoBehaviour
 
     internal static IEnumerator ExplosionCoroutine(IntVec3 center,
                                                    Vector3 origin,
+                                                   Vector3 destination,
                                                    Map map,
                                                    float radius,
                                                    DamageDef damType,
@@ -144,7 +146,7 @@ internal class CoroutineDummy : MonoBehaviour
                                                    float radiusFactor = 1,
                                                    int explosionCount = 1)
     {
-        Vector3 directionVec = (center.ToVector3() - origin).normalized;
+        Vector3 directionVec = (destination - origin).normalized;
         directionVec *= radius / 2;
         var ExplosionPos = center;
         var PreviousPos = ExplosionPos;

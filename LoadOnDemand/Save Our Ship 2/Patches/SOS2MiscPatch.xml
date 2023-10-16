@@ -192,6 +192,7 @@
 					</value>
 				</li>
 
+				<!-- Torpedo market values -->
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipTorpedo_HighExplosive"]</xpath>
 					<value>
@@ -215,6 +216,25 @@
 							<MarketValue>5000</MarketValue>
 						</statBases>
 					</value>
+				</li>
+				
+				<!-- Replace their comps to avoid ThingMaker error-->
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="PersonalShuttle" or 
+						defName="CargoShuttle" or 
+						defName="HeavyShuttle" or 
+						defName="DropshipShuttle"]/comps/li[@Class="CompProperties_BecomePawn"]</xpath>
+					<attribute>Class</attribute>
+					<value>Core_SK_Patch.CompProperties_BecomePawn</value>
+				</li>
+				
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or 
+						defName="ShuttleCargoRace" or 
+						defName="ShuttleHeavyRace" or 
+						defName="ShuttleDropshipRace"]/comps/li[@Class="CompProperties_BecomeBuilding"]</xpath>
+					<attribute>Class</attribute>
+					<value>Core_SK_Patch.CompProperties_BecomeBuilding</value>
 				</li>
 			</operations>
 		</match>

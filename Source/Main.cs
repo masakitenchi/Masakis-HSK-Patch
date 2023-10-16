@@ -1,4 +1,4 @@
-﻿global using System;
+global using System;
 global using RimWorld;
 global using Verse;
 global using HarmonyLib;

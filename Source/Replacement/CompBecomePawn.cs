@@ -7,11 +7,11 @@ namespace Core_SK_Patch
 	{
 		private static readonly Texture2D TransformCommandTex = ContentFinder<Texture2D>.Get("UI/Hover_On_Icon");
 
-        public CompProperties_BecomePawn Props
+        public Core_SK_Patch.CompProperties_BecomePawn Props
 		{
 			get
 			{
-				return (CompProperties_BecomePawn)this.props;
+				return (Core_SK_Patch.CompProperties_BecomePawn)this.props;
 			}
 		}
 

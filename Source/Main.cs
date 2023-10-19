@@ -6,6 +6,8 @@ global using UnityEngine;
 global using System.Collections.Generic;
 global using System.Text;
 global using System.Linq;
+using System.IO;
+using System.Reflection;
 
 namespace Core_SK_Patch;
 
@@ -21,6 +23,11 @@ public static class HediffDefOfLocal
 
 public class Main : Mod
 {
+    private Dictionary<string, string> CompatAssemblies = new Dictionary<string, string>()
+    {
+        {"kentington.saveourship2","SOS2Compat"}
+    };
+
     public static Harmony harmony;
     public static ModSettings settings;
     internal static StringBuilder sb = new StringBuilder("Core_SK Patch is initializing:\n");
@@ -40,7 +47,7 @@ public class Main : Mod
         harmony.Patch(AccessTools.Method(typeof(AddictionUtility), "CanBingeOnNow"), null, new HarmonyMethod(patchType, "CanBingeOnNowPostfix"));
         sb.AppendLine(" - Methadone Fix (1.3 only)");
 #endif
-        if(Settings.EnableBulkRecipe)
+        if (Settings.EnableBulkRecipe)
         {
             LongEventHandler.QueueLongEvent(() =>
             {
@@ -88,6 +95,19 @@ public class Main : Mod
                 Log.Message("[Core SK Patch]" + sb.ToString());
             }, "BulkRecipe", false, null);
         }
+        foreach (var mod in CompatAssemblies)
+        {
+            sb.AppendLine("Core SK Patch :: Loading Compat dlls:");
+            if (ModsConfig.IsActive(mod.Key))
+            {
+                if (TryLoadCompatAssembly(mod.Value, out var assembly))
+                {
+                    harmony.PatchAll(assembly);
+                }
+
+            }
+        }
+
         harmony.PatchAll();
         //harmony.Unpatch(AccessTools.Method(typeof(RegionTypeUtility), nameof(RegionTypeUtility.GetExpectedRegionType)), HarmonyPatchType.All, "skyarkhangel.HSK");
         /*
@@ -129,6 +149,35 @@ public class Main : Mod
         Settings.InfestationPreventionRadius = ls.SliderLabeled($"Deep Infestation Radius : {Settings.InfestationPreventionRadius:F2}", Settings.InfestationPreventionRadius, 10f, 150f, tooltip: "If one deep drill has an infestation recently, it will prevent all deep drills in a certain radius from being infested again. This slider lets you change how big that circle is");
         ls.CheckboxLabeled("Never die by low health", ref Settings.NeverDieByLowHealth, "Removes the health check for death.\n(Need restart after chaning the value)");
         ls.End();
+    }
+
+
+    // Main code borrowed from CE's loader dll
+    private bool TryLoadCompatAssembly(string name, out Assembly assembly)
+    {
+        assembly = null;
+        //DirectoryInfo locationInfo = new DirectoryInfo(this.Content.RootDir).GetDirectories("\\AssembliesCompat").FirstOrFallback(null);
+        FileInfo assemblyFile = new DirectoryInfo(this.Content.RootDir).GetDirectories("AssembliesCompat")?.FirstOrDefault()?.GetFiles(name + ".dll")?.First();
+        if (assemblyFile is not null)
+        {
+            byte[] rawAssembly = File.ReadAllBytes(assemblyFile.FullName);
+            /*FileInfo pdbFile = new FileInfo(Path.Combine(assemblyFile.DirectoryName, Path.GetFileNameWithoutExtension(assemblyFile.FullName)) + ".pdb");
+            if (pdbFile.Exists)
+            {
+                assembly = AppDomain.CurrentDomain.Load(rawAssembly, File.ReadAllBytes(pdbFile.FullName));
+            }
+            else
+            {*/
+                assembly = AppDomain.CurrentDomain.Load(rawAssembly);
+            //}
+            if (assembly != null)
+            {
+                Content.assemblies.loadedAssemblies.Add(assembly);
+                sb.AppendLine(" - " + assembly.FullName);
+                return true;
+            }
+        }
+        return false;
     }
     #region Bulk Recipe
     static RecipeDef GenerateBulkRecipe(ModExtension_BulkRecipe ModExt, RecipeDef Recipe)

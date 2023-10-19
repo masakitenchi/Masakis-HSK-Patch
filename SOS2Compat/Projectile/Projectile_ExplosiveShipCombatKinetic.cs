@@ -13,7 +13,7 @@ namespace RimWorld;
 public class Projectile_ExplosiveShipCombatKinetic : Projectile_ExplosiveShipCombat
 {
     //Thinking of a chunk of bullet hit the hull. The energy it carries is unaffected but the explosion it creates should be more "directional".
-    private static readonly float _radiusFactor = 5f;
+    private const float _radiusFactor = 5f;
     private int _ExplosionCounter = 5;
 
     /*public override void Tick()

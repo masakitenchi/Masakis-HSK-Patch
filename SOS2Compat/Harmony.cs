@@ -60,7 +60,7 @@ public static class ShuttleStuffPatch
                 break;
             }
         }
-        File.WriteAllText("E:\\after.txt", string.Join("\n", inst.Select(x => x.ToString())));
+        //File.WriteAllText("E:\\after.txt", string.Join("\n", inst.Select(x => x.ToString())));
         if (!inserted)
         {
             Log.Error($"Core_SK_Patch :: Cannot Patch CompBecomePawn.myPawn");
@@ -105,7 +105,7 @@ public static class ShuttleStuffPatch
                 break;
             }
         }
-        File.WriteAllText("E:\\after1.txt", string.Join("\n", inst.Select(x => x.ToString())));
+        //File.WriteAllText("E:\\after1.txt", string.Join("\n", inst.Select(x => x.ToString())));
         if (idnull == -1)
         {
             Log.Error("Core_SK_Patch :: Cannot Patch CompBecomeBuilding.transform");

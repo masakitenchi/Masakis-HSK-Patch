@@ -219,23 +219,37 @@
 				</li>
 				
 				<!-- Replace their comps to avoid ThingMaker error-->
-				<li Class="PatchOperationAttributeSet">
+				<!-- <li Class="PatchOperationAttributeSet">
 					<xpath>Defs/ThingDef[defName="PersonalShuttle" or 
 						defName="CargoShuttle" or 
 						defName="HeavyShuttle" or 
 						defName="DropshipShuttle"]/comps/li[@Class="CompProperties_BecomePawn"]</xpath>
 					<attribute>Class</attribute>
 					<value>Core_SK_Patch.CompProperties_BecomePawn</value>
-				</li>
+				</li> -->
 				
-				<li Class="PatchOperationAttributeSet">
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or 
 						defName="ShuttleCargoRace" or 
 						defName="ShuttleHeavyRace" or 
-						defName="ShuttleDropshipRace"]/comps/li[@Class="CompProperties_BecomeBuilding"]</xpath>
-					<attribute>Class</attribute>
-					<value>Core_SK_Patch.CompProperties_BecomeBuilding</value>
+						defName="ShuttleDropshipRace"]/comps</xpath>
+					<value>
+						<li><compClass>Core_SK_Patch.CompShuttleStuff</compClass></li>
+					</value>
 				</li>
+				
+
+				<!-- <li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or 
+						defName="ShuttleCargoRace" or 
+						defName="ShuttleHeavyRace" or 
+						defName="ShuttleDropshipRace"]/comps</xpath>
+					<value>
+						<li>
+							<compClass>Core_SK_Patch.CompReport</compClass>
+						</li>
+					</value>
+				</li> -->
 			</operations>
 		</match>
     </Operation>

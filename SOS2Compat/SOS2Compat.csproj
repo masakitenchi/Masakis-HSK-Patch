@@ -33,14 +33,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Comp\CompShuttleStuff.cs" />
     <Compile Include="CrossCompat_Minerals_SOS2.cs" />
+    <Compile Include="Harmony.cs" />
     <Compile Include="Hotswap.cs" />
     <Compile Include="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Replacement\CompBecomeBuilding.cs" />
-    <Compile Include="Replacement\CompBecomePawn.cs" />
-    <Compile Include="Replacement\CompProperties_BecomeBuilding.cs" />
-    <Compile Include="Replacement\CompProperties_BecomePawn.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">
@@ -52,8 +50,8 @@
       <Version>1.4.3704</Version>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
-		<ExcludeAssets>runtime</ExcludeAssets>
-		<PrivateAssets>all</PrivateAssets>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <PrivateAssets>all</PrivateAssets>
       <Version>2.2.2</Version>
     </PackageReference>
   </ItemGroup>
@@ -75,6 +73,9 @@
       <Private>False</Private>
     </Reference>
     <Publicize Include="ShipsHaveInsides" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Replacement\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

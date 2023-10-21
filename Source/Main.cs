@@ -102,7 +102,7 @@ public class Main : Mod
             {
                 if (TryLoadCompatAssembly(mod.Value, out var assembly))
                 {
-                    harmony.PatchAll(assembly);
+                    LongEventHandler.QueueLongEvent(() =>harmony.PatchAll(assembly), "SOS2Patch", false, null);
                 }
 
             }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CSP_StackLimit>堆叠上限</CSP_StackLimit>
+	<CSP_StackLimitDesc>每堆物品的最大数量。</CSP_StackLimitDesc>
+	
+</LanguageData>

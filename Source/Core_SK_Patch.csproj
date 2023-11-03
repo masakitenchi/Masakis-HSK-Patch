@@ -63,6 +63,7 @@
     <Compile Include="ModExt\ModExtension_RepeatableResearch.cs" />
     <Compile Include="Patches\NeverDieByLowHealth.cs" />
     <Compile Include="Patches\Patch_NonStunnableMannedTurret.cs" />
+    <Compile Include="Patches\ShowStackLimit.cs" />
     <Compile Include="ResearchMods\MechChargerPatch.cs" />
     <Compile Include="ModExt\ModExtension_BulkRecipe.cs" />
     <Compile Include="Misc\OutputLoadfolders.cs" />

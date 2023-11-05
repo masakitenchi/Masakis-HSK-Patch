@@ -59,7 +59,7 @@ public class ErrorChecker
     static ErrorChecker()
     {
         StringBuilder sb = new StringBuilder();
-#region Viles_Fix
+        #region Viles_Fix
         sb.AppendLine("Checking plants that's harvestable but don't have harvestedThingDef. Setting these plants' harvestYield to 0.");
         foreach(var plant in DefDatabase<ThingDef>.AllDefs.Where(x => x.plant is not null && x.plant.Harvestable && x.plant.harvestedThingDef == null))
         {
@@ -77,12 +77,6 @@ public class ErrorChecker
         }*/
 
         Log.Message(sb.ToString());
-    }
-
-    //[HarmonyPatch(typeof(ResearchProjectDef),nameof(ResearchProjectDef.ReapplyAllMods))]
-    public static void Postfix()
-    {
-        Log.Message(StackTraceUtility.ExtractStackTrace());
     }
 }
 

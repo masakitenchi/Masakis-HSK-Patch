@@ -35,14 +35,8 @@ public class Main : Mod
     {
         harmony = new Harmony("com.reggex.HSKPatch");
         settings = this.GetSettings<Settings>();
-        //SOS2 Compatibility Patch - now using xml patch for better compatibility
-        /*if (ModsConfig.IsActive("kentington.saveourship2"))
-        {
-            harmony.Patch(AccessTools.Method(typeof(IncidentWorker_SeismicActivity), "CanFireNowSub"), null, new HarmonyMethod(patchType, "CanFireNowSubPostfix"));
-            sb.AppendLine(" - Save Our Ship 2 Patched");
-        }*/
-        //Methadone Fix (Disabled in 1.4 since 1.4 has already added Methadone back)
 #if ODT
+        //Methadone Fix (Disabled in 1.4 since 1.4 has already added Methadone back)
         harmony.Patch(AccessTools.Method(typeof(ThoughtWorker_Hediff), "CurrentStateInternal"), null, new HarmonyMethod(patchType, "MethadoneHigh"));
         harmony.Patch(AccessTools.Method(typeof(AddictionUtility), "CanBingeOnNow"), null, new HarmonyMethod(patchType, "CanBingeOnNowPostfix"));
         sb.AppendLine(" - Methadone Fix (1.3 only)");

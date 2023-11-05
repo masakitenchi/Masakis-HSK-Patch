@@ -93,3 +93,27 @@ public static class ResearchScriber
         modLister.Clear();
     }
 }
+
+public static class Log
+{
+    private static readonly string Prefix = "[Core SK Patch] ::";
+    public static void Message(string message)
+    {
+        Verse.Log.Message(Prefix + message);
+    }
+
+    public static void Warning(string message)
+    {
+        Verse.Log.Warning(Prefix + message);
+    }
+
+    public static void Error(string message)
+    {
+        Verse.Log.Error(Prefix + message);
+    }
+
+    public static void WarningOnce(string message, int seed)
+    {
+        Verse.Log.WarningOnce(Prefix + message, seed);
+    }
+}

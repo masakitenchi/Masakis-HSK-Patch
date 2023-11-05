@@ -64,6 +64,10 @@
       <HintPath>..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Core_SK_Patch">
+      <HintPath>..\Assemblies\Core_SK_Patch.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Minerals">
       <HintPath>..\..\Minerals\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
@@ -72,7 +76,7 @@
       <HintPath>..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Publicize Include="ShipsHaveInsides" />
+    <Publicize Include="ShipsHaveInsides;Assembly-CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Replacement\" />

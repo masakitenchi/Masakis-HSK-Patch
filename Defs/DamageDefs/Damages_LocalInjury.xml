@@ -19,5 +19,10 @@
 		<isRanged>true</isRanged>
 		<makesAnimalsFlee>true</makesAnimalsFlee>
 		<externalViolenceForMechanoids>true</externalViolenceForMechanoids>
+		<modExtensions>
+			<li Class="CombatExtended.DamageDefExtensionCE">
+				<isAmbientDamage>true</isAmbientDamage>
+			</li>
+		</modExtensions>
 	</DamageDef>
 </Defs>

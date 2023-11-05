@@ -13,7 +13,7 @@ public static class BetterInfestation
     {
         if (InHorDistOf == null)
         {
-            Main.sb.AppendLine("Error: IntVec3.InHorDistOf not found.");
+            Log.Error("Error: IntVec3.InHorDistOf not found.");
             return instructions;
         }
         bool found = false;
@@ -33,7 +33,7 @@ public static class BetterInfestation
         }
         if (!found)
         {
-            Main.sb.AppendLine("Error: Cannot Patch DeepDrill Infestation. Please Contat the author.");
+            Log.Error("Error: Cannot Patch DeepDrill Infestation. Please Contat the author.");
             return instructions;
         }
         /*File.WriteAllLines("E:\\Validatorbefore.txt", instructions.Select(x => x.ToString()));

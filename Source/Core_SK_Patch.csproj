@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="Comp\CompReport.cs" />
     <Compile Include="Comp\HediffCompProperties_Fever.cs" />
-    <Compile Include="Hotswap.cs" />
+    <Compile Include="Attributes.cs" />
     <Compile Include="Patches\BetterInfestation.cs" />
     <Compile Include="Comp\CompProperties_Engine.cs" />
     <Compile Include="Misc\EngineModExtension.cs" />
@@ -102,7 +102,7 @@
       <HintPath>..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Publicize Include="ShipsHaveInsides" />
+    <Publicize Include="ShipsHaveInsides;Assembly-CSharp" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

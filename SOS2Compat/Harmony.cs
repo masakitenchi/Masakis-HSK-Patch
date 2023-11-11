@@ -21,12 +21,12 @@ public static class ShuttleStuffPatch
 	    IL_0065: callvirt instance class ['Assembly-CSharp']Verse.ThingDef ['Assembly-CSharp']Verse.Thing::get_Stuff()
 	    IL_006a: stfld class ['Assembly-CSharp']Verse.ThingDef Core_SK_Patch.CompBecomeBuilding::stuff
     */
-    private static MethodInfo TryGetComp = AccessTools.Method(typeof(ThingCompUtility), nameof(ThingCompUtility.TryGetComp), generics: new Type[] { typeof(CompShuttleStuff) });
-    private static MethodInfo get_Stuff = AccessTools.PropertyGetter(typeof(Thing), nameof(Thing.Stuff));
+    private static readonly MethodInfo TryGetComp = AccessTools.Method(typeof(ThingCompUtility), nameof(ThingCompUtility.TryGetComp), generics: new Type[] { typeof(CompShuttleStuff) });
+    private static readonly MethodInfo get_Stuff = AccessTools.PropertyGetter(typeof(Thing), nameof(Thing.Stuff));
 
-    private static FieldInfo CompStuff = AccessTools.Field(typeof(CompShuttleStuff), nameof(CompShuttleStuff.stuff));
-    private static FieldInfo pawn_apparel = AccessTools.Field(typeof(Pawn), nameof(Pawn.apparel));
-    private static FieldInfo parent = AccessTools.Field(typeof(ThingComp), nameof(ThingComp.parent));
+    private static readonly FieldInfo CompStuff = AccessTools.Field(typeof(CompShuttleStuff), nameof(CompShuttleStuff.stuff));
+    private static readonly FieldInfo pawn_apparel = AccessTools.Field(typeof(Pawn), nameof(Pawn.apparel));
+    private static readonly FieldInfo parent = AccessTools.Field(typeof(ThingComp), nameof(ThingComp.parent));
 
     [HarmonyPrepare]
     public static bool Prepare()
@@ -70,7 +70,7 @@ public static class ShuttleStuffPatch
     }
 
 
-    private static MethodInfo MakeThing = AccessTools.Method(typeof(ThingMaker), nameof(ThingMaker.MakeThing));
+    private static readonly MethodInfo MakeThing = AccessTools.Method(typeof(ThingMaker), nameof(ThingMaker.MakeThing));
     /*// Building building = (Building)ThingMaker.MakeThing(Props.buildingDef);
 	IL_003d: ret
 

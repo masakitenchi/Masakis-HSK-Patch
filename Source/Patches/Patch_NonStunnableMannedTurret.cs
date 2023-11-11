@@ -6,7 +6,7 @@ namespace Core_SK_Patch;
 
 
 /// <summary>
-/// Patches all subclass of Building_Turret. Its PreApplyDamage controls the stunhandler. Checks if they has CompPowerTrader comp.
+/// Patches Building_Turret (the base class of all turrets). Its PreApplyDamage controls the stunhandler. Checks if it has CompPowerTrader comp.
 /// </summary>
 [HarmonyPatch]
 public static class Patch_NonStunnableMannedTurret
@@ -25,7 +25,7 @@ public static class Patch_NonStunnableMannedTurret
     /*
              * // stunner.Notify_DamageApplied(dinfo);
 	        IL_000d: ldarg.0
-                call bool Main.Patch_NonStunnableMannedTurret::HasPowerTrader()
+                call bool Core_SK_Patch.Patch_NonStunnableMannedTurret::HasPowerTrader()
                 brfalse.s ldarg2
                 ldarg.0
 	        IL_000e: ldfld class RimWorld.StunHandler RimWorld.Building_Turret::stunner

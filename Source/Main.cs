@@ -25,7 +25,8 @@ public class Main : Mod
 {
     private Dictionary<string, string> CompatAssemblies = new Dictionary<string, string>()
     {
-        {"kentington.saveourship2","SOS2Compat"}
+        {"kentington.saveourship2","SOS2Compat" },
+        {"notfood.seedsplease", "SeedsPleaseCompat" }
     };
 
     public static Harmony harmony;
@@ -89,9 +90,9 @@ public class Main : Mod
                 Log.Message("[Core SK Patch]" + sb.ToString());
             }, "BulkRecipe", false, null);
         }
+        sb.AppendLine(" - Loading Compat dlls:");
         foreach (var mod in CompatAssemblies)
         {
-            sb.AppendLine(" - Loading Compat dlls:");
             if (ModsConfig.IsActive(mod.Key))
             {
                 if (TryLoadCompatAssembly(mod.Value, out var assembly))

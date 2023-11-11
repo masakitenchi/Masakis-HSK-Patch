@@ -41,7 +41,7 @@ public static class Patch_ModContentPack
     [HarmonyPriority(800)]
     [HarmonyPatch(typeof(ModContentPack), nameof(ModContentPack.LoadPatches))]
     [HarmonyTranspiler]
-    public static IEnumerable<CodeInstruction> ShowFileName(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+    public static IEnumerable<CodeInstruction> ShowFileName(IEnumerable<CodeInstruction> instructions)
     {
         bool foundstr = false;
         bool foundFormat = false;
@@ -49,17 +49,17 @@ public static class Patch_ModContentPack
         //File.WriteAllLines("E:\\beforeRep.txt", instructions.Select(x => x.ToString()));
         foreach (var inst in instructions)
         {
-            if (!foundstr && inst.Is(OpCodes.Ldstr, "Unexpected element in patch XML; got {0}, expected 'Operation'"))
+            if (inst.opcode == OpCodes.Ldstr && (inst.operand as string).Contains("Unexpected element in patch XML"))
             {
-                inst.operand = "Unexpected element in patch XML; got {0}, expected 'Operation'. \nPath: {1}";
-                foundstr = true;
+                foundstr.Invert_Bool();
+                inst.operand += "\nPath: {1}";
                 //sb.WriteLine(inst.ToString());
                 yield return inst;
                 continue;
             }
-            if (foundstr && !foundFormat && inst.Is(OpCodes.Call, Format2))
+            if (inst.Is(OpCodes.Call, Format2))
             {
-                foundFormat = true;
+                foundFormat.Invert_Bool();
                 inst.operand = Format3;
                 //sb.WriteLine(new CodeInstruction(OpCodes.Ldloc_0).ToString());
                 yield return new CodeInstruction(OpCodes.Ldloc_0);
@@ -76,9 +76,9 @@ public static class Patch_ModContentPack
             //sb.WriteLine(inst.ToString());
             yield return inst;
         }
-        if(!foundstr || !foundFormat)
+        if(foundstr ^ foundFormat)
         {
-            Log.Error("Cannot patch");
+            Log.Error("Patch error.");
         }
     }
 

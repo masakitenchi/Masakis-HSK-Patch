@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-
-	<Operation Class="PatchOperationAdd">
+	<!-- Integrated into base HSK in commit 900d421 -->
+	<!-- <Operation Class="PatchOperationAdd">
 		<xpath>Defs/GeneDef[contains(defName,'DarkVision')]</xpath>
 		<value>
 			<hediffGiversCannotGive>
 				<li>Enlighten_Dark</li>
 			</hediffGiversCannotGive>
 		</value>
-	</Operation>
+	</Operation> -->
 </Patch>

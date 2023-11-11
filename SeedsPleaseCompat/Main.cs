@@ -21,9 +21,9 @@ public static class SeedPatch
         if(__instance is SeedDef seed)
         {
             yield return new StatDrawEntry(
-                StatCategoryDefOf.BasicsImportant, "SkillRequirement",
+                StatCategoryDefOf.BasicsImportant, "LblSkill".Translate(),
                 seed.plant.plant.sowMinSkill.ToString(),
-                "Minimal planting skill needed for sowing",
+                "LblSkillDesc".Translate(),
                 500,
                 hyperlinks: new Dialog_InfoCard.Hyperlink[]
                 {

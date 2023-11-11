@@ -4,7 +4,7 @@
     <li>/</li>
     <li>Patches/Core_SK</li>
     <li IfModActive="skyarkhangel.hsk">LoadOnDemand/Core_SK_1.3</li>
-    <li IfModActive="kentington.saveourship2">LoadOnDemand\Save Our Ship 2</li>
+    <!-- <li IfModActive="kentington.saveourship2">LoadOnDemand\Save Our Ship 2</li> -->
   </v1.3>
   <v1.4>
     <li>/</li>
@@ -17,5 +17,6 @@
     <li IfModActive="vitech.materialsscience">LoadOnDemand/Material Science</li>
     <li IfModActive="aoba.motorization.engine">LoadOnDemand/Engine Industries</li>
     <li IfModActive="garwel.celsius.sk">LoadOnDemand/Celsius_SK</li>
+    <li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li>
   </v1.4>
 </loadFolders>

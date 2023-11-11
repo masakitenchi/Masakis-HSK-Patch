@@ -10,6 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOS2Compat", "..\SOS2Compat
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8} = {B61E2EC5-DACF-487B-B528-87EF0532E8B8}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedsPleaseCompat", "..\SeedsPleaseCompat\SeedsPleaseCompat.csproj", "{F78A2B8F-2761-4117-8D43-65FE816ED501}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8} = {B61E2EC5-DACF-487B-B528-87EF0532E8B8}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		1.3|Any CPU = 1.3|Any CPU
@@ -39,6 +44,16 @@ Global
 		{B03F751E-BB50-4818-A689-2B17B05DF14A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B03F751E-BB50-4818-A689-2B17B05DF14A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B03F751E-BB50-4818-A689-2B17B05DF14A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.1.3|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.1.3|Any CPU.Build.0 = Debug|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.1.4|Any CPU.ActiveCfg = Release|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.1.4|Any CPU.Build.0 = Release|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.1.4-debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.1.4-debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78A2B8F-2761-4117-8D43-65FE816ED501}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

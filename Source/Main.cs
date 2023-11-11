@@ -30,7 +30,7 @@ public class Main : Mod
 
     public static Harmony harmony;
     public static ModSettings settings;
-    internal static StringBuilder sb = new StringBuilder("Core_SK Patch is initializing:\n");
+    internal static StringBuilder sb = new StringBuilder("Initializing:\n");
     public Main(ModContentPack content) : base(content)
     {
         harmony = new Harmony("com.reggex.HSKPatch");
@@ -91,7 +91,7 @@ public class Main : Mod
         }
         foreach (var mod in CompatAssemblies)
         {
-            sb.AppendLine("Core SK Patch :: Loading Compat dlls:");
+            sb.AppendLine(" - Loading Compat dlls:");
             if (ModsConfig.IsActive(mod.Key))
             {
                 if (TryLoadCompatAssembly(mod.Value, out var assembly))
@@ -141,7 +141,7 @@ public class Main : Mod
         ls.Begin(inRect);
         ls.CheckboxLabeled("Enable Bulk Recipe", ref Settings.EnableBulkRecipe, "Check to generate bulk recipes for patched recipes (Needs restart)");
         Settings.InfestationPreventionRadius = ls.SliderLabeled($"Deep Infestation Radius : {Settings.InfestationPreventionRadius:F2}", Settings.InfestationPreventionRadius, 10f, 150f, tooltip: "If one deep drill has an infestation recently, it will prevent all deep drills in a certain radius from being infested again. This slider lets you change how big that circle is");
-        ls.CheckboxLabeled("Never die by low health", ref Settings.NeverDieByLowHealth, "Removes the health check for death.\n(Need restart after chaning the value)");
+        ls.CheckboxLabeled("Never die by low health", ref Settings.NeverDieByLowHealth, "Removes the health check for death.\n(Need restart after changing the value)");
         ls.End();
     }
 

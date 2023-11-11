@@ -1,7 +1,5 @@
-﻿using RimWorld;
-using SK;
+﻿using SK;
 using System.Runtime.CompilerServices;
-using Verse;
 using Verse.Profile;
 
 namespace Core_SK_Patch;
@@ -96,7 +94,7 @@ public static class ResearchScriber
 
 public static class Log
 {
-    private static readonly string Prefix = "[Core SK Patch] ::";
+    private static readonly string Prefix = "[Core SK Patch] :: ";
     public static void Message(string message)
     {
         Verse.Log.Message(Prefix + message);

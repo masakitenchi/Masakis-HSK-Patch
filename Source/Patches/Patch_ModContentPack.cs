@@ -44,7 +44,7 @@ public static class Patch_ModContentPack
     public static IEnumerable<CodeInstruction> ShowFileName(IEnumerable<CodeInstruction> instructions)
     {
         int strCount = 0, formatCount = 0;
-        File.WriteAllLines("E:\\beforeRep.txt", instructions.Select(x => x.ToString()));
+        //File.WriteAllLines("E:\\beforeRep.txt", instructions.Select(x => x.ToString()));
         List<CodeInstruction> inst = instructions.ToList();
         for(var i = 0; i < inst.Count; i++)
         {
@@ -66,7 +66,7 @@ public static class Patch_ModContentPack
                 });
             }
         }
-        File.WriteAllLines("E:\\afterRep.txt", inst.Select(x => x.ToString()));
+        //File.WriteAllLines("E:\\afterRep.txt", inst.Select(x => x.ToString()));
         /*foreach (var inst in instructions)
         {
             if (inst.opcode == OpCodes.Ldstr && (inst.operand as string).Contains("Unexpected element in patch XML"))

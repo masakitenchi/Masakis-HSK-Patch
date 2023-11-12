@@ -1,6 +1,7 @@
 ﻿using SK;
 using System.Runtime.CompilerServices;
 using Verse.Profile;
+using System.Xml;
 
 namespace Core_SK_Patch;
 
@@ -57,6 +58,20 @@ public static class Utilities
         explosion.propagationSpeed = comp.propagationSpeed;
         return explosion;
     }
+
+    /*[DebugOutput(name = "OutputTerrains")]
+    public static void TerrainDefs()
+    {
+        XmlDocument doc = new XmlDocument();
+        doc.AppendChild(doc.CreateXmlDeclaration("1.0", "UTF-8", null));
+        XmlElement Defs = doc.CreateElement("Defs");
+        foreach(var def in DefDatabase<TerrainDef>.AllDefs)
+        {
+            XmlElement defele = doc.CreateElement(def.defName);
+            
+        }
+        doc.AppendChild(Defs);
+    }*/
 }
 
 [HarmonyPatch]
@@ -113,5 +128,10 @@ public static class Log
     public static void WarningOnce(string message, int seed)
     {
         Verse.Log.WarningOnce(Prefix + message, seed);
+    }
+
+    public static void ErrorTranspiler(string message, TranspilerAuxliliaryAttribute attribute = null)
+    {
+        Verse.Log.Error(Prefix + message + $"\nTarget : {attribute.TargetClass}.{attribute.TargetMethod}");
     }
 }

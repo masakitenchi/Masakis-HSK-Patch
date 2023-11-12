@@ -43,11 +43,31 @@ public static class Patch_ModContentPack
     [HarmonyTranspiler]
     public static IEnumerable<CodeInstruction> ShowFileName(IEnumerable<CodeInstruction> instructions)
     {
-        bool foundstr = false;
-        bool foundFormat = false;
-        //StreamWriter sb = File.CreateText("E:\\afterRep.txt");
-        //File.WriteAllLines("E:\\beforeRep.txt", instructions.Select(x => x.ToString()));
-        foreach (var inst in instructions)
+        int strCount = 0, formatCount = 0;
+        File.WriteAllLines("E:\\beforeRep.txt", instructions.Select(x => x.ToString()));
+        List<CodeInstruction> inst = instructions.ToList();
+        for(var i = 0; i < inst.Count; i++)
+        {
+            if (inst[i].opcode == OpCodes.Ldstr && (inst[i].operand as string).Contains("Unexpected"))
+            {
+                ++strCount;
+                inst[i].operand += "\n Path: {1}";
+            }
+            if (inst[i].Is(OpCodes.Call, Format2))
+            {
+                ++formatCount;
+                inst[i].operand = Format3;
+                inst.InsertRange(i, new CodeInstruction[]
+                {
+                    new CodeInstruction(OpCodes.Ldloc_0),
+                    new CodeInstruction(OpCodes.Ldloc_1),
+                    new CodeInstruction(OpCodes.Callvirt, get_Item),
+                    new CodeInstruction(OpCodes.Callvirt, FullFolderPath)
+                });
+            }
+        }
+        File.WriteAllLines("E:\\afterRep.txt", inst.Select(x => x.ToString()));
+        /*foreach (var inst in instructions)
         {
             if (inst.opcode == OpCodes.Ldstr && (inst.operand as string).Contains("Unexpected element in patch XML"))
             {
@@ -75,11 +95,13 @@ public static class Patch_ModContentPack
             }
             //sb.WriteLine(inst.ToString());
             yield return inst;
-        }
-        if(foundstr ^ foundFormat)
+        }*/
+        if (strCount != formatCount)
         {
-            Log.Error("Patch error.");
+            Log.Error($"Patch error in {nameof(Patch_ModContentPack)}.");
+            return instructions;
         }
+        return inst;
     }
 
 

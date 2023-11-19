@@ -62,6 +62,7 @@
     <Compile Include="ModExt\ModExtension_FixedValue.cs" />
     <Compile Include="ModExt\ModExtension_RepeatableResearch.cs" />
     <Compile Include="Patches\NeverDieByLowHealth.cs" />
+    <Compile Include="Patches\Patch_ManhunterHostileToEveryHumanBeing.cs" />
     <Compile Include="Patches\Patch_ModContentPack.cs" />
     <Compile Include="Patches\Patch_NonStunnableMannedTurret.cs" />
     <Compile Include="Patches\Rimatomic_RemoveWarning.cs" />

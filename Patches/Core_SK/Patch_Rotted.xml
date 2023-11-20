@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RottedMush" or defName="RottedMeat"]/comps</xpath> 
+		<value>
+			<li>
+				<compClass>Core_SK_Patch.CompAutoForbidden</compClass>
+			</li>
+		</value>
+	</Operation>
+</Patch>

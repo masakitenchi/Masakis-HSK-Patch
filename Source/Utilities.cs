@@ -129,9 +129,4 @@ public static class Log
     {
         Verse.Log.WarningOnce(Prefix + message, seed);
     }
-
-    public static void ErrorTranspiler(string message, TranspilerAuxliliaryAttribute attribute = null)
-    {
-        Verse.Log.Error(Prefix + message + $"\nTarget : {attribute.TargetClass}.{attribute.TargetMethod}");
-    }
 }

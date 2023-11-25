@@ -23,19 +23,20 @@ public static class HediffDefOfLocal
 
 public class Main : Mod
 {
-    private Dictionary<string, string> CompatAssemblies = new Dictionary<string, string>()
+    private static readonly Dictionary<string, string> CompatAssemblies = new Dictionary<string, string>()
     {
         {"kentington.saveourship2","SOS2Compat" },
         {"notfood.seedsplease", "SeedsPleaseCompat" }
     };
 
     public static Harmony harmony;
-    public static ModSettings settings;
+
     internal static StringBuilder sb = new StringBuilder("Initializing:\n");
+
+
     public Main(ModContentPack content) : base(content)
     {
         harmony = new Harmony("com.reggex.HSKPatch");
-        settings = this.GetSettings<Settings>();
 #if ODT
         //Methadone Fix (Disabled in 1.4 since 1.4 has already added Methadone back)
         harmony.Patch(AccessTools.Method(typeof(ThoughtWorker_Hediff), "CurrentStateInternal"), null, new HarmonyMethod(patchType, "MethadoneHigh"));
@@ -97,12 +98,11 @@ public class Main : Mod
             {
                 if (TryLoadCompatAssembly(mod.Value, out var assembly))
                 {
-                    LongEventHandler.QueueLongEvent(() =>harmony.PatchAll(assembly), "SOS2Patch", false, null);
+                    LongEventHandler.QueueLongEvent(() => harmony.PatchAll(assembly), "SOS2Patch", false, null);
                 }
 
             }
         }
-
         harmony.PatchAll();
         //harmony.Unpatch(AccessTools.Method(typeof(RegionTypeUtility), nameof(RegionTypeUtility.GetExpectedRegionType)), HarmonyPatchType.All, "skyarkhangel.HSK");
         /*
@@ -164,7 +164,7 @@ public class Main : Mod
             }
             else
             {*/
-                assembly = AppDomain.CurrentDomain.Load(rawAssembly);
+            assembly = AppDomain.CurrentDomain.Load(rawAssembly);
             //}
             if (assembly != null)
             {

@@ -1,7 +1,16 @@
 ﻿namespace Core_SK_Patch;
 
-public class ResearchMod_ExpandOptimalTempRange : ResearchMod
-{
+public class ResearchMod_ExpandOptimalTempRange : ResearchMod_ManipulateField
+{    
+    public override void CacheField()
+    {  
+    }
+
+    public override void ResetField()
+    {
+       AccessTools.StaticFieldRefAccess<float>("Celsius.Setup:globalMinTempOffset") = 0f;
+       AccessTools.StaticFieldRefAccess<float>("Celsius.Setup:globalMaxTempOffset") = 0f;
+    }
     public override void Apply()
     {
         /*DefDatabase<ThingDef>.AllDefs.Where(x => x.IsBuildingArtificial && !x.IsFrame && x.selectable && x.useHitPoints && x.statBases is not null).Do(x =>

@@ -11,7 +11,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>11.0</LangVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -62,6 +62,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="ModExt\ModExtension_FixedValue.cs" />
     <Compile Include="ModExt\ModExtension_RepeatableResearch.cs" />
+    <Compile Include="Patches\Patch_NightVision.cs" />
     <Compile Include="Patches\NeverDieByLowHealth.cs" />
     <Compile Include="Patches\Patch_ManhunterHostileToEveryHumanBeing.cs" />
     <Compile Include="Patches\Patch_ModContentPack.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Misc\SpecialThingFilters.cs" />
     <Compile Include="StatPart\StatPart_Engine.cs" />
+    <Compile Include="Patches\Patch_GrowZoneMinFertility.cs" />
     <None Include="StatPart\StatPart_MechBuff.cs" />
     <Compile Include="TestClasses.cs" />
     <Compile Include="Misc\Transition_LowIdlePowerDraw.cs" />

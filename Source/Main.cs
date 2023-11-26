@@ -37,6 +37,7 @@ public class Main : Mod
     public Main(ModContentPack content) : base(content)
     {
         harmony = new Harmony("com.reggex.HSKPatch");
+        this.modSettings = GetSettings<Settings>();
 #if ODT
         //Methadone Fix (Disabled in 1.4 since 1.4 has already added Methadone back)
         harmony.Patch(AccessTools.Method(typeof(ThoughtWorker_Hediff), "CurrentStateInternal"), null, new HarmonyMethod(patchType, "MethadoneHigh"));

@@ -41,7 +41,7 @@ public class SpecialThingFilterWorker_RawMeat : SpecialThingFilterWorker
 
     //public override bool AlwaysMatches(ThingDef def) => ;
 
-    public override bool Matches(Thing t) => t is Corpse corpse && corpse.InnerPawn.def.race.meatDef.defName == "Meat_Muffalo";
+    public override bool Matches(Thing t) => t is Corpse corpse && corpse.InnerPawn.def.race.meatDef.defName == "Meat_Elephant";
 }
 
 /*public class SpecialThingFilterWorker_FishMeat : SpecialThingFilterWorker

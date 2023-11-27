@@ -3,7 +3,7 @@ using System;
 
 namespace Core_SK_Patch;
 
-public class OutputLoadfolders
+public class DebugActions
 {
 
     [DebugAction("Mods","OutputModLoadfolders",actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.Entry)]
@@ -32,4 +32,17 @@ public class OutputLoadfolders
         }
         Find.WindowStack.Add(new Dialog_DebugOptionListLister(options));
     }
+
+    /*[DebugAction("Mods", "ShowGraphicData", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.Entry)]
+    public static void ShowGraphicData()
+    {
+        List<DebugMenuOption> options = new();
+        foreach(ThingDef thing in DefDatabase<ThingDef>.AllDefs.Where(x => x.graphicData != null))
+        {
+            options.Add(new DebugMenuOption(thing.defName, DebugMenuOptionMode.Action, () =>
+            {
+                Log.Message($"defName:{thing.defName} graphic path: {thing.graphicData.texPath}");
+            }));
+        }
+    }*/
 }

@@ -104,11 +104,11 @@
       <HintPath>..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Publicize Include="ShipsHaveInsides;Assembly-CSharp" />
     <Reference Include="Core_SK">
       <HintPath>..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Publicize Include="ShipsHaveInsides;Assembly-CSharp" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

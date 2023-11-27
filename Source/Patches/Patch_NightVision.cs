@@ -13,12 +13,6 @@ public static class Patch_NightVision
     private static readonly MethodInfo TryApply = AccessTools.Method(typeof(HediffGiver), nameof(HediffGiver.TryApply));
 
 
-    //[HarmonyPatch(typeof(ThoughtWorker_Dark), nameof(ThoughtWorker_Dark.CurrentStateInternal))]
-    /*public static bool Nothing(ref ThoughtState __result, Pawn p)
-    {
-        __result = p.GetStatValue(CombatExtended.CE_StatDefOf.NightVisionEfficiency) >= 0.5 ? false : __result;
-        return false;
-    }*/
     static Patch_NightVision() 
     {
         Main.harmony.Patch(AccessTools.Method(typeof(ThoughtWorker_Dark), nameof(ThoughtWorker_Dark.CurrentStateInternal)), transpiler: new HarmonyMethod(typeof(Patch_NightVision), nameof(Patch_NightVision.TSP1)));
@@ -26,8 +20,6 @@ public static class Patch_NightVision
     }
 
 
-    //[HarmonyPatch(typeof(ThoughtWorker_Dark), nameof(ThoughtWorker_Dark.CurrentStateInternal))]
-    //[HarmonyDebug]
     public static IEnumerable<CodeInstruction> TSP1(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> inst = instructions.ToList();
@@ -43,7 +35,6 @@ public static class Patch_NightVision
             new (OpCodes.Ldc_R4, 0.5f),
             new (OpCodes.Bge_S, label)
         });
-        //System.IO.File.WriteAllLines("E:\\after.txt", inst.Select(x => x.ToString()));
         return inst;
     }
 

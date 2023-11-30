@@ -22,7 +22,7 @@ public class DebugActions
             })));
         }
 
-        void ShowTable(List<Pair<string,string>> FoldersAndLoaded)
+        static void ShowTable(List<Pair<string,string>> FoldersAndLoaded)
         {
             DebugTables.MakeTablesDialog(FoldersAndLoaded, new List<TableDataGetter<Pair<string, string>>>()
             {

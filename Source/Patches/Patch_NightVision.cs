@@ -13,7 +13,7 @@ public static class Patch_NightVision
     private static readonly MethodInfo TryApply = AccessTools.Method(typeof(HediffGiver), nameof(HediffGiver.TryApply));
 
 
-    static Patch_NightVision() 
+    static Patch_NightVision()
     {
         Main.harmony.Patch(AccessTools.Method(typeof(ThoughtWorker_Dark), nameof(ThoughtWorker_Dark.CurrentStateInternal)), transpiler: new HarmonyMethod(typeof(Patch_NightVision), nameof(Patch_NightVision.TSP1)));
         Main.harmony.Patch(AccessTools.Method(typeof(SK.Enlighten.HediffGiver_Enlighten), nameof(SK.Enlighten.HediffGiver_Enlighten.OnIntervalPassed)), transpiler: new HarmonyMethod(typeof(Patch_NightVision), nameof(Patch_NightVision.TSP2)));
@@ -43,7 +43,7 @@ public static class Patch_NightVision
         List<CodeInstruction> inst = instructions.ToList();
         int Call = inst.FirstIndexOf(x => x.Calls(TryApply));
         int branch = -1;
-        for(int i = Call; i >= 0; i--)
+        for (int i = Call; i >= 0; i--)
         {
             if (inst[i].opcode == OpCodes.Ldloc_1)
             {
@@ -51,7 +51,7 @@ public static class Patch_NightVision
                 break;
             }
         }
-        if(branch == -1)
+        if (branch == -1)
         {
             Log.Error($"Patch Error: cannot patch SK.Enlighten.HediffGiver_Enlighten");
             return instructions;
@@ -68,6 +68,6 @@ public static class Patch_NightVision
             new (OpCodes.Bge_S, br)
         });
         return inst;
-    } 
+    }
 }
 

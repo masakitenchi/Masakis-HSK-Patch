@@ -61,14 +61,14 @@ public class ErrorChecker
         StringBuilder sb = new StringBuilder();
         #region Viles_Fix
         sb.AppendLine("Checking plants that's harvestable but don't have harvestedThingDef. Setting these plants' harvestYield to 0.");
-        foreach(var plant in DefDatabase<ThingDef>.AllDefs.Where(x => x.plant is not null && x.plant.Harvestable && x.plant.harvestedThingDef == null))
+        foreach (var plant in DefDatabase<ThingDef>.AllDefs.Where(x => x.plant is not null && x.plant.Harvestable && x.plant.harvestedThingDef == null))
         {
             sb.AppendLine(" - " + plant.defName);
             plant.plant.harvestYield = 0;
         }
         sb.AppendLine();
         #endregion
-        
+
         /*sb.AppendLine("Checking DamageDefs that's probably missing DamageDefExtensionCE.");
         foreach(var dmg in DefDatabase<DamageDef>.AllDefs.Where(x => x.armorCategory is not null && (x.armorCategory.defName == "Heat" || x.armorCategory.defName == "Electric")))
         {
@@ -90,3 +90,54 @@ public static class FoodUtilityFix
         __result = __instance.def.plant.harvestedThingDef is not null && __result;
     }
 }*/
+
+[HarmonyPatch]
+public static class CompAffectedByFacilitiesTestPatch
+{
+    private static readonly Type CF = AccessTools.TypeByName("CF.CompProperties_UnlocksRecipe");
+    /*//[HarmonyPatch(typeof(CompAffectedByFacilities), nameof(CompAffectedByFacilities.Notify_NewLink))]
+    public static void Prefix(CompAffectedByFacilities __instance, ref bool __state)
+    {
+        if (__instance.parent.AllComps.Any(x => x.props.GetType() == CF))
+        {
+            __state = true;
+            Log.Message($"Thing: {__instance.parent}\n LinkedFacilities:\n {string.Join("\n ", __instance.LinkedFacilitiesListForReading.Select(x => x.ToString()))}");
+        }
+    }
+
+
+    //[HarmonyPatch(typeof(CompAffectedByFacilities), nameof(CompAffectedByFacilities.Notify_NewLink))]
+    public static void Postfix(CompAffectedByFacilities __instance, ref bool __state)
+    {
+        if (__state)
+        {
+
+            Log.Message($"Thing: {__instance.parent}\n LinkedFacilities:\n {string.Join("\n", __instance.LinkedFacilitiesListForReading.Select(x => x.ToString()))}\n StackTrace:\n " + StackTraceUtility.ExtractStackTrace());
+        }
+    }
+    //[HarmonyPatch(typeof(CompFacility), nameof(CompFacility.LinkToNearbyBuildings))]
+    public static void Prefix(CompFacility __instance, ref bool __state)
+    {
+        Log.Message($"Thing: {__instance.parent}\n LinkedFacilities:\n {string.Join("\n", __instance.LinkedBuildings.Select(x => x.ToString()))}");
+    }
+
+    //[HarmonyPatch(typeof(CompFacility), nameof(CompFacility.LinkToNearbyBuildings))]
+    public static void Postfix(CompFacility __instance)
+    {
+        Log.Message($"Thing: {__instance.parent}\n LinkedFacilities:\n {string.Join("\n", __instance.LinkedBuildings.Select(x => x.ToString()))}\n StackTrace:\n " + StackTraceUtility.ExtractStackTrace());
+    }*/
+
+    [HarmonyPatch(typeof(CompFacility),nameof(CompFacility.PostSpawnSetup))]
+    public static bool Prefix(CompFacility __instance, bool respawningAfterLoad)
+    {
+        if (respawningAfterLoad) return false;
+        return true;
+    }
+
+    [HarmonyPatch(typeof(CompAffectedByFacilities), nameof(CompAffectedByFacilities.PostSpawnSetup))]
+    public static bool Prefix(CompAffectedByFacilities __instance, bool respawningAfterLoad)
+    {
+        if(respawningAfterLoad) return false;
+        return true;
+    }
+}

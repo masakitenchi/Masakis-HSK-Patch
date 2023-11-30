@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[contains(defName,'ResourcesCrate')]/costList/WoodPlank</xpath>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[contains(defName,'ResourcesCrate')]</xpath>
+		<value>
+			<stuffCategories>
+				<li>Woody</li>
+			</stuffCategories>
+			<costStuffCount>70</costStuffCount>
+		</value>
+	</Operation>
+</Patch>

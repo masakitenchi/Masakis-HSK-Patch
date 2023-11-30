@@ -18,5 +18,6 @@
     <li IfModActive="aoba.motorization.engine">LoadOnDemand/Engine Industries</li>
     <li IfModActive="garwel.celsius.sk">LoadOnDemand/Celsius_SK</li>
     <li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li>
+    <li IfModActive="jangodsoul.simplestorage">LoadOnDemand/Simple Storage</li>
   </v1.4>
 </loadFolders>

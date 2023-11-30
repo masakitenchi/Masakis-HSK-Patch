@@ -3,5 +3,9 @@
 
 	<CSP_StackLimit>堆叠上限</CSP_StackLimit>
 	<CSP_StackLimitDesc>每堆物品的最大数量。</CSP_StackLimitDesc>
+	<CSP_ConversionRate>营养转化率</CSP_ConversionRate>
+	<CSP_NutritionNeeded>需求营养值：</CSP_NutritionNeeded>
+	<CSP_NutritionProduced>产生营养值：</CSP_NutritionProduced>
+	<CSP_ConversionRateText>转化率：</CSP_ConversionRateText>
 	
 </LanguageData>

@@ -3,5 +3,8 @@
 
 	<CSP_StackLimit>StackLimit</CSP_StackLimit>
 	<CSP_StackLimitDesc>Max item count for a stack of item.</CSP_StackLimitDesc>
-	
+	<CSP_ConversionRate>Nutrition Conversion Rate</CSP_ConversionRate>
+	<CSP_NutritionNeeded>Total Nutrition Needed:</CSP_NutritionNeeded>
+	<CSP_NutritionProduced>Nutrition Produced:</CSP_NutritionProduced>
+	<CSP_ConversionRateText>Conversion Rate:</CSP_ConversionRateText>
 </LanguageData>

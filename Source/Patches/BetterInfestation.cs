@@ -9,7 +9,7 @@ public static class BetterInfestation
     private static readonly MethodInfo InHorDistOf = AccessTools.Method(typeof(IntVec3), nameof(IntVec3.InHorDistOf));
 
     [HarmonyPatch(typeof(CompCreatesInfestations), nameof(CompCreatesInfestations.CantFireBecauseSomethingElseCreatedInfestationRecently), MethodType.Getter)]
-    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         if (InHorDistOf == null)
         {

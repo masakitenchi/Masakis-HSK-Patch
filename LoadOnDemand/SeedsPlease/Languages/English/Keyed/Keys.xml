@@ -2,4 +2,6 @@
 <LanguageData>
 	<LblSkill>Skill Requirement</LblSkill>
 	<LblSkillDesc>Minimum planting skill required to sow this plant.</LblSkillDesc>
+	<LblTech>Research Requirement</LblTech>
+	<LblTechDesc>Research projects needed to be finished to sow this plant.</LblTechDesc>
 </LanguageData>

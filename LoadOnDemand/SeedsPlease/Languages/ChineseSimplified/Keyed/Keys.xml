@@ -2,4 +2,6 @@
 <LanguageData>
 	<LblSkill>技能需求</LblSkill>
 	<LblSkillDesc>种植该种植物所需的最低种植技能等级。</LblSkillDesc>
+	<LblTech>研究需求</LblTech>
+	<LblTechDesc>种植该种植物所需的研究项目。</LblTechDesc>
 </LanguageData>

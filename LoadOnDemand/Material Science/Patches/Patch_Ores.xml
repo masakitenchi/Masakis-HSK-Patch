@@ -7,5 +7,15 @@
 			<li>MineableQuartz</li>
 		</value>
 	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="ElectrolyticRefinery"]/comps</xpath>
+		<value>
+			<li Class="SK.CompProperties_LowIdleDraw">
+				<compClass>SK.CompPowerLowIdleDraw</compClass>
+				<idlePowerFactor>0.01</idlePowerFactor>
+			</li>
+		</value>
+	</Operation>
 	
 </Patch>

@@ -6,6 +6,7 @@
 		<value>
 			<li>ConvertToTitanomagnetite</li>
 			<li>ConvertToSphalerite</li>
+			<li>CSP_ConvertToCassiterite</li>
 		</value>
 	</Operation>
 </Patch>

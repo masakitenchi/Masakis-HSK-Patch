@@ -80,18 +80,25 @@ public class ErrorChecker
     }
 }
 
-/*[HarmonyPatch]
-public static class FoodUtilityFix
-{
-    [HarmonyPatch(typeof(Plant), nameof(Plant.HarvestableNow), MethodType.Getter)]
-    [HarmonyPostfix]
-    public static void Postfix(Plant __instance, ref bool __result)
-    {
-        __result = __instance.def.plant.harvestedThingDef is not null && __result;
-    }
-}*/
-
 [HarmonyPatch]
+public static class IncidentWorkerErrorcheck
+{
+    [HarmonyPatch(typeof(IncidentDef), nameof(IncidentDef.ConfigErrors))]
+    [HarmonyPostfix]
+    public static IEnumerable<string> Postfix(IEnumerable<string> __result, IncidentDef __instance)
+    {
+        foreach(var i in __result)
+        {
+            yield return i;
+        }
+        if(__instance.workerClass is null)
+        {
+            yield return $"{__instance.defName} has null workerClass.";
+        }
+    }
+}
+
+//[HarmonyPatch]
 public static class CompAffectedByFacilitiesTestPatch
 {
     private static readonly Type CF = AccessTools.TypeByName("CF.CompProperties_UnlocksRecipe");
@@ -127,7 +134,7 @@ public static class CompAffectedByFacilitiesTestPatch
         Log.Message($"Thing: {__instance.parent}\n LinkedFacilities:\n {string.Join("\n", __instance.LinkedBuildings.Select(x => x.ToString()))}\n StackTrace:\n " + StackTraceUtility.ExtractStackTrace());
     }*/
 
-    [HarmonyPatch(typeof(CompFacility),nameof(CompFacility.PostSpawnSetup))]
+    /*[HarmonyPatch(typeof(CompFacility),nameof(CompFacility.PostSpawnSetup))]
     public static bool Prefix(CompFacility __instance, bool respawningAfterLoad)
     {
         if (respawningAfterLoad) return false;
@@ -139,5 +146,5 @@ public static class CompAffectedByFacilitiesTestPatch
     {
         if(respawningAfterLoad) return false;
         return true;
-    }
+    }*/
 }

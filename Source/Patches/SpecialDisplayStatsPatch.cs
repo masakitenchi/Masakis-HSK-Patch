@@ -1,14 +1,9 @@
 ﻿namespace Core_SK_Patch;
 
 [HarmonyPatch]
-public static class ShowStackLimit
+public static class SpecialDisplayStatsPatch
 {
-    //private static readonly StatDef stackLimit = DefDatabase<StatDef>.GetNamed("StackLimit");
-    /*public static bool Prepare()
-    {
-        return true;
-    }*/
-
+    
     [HarmonyPatch(typeof(ThingDef), nameof(ThingDef.SpecialDisplayStats))]
     [HarmonyPostfix]
     public static IEnumerable<StatDrawEntry> ShowStackLimit_PassThroughPostfix(IEnumerable<StatDrawEntry> __result, StatRequest req)
@@ -42,7 +37,7 @@ public static class ShowStackLimit
             sb.Append("CSP_NutritionNeeded".Translate());
             sb.AppendLine(needed.ToString());
             sb.AppendLine("CSP_NutritionProduced".Translate());
-            sb.AppendLine(__instance.products[0].Summary + $" = {produced.ToString("F2")}");
+            sb.AppendLine(__instance.products[0].Summary + $" = {produced:F2}");
             sb.AppendLine("CSP_ConversionRateText".Translate() + (produced / needed).ToString("P2"));
             return sb.ToString();
         }

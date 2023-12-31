@@ -1,6 +1,4 @@
-﻿
-
-namespace Core_SK_Patch;
+﻿namespace Core_SK_Patch;
 
 public class CompAutoForbidden : ThingComp
 {

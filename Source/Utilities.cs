@@ -2,6 +2,9 @@
 using System.Runtime.CompilerServices;
 using Verse.Profile;
 using System.Xml;
+using System.Reflection;
+using Steamworks;
+using System.IO;
 
 namespace Core_SK_Patch;
 
@@ -80,7 +83,7 @@ public static class ResearchScriber
     //Every ResearchProjectDef has a HashSet of ResearchMods to apply
     public static Dictionary<ResearchProjectDef, HashSet<ResearchMod>> modLister = new();
 
-    [HarmonyPatch(typeof(ResearchProjectDef),nameof(ResearchProjectDef.ReapplyAllMods))]
+    [HarmonyPatch(typeof(ResearchProjectDef), nameof(ResearchProjectDef.ReapplyAllMods))]
     [HarmonyPrefix]
     public static bool DoNotApplyModMoreThanOnce(ResearchProjectDef __instance)
     {
@@ -95,7 +98,7 @@ public static class ResearchScriber
             {
                 foreach (var mod in x)
                 {
-                    switch(mod)
+                    switch (mod)
                     {
                         case ResearchMod_ManipulateField a:
                             a.ResetField();
@@ -130,3 +133,49 @@ public static class Log
         Verse.Log.WarningOnce(Prefix + message, seed);
     }
 }
+
+
+/*[HarmonyPatch]
+public static class PatchOperationLogger
+{
+    private static BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Public;
+    private static StringBuilder sb = new StringBuilder();
+    private static HashSet<Type> allTypes = typeof(PatchOperation).AllSubclassesNonAbstract().Where(x => AccessTools.Field(x, "value") is not null && AccessTools.Field(x, "xpath") is not null).ToHashSet();
+    public static XmlWriter writer;
+
+    public static bool Prepare()
+    {
+        if (!Settings.LogAllPatchOperations) return false;
+        if (!allTypes.Any())
+        {
+            Log.Error("Cannot find any subclasses of PatchOperaion");
+            return false;
+        }
+        Settings.LogAllPatchOperations.Invert_Bool();
+        Main.instance.WriteSettings();
+        writer = XmlWriter.Create(Path.Combine(GenFilePaths.saveDataPath, "LoggedPatchOperation.xml"));
+        Log.Message("Logging all patchoperationpathed. You should be able to find the whole file in config folder");
+        return true;
+    }
+
+    [HarmonyTargetMethods]
+    public static IEnumerable<MethodBase> PatchOperations()
+    {
+        return allTypes.Select(x => AccessTools.Method(x, "ApplyWorker"));
+    }
+
+    [HarmonyPrefix]
+    public static void PreApplyWorker(PatchOperation __instance)
+    {
+        XmlNode value = __instance.GetInstanceField<XmlContainer>("value").node;
+        value.WriteTo(writer);
+
+    }
+
+    [HarmonyPostfix]
+    public static void PostApplyWorker(PatchOperation __instance)
+    {
+        XmlNode value = __instance.GetInstanceField<XmlContainer>("value").node;
+        value.WriteTo(writer);
+    }
+}*/

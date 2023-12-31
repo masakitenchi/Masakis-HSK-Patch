@@ -68,7 +68,7 @@
     <Compile Include="Patches\Patch_ModContentPack.cs" />
     <Compile Include="Patches\Patch_NonStunnableMannedTurret.cs" />
     <Compile Include="Patches\Rimatomic_RemoveWarning.cs" />
-    <Compile Include="Patches\ShowStackLimit.cs" />
+    <Compile Include="PatchOperationCEPatch.cs" />
     <Compile Include="ResearchMods\MechChargerPatch.cs" />
     <Compile Include="ModExt\ModExtension_BulkRecipe.cs" />
     <Compile Include="Misc\OutputLoadfolders.cs" />
@@ -77,6 +77,7 @@
     <Compile Include="ResearchMods\ResearchMod_ManipulateField.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Misc\SpecialThingFilters.cs" />
+    <Compile Include="Patches\SpecialDisplayStatsPatch.cs" />
     <Compile Include="StatPart\StatPart_Engine.cs" />
     <Compile Include="Patches\Patch_GrowZoneMinFertility.cs" />
     <None Include="StatPart\StatPart_MechBuff.cs" />

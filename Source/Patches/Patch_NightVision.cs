@@ -38,6 +38,8 @@ public static class Patch_NightVision
         return inst;
     }
 
+    //Since both "dark environment" and "bright environment" use the same hediffGiver, it also makes pawn with >50% night vision efficiency cannot receive the "bright environment" hediff.
+    //a fair trade, I must say
     public static IEnumerable<CodeInstruction> TSP2(IEnumerable<CodeInstruction> instructions)
     {
         List<CodeInstruction> inst = instructions.ToList();

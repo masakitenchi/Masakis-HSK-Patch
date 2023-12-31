@@ -33,9 +33,12 @@ public class Main : Mod
 
     internal static StringBuilder sb = new StringBuilder("Initializing:\n");
 
+    public static Main instance; 
 
     public Main(ModContentPack content) : base(content)
     {
+        if (instance != null) return;
+        instance = this;
         harmony = new Harmony("com.reggex.HSKPatch");
         this.modSettings = GetSettings<Settings>();
 #if ODT
@@ -145,6 +148,7 @@ public class Main : Mod
         Settings.InfestationPreventionRadius = ls.SliderLabeled($"Deep Infestation Radius : {Settings.InfestationPreventionRadius:F2}", Settings.InfestationPreventionRadius, 10f, 150f, tooltip: "If one deep drill has an infestation recently, it will prevent all deep drills in a certain radius from being infested again. This slider lets you change how big that circle is");
         ls.CheckboxLabeled("Never die by low health", ref Settings.NeverDieByLowHealth, "Removes the health check for death.\n(Need restart after changing the value)");
         ls.CheckboxLabeled("Auto-forbid rotten mush & meat out of home area", ref Settings.AutoForbidSpoiled, "Automatically forbid rotten mush & meat generated outside of home area. No more pawn walking across the whole map just to get 1 pile of rotten mush to your storage");
+        ls.CheckboxLabeled("Log All PatchOperatoinPathed", ref Settings.LogAllPatchOperations, "Should auto disable itself once enabled & restarted");
         ls.End();
     }
 

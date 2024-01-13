@@ -281,7 +281,7 @@
 					<value>
 						<comps Inherit="False">
 							<li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_CombatAI"/>
-							<li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_Statistics"/>
+							<!-- <li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_Statistics"/> -->
 						</comps>
 					</value>
 				</li>

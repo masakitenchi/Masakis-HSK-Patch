@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Annihilation.label>Аннигиляция</Annihilation.label>
+	<Annihilation.deathMessage>{0} был аннигилирован.</Annihilation.deathMessage>
+    
+</LanguageData>

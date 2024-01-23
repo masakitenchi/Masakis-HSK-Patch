@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CSP_AllowMealSimple.label>разрешить простые блюда</CSP_AllowMealSimple.label>
+	<CSP_AllowMealFine.label>разрешить вкусные блюда</CSP_AllowMealFine.label>
+	<CSP_AllowMealLavish.label>разрешить роскошные блюда</CSP_AllowMealLavish.label>
+	<CSP_AllowMealSimple.description>Разрешить простые блюда</CSP_AllowMealSimple.description>
+	<CSP_AllowMealFine.description>Разрешить вкусные блюда</CSP_AllowMealFine.description>
+	<CSP_AllowMealLavish.description>Разрешить роскошные блюда</CSP_AllowMealLavish.description>
+	<CSP_AllowMeatRaw.label>разрешить с обычным мясом</CSP_AllowMeatRaw.label>
+	<CSP_AllowMeatPrime.label>Разрешить животных, мясо которых при разделке является обычным.</CSP_AllowMeatPrime.label>
+	<CSP_AllowMeatRaw.description>разрешить с первосортным мясом</CSP_AllowMeatRaw.description>
+	<CSP_AllowMeatPrime.description>Разрешить животных, мясо которых при разделке является первосортным.</CSP_AllowMeatPrime.description>
+
+</LanguageData>

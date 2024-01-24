@@ -11,7 +11,7 @@
 			<li>Electrical_engineering_E2</li>
 		</prerequisites>
 		<researchViewX>23.00</researchViewX>
-		<researchViewY>17.00</researchViewY>
+		<researchViewY>16.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
 			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
@@ -28,7 +28,7 @@
 			<li>CSP_TempOptimizationI</li>
 		</prerequisites>
 		<researchViewX>24.00</researchViewX>
-		<researchViewY>17.00</researchViewY>
+		<researchViewY>16.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
 			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
@@ -45,7 +45,7 @@
 			<li>CSP_TempOptimizationII</li>
 		</prerequisites>
 		<researchViewX>25.00</researchViewX>
-		<researchViewY>17.00</researchViewY>
+		<researchViewY>16.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
 			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>

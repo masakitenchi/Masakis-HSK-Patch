@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	
+	<Meal_Simple.label>Простые блюда</Meal_Simple.label> 
+	<Meal_Fine.label>Вкусные блюда</Meal_Fine.label> 
+	<Meal_Lavish.label>Шикарные блюда</Meal_Lavish.label>
+
+</LanguageData>

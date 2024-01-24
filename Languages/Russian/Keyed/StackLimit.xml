@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CSP_StackLimit>Максимальное количество</CSP_StackLimit>
+	<CSP_StackLimitDesc>Максимальное количество элементов в стаке.</CSP_StackLimitDesc>
+	
+</LanguageData>

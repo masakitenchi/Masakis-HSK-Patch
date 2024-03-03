@@ -9,7 +9,7 @@
 
 				<!-- ========== Base Space Insect ========== -->
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[@Name="BaseInsectSpace"]</xpath>
+					<xpath>Defs/ThingDef[@Name="SpaceInsectThingBase"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>QuadrupedLow</bodyShape>
@@ -17,14 +17,14 @@
 					</value>
 				</li>
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="BaseInsectSpace"]/statBases</xpath>
+					<xpath>Defs/ThingDef[@Name="SpaceInsectThingBase"]/statBases</xpath>
 					<value>
 						<SmokeSensitivity>0</SmokeSensitivity>
 					</value>
 				</li>
 
 				<li Class="PatchOperationAttributeSet">
-					<xpath>Defs/ThingDef[@ParentName="AnimalThingBase" and @Name="BaseInsectSpace"]</xpath>
+					<xpath>Defs/ThingDef[@ParentName="BaseInsect" and @Name="SpaceInsectThingBase"]</xpath>
 					<attribute>ParentName</attribute>
 					<value>SK_AnimalThingBase</value>
 				</li>

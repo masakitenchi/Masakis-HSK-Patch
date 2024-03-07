@@ -398,6 +398,7 @@
 				</li>
 				
 				<!-- ========== Apparel_SpaceSurvivalBelt ========== -->
+				<!-- Deprecated in latest SOS2exp -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/costList</xpath>
 					<value>
@@ -460,15 +461,26 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorHelmetMechanitorBase"]</xpath>
-					<value>
-						<apparel>
-							<tags>
-								<li>EVA</li>
-							</tags>
-						</apparel>
-					</value>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorHelmetMechanitorBase"]/comps</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ApparelArmorHelmetMechanitorBase"]/comps</xpath>
+						<value>
+							<li>
+								<compClass>SaveOurShip2.Comp_EVA</compClass>
+							</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ApparelArmorHelmetMechanitorBase"]</xpath>
+						<value>
+							<comps>
+								<li>
+									<compClass>SaveOurShip2.Comp_EVA</compClass>
+								</li>
+							</comps>
+						</value>
+					</nomatch>
 				</li>
 		
 			</operations>

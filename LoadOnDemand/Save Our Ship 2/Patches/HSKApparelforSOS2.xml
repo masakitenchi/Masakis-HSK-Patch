@@ -9,18 +9,48 @@
 			<operations>
 				
 				<!-- ========== Apparel_Fullarmor_Spacer ========== -->
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="ApparelSpacerSimpleBase"]/apparel/tags</xpath>
-					<value>
-						<li>EVA</li>
-					</value>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@Name="ApparelSpacerSimpleBase"]/comps</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ApparelSpacerSimpleBase"]/comps</xpath>
+						<value>
+							<li>
+								<compClass>SaveOurShip2.Comp_EVA</compClass>
+							</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ApparelSpacerSimpleBase"]</xpath>
+						<value>
+							<comps>
+								<li>
+									<compClass>SaveOurShip2.Comp_EVA</compClass>
+								</li>
+							</comps>
+						</value>
+					</nomatch>
 				</li>
 				
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/apparel/tags</xpath>
-					<value>
-						<li>EVA</li>
-					</value>
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/comps</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/comps</xpath>
+						<value>
+							<li>
+								<compClass>SaveOurShip2.Comp_EVA</compClass>
+							</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]</xpath>
+						<value>
+							<comps>
+								<li>
+									<compClass>SaveOurShip2.Comp_EVA</compClass>
+								</li>
+							</comps>
+						</value>
+					</nomatch>
 				</li>
 				
 			</operations>

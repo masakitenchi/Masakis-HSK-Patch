@@ -6,6 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B03F751E-BB50-4818-A689-2B17B05DF14A}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SOS2Compat</RootNamespace>
     <AssemblyName>SOS2Compat</AssemblyName>

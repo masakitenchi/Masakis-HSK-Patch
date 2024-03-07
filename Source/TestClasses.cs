@@ -69,6 +69,15 @@ public class ErrorChecker
         sb.AppendLine();
         #endregion
 
+        /*#region StuffTest
+        sb.AppendLine("Checking if null stuffAdjective really can make things LabelAsStuff to be its label:");
+        foreach(var thing in DefDatabase<ThingDef>.AllDefs.Where(x => x.stuffProps is not null))
+        {
+            if (thing.stuffProps.stuffAdjective.NullOrEmpty() && thing.LabelAsStuff != thing.label)
+                sb.AppendLine(" - " + thing.defName);
+        }
+        #endregion*/
+
         /*sb.AppendLine("Checking DamageDefs that's probably missing DamageDefExtensionCE.");
         foreach(var dmg in DefDatabase<DamageDef>.AllDefs.Where(x => x.armorCategory is not null && (x.armorCategory.defName == "Heat" || x.armorCategory.defName == "Electric")))
         {

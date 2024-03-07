@@ -9,7 +9,6 @@ using Verse.Sound;
 
 namespace RimWorld;
 
-[HotSwappable]
 public class Projectile_ExplosiveShipCombatKinetic : Projectile_ExplosiveShipCombat
 {
     //Thinking of a chunk of bullet hit the hull. The energy it carries is unaffected but the explosion it creates should be more "directional".

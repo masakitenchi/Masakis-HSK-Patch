@@ -5,6 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B61E2EC5-DACF-487B-B528-87EF0532E8B8}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Core_SK_Patch</RootNamespace>
     <AssemblyName>Core_SK_Patch</AssemblyName>
@@ -68,7 +69,6 @@
     <Compile Include="Patches\Patch_ModContentPack.cs" />
     <Compile Include="Patches\Patch_NonStunnableMannedTurret.cs" />
     <Compile Include="Patches\Rimatomic_RemoveWarning.cs" />
-    <Compile Include="PatchOperationCEPatch.cs" />
     <Compile Include="ResearchMods\MechChargerPatch.cs" />
     <Compile Include="ModExt\ModExtension_BulkRecipe.cs" />
     <Compile Include="Misc\OutputLoadfolders.cs" />

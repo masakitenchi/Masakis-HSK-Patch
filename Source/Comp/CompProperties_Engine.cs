@@ -67,6 +67,16 @@ public class CompEngine : ThingComp
         Scribe_Defs.Look(ref _EngineStuff, "EngineStuff");
     }
 
+
+	public override void Notify_KilledLeavingsLeft(List<Thing> leavings)
+	{
+		if (HasEngine)
+        {
+            Thing thing = ThingMaker.MakeThing(_currentEngine, _EngineStuff);
+            leavings.Add(thing);
+        }
+	}
+	
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         if (DebugSettings.godMode)

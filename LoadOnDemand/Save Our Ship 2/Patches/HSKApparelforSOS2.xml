@@ -2,17 +2,17 @@
 <Patch>
 
 	<Operation Class="PatchOperationFindMod">
-	<mods>
-		<li>Save Our Ship 2</li>
-	</mods>
+		<mods>
+			<li>Save Our Ship 2</li>
+		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-				
+
 				<!-- ========== Apparel_Fullarmor_Spacer ========== -->
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@Name="ApparelSpacerSimpleBase"]/comps</xpath>
+					<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/comps</xpath>
 					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ApparelSpacerSimpleBase"]/comps</xpath>
+						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/comps</xpath>
 						<value>
 							<li>
 								<compClass>SaveOurShip2.Comp_EVA</compClass>
@@ -20,7 +20,7 @@
 						</value>
 					</match>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ApparelSpacerSimpleBase"]</xpath>
+						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]</xpath>
 						<value>
 							<comps>
 								<li>
@@ -30,8 +30,29 @@
 						</value>
 					</nomatch>
 				</li>
-				
+
 				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/equippedStatOffsets</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/equippedStatOffsets</xpath>
+						<value>
+							<HypoxiaResistance MayRequire="kentington.saveourship2">0.5</HypoxiaResistance>
+							<DecompressionResistance MayRequire="kentington.saveourship2">0.5</DecompressionResistance>
+							<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">0.5</VacuumSpeedMultiplier>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]</xpath>
+						<value>
+							<equippedStatOffsets>
+								<HypoxiaResistance MayRequire="kentington.saveourship2">0.5</HypoxiaResistance>
+								<DecompressionResistance MayRequire="kentington.saveourship2">0.5</DecompressionResistance>
+								<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">0.5</VacuumSpeedMultiplier>
+							</equippedStatOffsets>
+						</value>
+					</nomatch>
+				</li>
+				<!-- <li Class="PatchOperationConditional">
 					<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/comps</xpath>
 					<match Class="PatchOperationAdd">
 						<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/comps</xpath>
@@ -51,10 +72,11 @@
 							</comps>
 						</value>
 					</nomatch>
-				</li>
-				
+				</li> -->
+
+
 			</operations>
 		</match>
-    </Operation>
-	
+	</Operation>
+
 </Patch>

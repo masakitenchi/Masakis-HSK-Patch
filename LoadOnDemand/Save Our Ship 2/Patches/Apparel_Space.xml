@@ -2,12 +2,12 @@
 <Patch>
 
 	<Operation Class="PatchOperationFindMod">
-	<mods>
-		<li>Save Our Ship 2</li>
-	</mods>
+		<mods>
+			<li>Save Our Ship 2</li>
+		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-		
+
 				<!-- ========== Apparel_SpaceSuitBody ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/costList</xpath>
@@ -19,7 +19,7 @@
 						</costList>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/stuffCategories</xpath>
 					<value>
@@ -28,14 +28,14 @@
 						</stuffCategories>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/costStuffCount</xpath>
 					<value>
 						<costStuffCount>120</costStuffCount>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/thingCategories</xpath>
 					<value>
@@ -44,10 +44,10 @@
 						</thingCategories>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/statBases</xpath>
-					 <value>
+					<value>
 						<statBases>
 							<WorkToMake>28000</WorkToMake>
 							<MaxHitPoints>300</MaxHitPoints>
@@ -65,9 +65,9 @@
 							<ArmorRating_Blunt>25</ArmorRating_Blunt>
 							<ArmorRating_Heat>1.5</ArmorRating_Heat>
 						</statBases>
-					 </value>
+					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/equippedStatOffsets</xpath>
 					<value>
@@ -88,14 +88,17 @@
 							<Radiation>-0.5</Radiation>
 							<GermResistance>0.25</GermResistance>
 							<GermContainment>0.15</GermContainment>
+							<DecompressionResistance>0.75</DecompressionResistance>
+							<VacuumSpeedMultiplier>4</VacuumSpeedMultiplier>
 						</equippedStatOffsets>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/recipeMaker</xpath>
 					<value>
 						<recipeMaker>
+							<researchPrerequisite>ShipSpaceSuits</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
@@ -110,7 +113,7 @@
 						</recipeMaker>
 					</value>
 				</li>
-				
+
 				<!-- ========== Apparel_SpaceSuitHelmet ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/costList</xpath>
@@ -120,11 +123,11 @@
 							<ElectronicComponents>2</ElectronicComponents>
 							<Carbon>10</Carbon>
 							<SyntheticFibers>6</SyntheticFibers>
-						    <ReinforcedGlass>10</ReinforcedGlass>
+							<ReinforcedGlass>10</ReinforcedGlass>
 						</costList>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]</xpath>
 					<value>
@@ -134,7 +137,7 @@
 						<costStuffCount>50</costStuffCount>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/thingCategories</xpath>
 					<value>
@@ -143,7 +146,7 @@
 						</thingCategories>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/statBases</xpath>
 					<value>
@@ -166,7 +169,7 @@
 						</statBases>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/equippedStatOffsets</xpath>
 					<value>
@@ -183,14 +186,17 @@
 							<Radiation>-0.8</Radiation>
 							<GermResistance>0.70</GermResistance>
 							<GermContainment>0.80</GermContainment>
+							<HypoxiaResistance>1</HypoxiaResistance>
+							<DecompressionResistance>0.25</DecompressionResistance>
 						</equippedStatOffsets>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/recipeMaker</xpath>
 					<value>
 						<recipeMaker>
+							<researchPrerequisite>ShipSpaceSuits</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
@@ -205,13 +211,13 @@
 						</recipeMaker>
 					</value>
 				</li>
-				
+
 				<!-- ========== Apparel_SpaceSuitHelmet ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]/costList</xpath>
 					<value>
 						<costList>
-						    <Compaste>20</Compaste>
+							<Compaste>20</Compaste>
 							<Carbon>50</Carbon>
 							<SyntheticFibers>30</SyntheticFibers>
 							<Hyperweave>60</Hyperweave>
@@ -220,7 +226,7 @@
 						</costList>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]</xpath>
 					<value>
@@ -230,10 +236,10 @@
 						<costStuffCount>120</costStuffCount>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]/statBases</xpath>
-					 <value>
+					<value>
 						<statBases>
 							<WorkToMake>62000</WorkToMake>
 							<MaxHitPoints>300</MaxHitPoints>
@@ -251,9 +257,9 @@
 							<ArmorRating_Blunt>30</ArmorRating_Blunt>
 							<ArmorRating_Heat>2</ArmorRating_Heat>
 						</statBases>
-					 </value>
+					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]/equippedStatOffsets</xpath>
 					<value>
@@ -274,14 +280,17 @@
 							<Radiation>-0.5</Radiation>
 							<GermResistance>0.25</GermResistance>
 							<GermContainment>0.15</GermContainment>
+							<DecompressionResistance>0.75</DecompressionResistance>
+							<VacuumSpeedMultiplier>4</VacuumSpeedMultiplier>
 						</equippedStatOffsets>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]/recipeMaker</xpath>
 					<value>
 						<recipeMaker>
+							<researchPrerequisite>ShipSpaceSuitsHeavy</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
@@ -296,22 +305,22 @@
 						</recipeMaker>
 					</value>
 				</li>
-				
+
 				<!-- ========== Apparel_SpaceSuitHelmetHeavy ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]/costList</xpath>
 					<value>
 						<costList>
-								<Carbon>12</Carbon>
-								<Compaste>20</Compaste>
-								<SyntheticFibers>10</SyntheticFibers>
-								<MagneticMaterial>4</MagneticMaterial>
-								<Hexcell>4</Hexcell>
-						  <ReinforcedGlass>10</ReinforcedGlass>
+							<Carbon>12</Carbon>
+							<Compaste>20</Compaste>
+							<SyntheticFibers>10</SyntheticFibers>
+							<MagneticMaterial>4</MagneticMaterial>
+							<Hexcell>4</Hexcell>
+							<ReinforcedGlass>10</ReinforcedGlass>
 						</costList>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]</xpath>
 					<value>
@@ -321,7 +330,7 @@
 						<costStuffCount>60</costStuffCount>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]</xpath>
 					<value>
@@ -330,10 +339,10 @@
 						</thingCategories>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]/statBases</xpath>
-				    <value>
+					<value>
 						<statBases>
 							<WorkToMake>32000</WorkToMake>
 							<EnergyShieldRechargeRate>0.05</EnergyShieldRechargeRate>
@@ -353,12 +362,12 @@
 							<ArmorRating_Blunt>20</ArmorRating_Blunt>
 							<ArmorRating_Heat>2</ArmorRating_Heat>
 						</statBases>
-				    </value>
+					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]/equippedStatOffsets</xpath>
-				    <value>
+					<value>
 						<equippedStatOffsets>
 							<MoveSpeed>-0.1</MoveSpeed>
 							<WorkSpeedGlobal>-0.1</WorkSpeedGlobal>
@@ -374,14 +383,17 @@
 							<Radiation>-1</Radiation>
 							<GermResistance>0.85</GermResistance>
 							<GermContainment>1</GermContainment>
+							<DecompressionResistance>0.25</DecompressionResistance>
+							<HypoxiaResistance>1</HypoxiaResistance>
 						</equippedStatOffsets>
-				    </value>
+					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]/recipeMaker</xpath>
-				    <value>
+					<value>
 						<recipeMaker>
+							<researchPrerequisite>ShipSpaceSuitsHeavy</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
@@ -394,33 +406,33 @@
 							</skillRequirements>
 							<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
 						</recipeMaker>
-				    </value>
+					</value>
 				</li>
-				
+
 				<!-- ========== Apparel_SpaceSurvivalBelt ========== -->
 				<!-- Deprecated in latest SOS2exp -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/costList</xpath>
 					<value>
 						<costList>
-						    <ComponentSpacer>2</ComponentSpacer>
-						    <ElectronicComponents>2</ElectronicComponents>
+							<ComponentSpacer>2</ComponentSpacer>
+							<ElectronicComponents>2</ElectronicComponents>
 							<BiosyntheticMaterial>10</BiosyntheticMaterial>
 							<Hexcell>1</Hexcell>
 						</costList>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/thingCategories</xpath>
 					<value>
 						<thingCategories>
-								<li>SpecialApparelCat</li>
-								<li>ApparelUtility</li>
+							<li>SpecialApparelCat</li>
+							<li>ApparelUtility</li>
 						</thingCategories>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/statBases</xpath>
 					<value>
@@ -441,7 +453,7 @@
 						</statBases>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/recipeMaker</xpath>
 					<value>
@@ -482,9 +494,9 @@
 						</value>
 					</nomatch>
 				</li>
-		
+
 			</operations>
 		</match>
-    </Operation>
-	
+	</Operation>
+
 </Patch>

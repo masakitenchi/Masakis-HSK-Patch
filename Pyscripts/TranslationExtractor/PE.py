@@ -40,17 +40,25 @@ def extract(list_paths: list[str]) -> dict[str, dict[str,str]]:
 		else:
 			# looks for all patches that targeting label or description
 			nodes = root.xpath('//*/xpath[contains(text(),"label") or contains(text(), "description")]/..')
-			for node in nodes:
-				xpath = node.find('./xpath')
-				defType, defName, field = re.match(xpath_regex, xpath.text).groups()
-				value = node.find(f'./value/{field}').text
-				if defType not in pairs:
-					pairs[defType] = dict()
-				defNames = re.findall(defNames_regex, defName)
-				#print(defNames)
-				for defName in defNames:
-					key = f'{defName}.{field}'
-					pairs[defType][key] = value
+			try:
+				for node in nodes:
+					xpath = node.find('./xpath')
+					match = re.match(xpath_regex, xpath.text)
+					if match:
+						defType, defName, field = match.groups()
+					else:
+						continue
+					value = node.find(f'./value/{field}').text
+					if defType not in pairs:
+						pairs[defType] = dict()
+					defNames = re.findall(defNames_regex, defName)
+					#print(defNames)
+					for defName in defNames:
+						key = f'{defName}.{field}'
+						pairs[defType][key] = value
+			except Exception as e:
+				print(f'Error in file {file}, message: {e}')
+				continue
 	return pairs
 
 def BFS(root: str) -> list[str]:

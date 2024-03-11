@@ -50,9 +50,9 @@ def expunge_newTemp(*, filepath: str, inError: bool = False) -> None:
                 count += 1
                 root.remove(elem)
             # 移除所有Stuff的stuffAdjective（除非不能直接用材料名修饰以该材料制成的物品）
-            elif "stuffAdjective" in elem.tag:
+            """ elif "stuffAdjective" in elem.tag:
                 count += 1
-                root.remove(elem)
+                root.remove(elem) """
         if count > 0:
             logfile.write(f"removed {count} lines in {os.path.split(filepath)[1]}.\n")
         tree.write(filepath, encoding="utf-8", xml_declaration=True)

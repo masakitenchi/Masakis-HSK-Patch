@@ -12,14 +12,14 @@ defNames_regex = re.compile(r'defName\W*?=\W*?"(?<defName>.*?)"')
 PatchOperations = ['PatchOperationAdd', 'PatchOperationReplace', 'PatchOperationSequence', 'PatchOperationConditional']
 errors = []
 
-pairs : dict[str, dict[str,str]]= dict()
+#pairs : dict[str, dict[str,str]]= dict()
 
 def get_files_abspath(path: str) -> list[str]:
 	return [os.path.abspath(os.path.join(path,f)) for f in os.listdir(path) if f.endswith('.xml')]
 
 
 def extract(list_paths: list[str]) -> dict[str, dict[str,str]]:
-	global pairs
+	pairs: dict[str, dict[str,str]] = dict()
 	#os.makedirs('extracted', exist_ok=True)
 	for file in list_paths:
 		if not os.path.isabs(file) or not os.path.isfile(file): 
@@ -65,7 +65,6 @@ def BFS(root: str) -> list[str]:
 
 
 def main(dirpath: str, recursive: bool = False) -> dict[str, ET._ElementTree]:
-	global pairs
 	if not os.path.isdir(dirpath) or not os.path.isabs(dirpath):
 		raise Exception('Path is not a dir or absolute path')
 	trees = dict()
@@ -74,7 +73,7 @@ def main(dirpath: str, recursive: bool = False) -> dict[str, ET._ElementTree]:
 	else:
 		list_files = get_files_abspath(dirpath)
 	#print(list_files)
-	extract(list_files)
+	pairs = extract(list_files)
 	#print(pairs)
 	#os.makedirs('extracted', exist_ok=True)
 	for defType, results in pairs.items():
@@ -99,7 +98,7 @@ if __name__ == '__main__':
 	else:
 		path = os.path.abspath(result.folder)
 	list_files = BFS(path)
-	extract(list_files)
+	pairs = extract(list_files)
 	print(pairs)
 	os.makedirs('extracted', exist_ok=True)
 	for defType, results in pairs.items():

@@ -12,7 +12,7 @@ errorfile = open(os.path.join(dirname, "error.log"), "w", encoding="utf-8")
 logfile = open(os.path.join(dirname, "output.log"), "w", encoding="utf-8")
 
 
-def choose_dir() -> str:
+def _choose_dir() -> str:
     root = tk.Tk()
     root.withdraw()
 
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     parser.add_argument("--folder", "-f", action="store", metavar="目标文件夹")
     result = parser.parse_args()
     if not result.folder:
-        path = choose_dir()
+        path = _choose_dir()
     print("脚本路径：" + __file__)
     # expunge(path)
     Traverse(path=path)

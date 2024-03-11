@@ -1,0 +1,3 @@
+[submodule "Pyscripts/PatchOperationGenerator"]
+	path = Pyscripts/PatchOperationGenerator
+	url = git@github.com:masakitenchi/PatchOperationGenerator.git

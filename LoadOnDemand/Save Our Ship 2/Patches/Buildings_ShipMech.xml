@@ -4,5 +4,9 @@
 	<Operation Class="PatchOperationRemove">
 		<xpath>Defs/ThingDef[contains(defName,"Mech") and building and designationCategory="Ship"]/designationCategory</xpath>
 	</Operation>
+
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[@Name="ShipCornerMech"]/designatorDropdown</xpath>
+	</Operation>
 	
 </Patch>

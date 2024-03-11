@@ -47,6 +47,12 @@
 			<li>Ship_Corner_OneTwoFlip</li>
 			<li>Ship_Corner_OneThree</li>
 			<li>Ship_Corner_OneThreeFlip</li>
+			<li>Ship_Corner_OneOne_Mech</li>
+			<li>Ship_Corner_OneOne_MechFlip</li>
+			<li>Ship_Corner_OneTwo_Mech</li>
+			<li>Ship_Corner_OneTwoFlip_Mech</li>
+			<li>Ship_Corner_OneThree_Mech</li>
+			<li>Ship_Corner_OneThreeFlip_Mech</li>
 		</defNames>
 		<designationCategory>Ship</designationCategory>
 		<debug>false</debug>

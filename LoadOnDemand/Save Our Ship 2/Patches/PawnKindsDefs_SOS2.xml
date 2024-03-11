@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
 
 	<Operation Class="PatchOperationFindMod">
@@ -7,52 +7,65 @@
 		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-			
+
 				<li Class="PatchOperationAddModExtension">
 					<xpath>Defs/PawnKindDef[defName="SpaceCannibal"]</xpath>
 					<value>
-					  <li Class="CombatExtended.LoadoutPropertiesExtension">
-						<primaryMagazineCount>
-						  <min>3</min>
-						  <max>6</max>
-						</primaryMagazineCount>
-					  </li>
+						<li Class="CombatExtended.LoadoutPropertiesExtension">
+							<primaryMagazineCount>
+								<min>3</min>
+								<max>6</max>
+							</primaryMagazineCount>
+						</li>
 					</value>
 				</li>
 				<li Class="PatchOperationAddModExtension">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrew"]</xpath>
 					<value>
-					  <li Class="CombatExtended.LoadoutPropertiesExtension">
-						<primaryMagazineCount>
-						  <min>2</min>
-						  <max>3</max>
-						</primaryMagazineCount>
-					  </li>
+						<li Class="CombatExtended.LoadoutPropertiesExtension">
+							<primaryMagazineCount>
+								<min>2</min>
+								<max>3</max>
+							</primaryMagazineCount>
+						</li>
 					</value>
 				</li>
 				<li Class="PatchOperationAddModExtension">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]</xpath>
 					<value>
-					  <li Class="CombatExtended.LoadoutPropertiesExtension">
-						<primaryMagazineCount>
-						  <min>3</min>
-						  <max>5</max>
-						</primaryMagazineCount>
-					  </li>
+						<li Class="CombatExtended.LoadoutPropertiesExtension">
+							<primaryMagazineCount>
+								<min>3</min>
+								<max>5</max>
+							</primaryMagazineCount>
+						</li>
 					</value>
 				</li>
 				<li Class="PatchOperationAddModExtension">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarineHeavy"]</xpath>
 					<value>
-					  <li Class="CombatExtended.LoadoutPropertiesExtension">
-						<primaryMagazineCount>
-						  <min>4</min>
-						  <max>6</max>
-						</primaryMagazineCount>
-					  </li>
+						<li Class="CombatExtended.LoadoutPropertiesExtension">
+							<primaryMagazineCount>
+								<min>4</min>
+								<max>6</max>
+							</primaryMagazineCount>
+						</li>
 					</value>
 				</li>
-				
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/PawnKindDef[defName="SpaceCrewEVA"]/apparelMoney</xpath>
+					<value>
+						<apparelMoney>1500~2000</apparelMoney>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/PawnKindDef[defName="SpaceCrewEVA"]/weaponMoney</xpath>
+					<value>
+						<weaponMoney>1000~2000</weaponMoney>
+					</value>
+				</li>
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/apparelMoney</xpath>
 					<value>
@@ -62,7 +75,7 @@
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/weaponMoney</xpath>
 					<value>
-						<weaponMoney>1000~2500</weaponMoney>
+						<weaponMoney>2000~3000</weaponMoney>
 					</value>
 				</li>
 
@@ -75,11 +88,12 @@
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarineHeavy"]/weaponMoney</xpath>
 					<value>
-						<apparelMoney>2000~3000</apparelMoney>
+						<apparelMoney>3500~5000</apparelMoney>
 					</value>
 				</li>
+
 			</operations>
 		</match>
 	</Operation>
-	
+
 </Patch>

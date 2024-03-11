@@ -277,6 +277,8 @@
 			<li>CargoShuttle</li>
 			<li>HeavyShuttle</li>
 			<li>DropshipShuttle</li>
+			<!-- New building in V98 -->
+			<li>ShipSalvageBayNano</li>
 		</defNames>
 		<designationCategory>Ship</designationCategory>
 		<debug>false</debug>

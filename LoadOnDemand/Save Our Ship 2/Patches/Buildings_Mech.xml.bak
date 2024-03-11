@@ -2,12 +2,12 @@
 <Patch>
 
 	<Operation Class="PatchOperationFindMod">
-	<mods>
-		<li>Save Our Ship 2</li>
-	</mods>
+		<mods>
+			<li>Save Our Ship 2</li>
+		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-				
+
 				<!-- ========== ShipAirlockMech ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShipAirlockMech"]/costList</xpath>
@@ -19,8 +19,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipAirlockMech"]</xpath>
 					<value>
 						<stuffCategories>
@@ -29,7 +29,7 @@
 						<costStuffCount>60</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== ShipHullTileMech ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShipHullTileMech"]/costList</xpath>
@@ -39,8 +39,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipHullTileMech"]</xpath>
 					<value>
 						<stuffCategories>
@@ -49,11 +49,11 @@
 						<costStuffCount>10</costStuffCount>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationRemove">	
+
+				<li Class="PatchOperationRemove">
 					<xpath>Defs/ThingDef[defName="ShipHullTileMech"]/constructEffect</xpath>
 				</li>
-				
+
 				<!-- ========== Ship_BeamMech_Unpowered ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Ship_BeamMech_Unpowered"]/costList</xpath>
@@ -63,8 +63,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Ship_BeamMech_Unpowered"]</xpath>
 					<value>
 						<stuffCategories>
@@ -73,7 +73,7 @@
 						<costStuffCount>20</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== Ship_BeamMech ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Ship_BeamMech"]/costList</xpath>
@@ -83,8 +83,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Ship_BeamMech"]</xpath>
 					<value>
 						<stuffCategories>
@@ -93,7 +93,7 @@
 						<costStuffCount>20</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== Ship_Corner_OneOne_Mech/Ship_Corner_OneOne_MechFlip ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Ship_Corner_OneOne_Mech" or defName="Ship_Corner_OneOne_MechFlip"]/costList</xpath>
@@ -103,8 +103,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Ship_Corner_OneOne_Mech" or defName="Ship_Corner_OneOne_MechFlip"]</xpath>
 					<value>
 						<stuffCategories>
@@ -113,7 +113,7 @@
 						<costStuffCount>12</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== Ship_Corner_OneTwo_Mech/Ship_Corner_OneTwoFlip_Mech ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Ship_Corner_OneTwo_Mech" or defName="Ship_Corner_OneTwoFlip_Mech"]/costList</xpath>
@@ -123,8 +123,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Ship_Corner_OneTwo_Mech" or defName="Ship_Corner_OneTwoFlip_Mech"]</xpath>
 					<value>
 						<stuffCategories>
@@ -133,7 +133,7 @@
 						<costStuffCount>24</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== Ship_Corner_OneThree_Mech/Ship_Corner_OneThreeFlip_Mech ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Ship_Corner_OneThree_Mech" or defName="Ship_Corner_OneThreeFlip_Mech"]/costList</xpath>
@@ -143,8 +143,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="Ship_Corner_OneThree_Mech" or defName="Ship_Corner_OneThreeFlip_Mech"]</xpath>
 					<value>
 						<stuffCategories>
@@ -153,7 +153,7 @@
 						<costStuffCount>36</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== ShipInside_SolarGeneratorMech ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShipInside_SolarGeneratorMech"]/costList</xpath>
@@ -168,8 +168,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipInside_SolarGeneratorMech"]</xpath>
 					<value>
 						<stuffCategories>
@@ -178,7 +178,7 @@
 						<costStuffCount>30</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== ShipInside_PassiveVentMechanoid ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveVentMechanoid"]/costList</xpath>
@@ -190,8 +190,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveVentMechanoid"]</xpath>
 					<value>
 						<stuffCategories>
@@ -200,7 +200,7 @@
 						<costStuffCount>40</costStuffCount>
 					</value>
 				</li>
-				
+
 				<!-- ========== ShipInside_PassiveCoolerMechanoid ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerMechanoid"]/costList</xpath>
@@ -212,8 +212,8 @@
 						</costList>
 					</value>
 				</li>
-				
-				<li Class="PatchOperationAdd">	
+
+				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerMechanoid"]</xpath>
 					<value>
 						<stuffCategories>
@@ -222,9 +222,9 @@
 						<costStuffCount>80</costStuffCount>
 					</value>
 				</li>
-			
+
 			</operations>
 		</match>
-    </Operation>
-	
+	</Operation>
+
 </Patch>

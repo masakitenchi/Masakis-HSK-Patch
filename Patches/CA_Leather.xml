@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Caravan Adventures</li>
+		</mods>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/PawnKindDef/specificApparelRequirements/li[stuff="Leather_GuineaPig"]/stuff</xpath>
+			<value>
+				<stuff>Leather_Light</stuff>
+			</value>
+		</match>
+	</Operation>
+</Patch>

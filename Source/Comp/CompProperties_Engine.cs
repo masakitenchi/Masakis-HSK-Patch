@@ -68,14 +68,15 @@ public class CompEngine : ThingComp
     }
 
 
-	public override void Notify_KilledLeavingsLeft(List<Thing> leavings)
+    // Useless, this is called after spawning killed leavings
+	/* public override void Notify_KilledLeavingsLeft(List<Thing> leavings)
 	{
 		if (HasEngine)
         {
             Thing thing = ThingMaker.MakeThing(_currentEngine, _EngineStuff);
             leavings.Add(thing);
         }
-	}
+	} */
 	
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {

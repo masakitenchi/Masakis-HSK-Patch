@@ -5,12 +5,12 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core_SK_Patch", "Core_SK_Patch.csproj", "{B61E2EC5-DACF-487B-B528-87EF0532E8B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOS2Compat", "..\SOS2Compat\SOS2Compat.csproj", "{B03F751E-BB50-4818-A689-2B17B05DF14A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOS2Compat", "SOS2Compat\SOS2Compat.csproj", "{B03F751E-BB50-4818-A689-2B17B05DF14A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8} = {B61E2EC5-DACF-487B-B528-87EF0532E8B8}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedsPleaseCompat", "..\SeedsPleaseCompat\SeedsPleaseCompat.csproj", "{F78A2B8F-2761-4117-8D43-65FE816ED501}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedsPleaseCompat", "SeedsPleaseCompat\SeedsPleaseCompat.csproj", "{F78A2B8F-2761-4117-8D43-65FE816ED501}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8} = {B61E2EC5-DACF-487B-B528-87EF0532E8B8}
 	EndProjectSection

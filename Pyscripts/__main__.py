@@ -22,12 +22,16 @@ def extract():
         mustexist=True, title="保存到……"
     )
     for defType, tree in result.items():
+        root: ET._Element = tree.getroot()
         os.makedirs(f"{output_dir}/{defType}", exist_ok=True)
         base_filename = f"{output_dir}/{defType}/Extracted"
         ext = ".xml"
+        for node in list(root):
+            if node.text == "" or node.text is None:
+                root.remove(node)
         if os.path.exists(f"{base_filename}{ext}"):
             current = ET.parse(f"{base_filename}{ext}").getroot()
-            for child in list(tree.getroot()):
+            for child in list(root):
                 current.append(child)
             current.write(
                 f"{base_filename}{ext}",

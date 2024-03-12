@@ -1,8 +1,21 @@
 #!/bin/bash
+dirname=$(realpath $(dirname $0))
 
-dotnet restore Core_SK_Patch.sln
+config="Debug"
+case $1 in
+	-R )
+		config="Release"
+		;;
+	* )
+		config="Debug"
+		;;
+esac
 
-nuget restore Core_SK_Patch.sln
-nuget update Core_SK_Patch.sln
 
-MSBuild.exe Core_SK_Patch.sln
+
+dotnet restore $dirname/Core_SK_Patch.sln
+
+nuget restore $dirname/Core_SK_Patch.sln
+nuget update $dirname/Core_SK_Patch.sln
+
+MSBuild.exe $dirname/Core_SK_Patch.sln "-p:Configuration=$config" "-t:Clean;Rebuild"

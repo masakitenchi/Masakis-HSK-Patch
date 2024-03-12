@@ -19,7 +19,15 @@ def extract():
     output_dir = filedialog.askdirectory(mustexist=True, title="Choose the directory to save the extracted files")
     for defType, tree in result.items():
         os.makedirs(f"{output_dir}/{defType}", exist_ok=True)
-        tree.write(f"{output_dir}/{defType}/Extracted.xml", pretty_print=True, xml_declaration=True, encoding='utf-8')
+        base_filename = f"{output_dir}/{defType}/Extracted"
+        ext = ".xml"
+        if os.path.exists(f"{base_filename}{ext}"):
+            current = ET.parse(f"{base_filename}{ext}").getroot()
+            for child in list(tree.getroot()):
+                current.append(child)
+            current.write(f"{base_filename}{ext}", pretty_print=True, xml_declaration=True, encoding='utf-8')
+        else:
+            tree.write(f"{base_filename}{ext}", pretty_print=True, xml_declaration=True, encoding='utf-8')
 
 if __name__ == '__main__':
     root = Tk()

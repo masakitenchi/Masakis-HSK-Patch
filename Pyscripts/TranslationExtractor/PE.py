@@ -5,121 +5,150 @@ import regex as re
 import argparse
 
 # Find all patches that target defs with defName
-xpath_regex = re.compile(r'Defs\/(?<defType>.*?Def)\[(?<defNames>.*)\]\/(?<field>label|description)')
+xpath_regex = re.compile(
+    r"Defs\/(?<defType>.*?Def)\[(?<defNames>.*)\]\/(?<field>label|description)"
+)
 
 defNames_regex = re.compile(r'defName\W*?=\W*?"(?<defName>.*?)"')
 
-PatchOperations = ['PatchOperationAdd', 'PatchOperationReplace', 'PatchOperationSequence', 'PatchOperationConditional']
+PatchOperations = [
+    "PatchOperationAdd",
+    "PatchOperationReplace",
+    "PatchOperationSequence",
+    "PatchOperationConditional",
+]
 errors = []
 
-#pairs : dict[str, dict[str,str]]= dict()
+# pairs : dict[str, dict[str,str]]= dict()
+
 
 def get_files_abspath(path: str) -> list[str]:
-	return [os.path.abspath(os.path.join(path,f)) for f in os.listdir(path) if f.endswith('.xml')]
+    return [
+        os.path.abspath(os.path.join(path, f))
+        for f in os.listdir(path)
+        if f.endswith(".xml")
+    ]
 
 
-def extract(list_paths: list[str]) -> dict[str, dict[str,str]]:
-	pairs: dict[str, dict[str,str]] = dict()
-	#os.makedirs('extracted', exist_ok=True)
-	for file in list_paths:
-		if not os.path.isabs(file) or not os.path.isfile(file): 
-			errors.append(f'path {file} does not target a file or is not absolute')
-			continue
-		tree = ET.parse(file)
-		root : ET._Element = tree.getroot()
-		if root.tag == 'Defs':
-			# only looks for non-virtual defs
-			nodes = root.xpath('//*[preceding-sibling::defName or following-sibling::defName][self::label or self::description]/..')
-			for node in nodes:
-				defType = node.tag
-				if defType not in pairs:
-					pairs[defType] = dict()
-				key = node.find('./defName').text
-				pairs[defType][f'{key}.label'] = node.find('./label').text
-				pairs[defType][f'{key}.description'] = node.find('./description').text
-		else:
-			# looks for all patches that targeting label or description
-			nodes = root.xpath('//*/xpath[contains(text(),"label") or contains(text(), "description")]/..')
-			try:
-				for node in nodes:
-					xpath = node.find('./xpath')
-					match = re.match(xpath_regex, xpath.text)
-					if match:
-						defType, defName, field = match.groups()
-					else:
-						continue
-					value = node.find(f'./value/{field}').text
-					if defType not in pairs:
-						pairs[defType] = dict()
-					defNames = re.findall(defNames_regex, defName)
-					#print(defNames)
-					for defName in defNames:
-						key = f'{defName}.{field}'
-						pairs[defType][key] = value
-			except Exception as e:
-				print(f'Error in file {file}, message: {e}')
-				continue
-	return pairs
+def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
+    pairs: dict[str, dict[str, str]] = dict()
+    # os.makedirs('extracted', exist_ok=True)
+    for file in list_paths:
+        try:
+            if not os.path.isabs(file) or not os.path.isfile(file):
+                errors.append(f"path {file} does not target a file or is not absolute")
+                continue
+            tree = ET.parse(file)
+            root: ET._Element = tree.getroot()
+            if root.tag == "Defs":
+                # only looks for non-virtual defs
+                nodes = root.xpath(
+                    "//*[preceding-sibling::defName or following-sibling::defName][self::label or self::description]/.."
+                )
+                for node in nodes:
+                    defType = node.tag
+                    if defType not in pairs:
+                        pairs[defType] = dict()
+                    key = node.find("./defName").text
+                    pairs[defType][f"{key}.label"] = (
+                        node.find("./label").text
+                        if node.find("./label") is not None
+                        else None
+                    )
+                    pairs[defType][f"{key}.description"] = (
+                        node.find("./description").text
+                        if node.find("./description") is not None
+                        else None
+                    )
+            else:
+                # looks for all patches that targeting label or description
+                nodes = root.xpath(
+                    '//*/xpath[contains(text(),"label") or contains(text(), "description")]/..'
+                )
+                for node in nodes:
+                    xpath = node.find("./xpath")
+                    match = re.match(xpath_regex, xpath.text)
+                    if match:
+                        defType, defName, field = match.groups()
+                    else:
+                        continue
+                    value = node.find(f"./value/{field}").text
+                    if defType not in pairs:
+                        pairs[defType] = dict()
+                    defNames = re.findall(defNames_regex, defName)
+                    # print(defNames)
+                    for defName in defNames:
+                        key = f"{defName}.{field}"
+                        pairs[defType][key] = value
+        except Exception as e:
+            print(f"Error in file {file}, message: {e}")
+            continue
+    return pairs
+
 
 def BFS(root: str) -> list[str]:
-	result = list()
-	for cur, leafs, files in os.walk(root):
-		for file in files:
-			if file.endswith('.xml'):
-				result.append(os.path.abspath(os.path.join(cur, file)))
-		for leaf in leafs:
-			result.extend(BFS(leaf))
-	return result
+    result = list()
+    for cur, leafs, files in os.walk(root):
+        for file in files:
+            if file.endswith(".xml"):
+                result.append(os.path.abspath(os.path.join(cur, file)))
+        for leaf in leafs:
+            result.extend(BFS(leaf))
+    return result
 
 
 def main(dirpath: str, recursive: bool = False) -> dict[str, ET._ElementTree]:
-	if not os.path.isdir(dirpath) or not os.path.isabs(dirpath):
-		raise Exception('Path is not a dir or absolute path')
-	trees = dict()
-	if recursive:
-		list_files = BFS(dirpath)
-	else:
-		list_files = get_files_abspath(dirpath)
-	#print(list_files)
-	pairs = extract(list_files)
-	#print(pairs)
-	#os.makedirs('extracted', exist_ok=True)
-	for defType, results in pairs.items():
-		#os.makedirs(f'extracted/{defType}', exist_ok=True)
-		root : ET._Element = ET.Element('LanguageData')
-		root.addprevious(ET.Comment('This file was generated by Patch_Extract.py'))
-		tree : ET._ElementTree = ET.ElementTree(root)
-		for key, value in results.items():
-			defName = ET.SubElement(root, key)
-			defName.text = value
-		trees[defType] = tree
-	return trees
+    if not os.path.isdir(dirpath) or not os.path.isabs(dirpath):
+        raise Exception("Path is not a dir or absolute path")
+    trees = dict()
+    if recursive:
+        list_files = BFS(dirpath)
+    else:
+        list_files = get_files_abspath(dirpath)
+    # print(list_files)
+    pairs = extract(list_files)
+    # print(pairs)
+    # os.makedirs('extracted', exist_ok=True)
+    for defType, results in pairs.items():
+        # os.makedirs(f'extracted/{defType}', exist_ok=True)
+        root: ET._Element = ET.Element("LanguageData")
+        root.addprevious(ET.Comment("This file was generated by Patch_Extract.py"))
+        tree: ET._ElementTree = ET.ElementTree(root)
+        for key, value in results.items():
+            defName = ET.SubElement(root, key)
+            defName.text = value
+        trees[defType] = tree
+    return trees
 
 
-
-if __name__ == '__main__':
-	parser = argparse.ArgumentParser()
-	parser.add_argument('--folder', '-f', action='store', metavar='目标文件夹')
-	result = parser.parse_args()
-	if not result.folder:
-		path = os.path.abspath('.')
-	else:
-		path = os.path.abspath(result.folder)
-	list_files = BFS(path)
-	pairs = extract(list_files)
-	print(pairs)
-	os.makedirs('extracted', exist_ok=True)
-	for defType, results in pairs.items():
-		os.makedirs(f'extracted/{defType}', exist_ok=True)
-		root : ET._Element = ET.Element('LanguageData')
-		root.addprevious(ET.Comment('This file was generated by Patch_Extract.py'))
-		tree : ET._ElementTree = ET.ElementTree(root)
-		for key, value in results.items():
-			defName = ET.SubElement(root, key)
-			defName.text = value
-		tree.write(f'extracted/{defType}/ExtractedPatch.xml', pretty_print=True, xml_declaration=True, encoding='utf-8')
-	if len(errors) > 0:
-		for e in errors:
-			print(e)
-		exit(1)
-	exit(0)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--folder", "-f", action="store", metavar="目标文件夹")
+    result = parser.parse_args()
+    if not result.folder:
+        path = os.path.abspath(".")
+    else:
+        path = os.path.abspath(result.folder)
+    list_files = BFS(path)
+    pairs = extract(list_files)
+    print(pairs)
+    os.makedirs("extracted", exist_ok=True)
+    for defType, results in pairs.items():
+        os.makedirs(f"extracted/{defType}", exist_ok=True)
+        root: ET._Element = ET.Element("LanguageData")
+        root.addprevious(ET.Comment("This file was generated by Patch_Extract.py"))
+        tree: ET._ElementTree = ET.ElementTree(root)
+        for key, value in results.items():
+            defName = ET.SubElement(root, key)
+            defName.text = value
+        tree.write(
+            f"extracted/{defType}/ExtractedPatch.xml",
+            pretty_print=True,
+            xml_declaration=True,
+            encoding="utf-8",
+        )
+    if len(errors) > 0:
+        for e in errors:
+            print(e)
+        exit(1)
+    exit(0)

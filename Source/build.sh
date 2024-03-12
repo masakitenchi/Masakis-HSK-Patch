@@ -1,12 +1,12 @@
 #!/bin/bash
 dirname=$(realpath $(dirname $0))
 
-config="Debug"
+config="1.4-debug"
 clean=""
 while (( "$#" )); do
 	case $1 in
 		-R )
-			config="Release"
+			config="1.4"
 			shift
 			;;
 		-C )

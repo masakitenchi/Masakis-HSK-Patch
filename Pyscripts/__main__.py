@@ -16,7 +16,7 @@ def select_folder():
 def extract():
     global ext_dir
     Label(root, text=f"Extracting from {ext_dir}...").pack()
-    result = PE.main(ext_dir, recursive_var.get())
+    result = PE.main(ext_dir.get(), recursive_var.get())
     Label(root, text="Extraction complete!").pack()
     output_dir = filedialog.askdirectory(
         mustexist=True, title="保存到……"

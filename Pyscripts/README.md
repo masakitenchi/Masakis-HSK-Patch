@@ -35,6 +35,7 @@ New modders often have a hard time when trying to understand how PatchOperations
 # Current TO-DO List:
 
 - [] XML inheritance feature in Translation Extractor
-- [] GUI interface
+- [] GUI interface optimization
 - [] Add an option to concat dirname to output file
+- [] Preview before export
 - [] TO-DO

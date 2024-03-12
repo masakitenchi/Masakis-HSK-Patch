@@ -19,25 +19,20 @@ PatchOperations = [
 ]
 errors = []
 
-# pairs : dict[str, dict[str,str]]= dict()
-
-
-def get_files_abspath(path: str) -> list[str]:
-    return [
-        os.path.abspath(os.path.join(path, f))
-        for f in os.listdir(path)
-        if f.endswith(".xml")
-    ]
-
 
 def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
+    """总提取函数
+
+    :param list_paths: 所有文件的绝对路径列表
+    :return: dict[defType: str, dict[defName: str, field: str]] 按defType分类的提取结果
+    """
     pairs: dict[str, dict[str, str]] = dict()
     # os.makedirs('extracted', exist_ok=True)
     for file in list_paths:
         try:
             if not os.path.isabs(file) or not os.path.isfile(file):
                 errors.append(f"path {file} does not target a file or is not absolute")
-                continue
+                raise Exception(f"path {file} does not target a file or is not absolute")
             tree = ET.parse(file)
             root: ET._Element = tree.getroot()
             if root.tag == "Defs":
@@ -104,7 +99,7 @@ def main(dirpath: str, recursive: bool = False) -> dict[str, ET._ElementTree]:
     if recursive:
         list_files = BFS(dirpath)
     else:
-        list_files = get_files_abspath(dirpath)
+        list_files = [os.path.abspath(f) for f in os.listdir(dirpath) if f.endswith(".xml")]
     # print(list_files)
     pairs = extract(list_files)
     # print(pairs)

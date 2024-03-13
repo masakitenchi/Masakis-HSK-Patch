@@ -6,7 +6,6 @@ import lxml.etree as ET
 from file import BFS, listdir_abspath
 import os
 
-
 def output(result: dict[str, ET._ElementTree], output_dir: str):
     for defType, tree in result.items():
         elemroot: ET._Element = tree.getroot()
@@ -74,8 +73,8 @@ def extract(ext_dir: str, recursive: bool, split: bool, append: bool):
             output(result, output_dir)
 
 
-def Patch_Extract_Tab(root: Tk):
-    ext_dir = StringVar(root, value="undefined", name="ext_dir")
+def Patch_Extract_Tab(Tab: Frame):
+    ext_dir = StringVar(Tab, value="undefined", name="ext_dir")
     ext_dir.trace_add(
         "write",
         lambda a, b, c: (
@@ -85,14 +84,14 @@ def Patch_Extract_Tab(root: Tk):
         ),
     )
     directory_label_text = StringVar(
-        root, value=f"The directory of the patch is: {ext_dir.get()}"
+        Tab, value=f"The directory of the patch is: {ext_dir.get()}"
     )
     directory_label = Label(
-        root, textvariable=directory_label_text, wraplength=800
+        Tab, textvariable=directory_label_text, wraplength=800
     )
     directory_label.grid()
     Button(
-        root,
+        Tab,
         text="Choose directory",
         command=lambda: (
             ext_dir.set(
@@ -101,9 +100,9 @@ def Patch_Extract_Tab(root: Tk):
             directory_label_text.set(f"The directory of patches is: {ext_dir.get()}"),
         ),
     ).grid()
-    recursive_var = BooleanVar(root, True)
-    append_var = BooleanVar(root, False)
-    split_var = BooleanVar(root, False)
+    recursive_var = BooleanVar(Tab, True)
+    append_var = BooleanVar(Tab, False)
+    split_var = BooleanVar(Tab, False)
     split_var.trace_add(
         "write",
         lambda a, b, c: (
@@ -112,32 +111,123 @@ def Patch_Extract_Tab(root: Tk):
             else append_option.config(state="disabled")
         ),
     )
-    Checkbutton(root, text="Recursive", variable=recursive_var).grid()
-    Label(root, text="递归查找").grid()
-    Checkbutton(root, text="File Specific", variable=split_var).grid()
-    Label(root, text="按文件分割").grid()
+    Checkbutton(Tab, text="Recursive", variable=recursive_var).grid()
+    Label(Tab, text="递归查找").grid()
+    Checkbutton(Tab, text="File Specific", variable=split_var).grid()
+    Label(Tab, text="按文件分割").grid()
     append_option = Checkbutton(
-        root, text="Append", variable=append_var, state="disabled"
+        Tab, text="Append", variable=append_var, state="disabled"
     )
     append_option.grid()
-    Label(root, text="追加文件夹名到文件名后").grid()
+    Label(Tab, text="追加文件夹名到文件名后").grid()
     ext_button = Button(
-        root, text="Extract!", command=lambda: extract(ext_dir.get(), recursive_var.get(), split_var.get(), append_var.get()), state="disabled"
+        Tab, text="Extract!", command=lambda: extract(ext_dir.get(), recursive_var.get(), split_var.get(), append_var.get()), state="disabled"
     )
     ext_button.grid()
 
+class Test_Tab():
+    _singleton = None
+
+    def __new__(cls, Tab: Widget):
+        if Test_Tab._singleton is None:
+            Test_Tab._singleton = super(Test_Tab, cls).__new__(cls)
+        return Test_Tab._singleton
+
+    def __init__(self, Tab: Widget):
+        self.dirs = []
+        self.buttons = []
+        self.data_vars = []
+        self.Tab = Tab
+        self.Frame_int1 = Frame(Test, width=Test.winfo_reqwidth())
+        self.Frame_int1.grid(row=0, sticky='nswe', columnspan=2)
+        self.Frame_Checkboxes = Frame(Test)
+        self.Frame_Checkboxes.grid(row=1, column=0, sticky='nswe')
+        self.Frame_Config = Frame(Test)
+        self.Frame_Config.grid(row=1, column=1, sticky='nswe')
+        self.Frame_int3 = Frame(Test, width=Test.winfo_reqwidth())
+        self.Frame_int3.grid(row=2, sticky= 'nswe', columnspan=2)
+        self.Tab.rowconfigure(0, weight=1)
+        self.Tab.rowconfigure(1, weight=8)
+        self.Tab.columnconfigure(1, weight=2)
+        self.Tab.columnconfigure(0, weight=8)
+        self.Tab.rowconfigure(2, weight=1)
+        self.canvas = Canvas(self.Frame_Checkboxes)
+        self.scrbr = Scrollbar(self.Frame_Checkboxes, orient=VERTICAL, command=self.canvas.yview)
+        self.canvas.configure(yscrollcommand=self.scrbr.set, scrollregion=self.canvas.bbox("all"))
+        self.canvas.bind_all("<MouseWheel>", self.on_mousewheel)
+        self.Frame_Checkboxes.grid_rowconfigure(0, weight=1)
+        self.Frame_Checkboxes.grid_columnconfigure(0, weight=1)
+        self.ext_dir = StringVar(Test, name="ext_dir1")
+        self.ext_dir.trace_add('write', self.update)
+        Button(
+            self.Frame_int1,
+            text="Choose directory",
+            command=lambda: (
+                self.ext_dir.set(
+                    filedialog.askdirectory(mustexist=True, title="选择目标文件夹")
+                ),
+                self.update()
+            )
+        ).place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.update()
+    
+    def on_mousewheel(self, event):
+        self.canvas.yview_scroll(-1 * (event.delta // 120), "units")
+
+    def update(self, *args):
+        if not self.ext_dir.get(): return
+        self.dirs.clear()
+        self.data_vars.clear()
+        for button in self.buttons:
+            button.destroy()
+        self.canvas.delete('all')
+        self.Checkboxes = Frame(self.canvas)
+        self.canvas.create_window((0, 0), window=self.Checkboxes, anchor="nw")
+        row = 1
+        self.dirs.extend([f"{self.ext_dir.get()}/{f}" for f in os.listdir(self.ext_dir.get()) if os.path.isdir(f"{self.ext_dir.get()}/{f}") and not (f[0] == "." or f[0] == "_")])
+        self.data_vars.extend([IntVar(Test, 0) for i in range(len(self.dirs))])
+        for i in range(len(self.dirs)):
+            button = Checkbutton(self.Checkboxes, text=self.dirs[i], variable=self.data_vars[i], name=f"dir{i}")
+            button.grid(row=i+row, column=0, sticky='we')
+            self.Checkboxes.grid_rowconfigure(0, weight=1)
+            self.buttons.append(button)
+            row += 1
+        #Frame_Checkboxes.rowconfigure(row+len(dirs)+1)
+        Button(self.Frame_int3, text="Output Selected", command=lambda: print([f for f in self.dirs if self.data_vars[self.dirs.index(f)].get()]), name="output").place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.Checkboxes.update_idletasks()
+        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        self.canvas.grid(row=0, column=0, sticky='nswe')
+        self.scrbr.grid(row=0, column=1, sticky='ns')
+
+
+    def Draw(self, *args):
+        pass
+
+
+
 
 if __name__ == "__main__":
+    def update_all(*args):
+        print(args)
+        root.update()
     root = Tk()
+    Style().configure("Red.TFrame", background="red")
+    Style().configure("Blue.TFrame", background="blue")
+    Style().configure("Green.TFrame", background="green")
+    Style().configure('yellow.TFrame', background='yellow')
+    Style().configure('white.TFrame', background='white')
     root.title("Pyscripts")
     root.geometry("800x600")
     root.resizable(False, False)
     notebook = Notebook(root, width=800, height=600)
     Patch_Extract = Frame(notebook)
     Translation_Clean = Frame(notebook)
+    Test = Frame(notebook)
     notebook.add(Patch_Extract, text="Patch Extractor")
     # notebook.add(Translation_Clean, text="Translation Cleaner")
+    notebook.add(Test, text="Test")
+    notebook.bind("<<NotebookTabChanged>>", update_all)
     notebook.pack()
     Patch_Extract_Tab(Patch_Extract)
-    
+    Test_Tab(Test)
     root.mainloop()

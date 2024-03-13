@@ -10,7 +10,7 @@ while (( "$#" )); do
 			shift
 			;;
 		-C )
-			clean="Clean;Rebuild"
+			clean="Clean\;Build"
 			shift
 			;;
 		* )

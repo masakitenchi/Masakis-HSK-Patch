@@ -56,6 +56,7 @@ def extract(ext_dir: str, recursive: bool, split: bool, append: bool):
                 os.makedirs(f"{output_dir}/{defType}", exist_ok=True)
                 for key, value in KVpair.items():
                     defName = ET.SubElement(elemroot, key)
+                    defName.addprevious(ET.Comment("EN: " + value)) # Add original text as comment
                     defName.text = value
                 print(f"{output_dir}/{defType}/{file_name}")
                 tree.write(
@@ -78,6 +79,7 @@ def extract(ext_dir: str, recursive: bool, split: bool, append: bool):
                 etree: ET._ElementTree = ET.ElementTree(elemroot)
                 for key, value in result.items():
                     defName = ET.SubElement(elemroot, key)
+                    defName.addprevious(ET.Comment("EN: " + value))
                     defName.text = value
                 output({defType: etree}, output_dir)
 

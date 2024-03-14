@@ -10,8 +10,13 @@ def BFS(root: str, format: list[str]) -> list[str]:
 	"""
 	result = []
 	for cur, dirs, files in os.walk(root):
-		for file in files:
-			result.append(OP.abspath(OP.join(cur, file)))
+		print(files)
+		if format is None:
+			for file in files:
+				result.append(OP.abspath(OP.join(cur, file)))
+		else:
+			for file in filter(lambda x: x.split('.')[-1] in format, files):
+				result.append(OP.abspath(OP.join(cur, file)))
 		for dir in dirs:
 			result.extend(BFS(OP.abspath(OP.join(cur, dir)), format))
 	return result

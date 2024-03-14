@@ -158,7 +158,7 @@ public class Main : Mod
     {
         assembly = null;
         //DirectoryInfo locationInfo = new DirectoryInfo(this.Content.RootDir).GetDirectories("\\AssembliesCompat").FirstOrFallback(null);
-        FileInfo assemblyFile = new DirectoryInfo(this.Content.RootDir).GetDirectories("AssembliesCompat")?.FirstOrDefault()?.GetFiles(name + ".dll")?.First();
+        FileInfo assemblyFile = new DirectoryInfo(this.Content.RootDir).GetDirectories("AssembliesCompat")?.FirstOrDefault()?.GetFiles(name + ".dll")?.FirstOrDefault();
         if (assemblyFile is not null)
         {
             byte[] rawAssembly = File.ReadAllBytes(assemblyFile.FullName);

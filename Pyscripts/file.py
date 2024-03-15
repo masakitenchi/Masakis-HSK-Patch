@@ -10,7 +10,7 @@ def BFS(root: str, format: list[str]) -> list[str]:
 	"""
 	result = []
 	for cur, dirs, files in os.walk(root):
-		print(files)
+		#print(files)
 		if format is None:
 			for file in files:
 				result.append(OP.abspath(OP.join(cur, file)))

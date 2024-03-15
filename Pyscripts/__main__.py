@@ -6,7 +6,7 @@ import lxml.etree as ET
 from file import BFS, listdir_abspath
 import os
 
-class Patch_Extract_Tab_Deprecated(Frame):
+class Patch_Extract_Tab_Deprecated(Widget):
 
     _singleton = None
     def __new__(cls, Tab: Widget):
@@ -158,16 +158,25 @@ class Patch_Extract_Tab(Frame):
 
     def __init__(self, Tab: Widget):
         super().__init__(Tab)
+        self.cur_state = "SelectDir"
         self.dirs = []
         self.DirOptions = []
         self.data_vars = []
         self.Tab = Tab
-        self.Title = Frame(Tab, width=Tab.winfo_reqwidth(), height=20, style='white.TFrame')
+        self.Title = Frame(Tab, height=100, style='white.TFrame')
         self.Title.grid(row=0, sticky='nswe', columnspan=2)
-        self.Title.grid_rowconfigure(0, minsize=100)
+        self.Title.grid_rowconfigure(0, weight=1)
+        self.Title.grid_columnconfigure(0, weight=1)
+        self.Title.grid_columnconfigure(1, weight=9)
+        self.Draw_Title(self.Title)
+        self.Tab.grid_columnconfigure(0, weight=1)
+        self.Tab.grid_rowconfigure(0, minsize=50)
         self.Main_Rect = Frame(Tab, style='Green.TFrame')
         self.Main_Rect.grid(row=1, column=0, sticky='nswe')
-        self.Frame_Config = Frame(Tab, style='yellow.TFrame', width=200)
+        self.Main_Rect.grid_rowconfigure(0, weight=1)
+        self.Main_Rect.grid_columnconfigure(0, weight=1)
+        self.Draw_Main(self.Main_Rect)
+        self.Frame_Config = Frame(Tab, style='yellow.TFrame', width=100)
         self.Frame_Config.grid(row=1, column=1, sticky='nswe')
         self.Draw_config(self.Frame_Config)
         self.Bottom_Buttons = Frame(Tab, width=Tab.winfo_reqwidth(), height=20, style='Blue.TFrame')
@@ -175,39 +184,22 @@ class Patch_Extract_Tab(Frame):
         self.Tab.rowconfigure(0, minsize=40, pad=10)
         self.Tab.rowconfigure(1, weight=1)
         self.Tab.rowconfigure(2, minsize=40, pad=10)
-        self.Tab.columnconfigure(1, weight=2, minsize = 50)
-        self.Tab.columnconfigure(0, weight=8)
-        self.canvas = Canvas(self.Main_Rect)
-        self.scrbrY = Scrollbar(self.Main_Rect, orient=VERTICAL, command=self.canvas.yview)
-        self.scrbrX = Scrollbar(self.Main_Rect, orient=HORIZONTAL, command=self.canvas.xview)
-        self.canvas.configure(xscrollcommand=self.scrbrX.set, yscrollcommand=self.scrbrY.set, scrollregion=self.canvas.bbox("all"))
-        self.Main_Rect.grid_rowconfigure(0, weight=1)
-        self.Main_Rect.grid_columnconfigure(0, weight=1)
-        self.ext_dir = StringVar(Tab, name="ext_dir1")
-        self.ext_dir.trace_add('write', self.update)
-        Button(
-            self.Title,
-            text="Choose directory",
-            command=lambda: (
-                self.ext_dir.set(
-                    filedialog.askdirectory(mustexist=True, title="选择目标文件夹")
-                )
-            )
-        ).place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.Tab.columnconfigure(1, weight=1, minsize = 50)
+        self.Tab.columnconfigure(0, weight=9)
         """ self.entry = Entry(Tab)
         def execute(event):
             command = self.entry.get()
             print(eval(command))
         self.entry.bind("<Return>", execute)
         self.entry.grid(row=2, column=1, sticky='we') """
+        self.Title.bind_all("<ButtonPress-1>", self.check_update)
         self.update()
     
-    def on_mousewheel(self, event):
-        #print(self.canvas.xview(), self.canvas.yview())
-        self.canvas.yview_scroll(-1 * (event.delta // 120), "units")
 
     def update(self, *args):
+        #print(args)
         if not self.ext_dir.get(): return
+        self.ext_dir_wrap.set(self.ext_dir.get())
         self.Main_Rect.update_idletasks()
         self.dirs.clear()
         self.data_vars.clear()
@@ -241,6 +233,7 @@ class Patch_Extract_Tab(Frame):
         else:
             self.canvas.unbind_all("<MouseWheel>")
             self.scrbrY.grid_forget()
+        super().update()
 
     def Draw_config(self, outRect: Widget, **kwargs):
         self.configBoxes = []
@@ -263,10 +256,45 @@ class Patch_Extract_Tab(Frame):
         inRect.grid(row=0, column=0)
         self.recursive_option = Checkbutton(inRect, text="Recursive", variable=self.recursive)
         self.recursive_option.grid(row=0, column=0, sticky='w')
+        Label(inRect, text="递归查找").grid(row=1, column=0, sticky='w')
         self.split_option = Checkbutton(inRect, text="Split", variable=self.split)
-        self.split_option.grid(row=1, column=0, sticky='w')
+        self.split_option.grid(row=2, column=0, sticky='w')
+        Label(inRect, text="按文件分割").grid(row=3, column=0, sticky='w')
         self.append_option = Checkbutton(inRect, text="Append", variable=self.append, state="disabled")
-        self.append_option.grid(row=2,column=0, sticky='w')
+        self.append_option.grid(row=4,column=0, sticky='w')
+        Label(inRect, text="追加文件夹名到文件名后").grid(row=5, column=0, sticky='w')
+
+    def Draw_Title(self, outRect: Widget, **kwargs):
+        self.ext_dir = StringVar(self.Tab, name="ext_dir1")
+        self.ext_dir.trace_add('write', self.update)
+        #用于让Entry不那么频繁触发ext_dir的trace的变量
+        self.ext_dir_wrap = StringVar(self.Tab, name="ext_dir_wrap")
+        Button(
+            self.Title,
+            text="Choose directory",
+            command=lambda: (
+                self.ext_dir.set(
+                    filedialog.askdirectory(mustexist=True, title="选择目标文件夹")
+                )
+            )
+        ).grid(row=0, column=0, sticky='we')
+        self.Entry = Entry(
+            self.Title,
+            textvariable=self.ext_dir_wrap
+        )
+        self.Entry.grid(row=0, column=1, sticky='we')
+        #还是这个方便
+        self.Entry.bind("<Return>", self.update_dir)
+        self.Entry.bind("<FocusOut>", self.update_dir)
+    def Draw_Main(self, outRect: Widget, **kwargs):
+        self.canvas = Canvas(self.Main_Rect)
+        self.scrbrY = Scrollbar(self.Main_Rect, orient=VERTICAL, command=self.canvas.yview)
+        self.scrbrX = Scrollbar(self.Main_Rect, orient=HORIZONTAL, command=self.canvas.xview)
+        self.canvas.configure(xscrollcommand=self.scrbrX.set, yscrollcommand=self.scrbrY.set, scrollregion=self.canvas.bbox("all"))
+
+
+    def Draw_Bottom(self, outRect: Widget, **kwargs):
+        pass
 
     def do_work(self):
         dirs = (dirname for i, dirname in enumerate(self.dirs) if self.data_vars[i].get())
@@ -287,7 +315,6 @@ class Patch_Extract_Tab(Frame):
                     files.append(file)
                 except:
                     continue
-            
             #print(f'result: {files}')
             if split:
                 for file in files:
@@ -349,7 +376,23 @@ class Patch_Extract_Tab(Frame):
                         defName.addprevious(ET.Comment("EN: " + value))
                         defName.text = value
                     etree.write(f'{output_dir}/{defType}/Extracted_Unified.xml', pretty_print=True, xml_declaration=True, encoding='utf-8')
-                      
+    
+    def check_update(self, *args):
+        """ print(args)
+        print(self.winfo_geometry())
+        print(self.Entry.winfo_geometry())
+        print(self.winfo_pointerxy())
+        print(self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery()))
+        print(self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery()) == self.Entry) """
+        if self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery()) != self.Entry:
+            self.Tab.focus_set()
+    def update_dir(self, *args):
+        print(args)
+        self.ext_dir.set(self.ext_dir_wrap.get())
+    def on_mousewheel(self, event):
+        #print(self.canvas.xview(), self.canvas.yview())
+        self.canvas.yview_scroll(-1 * (event.delta // 120), "units")
+
 
 class MainWindow(Tk):
     def __init__(self):
@@ -361,25 +404,29 @@ class MainWindow(Tk):
         Style().configure('white.TFrame', background='white', theme='vista')
         self.title("Pyscripts")
         self.geometry("800x600")
-        self.resizable(True,True)
+        self.resizable(False,False)
         self.notebook = Notebook(self, width=800, height=600)
-        self.Patch_Extract = Frame(self.notebook)
-        self.Patch_Extract.pack()
+        print(self.notebook.winfo_geometry())
+        """ self.Patch_Extract = Frame(self.notebook)
+        self.Patch_Extract.grid() """
         self.Translation_Clean = Frame(self.notebook)
         self.Test = Frame(self.notebook, style='Red.TFrame', width=800, height=600)
-        self.Test.pack()
+        self.Test.grid()
+        self.l =Label(self.notebook, text="Starting...")
+        self.l.grid()
+        self.l.bind('<Enter>', lambda e: self.l.configure(text='Moved mouse inside'))
+        self.l.bind('<Leave>', lambda e: self.l.configure(text='Moved mouse outside'))
+        self.l.bind('<ButtonPress-1>', lambda e: self.l.configure(text='Clicked left mouse button'))
+        self.l.bind('<3>', lambda e: self.l.configure(text='Clicked right mouse button'))
+        self.l.bind('<Double-1>', lambda e: self.l.configure(text='Double clicked'))
+        self.l.bind('<B3-Motion>', lambda e: self.l.configure(text='right button drag to %d,%d' % (e.x, e.y)))
         self.notebook.add(self.Test, text="Patch Extractor")
         #self.notebook.add(self.Translation_Clean, text="Translation Cleaner")
-        self.notebook.add(self.Patch_Extract, text="Test")
-        #self.notebook.bind("<<NotebookTabChanged>>", self.update_all)
-        self.notebook.hide(self.notebook.index(self.Patch_Extract))
+        self.notebook.add(self.l, text="Test")
+        #self.notebook.hide(self.notebook.index(self.Patch_Extract))
         self.notebook.pack()
         #Patch_Extract_Tab(self.Patch_Extract)
         self.Test_Tab = Patch_Extract_Tab(self.Test)
-
-    def update_all(self, *args):
-        print(args)
-        self.update()
 
 
 if __name__ == "__main__":

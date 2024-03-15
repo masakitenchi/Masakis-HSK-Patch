@@ -55,7 +55,7 @@ def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
                         if node.find("./description") is not None
                         else None
                     )
-            else:
+            elif root.tag == 'Patch':
                 # looks for all patches that targeting label or description
                 nodes = root.xpath(
                     '//*/xpath[contains(text(),"label") or contains(text(), "description")]/..'

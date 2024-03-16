@@ -1,7 +1,7 @@
 from TranslationExtractor import PE
 from tkinter import *
 from tkinter.ttk import *
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import lxml.etree as ET
 from file import BFS, listdir_abspath
 import os
@@ -163,6 +163,10 @@ class Patch_Extract_Tab(Frame):
         self.DirOptions = []
         self.data_vars = []
         self.Tab = Tab
+        self.ext_dir = StringVar(self.Tab, name="ext_dir1")
+        self.ext_dir.trace_add('write', self.update)
+        #用于让Entry不那么频繁触发ext_dir的trace的变量
+        self.ext_dir_wrap = StringVar(self.Tab, name="ext_dir_wrap")
         self.Title = Frame(Tab, height=100, style='white.TFrame')
         self.Title.grid(row=0, sticky='nswe', columnspan=2)
         self.Title.grid_rowconfigure(0, weight=1)
@@ -178,13 +182,14 @@ class Patch_Extract_Tab(Frame):
         self.Draw_Main(self.Main_Rect)
         self.Frame_Config = Frame(Tab, style='yellow.TFrame', width=100)
         self.Frame_Config.grid(row=1, column=1, sticky='nswe')
-        self.Draw_config(self.Frame_Config)
+        self.Draw_Config(self.Frame_Config)
         self.Bottom_Buttons = Frame(Tab, width=Tab.winfo_reqwidth(), height=20, style='Blue.TFrame')
         self.Bottom_Buttons.grid(row=2, sticky= 'nswe', columnspan=2)
+        self.Draw_Bottom(self.Bottom_Buttons)
         self.Tab.rowconfigure(0, minsize=40, pad=10)
         self.Tab.rowconfigure(1, weight=1)
         self.Tab.rowconfigure(2, minsize=40, pad=10)
-        self.Tab.columnconfigure(1, weight=1, minsize = 50)
+        self.Tab.columnconfigure(1, weight=1, minsize=150)
         self.Tab.columnconfigure(0, weight=9)
         """ self.entry = Entry(Tab)
         def execute(event):
@@ -192,83 +197,55 @@ class Patch_Extract_Tab(Frame):
             print(eval(command))
         self.entry.bind("<Return>", execute)
         self.entry.grid(row=2, column=1, sticky='we') """
-        self.Title.bind_all("<ButtonPress-1>", self.check_update)
+        self.Title.bind_all("<ButtonPress-1>", self.check_direntry)
         self.update()
-    
-
     def update(self, *args):
         #print(args)
         if not self.ext_dir.get(): return
+        max_width = 0
         self.ext_dir_wrap.set(self.ext_dir.get())
-        self.Main_Rect.update_idletasks()
+        self.canvas.grid_forget()
         self.dirs.clear()
         self.data_vars.clear()
         for button in self.DirOptions:
             button.destroy()
         self.canvas.delete('all')
         self.Checkboxes = Frame(self.canvas)
-        self.canvas.create_window((0, 0), window=self.Checkboxes, anchor="nw")
         row = 1
         self.dirs.extend([f"{self.ext_dir.get()}/{f}" for f in os.listdir(self.ext_dir.get()) if os.path.isdir(f"{self.ext_dir.get()}/{f}") and not (f[0] == "." or f[0] == "_")])
         self.data_vars.extend([IntVar(self.Tab, 0) for i in range(len(self.dirs))])
         for i in range(len(self.dirs)):
-            button = Checkbutton(self.Checkboxes, text=self.dirs[i], variable=self.data_vars[i], name=f"dir{i}")
+            button = Checkbutton(self.Checkboxes, text=self.dirs[i], variable=self.data_vars[i], name=f"dir{i}", command=self.check_checkbox)
             button.grid(row=i+row, column=0, sticky='we')
+            button.update_idletasks()
+            max_width = max(max_width, button.winfo_width())
             #print(button.winfo_reqwidth())
             self.DirOptions.append(button)
             row += 1
-        Button(self.Bottom_Buttons, text="Output Selected", command=self.do_work, name="output").place(relx=0.5, rely=0.5, anchor=CENTER)
         # update must be placed before actually drawing (e.g. with grid or pack) the widgets
         # I'm still confused by how this actually works
         self.canvas.update_idletasks()
+        self.canvas.create_window((0, 0), window=self.Checkboxes, anchor="nw", tags="MainFrame")
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
         self.canvas.grid(sticky='nswe')
-        if self.canvas.bbox('all')[2] > self.Main_Rect.winfo_reqwidth() + 20:
+        if self.canvas.bbox('all')[2] > self.Main_Rect.winfo_width() + 20:
             self.scrbrX.grid(row=1, column=0, sticky='we')
         else:
             self.scrbrX.grid_forget()
-        if self.canvas.bbox('all')[3] > self.Main_Rect.winfo_reqheight():
+        if self.canvas.bbox('all')[3] > self.Main_Rect.winfo_height():
             self.canvas.bind_all("<MouseWheel>", self.on_mousewheel)
             self.scrbrY.grid(row=0, column=1, sticky='ns')
         else:
             self.canvas.unbind_all("<MouseWheel>")
             self.scrbrY.grid_forget()
+        self.Draw_Title(self.Title)
+        self.Draw_Main(self.Main_Rect)
+        self.Draw_Config(self.Frame_Config)
+        self.Draw_Bottom(self.Bottom_Buttons)
         super().update()
 
-    def Draw_config(self, outRect: Widget, **kwargs):
-        self.configBoxes = []
-        self.recursive = BooleanVar(self.Tab, True)
-        self.append = BooleanVar(self.Tab, False)
-        self.split = BooleanVar(self.Tab, False)
-        self.split.trace_add(
-            "write",
-            lambda a, b, c: (
-                self.append_option.config(state="normal")
-                if self.split.get()
-                else (self.append_option.config(state="disabled"), self.append.set(False))
-            ),
-        )
-        outRect.rowconfigure(0, weight=1)
-        outRect.columnconfigure(0, weight=1)
-        inRect = Frame(outRect)
-        inRect.rowconfigure(0, weight=1)
-        inRect.columnconfigure(0, weight=1)
-        inRect.grid(row=0, column=0)
-        self.recursive_option = Checkbutton(inRect, text="Recursive", variable=self.recursive)
-        self.recursive_option.grid(row=0, column=0, sticky='w')
-        Label(inRect, text="递归查找").grid(row=1, column=0, sticky='w')
-        self.split_option = Checkbutton(inRect, text="Split", variable=self.split)
-        self.split_option.grid(row=2, column=0, sticky='w')
-        Label(inRect, text="按文件分割").grid(row=3, column=0, sticky='w')
-        self.append_option = Checkbutton(inRect, text="Append", variable=self.append, state="disabled")
-        self.append_option.grid(row=4,column=0, sticky='w')
-        Label(inRect, text="追加文件夹名到文件名后").grid(row=5, column=0, sticky='w')
 
     def Draw_Title(self, outRect: Widget, **kwargs):
-        self.ext_dir = StringVar(self.Tab, name="ext_dir1")
-        self.ext_dir.trace_add('write', self.update)
-        #用于让Entry不那么频繁触发ext_dir的trace的变量
-        self.ext_dir_wrap = StringVar(self.Tab, name="ext_dir_wrap")
         Button(
             self.Title,
             text="Choose directory",
@@ -291,12 +268,58 @@ class Patch_Extract_Tab(Frame):
         self.scrbrY = Scrollbar(self.Main_Rect, orient=VERTICAL, command=self.canvas.yview)
         self.scrbrX = Scrollbar(self.Main_Rect, orient=HORIZONTAL, command=self.canvas.xview)
         self.canvas.configure(xscrollcommand=self.scrbrX.set, yscrollcommand=self.scrbrY.set, scrollregion=self.canvas.bbox("all"))
-
-
+    def Draw_Config(self, outRect: Widget, **kwargs):
+        self.configBoxes = []
+        self.recursive = BooleanVar(self.Tab, True)
+        self.append = BooleanVar(self.Tab, False)
+        self.split = BooleanVar(self.Tab, False)
+        self.split.trace_add(
+            "write",
+            lambda a, b, c: (
+                self.append_option.config(state="normal")
+                if self.split.get()
+                else (self.append_option.config(state="disabled"), self.append.set(False))
+            ),
+        )
+        outRect.rowconfigure(0, weight=1)
+        outRect.rowconfigure(1, weight=9)
+        outRect.columnconfigure(0, weight=1)
+        configRect = Frame(outRect)
+        configRect.rowconfigure(0, weight=1)
+        configRect.columnconfigure(0, weight=1)
+        configRect.grid(row=0, column=0, sticky='nswe')
+        self.recursive_option = Checkbutton(configRect, text="Recursive", variable=self.recursive)
+        self.recursive_option.grid(row=0, column=0, sticky='w')
+        Label(configRect, text="递归查找").grid(row=1, column=0, sticky='w')
+        self.split_option = Checkbutton(configRect, text="Split", variable=self.split)
+        self.split_option.grid(row=2, column=0, sticky='w')
+        Label(configRect, text="按文件分割").grid(row=3, column=0, sticky='w')
+        self.append_option = Checkbutton(configRect, text="Append", variable=self.append, state="disabled")
+        self.append_option.grid(row=4,column=0, sticky='w')
+        Label(configRect, text="追加文件夹名到文件名后").grid(row=5, column=0, sticky='w')
+        Separator(configRect, orient=HORIZONTAL).grid(row=6, column=0, sticky='we')
+        self.informationRect = Frame(outRect, width=outRect.winfo_width())
+        self.informationRect.rowconfigure(0, weight=1)
+        self.informationRect.columnconfigure(0, weight=1)
+        self.informationRect.grid(row=1, column=0, sticky='nswe')
+        self.infoText = Text(self.informationRect, wrap=NONE, state='normal', width=self.informationRect.winfo_width())
+        self.infoTextscrbrX = Scrollbar(self.informationRect, orient=HORIZONTAL, command=self.infoText.xview)
+        self.infoTextscrbrY = Scrollbar(self.informationRect, orient=VERTICAL, command=self.infoText.yview)
+        self.infoText.configure(xscrollcommand=self.infoTextscrbrX.set, yscrollcommand=self.infoTextscrbrY.set)
+        self.infoText.insert(1.0, "This is a testSIDFOIDFJOIDJSFOISJDOFJSDOFONASODNAOSIDNAOSNONDSDSFSDFASDASD")
+        self.infoText.grid(row=0, column=0, sticky='wnse', padx=2, pady=2)
+        self.infoTextscrbrX.grid(row=1, column=0, sticky='we')
+        self.infoTextscrbrY.grid(row=0, column=1, sticky='ns')
     def Draw_Bottom(self, outRect: Widget, **kwargs):
+        self.ExportButton = Button(outRect, text="Output Selected", command=self.do_work, name="output", state='disabled')
+        self.ExportButton.place(relx=0.5, rely=0.5, anchor=CENTER)
         pass
-
     def do_work(self):
+        """ self.Main_Rect.columnconfigure(0, weight=6)
+        self.Main_Rect.columnconfigure(1, weight=4)
+        self.Draw_Main(self.Main_Rect)
+        self.Draw_Config(self.Frame_Config)
+        self.update() """
         dirs = (dirname for i, dirname in enumerate(self.dirs) if self.data_vars[i].get())
         recursive = self.recursive.get()
         split = self.split.get()
@@ -340,27 +363,20 @@ class Patch_Extract_Tab(Frame):
                             defName.addprevious(ET.Comment("EN: " + value)) # Add original text as comment
                             defName.text = value
                         #print(f"{output_dir}/{defType}/{file_name}")
+                        
                         if 'Defs' in file:
-                            tree.write(
-                                f"{output_dir}/{defType}/Defs/{file_name}",
-                                pretty_print=True,
-                                xml_declaration=True,
-                                encoding="utf-8",
-                            )
+                            output_path = f"{output_dir}/{defType}/Defs/{file_name}"
                         elif 'Patches' in file:
-                            tree.write(
-                                f"{output_dir}/{defType}/Patches/{file_name}",
-                                pretty_print=True,
-                                xml_declaration=True,
-                                encoding="utf-8",
-                            )
+                            output_path = f"{output_dir}/{defType}/Patches/{file_name}"
                         else:
-                            tree.write(
-                                f"{output_dir}/{defType}/{file_name}",
-                                pretty_print=True,
-                                xml_declaration=True,
-                                encoding="utf-8",
-                            )
+                            output_path = f"{output_dir}/{defType}/{file_name}"
+                        self.infoText.insert(END, f"Writing to {output_path}\n")
+                        tree.write(
+                            output_path,
+                            pretty_print=True,
+                            xml_declaration=True,
+                            encoding="utf-8"
+                        )
             else:
                 results = PE.extract(files)
                 for defType, KVpair in results.items():
@@ -375,17 +391,20 @@ class Patch_Extract_Tab(Frame):
                         defName = ET.SubElement(elemroot, key)
                         defName.addprevious(ET.Comment("EN: " + value))
                         defName.text = value
-                    etree.write(f'{output_dir}/{defType}/Extracted_Unified.xml', pretty_print=True, xml_declaration=True, encoding='utf-8')
-    
-    def check_update(self, *args):
-        """ print(args)
-        print(self.winfo_geometry())
-        print(self.Entry.winfo_geometry())
-        print(self.winfo_pointerxy())
-        print(self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery()))
-        print(self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery()) == self.Entry) """
+                    output_path = f"{output_dir}/{defType}/Extracted_Unified.xml"
+                    self.infoText.insert(END, f"Writing to {output_path}\n")
+                    etree.write(output_path, pretty_print=True, xml_declaration=True, encoding='utf-8')
+        messagebox.showinfo("Done", "Extraction complete!")
+        
+    def check_direntry(self, *args):
         if self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery()) != self.Entry:
             self.Tab.focus_set()
+    def check_checkbox(self, *args):
+        print(args)
+        if any(f.get() for f in self.data_vars):
+            self.ExportButton.config(state='normal')
+        else:
+            self.ExportButton.config(state='disabled')
     def update_dir(self, *args):
         print(args)
         self.ext_dir.set(self.ext_dir_wrap.get())

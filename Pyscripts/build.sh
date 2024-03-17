@@ -10,3 +10,5 @@ if [ "$ans" != "y" ]; then
 fi
 cd dist
 7z u Test.zip Pyscripts
+7z a -thash Test.zip.sha256 Test.zip
+7z u dist.zip Test.zip.sha256 Test.zip

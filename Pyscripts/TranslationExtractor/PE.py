@@ -21,17 +21,18 @@ errors = []
 
 Defs_xpath = "//*[preceding-sibling::defName or following-sibling::defName][self::label or self::description]/.."
 
-Patch_xpath = '//xpath[text()="label" or text()="description"]/..'
+Patch_xpath = '//xpath[contains(text(),"label") or contains(text(),"description") and not(contains(text(), "labelShort"))]/..'
 
 #lxml seems doesn't support local-name()
 Anomaly_xpath = '//*[@Class="PatchOperationAdd"]/xpath[text()="Defs"]/../value/*[not(@Abstract) or (@Abstract!="True" and @Abstract!="true")]'
 
 
 
-def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
+def extract(list_paths: list[str], target=('Def', 'Patch')) -> dict[str, dict[str, str]]:
     """总提取函数
 
     :param list_paths: 所有文件的绝对路径列表
+    :param target: 提取目标，Def或Patch
     :return: dict[defType: str, dict[defName: str, field: str]] 按defType分类的提取结果
     """
     pairs: dict[str, dict[str, str]] = dict()
@@ -45,7 +46,7 @@ def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
                 raise Exception(f"path {file} does not target a file or is not absolute")
             tree = ET.parse(file)
             root: ET._Element = tree.getroot()
-            if root.tag == "Defs":
+            if root.tag == "Defs" and 'Def' in target:
                 # only looks for non-virtual defs
                 nodes = root.xpath(Defs_xpath)
                 if len(nodes) > 0: print(f"found {len(nodes)} defs in {file}")
@@ -64,7 +65,7 @@ def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
                         if node.find("./description") is not None
                         else None
                     )
-            elif root.tag == 'Patch':
+            elif root.tag == 'Patch' and 'Patch' in target:
                 # looks for all patches that targeting label or description
                 nodes = root.xpath(Patch_xpath)
                 if len(nodes) > 0: print(f"found {len(nodes)} patches in {file}")

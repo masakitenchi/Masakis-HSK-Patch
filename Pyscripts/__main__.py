@@ -224,10 +224,14 @@ class Patch_Extract_Tab(Frame):
             row += 1
         # update must be placed before actually drawing (e.g. with grid or pack) the widgets
         # I'm still confused by how this actually works
+        #就算直接调整Main_Rect的大小也无济于事，在update_idletasks之后甚至还因为propagate变宽了
+        #感觉要在点击按钮之后直接在self.Tab里调整才行……
         self.canvas.update_idletasks()
         self.canvas.create_window((0, 0), window=self.Checkboxes, anchor="nw", tags="MainFrame")
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
         self.canvas.grid(sticky='nswe')
+        print(self.canvas.bbox('all')[3])
+        print(self.Main_Rect.winfo_height())
         if self.canvas.bbox('all')[2] > self.Main_Rect.winfo_width() + 20:
             self.scrbrX.grid(row=1, column=0, sticky='we')
         else:
@@ -238,10 +242,10 @@ class Patch_Extract_Tab(Frame):
         else:
             self.canvas.unbind_all("<MouseWheel>")
             self.scrbrY.grid_forget()
-        self.Draw_Title(self.Title)
+        """ self.Draw_Title(self.Title)
         self.Draw_Main(self.Main_Rect)
         self.Draw_Config(self.Frame_Config)
-        self.Draw_Bottom(self.Bottom_Buttons)
+        self.Draw_Bottom(self.Bottom_Buttons) """
         super().update()
 
 
@@ -315,11 +319,8 @@ class Patch_Extract_Tab(Frame):
         self.ExportButton.place(relx=0.5, rely=0.5, anchor=CENTER)
         pass
     def do_work(self):
-        """ self.Main_Rect.columnconfigure(0, weight=6)
-        self.Main_Rect.columnconfigure(1, weight=4)
-        self.Draw_Main(self.Main_Rect)
-        self.Draw_Config(self.Frame_Config)
-        self.update() """
+        self.Tab.columnconfigure(0, weight=6)
+        self.Tab.columnconfigure(1, weight=4, minsize=300)
         dirs = (dirname for i, dirname in enumerate(self.dirs) if self.data_vars[i].get())
         recursive = self.recursive.get()
         split = self.split.get()
@@ -410,6 +411,7 @@ class Patch_Extract_Tab(Frame):
         self.ext_dir.set(self.ext_dir_wrap.get())
     def on_mousewheel(self, event):
         #print(self.canvas.xview(), self.canvas.yview())
+        #if self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery()) == self.canvas:
         self.canvas.yview_scroll(-1 * (event.delta // 120), "units")
 
 

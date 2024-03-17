@@ -19,6 +19,14 @@ PatchOperations = [
 ]
 errors = []
 
+Defs_xpath = "//*[preceding-sibling::defName or following-sibling::defName][self::label or self::description]/.."
+
+Patch_xpath = '//xpath[text()="label" or text()="description"]/..'
+
+#lxml seems doesn't support local-name()
+Anomaly_xpath = '//*[@Class="PatchOperationAdd"]/xpath[text()="Defs"]/../value/*[not(@Abstract) or (@Abstract!="True" and @Abstract!="true")]'
+
+
 
 def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
     """总提取函数
@@ -30,6 +38,8 @@ def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
     # os.makedirs('extracted', exist_ok=True)
     for file in list_paths:
         try:
+            print(f"parsing {file}")
+            count = 0
             if not os.path.isabs(file) or not os.path.isfile(file):
                 errors.append(f"path {file} does not target a file or is not absolute")
                 raise Exception(f"path {file} does not target a file or is not absolute")
@@ -37,9 +47,8 @@ def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
             root: ET._Element = tree.getroot()
             if root.tag == "Defs":
                 # only looks for non-virtual defs
-                nodes = root.xpath(
-                    "//*[preceding-sibling::defName or following-sibling::defName][self::label or self::description]/.."
-                )
+                nodes = root.xpath(Defs_xpath)
+                if len(nodes) > 0: print(f"found {len(nodes)} defs in {file}")
                 for node in nodes:
                     defType = node.tag
                     if defType not in pairs:
@@ -57,9 +66,8 @@ def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
                     )
             elif root.tag == 'Patch':
                 # looks for all patches that targeting label or description
-                nodes = root.xpath(
-                    '//*/xpath[contains(text(),"label") or contains(text(), "description")]/..'
-                )
+                nodes = root.xpath(Patch_xpath)
+                if len(nodes) > 0: print(f"found {len(nodes)} patches in {file}")
                 for node in nodes:
                     xpath = node.find("./xpath")
                     match = re.match(xpath_regex, xpath.text)
@@ -75,8 +83,23 @@ def extract(list_paths: list[str]) -> dict[str, dict[str, str]]:
                     for defName in defNames:
                         key = f"{defName}.{field}"
                         pairs[defType][key] = value
+                anomaly_nodes = root.xpath(Anomaly_xpath)
+                if len(anomaly_nodes) > 0: print(f"found {len(anomaly_nodes)} anomaly_nodes in {file}")
+                for node in anomaly_nodes:
+                    defName = node.find("./defName").text
+                    label = node.find("./label").text if node.find("./label") is not None else ""
+                    description = node.find("./description").text if node.find("./description") is not None else ""
+                    defType = node.tag
+                    if defType not in pairs:
+                        pairs[defType] = dict()
+                    pairs[defType][f"{defName}.label"] = label
+                    pairs[defType][f"{defName}.description"] = description
+            
         except Exception as e:
-            print(f"Error in file {file}, message: {e}")
+            if node is not None:
+                print(f"Error when parsing {file}, {node.tag} message: {e}")
+            else:
+             print(f"Error when parsing {file}, message: {e}")
             continue
     return pairs
 

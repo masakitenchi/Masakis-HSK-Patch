@@ -1,18 +1,18 @@
 #!/bin/bash
 dirname=$(realpath $(dirname $0))
 
-config="1.4-debug"
+config="1.4"
 clean=""
-while (( "$#" )); do
+while [[ "$#" -gt 0 ]]; do
 	case $1 in
-		-R )
-			config="1.4"
+		-D|-d )
+			config="1.4-debug"
 			shift
-			;;
-		-C )
+			;;&
+		-C|-c )
 			clean="Clean\;Build"
 			shift
-			;;
+			;;&
 		* )
 			shift
 			;;

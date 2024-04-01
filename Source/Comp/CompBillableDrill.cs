@@ -16,6 +16,15 @@ public class CompBillableDrill : ThingComp
 		this.currentResource = DeepDrillUtility.GetNextResource(this.parent.Position, this.parent.Map);
 	}
 
+	public override string CompInspectStringExtra()
+	{
+		if (this._billableResourceLimit != 100)
+		{
+			return "CSP_CurrentLimit".Translate(this._billableResourceLimit);
+		}
+		return "";
+	}
+
 	public override IEnumerable<Gizmo> CompGetGizmosExtra()
 	{
 		if (this.deepDrill is null)
@@ -32,7 +41,7 @@ public class CompBillableDrill : ThingComp
 				Find.WindowStack.Add(new Dialog_Slider((current) => "CSP_CurrentLimit".Translate(current), 1, 1000, delegate (int value)
 				{
 					this._billableResourceLimit = value;
-				}));
+				}, this._billableResourceLimit));
 			},
 			groupable = true,
 			groupKey = this.currentResource.GetHashCode() * 0x114514,

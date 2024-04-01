@@ -55,7 +55,7 @@ public static class Patch_NightVision
         }
         if (branch == -1)
         {
-            Log.Error($"Patch Error: cannot patch SK.Enlighten.HediffGiver_Enlighten");
+            Logger.Error($"Patch Error: cannot patch SK.Enlighten.HediffGiver_Enlighten");
             return instructions;
         }
         Label br = (Label)inst[branch + 1].operand;

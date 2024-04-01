@@ -92,7 +92,7 @@ public class Main : Mod
                     sb.AppendLine($" - Added {count} bulk recipes :");
                     sb.Append(Tuples);
                 }
-                Log.Message("[Core SK Patch]" + sb.ToString());
+                Logger.Message("[Core SK Patch]" + sb.ToString());
             }, "BulkRecipe", false, null);
         }
         sb.AppendLine(" - Loading Compat dlls:");
@@ -117,7 +117,7 @@ public class Main : Mod
             });
         });*/
         sb.AppendLine("Initialization Complete");
-        Log.Message(sb.ToString());
+        Logger.Message(sb.ToString());
     }
 #if ODT
     public static void MethadoneHigh(ThoughtWorker_Hediff __instance, ref ThoughtState __result, Pawn p)

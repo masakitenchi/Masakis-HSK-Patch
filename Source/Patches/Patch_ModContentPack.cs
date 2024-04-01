@@ -31,7 +31,7 @@ public static class Patch_ModContentPack
         {
             if(field.GetValue(null) == null)
             {
-                Log.Error($"{field.Name} is null, skipping patch");
+                Logger.Error($"{field.Name} is null, skipping patch");
                 passed = false;
             }
         }
@@ -98,7 +98,7 @@ public static class Patch_ModContentPack
         }*/
         if (strCount != formatCount)
         {
-            Log.Error($"Patch error in {nameof(Patch_ModContentPack)}.");
+            Logger.Error($"Patch error in {nameof(Patch_ModContentPack)}.");
             return instructions;
         }
         return inst;

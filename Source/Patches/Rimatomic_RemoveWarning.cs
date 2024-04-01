@@ -20,7 +20,7 @@ public static class Rimatomic_RemoveWarning
 		{
 			if (field.GetValue(null) == null)
             {
-                Log.Error($"{field.Name} is null. Skipping Transpiler");
+                Logger.Error($"{field.Name} is null. Skipping Transpiler");
 				passed = false;
             }
 		}

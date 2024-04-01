@@ -1,8 +1,11 @@
 ﻿using System.IO;
 using System;
+using System.Xml;
+using System.Reflection;
 
 namespace Core_SK_Patch;
 
+[HotSwappable]
 public class DebugActions
 {
 

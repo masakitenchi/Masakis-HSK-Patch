@@ -66,7 +66,7 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
             default: throw new InvalidOperationException($"Must define a mode. Available: {string.Join("\n", Enum.GetNames(typeof(TargetMode)))}");
         }
 #if DEBUG
-        Log.Message($"Applied {mode} to {defName}.{field}, current value is: {fieldInfo.GetValue(instance)}");
+        Logger.Message($"Applied {mode} to {defName}.{field}, current value is: {fieldInfo.GetValue(instance)}");
 #endif
     }
 }
@@ -138,7 +138,7 @@ public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
             default: throw new InvalidOperationException($"Must define a mode. Available: {string.Join("\n", Enum.GetNames(typeof(TargetMode)))}");
         }
 #if DEBUG
-        Log.Message($"Applied {mode} to {defName}'s {statName}, Before: {originalvalue}, after: {statModifier.value}");
+        Logger.Message($"Applied {mode} to {defName}'s {statName}, Before: {originalvalue}, after: {statModifier.value}");
 #endif
     }
 }

@@ -36,7 +36,7 @@ public static class ShuttleStuffPatch
 		foreach (var field in typeof(ShuttleStuffPatch).GetFields())
 		{
 			if (field.GetValue(null) == null)
-				Log.Error($"Core_SK_Patch :: Patch class {nameof(ShuttleStuffPatch)} has null field {field.Name}. This may lead to failed patch.");
+				Logger.Error($"Core_SK_Patch :: Patch class {nameof(ShuttleStuffPatch)} has null field {field.Name}. This may lead to failed patch.");
 		}
 		return true;
 	}
@@ -65,7 +65,7 @@ public static class ShuttleStuffPatch
 		//File.WriteAllText("E:\\after.txt", string.Join("\n", inst.Select(x => x.ToString())));
 		if (!inserted)
 		{
-			Log.Error($"Core_SK_Patch :: Cannot Patch CompBecomePawn.myPawn");
+			Logger.Error($"Core_SK_Patch :: Cannot Patch CompBecomePawn.myPawn");
 			return instructions;
 		}
 		return inst;
@@ -110,7 +110,7 @@ public static class ShuttleStuffPatch
 		//File.WriteAllText("E:\\after1.txt", string.Join("\n", inst.Select(x => x.ToString())));
 		if (idnull == -1)
 		{
-			Log.Error("Core_SK_Patch :: Cannot Patch CompBecomeBuilding.transform");
+			Logger.Error("Core_SK_Patch :: Cannot Patch CompBecomeBuilding.transform");
 			return instructions;
 		}
 		return inst;

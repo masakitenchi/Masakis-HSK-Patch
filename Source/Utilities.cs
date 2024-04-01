@@ -110,7 +110,7 @@ public static class ResearchScriber
     }
 }
 
-public static class Log
+public static class Logger
 {
     private static readonly string Prefix = "[Core SK Patch] :: ";
     public static void Message(string message)

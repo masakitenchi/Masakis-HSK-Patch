@@ -19,12 +19,12 @@ public static class TestPatches
         {
             try
             {
-                Log.Message($"researchMod: {__instance.researchMods[i].GetType()}");
+                Logger.Message($"researchMod: {__instance.researchMods[i].GetType()}");
                 __instance.researchMods[i].Apply();
             }
             catch (Exception ex)
             {
-                Log.Error(string.Concat("Exception applying research mod for project ", __instance, ": ", ex.ToString()));
+                Logger.Error(string.Concat("Exception applying research mod for project ", __instance, ": ", ex.ToString()));
             }
         }
         return false;
@@ -85,7 +85,7 @@ public class ErrorChecker
                 sb.AppendLine(" - " + dmg.defName + $" ({dmg.modContentPack.Name})");
         }*/
 
-        Log.Message(sb.ToString());
+        Logger.Message(sb.ToString());
     }
 }
 

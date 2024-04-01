@@ -64,7 +64,7 @@ public static class Patch_NonStunnableMannedTurret
             }
         }
         if (!Found)
-            Log.Error(nameof(Patch_NonStunnableMannedTurret) + " Cannot patch. Target IL code not found.");
+            Logger.Error(nameof(Patch_NonStunnableMannedTurret) + " Cannot patch. Target IL code not found.");
         //System.IO.File.WriteAllLines("E:\\After.txt", instructions2.Select(x => x.ToString()));
         return instructions2;
     }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CSP_BillableDrillLimit>设置限额</CSP_BillableDrillLimit>
+	<CSP_BillableDrillDesc>给{0_label}设置限额</CSP_BillableDrillDesc>
+	<CSP_CurrentLimit>当前限额：{0}</CSP_CurrentLimit>
+
+</LanguageData>

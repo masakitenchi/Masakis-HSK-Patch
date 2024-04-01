@@ -84,6 +84,8 @@
     <Compile Include="TestClasses.cs" />
     <Compile Include="Misc\Transition_LowIdlePowerDraw.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="Patches\SmarterShuttleRescue.cs"/>
+    <Compile Include="Comp\CompBillableDrill.cs"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">

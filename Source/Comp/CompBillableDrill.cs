@@ -6,7 +6,7 @@ public class CompBillableDrill : ThingComp
 {
 	public CompDeepDrill deepDrill;
 	public ThingDef currentResource;
-	private int _billableResourceLimit = 100;
+	private int _billableResourceLimit = -1;
 	public int BillableResourceLimit => _billableResourceLimit;
 
 	public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -18,7 +18,7 @@ public class CompBillableDrill : ThingComp
 
 	public override string CompInspectStringExtra()
 	{
-		if (this._billableResourceLimit != 100)
+		if (this._billableResourceLimit != -1)
 		{
 			return "CSP_CurrentLimit".Translate(this._billableResourceLimit);
 		}
@@ -38,7 +38,7 @@ public class CompBillableDrill : ThingComp
 			icon = this.currentResource.uiIcon,
 			action = delegate
 			{
-				Find.WindowStack.Add(new Dialog_Slider((current) => "CSP_CurrentLimit".Translate(current), 1, 1000, delegate (int value)
+				Find.WindowStack.Add(new Dialog_Slider((current) => "CSP_CurrentLimit".Translate(current), -1, 5000, delegate (int value)
 				{
 					this._billableResourceLimit = value;
 				}, this._billableResourceLimit));
@@ -50,7 +50,7 @@ public class CompBillableDrill : ThingComp
 
 	public override void PostExposeData()
 	{
-		Scribe_Values.Look(ref this._billableResourceLimit, "billableResourceLimit", 100);
+		Scribe_Values.Look(ref this._billableResourceLimit, "billableResourceLimit", -1);
 	}
 }
 
@@ -63,6 +63,7 @@ public static class BillableDrillPatch
 	{
 		if (__instance.parent.TryGetComp<CompBillableDrill>() is CompBillableDrill compBillableDrill)
 		{
+			if (compBillableDrill.BillableResourceLimit == -1) return;
 			Map map = compBillableDrill.parent.Map;
 			if (Find.CurrentMap.listerThings.listsByDef[compBillableDrill.currentResource].Sum(x => x.stackCount) >= compBillableDrill.BillableResourceLimit)
 			{

@@ -1,4 +1,3 @@
-
 namespace Core_SK_Patch;
 
 
@@ -40,12 +39,23 @@ public class CompBillableDrill : ThingComp
 			{
 				Find.WindowStack.Add(new Dialog_Slider((current) => "CSP_CurrentLimit".Translate(current), -1, 5000, delegate (int value)
 				{
-					this._billableResourceLimit = value;
+					foreach (Thing drill in parent.Map.listerBuildings.AllBuildingsColonistOfDef(parent.def))
+					{
+						CompBillableDrill compBillableDrill = drill.TryGetComp<CompBillableDrill>();
+						if (compBillableDrill.currentResource == this.currentResource)
+							compBillableDrill.Nofity_LimitSelected(value);
+					}
 				}, this._billableResourceLimit));
 			},
 			groupable = true,
 			groupKey = this.currentResource.GetHashCode() * 0x114514,
+
 		};
+	}
+
+	public void Nofity_LimitSelected(int value)
+	{
+		this._billableResourceLimit = value;
 	}
 
 	public override void PostExposeData()

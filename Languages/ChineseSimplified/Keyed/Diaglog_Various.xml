@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- Send transport pods which are not completely loaded -->
+	<!-- EN: Pod group isn't completely loaded. {1_labelShort} is missing. Launch anyway? -->
+	<ConfirmSendNotCompletelyLoadedPods>发射组并没有完成装载进程。 {0} 还未进入运输舱。确定要发射吗？</ConfirmSendNotCompletelyLoadedPods>
+</LanguageData>

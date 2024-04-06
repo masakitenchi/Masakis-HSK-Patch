@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core_SK_Patch", "Core_SK_Patch.csproj", "{B61E2EC5-DACF-487B-B528-87EF0532E8B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core_SK_Patch", "Core_SK_Patch.csproj", "{B61E2EC5-DACF-487B-B528-87EF0532E8B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOS2Compat", "SOS2Compat\SOS2Compat.csproj", "{B03F751E-BB50-4818-A689-2B17B05DF14A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -26,8 +25,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.3|Any CPU.ActiveCfg = 1.3|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.3|Any CPU.Build.0 = 1.3|Any CPU
-		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.ActiveCfg = 1.4|Any CPU
-		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.Build.0 = 1.4|Any CPU
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.ActiveCfg = Release|Any CPU
+		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4|Any CPU.Build.0 = Release|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4-debug|Any CPU.ActiveCfg = 1.4-debug|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.1.4-debug|Any CPU.Build.0 = 1.4-debug|Any CPU
 		{B61E2EC5-DACF-487B-B528-87EF0532E8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

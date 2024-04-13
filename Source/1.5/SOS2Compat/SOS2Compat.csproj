@@ -11,6 +11,7 @@
     <RootNamespace>SOS2Compat</RootNamespace>
     <AssemblyName>SOS2Compat</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <OutputPath>..\..\..\v1.5\AssembliesCompat</OutputPath>
     <LangVersion>preview</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -19,7 +20,6 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\AssembliesCompat</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,6 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\AssembliesCompat</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -38,7 +37,7 @@
     <Compile Include="CrossCompat_Minerals_SOS2.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="Hotswap.cs" />
-    <Compile Include="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
+    <Compile Remove="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -47,9 +46,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.4.3901</Version>
-    </PackageReference>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4062"/>
     <PackageReference Include="Lib.Harmony">
       <ExcludeAssets>runtime</ExcludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -58,23 +55,23 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CombatExtended">
-      <HintPath>..\..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
+      <HintPath>..\..\..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Core_SK">
-      <HintPath>..\..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
+      <HintPath>..\..\..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Core_SK_Patch">
-      <HintPath>..\..\v1.4\Assemblies\Core_SK_Patch.dll</HintPath>
+      <HintPath>..\..\..\v1.5\Assemblies\Core_SK_Patch.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Minerals">
-      <HintPath>..\..\..\Minerals\Assemblies\Minerals.dll</HintPath>
+      <HintPath>..\..\..\..\Minerals\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ShipsHaveInsides">
-      <HintPath>..\..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
+      <HintPath>..\..\..\..\SaveOurShip2Experimental\1.5\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Publicize Include="ShipsHaveInsides;Assembly-CSharp" />

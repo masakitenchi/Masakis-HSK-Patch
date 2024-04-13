@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
+    <LangVersion>11.0</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <OutputPath>..\..\v1.4\Assemblies\</OutputPath>
+    <AssemblyTitle>Core_SK_Patch</AssemblyTitle>
+    <Product>Main</Product>
+    <Copyright>Copyright ©  2024</Copyright>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '1.4|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;ODT</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer">
+      <Version>2.2.1</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+      <Version>1.4.3901</Version>
+    </PackageReference>
+    <PackageReference Include="Lib.Harmony">
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+      <Version>2.2.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Publicize Include="ShipsHaveInsides;Assembly-CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="AlwaysReturnTheFirstProduct.cs" />
+    <Compile Remove="AutoAOEComp.cs" />
+    <Compile Remove="Building_VoidTrashCan.cs" />
+    <Compile Remove="HediffGiver_Fever.cs" />
+    <Compile Remove="MechJobFix.cs" />
+    <Compile Remove="Patch_GenLeaving_DoLeavingsFor.cs" />
+    <Compile Remove="PawnGroupKindWorker_Async.cs" />
+    <Compile Remove="SeedsPleaseCompat\**" />
+    <Compile Remove="SOS2Compat\**" />
+    <Compile Remove="StatPart\StatPart_MechBuff.cs" />
+    <Compile Remove="StatPart\StatPart_Upgradeable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CombatExtended">
+      <HintPath>..\..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Core_SK">
+      <HintPath>..\..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

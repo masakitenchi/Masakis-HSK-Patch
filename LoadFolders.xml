@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <loadFolders>
-  <v1.3>
-    <li>/</li>
-    <li>Patches/Core_SK</li>
-    <li IfModActive="skyarkhangel.hsk">LoadOnDemand/Core_SK_1.3</li>
-    <!-- <li IfModActive="kentington.saveourship2">LoadOnDemand\Save Our Ship 2</li> --> <!-- Dropped Support for SOS2 1.3 -->
-  </v1.3>
   <v1.4>
     <li>/</li>
     <li>v1.4</li>
@@ -20,4 +14,18 @@
     <li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li>
     <li IfModActive="jangodsoul.simplestorage">LoadOnDemand/Simple Storage</li>
   </v1.4>
+  <v1.5>
+    <li>/</li>
+    <li>v1.5</li>
+    <li>Patches/Core_SK</li>
+    <li IfModActive="ludeon.rimworld.biotech">Biotech</li>
+    <li IfModActive="kentington.saveourship2">LoadOnDemand/Save Our Ship 2</li>
+    <li IfModActive="auxia.weaponpack.bluearchive">LoadOnDemand/RimArchive</li>
+    <li IfModActive="VanillaExpanded.VNutrientE">LoadOnDemand/Vanilla Nutrient Paste Expanded</li>
+    <li IfModActive="vitech.materialsscience">LoadOnDemand/Material Science</li>
+    <li IfModActive="aoba.motorization.engine">LoadOnDemand/Engine Industries</li>
+    <li IfModActive="garwel.celsius.sk">LoadOnDemand/Celsius_SK</li>
+    <li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li>
+    <li IfModActive="jangodsoul.simplestorage">LoadOnDemand/Simple Storage</li>
+  </v1.5>
 </loadFolders>

@@ -16,17 +16,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
-    <OutputPath>..\Assemblies\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '1.3|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '1.4|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
     <DefineConstants>TRACE;ODT</DefineConstants>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="StatPart\StatPart_MechBuff.cs" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">
       <Version>2.2.1</Version>
@@ -53,34 +48,18 @@
     <Compile Remove="MechJobFix.cs" />
     <Compile Remove="Patch_GenLeaving_DoLeavingsFor.cs" />
     <Compile Remove="PawnGroupKindWorker_Async.cs" />
-    <Compile Remove="SeedsPleaseCompat\Main.cs" />
-    <Compile Remove="SeedsPleaseCompat\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
-    <Compile Remove="SeedsPleaseCompat\obj\Release\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
-    <Compile Remove="SeedsPleaseCompat\Properties\AssemblyInfo.cs" />
-    <Compile Remove="SOS2Compat\Comp\CompShuttleStuff.cs" />
-    <Compile Remove="SOS2Compat\CrossCompat_Minerals_SOS2.cs" />
-    <Compile Remove="SOS2Compat\Harmony.cs" />
-    <Compile Remove="SOS2Compat\Hotswap.cs" />
-    <Compile Remove="SOS2Compat\Main.cs" />
-    <Compile Remove="SOS2Compat\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
-    <Compile Remove="SOS2Compat\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
-    <Compile Remove="SOS2Compat\obj\Release\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
-    <Compile Remove="SOS2Compat\Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
-    <Compile Remove="SOS2Compat\Properties\AssemblyInfo.cs" />
-    <Compile Remove="SOS2Compat\Replacement\CompBecomeBuilding.cs" />
-    <Compile Remove="SOS2Compat\Replacement\CompBecomePawn.cs" />
-    <Compile Remove="SOS2Compat\Replacement\CompProperties_BecomeBuilding.cs" />
-    <Compile Remove="SOS2Compat\Replacement\CompProperties_BecomePawn.cs" />
+    <Compile Remove="SeedsPleaseCompat\**" />
+    <Compile Remove="SOS2Compat\**" />
     <Compile Remove="StatPart\StatPart_MechBuff.cs" />
     <Compile Remove="StatPart\StatPart_Upgradeable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CombatExtended">
-      <HintPath>..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
+      <HintPath>..\..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Core_SK">
-      <HintPath>..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
+      <HintPath>..\..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

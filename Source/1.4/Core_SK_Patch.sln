@@ -16,9 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedsPleaseCompat", "SeedsP
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		1.3|Any CPU = 1.3|Any CPU
-		1.4|Any CPU = 1.4|Any CPU
-		1.4-debug|Any CPU = 1.4-debug|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection

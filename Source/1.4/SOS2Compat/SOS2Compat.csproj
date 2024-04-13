@@ -13,13 +13,13 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <LangVersion>preview</LangVersion>
     <FileAlignment>512</FileAlignment>
+    <OutputPath>..\..\..\v1.4\AssembliesCompat</OutputPath>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\AssembliesCompat</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,6 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\AssembliesCompat</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -37,7 +36,6 @@
     <Compile Include="Comp\CompShuttleStuff.cs" />
     <Compile Include="CrossCompat_Minerals_SOS2.cs" />
     <Compile Include="Harmony.cs" />
-    <Compile Include="Hotswap.cs" />
     <Compile Include="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,23 +56,23 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CombatExtended">
-      <HintPath>..\..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
+      <HintPath>..\..\..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Core_SK">
-      <HintPath>..\..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
+      <HintPath>..\..\..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Core_SK_Patch">
-      <HintPath>..\..\v1.4\Assemblies\Core_SK_Patch.dll</HintPath>
+      <HintPath>..\..\..\v1.4\Assemblies\Core_SK_Patch.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Minerals">
-      <HintPath>..\..\..\Minerals\Assemblies\Minerals.dll</HintPath>
+      <HintPath>..\..\..\..\Minerals\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ShipsHaveInsides">
-      <HintPath>..\..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
+      <HintPath>..\..\..\..\SaveOurShip2Experimental\1.4\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Publicize Include="ShipsHaveInsides;Assembly-CSharp" />

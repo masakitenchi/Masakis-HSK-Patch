@@ -14,7 +14,7 @@
     <LangVersion>Preview</LangVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <OutputPath>..\..\AssembliesCompat</OutputPath>
+    <OutputPath>..\..\..\v1.4\AssembliesCompat</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Core_SK_Patch">
-      <HintPath>..\..\Assemblies\Core_SK_Patch.dll</HintPath>
+      <HintPath>..\..\v1.4\Assemblies\Core_SK_Patch.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Seeds">
-      <HintPath>..\..\..\SeedsPlease\Assemblies\Seeds.dll</HintPath>
+      <HintPath>..\..\..\..\SeedsPlease\Assemblies\Seeds.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

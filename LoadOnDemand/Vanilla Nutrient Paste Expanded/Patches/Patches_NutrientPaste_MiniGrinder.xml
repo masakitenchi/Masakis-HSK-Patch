@@ -7,9 +7,9 @@
         <match Class="PatchOperationSequence">
             <operations>
                 <!-- 小型营养膏碾制机 -->
-                <li Class="PatchOperationRemove">
+                <!-- <li Class="PatchOperationRemove">
                     <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteMiniGrinder"]/constructEffect</xpath>
-                </li>
+                </li> -->
                 <li Class="PatchOperationReplace">
                     <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteMiniGrinder"]/costList</xpath>
                     <value>
@@ -29,10 +29,10 @@
                         <costStuffCount>50</costStuffCount>
                     </value>
                 </li>
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteMiniGrinder"]/researchPrerequisites</xpath>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="VNPE_NutrientPasteMiniGrinder"]</xpath>
                     <value>
-                        <researchPrerequisites>
+                        <researchPrerequisites Inherit="False">
                             <li>Food_C3</li>
                         </researchPrerequisites>
                     </value>

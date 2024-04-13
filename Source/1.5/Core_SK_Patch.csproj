@@ -3,7 +3,7 @@
     <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
     <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
-    <LangVersion>11.0</LangVersion>
+    <LangVersion>preview</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>..\..\v1.5\Assemblies\</OutputPath>
     <AssemblyTitle>Core_SK_Patch</AssemblyTitle>
@@ -16,12 +16,10 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
-    <OutputPath>..\..\Assemblies\</OutputPath>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '1.3|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\Assemblies\</OutputPath>
     <DefineConstants>TRACE;ODT</DefineConstants>
   </PropertyGroup>
   <ItemGroup>

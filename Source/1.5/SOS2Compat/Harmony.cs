@@ -23,7 +23,7 @@ public static class ShuttleStuffPatch
 		IL_0065: callvirt instance class ['Assembly-CSharp']Verse.ThingDef ['Assembly-CSharp']Verse.Thing::get_Stuff()
 		IL_006a: stfld class ['Assembly-CSharp']Verse.ThingDef Core_SK_Patch.CompBecomeBuilding::stuff
 	*/
-	private static readonly MethodInfo TryGetComp = AccessTools.Method(typeof(ThingCompUtility), nameof(ThingCompUtility.TryGetComp), generics: new Type[] { typeof(CompShuttleStuff) });
+	private static readonly MethodInfo TryGetComp = AccessTools.Method(typeof(ThingCompUtility), nameof(ThingCompUtility.TryGetComp), parameters: [typeof(Thing)], generics: [typeof(CompShuttleStuff)]);
 	private static readonly MethodInfo get_Stuff = AccessTools.PropertyGetter(typeof(Thing), nameof(Thing.Stuff));
 
 	private static readonly FieldInfo CompStuff = AccessTools.Field(typeof(CompShuttleStuff), nameof(CompShuttleStuff.stuff));

@@ -15,7 +15,7 @@ public static class MechChargerPatch
     {
         List<CodeInstruction> instruction = instructions.ToList();
         int index = instruction.FindIndex(x => x.Is(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(Need), nameof(Need.CurLevel)))) + 1;
-        instruction.Replace(instruction[index], new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(MechChargerPatch), nameof(MechChargerPatch.ChargePerTick))));
+        instruction.Replace(instruction[index], new CodeInstruction(OpCodes.Callvirt, AccessTools.PropertyGetter(typeof(MechChargerPatch), nameof(ChargePerTick))));
         return instruction;
     }
 }

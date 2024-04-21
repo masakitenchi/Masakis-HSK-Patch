@@ -10,7 +10,7 @@ public static class Patch_ModContentPack
     private static readonly MethodInfo Format2 = AccessTools.Method(typeof(string), nameof(string.Format), new Type[] { typeof(string), typeof(object) });
     private static readonly MethodInfo Format3 = AccessTools.Method(typeof(string), nameof(string.Format), new Type[] { typeof(string), typeof(object), typeof(object) });
 
-    private static readonly MethodInfo Error = AccessTools.Method(typeof(Verse.Log), nameof(Verse.Log.Error), new Type[] { typeof(string) });
+    private static readonly MethodInfo Error = AccessTools.Method(typeof(Verse.Log), nameof(Log.Error), new Type[] { typeof(string) });
     private static readonly MethodInfo get_Item = AccessTools.Method(typeof(List<LoadableXmlAsset>), "get_Item");
     private static readonly MethodInfo FullFolderPath = AccessTools.PropertyGetter(typeof(LoadableXmlAsset), nameof(LoadableXmlAsset.FullFilePath));
 

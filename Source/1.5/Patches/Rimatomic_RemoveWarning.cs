@@ -8,7 +8,7 @@ namespace Core_SK_Patch;
 public static class Rimatomic_RemoveWarning
 {
     private static readonly MethodInfo get_Name = AccessTools.PropertyGetter(typeof(Pawn), nameof(Pawn.Name));
-	private static readonly MethodInfo Warning = AccessTools.Method(typeof(Verse.Log), nameof(Verse.Log.Warning), new Type[] {typeof(string)});
+	private static readonly MethodInfo Warning = AccessTools.Method(typeof(Verse.Log), nameof(Log.Warning), new Type[] {typeof(string)});
 	private static readonly MethodInfo PatchBase = AccessTools.Method("Rimatomics.DubUtils:applyRads");
 
 	//Added a check since this has been already integrated into base HSK

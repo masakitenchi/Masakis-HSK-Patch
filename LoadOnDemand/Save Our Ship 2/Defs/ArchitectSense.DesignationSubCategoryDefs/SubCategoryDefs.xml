@@ -99,7 +99,7 @@
 		<defNames>
 			<li>ShipPurgePort</li>
 			<li>ShipPurgePortLarge</li>
-			<li>ShipInside_PassiveCooler</li>
+			<!-- <li>ShipInside_PassiveCooler</li> -->
 			<li>ShipInside_PassiveCoolerAdvanced</li>
 			<li>ShipInside_PassiveCoolerMechanoid</li>
 			<li>ShipInside_PassiveCoolerArchotech</li>

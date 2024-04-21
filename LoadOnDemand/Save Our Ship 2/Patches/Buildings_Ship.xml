@@ -170,7 +170,7 @@
 				</li>
 
 				<!-- ========== ShipInside_PassiveCooler ========== -->
-				<li Class="PatchOperationReplace">
+				<!-- <li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCooler"]/costList</xpath>
 					<value>
 						<costList>
@@ -189,7 +189,7 @@
 						</stuffCategories>
 						<costStuffCount>80</costStuffCount>
 					</value>
-				</li>
+				</li> -->
 
 				<!--\1-->
 

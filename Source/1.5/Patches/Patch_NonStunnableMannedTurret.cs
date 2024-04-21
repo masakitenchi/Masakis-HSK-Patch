@@ -15,6 +15,13 @@ public static class Patch_NonStunnableMannedTurret
     private static readonly FieldInfo stunner = AccessTools.Field(typeof(Building_Turret), nameof(Building_Turret.stunner));
     private static readonly MethodInfo check = AccessTools.Method(typeof(Patch_NonStunnableMannedTurret), nameof(HasPowerTrader));
 
+    [HarmonyPrepare]
+    public static bool Prepare()
+    {
+        if (VersionControl.CurrentVersionStringWithoutBuild == "1.5") // 1.5 removed the check from Building_Turret.PreApplyDamage
+            return false;
+        return true;
+    }
 
     [HarmonyTargetMethod]
     public static MethodInfo Method()

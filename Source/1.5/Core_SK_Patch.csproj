@@ -42,6 +42,7 @@
     <Compile Remove="SOS2Compat\**" />
     <Compile Remove="StatPart\StatPart_MechBuff.cs" />
     <Compile Remove="StatPart\StatPart_Upgradeable.cs" />
+    <Compile Remove="Patches\Patch_NightVision.cs"/>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CombatExtended">

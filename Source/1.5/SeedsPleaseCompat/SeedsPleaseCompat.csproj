@@ -4,7 +4,8 @@
     <OutputType>Library</OutputType>
     <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
     <LangVersion>Preview</LangVersion>
-    <OutputPath>..\..\..\v1.5\AssembliesCompat</OutputPath>
+    <Version>1.5</Version>
+    <OutputPath>..\..\..\v$(Version)\AssembliesCompat</OutputPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AssemblyTitle>SeedsPleaseCompat</AssemblyTitle>
     <Product>SeedsPleaseCompat</Product>
@@ -12,9 +13,8 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SeedsPlease">

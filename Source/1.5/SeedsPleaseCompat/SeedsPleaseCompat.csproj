@@ -10,6 +10,7 @@
     <AssemblyTitle>SeedsPleaseCompat</AssemblyTitle>
     <Product>SeedsPleaseCompat</Product>
     <Copyright>Copyright ©  2023</Copyright>
+    <Deterministic>true</Deterministic>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

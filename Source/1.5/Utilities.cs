@@ -1,10 +1,10 @@
-﻿using SK;
-using System.Runtime.CompilerServices;
-using Verse.Profile;
-using System.Xml;
-using System.Reflection;
-using Steamworks;
 using System.IO;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Xml;
+using SK;
+using Steamworks;
+using Verse.Profile;
 
 namespace Core_SK_Patch;
 

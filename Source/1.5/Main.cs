@@ -1,12 +1,12 @@
 global using System;
-global using RimWorld;
-global using Verse;
-global using HarmonyLib;
-global using UnityEngine;
 global using System.Collections.Generic;
-global using System.Text;
 global using System.Linq;
+global using System.Text;
+global using HarmonyLib;
 global using LudeonTK;
+global using RimWorld;
+global using UnityEngine;
+global using Verse;
 using System.IO;
 using System.Reflection;
 
@@ -34,7 +34,7 @@ public class Main : Mod
 
     internal static StringBuilder sb = new StringBuilder("Initializing:\n");
 
-    public static Main instance; 
+    public static Main instance;
 
     public Main(ModContentPack content) : base(content)
     {

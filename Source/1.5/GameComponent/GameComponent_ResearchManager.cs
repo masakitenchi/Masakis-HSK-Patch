@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 namespace Core_SK_Patch;
 
@@ -15,7 +15,7 @@ public class GameComponent_ResearchManager : GameComponent
     private Dictionary<ResearchProjectDef, int> _repeatCount = new();
 
     public GameComponent_ResearchManager(Game game)
-    { 
+    {
     }
 
     public void Notify_ResearchFinished(ResearchProjectDef def)
@@ -43,7 +43,7 @@ public class GameComponent_ResearchManager : GameComponent
     {
         base.ExposeData();
         Scribe_Collections.Look(ref _repeatCount, "researchCounts", LookMode.Def, LookMode.Value);
-        if(Scribe.mode == LoadSaveMode.PostLoadInit)
+        if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
             foreach (var def in _repeatCount)
             {
@@ -72,7 +72,7 @@ public class GameComponent_ResearchManager : GameComponent
     public override void FinalizeInit()
     {
         base.FinalizeInit();
-        foreach(var def in DefDatabase<ResearchProjectDef>.AllDefs.Where(x => x.GetModExtension<ModExtension_RepeatableResearch>() != null))
+        foreach (var def in DefDatabase<ResearchProjectDef>.AllDefs.Where(x => x.GetModExtension<ModExtension_RepeatableResearch>() != null))
         {
             if (def.IsFinished && !this._repeatCount.TryGetValue(def, out _))
             {
@@ -86,10 +86,10 @@ public class GameComponent_ResearchManager : GameComponent
     private static void ResetProgressAndAdjustCost(ResearchProjectDef def)
     {
         Find.ResearchManager.progress[def] = 0f;
-        def.baseCost *= def.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier; 
+        def.baseCost *= def.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
     }
 
-    [HarmonyPatch(typeof(ResearchManager),nameof(ResearchManager.FinishProject))]
+    [HarmonyPatch(typeof(ResearchManager), nameof(ResearchManager.FinishProject))]
     public static void Postfix(ResearchProjectDef proj)
     {
         Current.Game.GetComponent<GameComponent_ResearchManager>().Notify_ResearchFinished(proj);

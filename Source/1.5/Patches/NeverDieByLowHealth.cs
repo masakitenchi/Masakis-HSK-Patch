@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 
 namespace Core_SK_Patch;
 
@@ -11,7 +11,7 @@ public static class NeverDieByLowHealth
     }
 
     [HarmonyPriority(Priority.First)]
-    [HarmonyPatch(typeof(Pawn_HealthTracker),nameof(Pawn_HealthTracker.ShouldBeDeadFromLethalDamageThreshold))]
+    [HarmonyPatch(typeof(Pawn_HealthTracker), nameof(Pawn_HealthTracker.ShouldBeDeadFromLethalDamageThreshold))]
     public static bool Prefix(ref bool __result)
     {
         __result = false;

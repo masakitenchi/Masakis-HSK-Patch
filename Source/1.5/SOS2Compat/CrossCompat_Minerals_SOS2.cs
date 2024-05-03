@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Minerals;
 
 namespace Core_SK_Patch;
@@ -9,7 +9,7 @@ public class CrossCompat_Minerals_SOS2
     [HarmonyPrepare]
     public static bool Prepare(MethodBase original)
     {
-        if(!ModsConfig.IsActive("kentington.saveourship2") || !ModsConfig.IsActive("zacharyfoster.minerals"))
+        if (!ModsConfig.IsActive("kentington.saveourship2") || !ModsConfig.IsActive("zacharyfoster.minerals"))
         {
             return false;
         }

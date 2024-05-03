@@ -1,4 +1,4 @@
-﻿using CombatExtended;
+using CombatExtended;
 
 namespace Core_SK_Patch;
 #if DEBUG
@@ -7,13 +7,13 @@ namespace Core_SK_Patch;
 [HarmonyPatch]
 public static class TestPatches
 {
-    [HarmonyPatch(typeof(ResearchProjectDef),nameof(ResearchProjectDef.ReapplyAllMods))]
+    [HarmonyPatch(typeof(ResearchProjectDef), nameof(ResearchProjectDef.ReapplyAllMods))]
     [HarmonyPrefix]
     public static bool Skip(ResearchProjectDef __instance)
     {
         if (__instance.researchMods == null)
         {
-            return false ;
+            return false;
         }
         for (int i = 0; i < __instance.researchMods.Count; i++)
         {
@@ -96,11 +96,11 @@ public static class IncidentWorkerErrorcheck
     [HarmonyPostfix]
     public static IEnumerable<string> Postfix(IEnumerable<string> __result, IncidentDef __instance)
     {
-        foreach(var i in __result)
+        foreach (var i in __result)
         {
             yield return i;
         }
-        if(__instance.workerClass is null)
+        if (__instance.workerClass is null)
         {
             yield return $"{__instance.defName} has null workerClass.";
         }

@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using System.Reflection.Emit;
 using System.IO;
+using System.Reflection;
+using System.Reflection.Emit;
 
 namespace Core_SK_Patch;
 
@@ -8,24 +8,24 @@ namespace Core_SK_Patch;
 public static class Rimatomic_RemoveWarning
 {
     private static readonly MethodInfo get_Name = AccessTools.PropertyGetter(typeof(Pawn), nameof(Pawn.Name));
-	private static readonly MethodInfo Warning = AccessTools.Method(typeof(Verse.Log), nameof(Log.Warning), new Type[] {typeof(string)});
-	private static readonly MethodInfo PatchBase = AccessTools.Method("Rimatomics.DubUtils:applyRads");
+    private static readonly MethodInfo Warning = AccessTools.Method(typeof(Verse.Log), nameof(Log.Warning), new Type[] { typeof(string) });
+    private static readonly MethodInfo PatchBase = AccessTools.Method("Rimatomics.DubUtils:applyRads");
 
-	//Added a check since this has been already integrated into base HSK
-	public static bool Prepare()
-	{
-		bool passed = true;
-		if (Harmony.GetPatchInfo(PatchBase) != null) return false;
-		foreach(var field in typeof(Rimatomic_RemoveWarning).GetFields(BindingFlags.Static | BindingFlags.NonPublic))
-		{
-			if (field.GetValue(null) == null)
+    //Added a check since this has been already integrated into base HSK
+    public static bool Prepare()
+    {
+        bool passed = true;
+        if (Harmony.GetPatchInfo(PatchBase) != null) return false;
+        foreach (var field in typeof(Rimatomic_RemoveWarning).GetFields(BindingFlags.Static | BindingFlags.NonPublic))
+        {
+            if (field.GetValue(null) == null)
             {
                 Logger.Error($"{field.Name} is null. Skipping Transpiler");
-				passed = false;
+                passed = false;
             }
-		}
-		return ModsConfig.IsActive("dubwise.rimatomics") && passed;
-	}
+        }
+        return ModsConfig.IsActive("dubwise.rimatomics") && passed;
+    }
     /*
      * // Log.Warning(pawn.Name?.ToString() + " filteredStrength   " + num);
 	IL_00b5: ldarg.0
@@ -72,29 +72,29 @@ public static class Rimatomic_RemoveWarning
     public static IEnumerable<CodeInstruction> RemoveWarning(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
     {
         List<CodeInstruction> inst = instructions.ToList();
-		List<int> indexes = new List<int>();
+        List<int> indexes = new List<int>();
         int i;
-		bool flag = false;
+        bool flag = false;
         for (i = 0; i < inst.Count; i++)
         {
             if (!flag && inst[i].operand as MethodInfo == get_Name)
             {
-				flag = true;
+                flag = true;
                 indexes.Add(i - 1);
-				continue;
+                continue;
             }
-			if (flag && inst[i].operand as MethodInfo == Warning)
+            if (flag && inst[i].operand as MethodInfo == Warning)
             {
-				flag = false;
+                flag = false;
                 indexes.Add(i);
-				continue;
+                continue;
             }
         }
-		//File.WriteAllLines("E:\\Lines.txt", indexes.Select(x => x.ToString()));
-		//File.WriteAllLines("E:\\before.txt", instructions.Select(x => x.ToString()));
+        //File.WriteAllLines("E:\\Lines.txt", indexes.Select(x => x.ToString()));
+        //File.WriteAllLines("E:\\before.txt", instructions.Select(x => x.ToString()));
         inst.RemoveRange(indexes[2], indexes[3] - indexes[2] + 1);
         inst.RemoveRange(indexes[0], indexes[1] - indexes[0] + 1);
-		//File.WriteAllLines("E:\\after.txt", inst.Select(x => x.ToString()));
-		return inst;
+        //File.WriteAllLines("E:\\after.txt", inst.Select(x => x.ToString()));
+        return inst;
     }
 }

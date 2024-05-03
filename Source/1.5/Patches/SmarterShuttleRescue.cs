@@ -6,9 +6,9 @@ namespace Core_SK_Patch;
 [HarmonyPatch]
 public static class SmarterShuttleRescue
 {
-	private static readonly MethodInfo _defendPoint = AccessTools.Method(typeof(QuestGen_Lord), nameof(QuestGen_Lord.DefendPoint));
-	//RimWorld.QuestGen.QuestNode_Root_ShuttleCrash_Rescue+<>c__DisplayClass16_0.<RunInt>b__0
-	/*
+    private static readonly MethodInfo _defendPoint = AccessTools.Method(typeof(QuestGen_Lord), nameof(QuestGen_Lord.DefendPoint));
+    //RimWorld.QuestGen.QuestNode_Root_ShuttleCrash_Rescue+<>c__DisplayClass16_0.<RunInt>b__0
+    /*
 		[CompilerGenerated]
 		public sealed class <>c__DisplayClass16_0
 		{
@@ -40,8 +40,8 @@ public static class SmarterShuttleRescue
 			public void <RunInt>b__7();
 		}
 	*/
-	// We need to move this questPart to a later stage, after we have calculated the position
-	/*
+    // We need to move this questPart to a later stage, after we have calculated the position
+    /*
 		// quest.DefendPoint(map.Parent, shuttleCrashPosition, soldiers, Faction.OfEmpire, null, null, 12f, isCaravanSendable: false, addFleeToil: false);
 		IL_00cd: pop
 		IL_00ce: ldarg.0
@@ -64,7 +64,7 @@ public static class SmarterShuttleRescue
 		IL_00fc: call class RimWorld.QuestPart_DefendPoint RimWorld.QuestGen.QuestGen_Lord::DefendPoint(class RimWorld.Quest, class RimWorld.Planet.MapParent, valuetype Verse.IntVec3, class [mscorlib]System.Collections.Generic.IEnumerable`1<class Verse.Pawn>, class RimWorld.Faction, string, string, valuetype [mscorlib]System.Nullable`1<float32>, bool, bool)
 		IL_0101: pop
 	*/
-	/*
+    /*
 		// IntVec3 position = shuttleCrashPosition + IntVec3.South;
 		IL_0102: ldarg.0
 		IL_0103: ldfld valuetype Verse.IntVec3 RimWorld.QuestGen.QuestNode_Root_ShuttleCrash_Rescue/'<>c__DisplayClass16_0'::shuttleCrashPosition
@@ -72,8 +72,8 @@ public static class SmarterShuttleRescue
 		IL_010d: call valuetype Verse.IntVec3 Verse.IntVec3::op_Addition(valuetype Verse.IntVec3, valuetype Verse.IntVec3)
 		IL_0112: stloc.1
 	*/
-	// If there's an available beacon, move to that position
-	/* if (DropCellFinder.TryFindShipLandingArea(map, out IntVec3 result, out Thing _))
+    // If there's an available beacon, move to that position
+    /* if (DropCellFinder.TryFindShipLandingArea(map, out IntVec3 result, out Thing _))
 		{
 			position = result;
 		}

@@ -1,9 +1,9 @@
-﻿namespace Core_SK_Patch;
+namespace Core_SK_Patch;
 
 [HarmonyPatch]
 public static class SpecialDisplayStatsPatch
 {
-    
+
     [HarmonyPatch(typeof(ThingDef), nameof(ThingDef.SpecialDisplayStats))]
     [HarmonyPostfix]
     public static IEnumerable<StatDrawEntry> ShowStackLimit_PassThroughPostfix(IEnumerable<StatDrawEntry> __result, StatRequest req)

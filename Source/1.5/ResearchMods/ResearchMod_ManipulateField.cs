@@ -1,5 +1,5 @@
-﻿using Mono.Cecil;
 using System.Reflection;
+using Mono.Cecil;
 
 namespace Core_SK_Patch;
 public abstract class ResearchMod_ManipulateField : ResearchMod
@@ -49,7 +49,7 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
         switch (mode)
         {
             case TargetMode.Add:
-                fieldInfo.SetValue(instance, (originalvalue is float? Convert.ToSingle(originalvalue): Convert.ToInt32(originalvalue)) + value);
+                fieldInfo.SetValue(instance, (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)) + value);
                 break;
             case TargetMode.Subtract:
                 fieldInfo.SetValue(instance, (originalvalue is float ? Convert.ToSingle(originalvalue) : Convert.ToInt32(originalvalue)) - value);
@@ -118,7 +118,7 @@ public class ResearchMod_ChangeStatBase : ResearchMod_ManipulateField
     public override void Apply()
     {
         base.Apply();
-        switch(mode)
+        switch (mode)
         {
             case TargetMode.Add:
                 statModifier.value += value;

@@ -1,13 +1,13 @@
-﻿namespace Core_SK_Patch;
+namespace Core_SK_Patch;
 
 public class StatPart_Engine : StatPart
 {
     public bool Applies(Thing t) => t.Spawned && (t.TryGetComp<CompEngine>()?.HasEngine ?? false);
     public override string ExplanationPart(StatRequest req)
     {
-        if(req.HasThing)
+        if (req.HasThing)
         {
-            if(Applies(req.Thing))
+            if (Applies(req.Thing))
             {
                 ThingDef def = req.Thing.TryGetComp<CompEngine>()?.CurrentEngine;
                 return def.LabelCap + " : x" + def.GetModExtension<EngineModExtension>().EngineEfficiency.ToString("P2");

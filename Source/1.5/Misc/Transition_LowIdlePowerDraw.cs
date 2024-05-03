@@ -1,4 +1,4 @@
-﻿namespace Core_SK_Patch;
+namespace Core_SK_Patch;
 
 // Temp class for replace CompProperties_LowIdleDraw with CompProperties_Power.idlePowerDraw
 // Vanilla only has code like this.PowerTraderComp.PowerOutput = this.Working ? -this.PowerComp.Props.PowerConsumption : -this.PowerComp.Props.idlePowerDraw;

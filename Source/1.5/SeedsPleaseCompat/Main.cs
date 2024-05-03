@@ -1,9 +1,9 @@
-﻿global using HarmonyLib;
 global using System.Collections.Generic;
-global using SeedsPlease;
-global using RimWorld;
-global using Verse;
 global using Core_SK_Patch;
+global using HarmonyLib;
+global using RimWorld;
+global using SeedsPlease;
+global using Verse;
 using System.Linq;
 
 namespace Core_SK_Patch;

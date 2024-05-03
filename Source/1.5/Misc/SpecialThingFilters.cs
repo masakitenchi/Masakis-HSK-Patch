@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 
 namespace Core_SK_Patch;
 

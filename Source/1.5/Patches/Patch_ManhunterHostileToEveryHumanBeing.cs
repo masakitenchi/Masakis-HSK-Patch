@@ -1,10 +1,10 @@
-﻿using Verse.AI;
+using Verse.AI;
 namespace Core_SK_Patch;
 
 [HarmonyPatch]
 public static class Patch_ManhunterHostileToEveryHumanBeing
 {
-    [HarmonyPatch(typeof(MentalState_Manhunter), nameof(MentalState_Manhunter.ForceHostileTo), new Type[] {typeof (Thing)})]
+    [HarmonyPatch(typeof(MentalState_Manhunter), nameof(MentalState_Manhunter.ForceHostileTo), new Type[] { typeof(Thing) })]
     [HarmonyPrefix]
     public static bool HostileToAnyHumanBeing(ref bool __result, Thing t)
     {

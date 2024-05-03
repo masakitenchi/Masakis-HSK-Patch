@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using System.Reflection.Emit;
 using System.IO;
+using System.Reflection;
+using System.Reflection.Emit;
 
 namespace Core_SK_Patch;
 
@@ -27,9 +27,9 @@ public static class Patch_ModContentPack
     public static bool Check()
     {
         bool passed = true;
-        foreach(var field in typeof(Patch_ModContentPack).GetFields(BindingFlags.Static | BindingFlags.NonPublic))
+        foreach (var field in typeof(Patch_ModContentPack).GetFields(BindingFlags.Static | BindingFlags.NonPublic))
         {
-            if(field.GetValue(null) == null)
+            if (field.GetValue(null) == null)
             {
                 Logger.Error($"{field.Name} is null, skipping patch");
                 passed = false;
@@ -46,7 +46,7 @@ public static class Patch_ModContentPack
         int strCount = 0, formatCount = 0;
         //File.WriteAllLines("E:\\beforeRep.txt", instructions.Select(x => x.ToString()));
         List<CodeInstruction> inst = instructions.ToList();
-        for(var i = 0; i < inst.Count; i++)
+        for (var i = 0; i < inst.Count; i++)
         {
             if (inst[i].opcode == OpCodes.Ldstr && (inst[i].operand as string).Contains("Unexpected"))
             {

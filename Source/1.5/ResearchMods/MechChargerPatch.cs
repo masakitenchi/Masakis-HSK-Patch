@@ -1,4 +1,4 @@
-﻿using System.Reflection.Emit;
+using System.Reflection.Emit;
 
 namespace Core_SK_Patch;
 
@@ -9,7 +9,7 @@ public static class MechChargerPatch
 
     public static float ChargePerDay { get; set; } = Building_MechCharger.ChargePerDay;
 
-    [HarmonyPatch(typeof(Building_MechCharger),nameof(Building_MechCharger.Tick))]
+    [HarmonyPatch(typeof(Building_MechCharger), nameof(Building_MechCharger.Tick))]
     [HarmonyTranspiler]
     public static IEnumerable<CodeInstruction> RechargeSpeedPatch(IEnumerable<CodeInstruction> instructions)
     {

@@ -1,4 +1,4 @@
-﻿using SK;
+using SK;
 
 namespace Core_SK_Patch;
 
@@ -69,7 +69,7 @@ public class CompEngine : ThingComp
 
 
     // Useless, this is called after spawning killed leavings
-	/* public override void Notify_KilledLeavingsLeft(List<Thing> leavings)
+    /* public override void Notify_KilledLeavingsLeft(List<Thing> leavings)
 	{
 		if (HasEngine)
         {
@@ -77,7 +77,7 @@ public class CompEngine : ThingComp
             leavings.Add(thing);
         }
 	} */
-	
+
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         if (DebugSettings.godMode)
@@ -99,7 +99,7 @@ public class CompEngine : ThingComp
             yield return new Command_Action()
             {
                 defaultDesc = "AddOrChangeEngineDesc".Translate(),
-                defaultLabel = HasEngine? _currentEngine.label : "AddEngine".Translate(),
+                defaultLabel = HasEngine ? _currentEngine.label : "AddEngine".Translate(),
                 icon = HasEngine ? _currentEngine.uiIcon : BaseContent.WhiteTex,
                 action = () =>
                 {

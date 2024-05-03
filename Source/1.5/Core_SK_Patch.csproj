@@ -10,9 +10,16 @@
     <AssemblyTitle>Core_SK_Patch</AssemblyTitle>
     <Product>Main</Product>
     <Copyright>Copyright ©  2024</Copyright>
+    <Deterministic>true</Deterministic>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <FileVersion>1.1.0.0</FileVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  <!-- </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'"> -->
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
   </PropertyGroup>

@@ -14,7 +14,7 @@
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <FileVersion>1.1.0.0</FileVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-  <!-- </PropertyGroup>
+    <!-- </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <DebugType>pdbonly</DebugType>
     <Optimize>false</Optimize>
@@ -43,7 +43,8 @@
     <Compile Remove="SOS2Compat\**" />
     <Compile Remove="StatPart\StatPart_MechBuff.cs" />
     <Compile Remove="StatPart\StatPart_Upgradeable.cs" />
-    <Compile Remove="Patches\Patch_NightVision.cs"/>
+    <Compile Remove="Patches\Patch_NightVision.cs" />
+    <Compile Remove="ResearchReinvented\**" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CombatExtended">

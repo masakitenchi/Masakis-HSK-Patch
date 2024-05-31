@@ -74,7 +74,7 @@ public static class BillableDrillPatch
         {
             if (compBillableDrill.BillableResourceLimit == -1) return;
             Map map = compBillableDrill.parent.Map;
-            if (map.listerThings.listsByDef[compBillableDrill.currentResource].Sum(x => x.stackCount) >= compBillableDrill.BillableResourceLimit)
+            if (map.listerThings.listsByDef.ContainsKey(compBillableDrill.currentResource) && map.listerThings.listsByDef[compBillableDrill.currentResource].Sum(x => x.stackCount) >= compBillableDrill.BillableResourceLimit)
             {
                 __result = false;
             }

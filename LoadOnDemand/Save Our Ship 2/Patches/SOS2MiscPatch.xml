@@ -2,12 +2,12 @@
 <Patch>
 
 	<Operation Class="PatchOperationFindMod">
-	<mods>
-		<li>Save Our Ship 2</li>
-	</mods>
+		<mods>
+			<li>Save Our Ship 2</li>
+		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-				
+
 				<!-- ========== Archocat ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archocat"]/race/useMeatFrom</xpath>
@@ -15,7 +15,7 @@
 						<useMeatFrom>Elephant</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archomutt ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archomutt"]/race/useMeatFrom</xpath>
@@ -23,7 +23,7 @@
 						<useMeatFrom>Elephant</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archostrich ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archostrich"]/race/useMeatFrom</xpath>
@@ -31,7 +31,7 @@
 						<useMeatFrom>Elephant</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archolope ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archolope"]/race/useMeatFrom</xpath>
@@ -39,7 +39,7 @@
 						<useMeatFrom>Elephant</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archojerboa ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archojerboa"]/race/useMeatFrom</xpath>
@@ -47,7 +47,7 @@
 						<useMeatFrom>Elephant</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archotortoise ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archotortoise"]/race/useMeatFrom</xpath>
@@ -55,7 +55,7 @@
 						<useMeatFrom>Elephant</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archopanda ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archopanda"]/race/useMeatFrom</xpath>
@@ -63,14 +63,14 @@
 						<useMeatFrom>Muffalo</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archopanda"]/race/leatherDef</xpath>
 					<value>
 						<leatherDef>Leather_Heavy</leatherDef>
 					</value>
 				</li>
-				
+
 				<!-- ========== Archothrumbo ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Archothrumbo"]/race/useMeatFrom</xpath>
@@ -78,7 +78,7 @@
 						<useMeatFrom>Muffalo</useMeatFrom>
 					</value>
 				</li>
-				
+
 				<!-- ========== Plant_Meatbush ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Plant_Meatbush"]/plant/harvestedThingDef</xpath>
@@ -86,7 +86,7 @@
 						<harvestedThingDef>Meat_Muffalo</harvestedThingDef>
 					</value>
 				</li>
-				
+
 				<!-- ========== weaponMoney ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrew"]/weaponMoney</xpath>
@@ -94,14 +94,14 @@
 						<weaponMoney>1300~1500</weaponMoney>
 					</value>
 				</li>
-				
+
 				<!-- <li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/weaponMoney</xpath>
 					<value>
 						<weaponMoney>1500~1800</weaponMoney>
 					</value>
 				</li> -->
-				
+
 				<!-- ========== SoilShip ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/TerrainDef[defName="SoilShip"]/costList</xpath>
@@ -116,42 +116,42 @@
 						</costList>
 					</value>
 				</li>
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/TerrainDef[defName="SoilShip"]/statBases</xpath>
 					<value>
 						<WorkToBuild>2000</WorkToBuild>
 					</value>
 				</li>
-				
+
 				<!-- ========== ShipCorner/ShipCornerMech ========== -->
-				<li Class="PatchOperationRemove">	
+				<li Class="PatchOperationRemove">
 					<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown</xpath>
 				</li>
-				
+
 				<!-- ========== ShipHardpoint ========== -->
-				<li Class="PatchOperationRemove">	
+				<li Class="PatchOperationRemove">
 					<xpath>Defs/ThingDef[@Name="ShipHardpoint"]/constructEffect</xpath>
 				</li>
-				
-				<li Class="PatchOperationRemove">	
+
+				<li Class="PatchOperationRemove">
 					<xpath>Defs/ThingDef[@Name="ShipHardpoint"]/designatorDropdown</xpath>
 				</li>
-				
+
 				<!-- ========== BaseShipTorpedoBuilding ========== -->
-				<li Class="PatchOperationRemove">	
+				<li Class="PatchOperationRemove">
 					<xpath>Defs/ThingDef[@Name="BaseShipTorpedoBuilding"]/designatorDropdown</xpath>
 				</li>
-				
+
 				<!-- ========== ShipHeatsinkBase ========== -->
 				<li Class="PatchOperationRemove">
 					<xpath>Defs/ThingDef[@Name="ShipHeatsinkBase"]/constructEffect</xpath>
 				</li>
-				
+
 				<li Class="PatchOperationRemove">
 					<xpath>Defs/ThingDef[@Name="ShipHeatsinkBase"]/designatorDropdown</xpath>
 				</li>
-				
+
 
 				<!-- Mechs lowest comfy temp to -100-->
 				<li Class="PatchOperationReplace">
@@ -209,15 +209,15 @@
 						</statBases>
 					</value>
 				</li>
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]</xpath>
+
+				<!-- Change to SK.PatchOperationReplaceExtended when porting to 1.5 -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]/statBases/MarketValue</xpath>
 					<value>
-						<statBases>
-							<MarketValue>5000</MarketValue>
-						</statBases>
+						<MarketValue>5000</MarketValue>
 					</value>
 				</li>
-				
+
 				<!-- Replace their comps to avoid ThingMaker error-->
 				<!-- <li Class="PatchOperationAttributeSet">
 					<xpath>Defs/ThingDef[defName="PersonalShuttle" or 
@@ -227,17 +227,19 @@
 					<attribute>Class</attribute>
 					<value>Core_SK_Patch.CompProperties_BecomePawn</value>
 				</li> -->
-				
+
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or 
 						defName="ShuttleCargoRace" or 
 						defName="ShuttleHeavyRace" or 
 						defName="ShuttleDropshipRace"]/comps</xpath>
 					<value>
-						<li><compClass>Core_SK_Patch.CompShuttleStuff</compClass></li>
+						<li>
+							<compClass>Core_SK_Patch.CompShuttleStuff</compClass>
+						</li>
 					</value>
 				</li>
-				
+
 
 				<!-- <li Class="PatchOperationAdd">
 					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or 
@@ -250,8 +252,13 @@
 						</li>
 					</value>
 				</li> -->
+
+				<!-- Remember to change this to SK.PatchOperationReplaceExtended when porting to 1.5 -->
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="VanometricPowerCell"]/statBases/WorkToBuild[text()="5000"]</xpath>
+				</li>
 			</operations>
 		</match>
-    </Operation>
-	
+	</Operation>
+
 </Patch>

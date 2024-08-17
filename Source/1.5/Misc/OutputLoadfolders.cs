@@ -35,7 +35,6 @@ public class DebugActions
         }
         Find.WindowStack.Add(new Dialog_DebugOptionListLister(options));
     }
-
     /*[DebugAction("Mods", "ShowGraphicData", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.Entry)]
     public static void ShowGraphicData()
     {

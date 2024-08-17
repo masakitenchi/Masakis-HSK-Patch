@@ -34,7 +34,6 @@ public class ResearchMod_ChangeDefSimple : ResearchMod_ManipulateField
     public float value;
     public TargetMode mode;
 
-    private AccessTools.FieldRef<float> fieldRef;
     public override void CacheField()
     {
         instance = GenDefDatabase.GetDefSilentFail(defType, defName);

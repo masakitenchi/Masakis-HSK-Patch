@@ -8,7 +8,19 @@
 		<li>1.5</li>
 	</supportedVersions>
 	<packageId>regex.SKP</packageId>
-	<description></description>
+	<description>My own patch collection.
+		Main Features:
+		- SOS2 support (1.4, 1.5) (up to V99, so expect bugs in 1.5 right now)
+		- Vanilla Nutrient Paste Expanded Support (feat. @Matt-MentTao)
+		- Repeatable Research (WIP)
+		QoL Features:
+		- Auto forbid rotted meat &amp; rotten mush outside home area;
+		- Set threshold for Deep Drill resources;
+		- Remove monument quest completely;
+		- ... and more!
+		Cross-mod Features:
+		- Seed please: show skill &amp; tech requirement on seed info tab;
+	</description>
 	<modDependencies>
 		<li>
 			<packageId>brrainz.harmony</packageId>

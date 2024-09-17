@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using SK.Utils;
 
 namespace Core_SK_Patch;
 
@@ -9,6 +10,7 @@ namespace Core_SK_Patch;
 [HarmonyPatch]
 public class GameComponent_ResearchManager : GameComponent
 {
+    private static readonly Dictionary<ResearchProjectDef, float> _initialCost = new();
     //If it ends with +X (where X is a number)
     private static readonly Regex labelEndReg = new Regex(@"\+\d+");
 
@@ -32,6 +34,7 @@ public class GameComponent_ResearchManager : GameComponent
             count = 1;
             _repeatCount.TryAdd(def, count);
         }
+        _initialCost.TryAdd(def, def.baseCost);
         //Will change the description & label accordingly some day
         //Somehow not working?
         /*if (!labelEndReg.Match(def.label).Value.NullOrEmpty())
@@ -88,7 +91,14 @@ public class GameComponent_ResearchManager : GameComponent
         }
     }
 
-
+    [ClearDataOnNewGame]
+    private static void ResetBasecost()
+    {
+        foreach (var kvpair in _initialCost)
+        {
+            kvpair.Key.baseCost = kvpair.Value;
+        }
+    }
     private static void ResetProgressAndAdjustCost(ResearchProjectDef def)
     {
         Find.ResearchManager.progress[def] = 0f;

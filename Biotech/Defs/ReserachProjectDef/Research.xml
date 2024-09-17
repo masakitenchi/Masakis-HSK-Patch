@@ -34,7 +34,7 @@
 			<li>HighMechtech</li>
 		</prerequisites>
 		<researchViewX>20.00</researchViewX>
-		<researchViewY>26.00</researchViewY>
+		<researchViewY>27.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
 			<li Class="Core_SK_Patch.MechChargerUpgrade"/>

@@ -8,6 +8,7 @@ namespace Core_SK_Patch;
  * 
  */
 [HarmonyPatch]
+[StaticConstructorOnStartup]
 public class GameComponent_ResearchManager : GameComponent
 {
     private static readonly Dictionary<ResearchProjectDef, float> _initialCost = new();
@@ -16,6 +17,13 @@ public class GameComponent_ResearchManager : GameComponent
 
     private Dictionary<ResearchProjectDef, int> _repeatCount = new();
 
+    static GameComponent_ResearchManager()
+    {
+        foreach(var def in DefDatabase<ResearchProjectDef>.AllDefs.Where(x => x.HasModExtension<ModExtension_RepeatableResearch>()))
+        {
+            _initialCost.TryAdd(def, def.baseCost);
+        }
+    }
     public GameComponent_ResearchManager(Game game)
     {
     }

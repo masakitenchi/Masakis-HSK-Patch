@@ -1,15 +1,12 @@
 using System.Text.RegularExpressions;
+using RimWorld.Planet;
 using SK.Utils;
 
 namespace Core_SK_Patch;
 
-
-/*
- * 
- */
 [HarmonyPatch]
 [StaticConstructorOnStartup]
-public class GameComponent_ResearchManager : GameComponent
+public class GameComponent_ResearchManager : WorldComponent
 {
     private static readonly Dictionary<ResearchProjectDef, float> _initialCost = new();
     //If it ends with +X (where X is a number)
@@ -24,7 +21,7 @@ public class GameComponent_ResearchManager : GameComponent
             _initialCost.TryAdd(def, def.baseCost);
         }
     }
-    public GameComponent_ResearchManager(Game game)
+    public GameComponent_ResearchManager(World world) : base(world)
     {
     }
 
@@ -78,12 +75,6 @@ public class GameComponent_ResearchManager : GameComponent
         }
     }
 
-    public override void StartedNewGame()
-    {
-        base.StartedNewGame();
-        _repeatCount = new();
-    }
-
 
     //For back-compatiblity
     public override void FinalizeInit()
@@ -116,6 +107,6 @@ public class GameComponent_ResearchManager : GameComponent
     [HarmonyPatch(typeof(ResearchManager), nameof(ResearchManager.FinishProject))]
     public static void Postfix(ResearchProjectDef proj)
     {
-        Current.Game.GetComponent<GameComponent_ResearchManager>().Notify_ResearchFinished(proj);
+        Current.Game.World.GetComponent<GameComponent_ResearchManager>().Notify_ResearchFinished(proj);
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/RecipeDef[defName="MakeChlorine" or defName="MakePTFE" or defName="MakeCelluloseCotton" or defName="MakeNitrocellulose"]/workSpeedStat</xpath>
+		<value>
+			<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+		</value>
+	</Operation>
+</Patch>

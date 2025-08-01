@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
+    <LangVersion>preview</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Version>1.5</Version>
+    <OutputPath>..\..\..\..\Tecs-Assorted-Patches\LoadDefs\v$(Version)\Research_Reinvented\Assemblies\</OutputPath>
+    <AssemblyTitle>RRHSKPatch</AssemblyTitle>
+    <Product>RRHSKPatch</Product>
+    <Copyright>Copyright ©  2024</Copyright>
+    <Deterministic>true</Deterministic>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer" Version="2.2.1" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="$(Version).*" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.3" ExcludeAssets="runtime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Core_SK">
+      <HintPath>..\..\..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
+    </Reference>
+    <Reference Include="ResearchReinvented">
+      <HintPath>..\..\..\..\ResearchReinvented\v1.5\Assemblies\ResearchReinvented.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

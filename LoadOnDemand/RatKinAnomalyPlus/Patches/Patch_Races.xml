@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAttributeSet">
+		<xpath>Defs/ThingDef[@Name="BasePokerSoldier" or 
+													defName="RA_Obsession" or
+													defName="RA_Fruiter" or
+													defName="RA_Shadow" or
+													defName="RA_De_lovely" or
+													defName="RA_DarkKnight" or
+													defName="RA_DarkKnight_Commander"]</xpath>
+		<attribute>ParentName</attribute>
+		<value>SK_BasePawn</value>
+	</Operation>
+
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[@Name="BasePokerSoldier" or 
+													defName="RA_Obsession" or
+													defName="RA_Fruiter" or
+													defName="RA_Shadow" or
+													defName="RA_De_lovely" or
+													defName="RA_DarkKnight" or
+													defName="RA_DarkKnight_Commander"]/hideStats</xpath>
+	</Operation>
+</Patch>

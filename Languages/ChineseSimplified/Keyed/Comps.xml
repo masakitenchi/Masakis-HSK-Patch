@@ -4,5 +4,8 @@
 	<CSP_BillableDrillLimit>设置限额</CSP_BillableDrillLimit>
 	<CSP_BillableDrillDesc>给{0_label}设置限额</CSP_BillableDrillDesc>
 	<CSP_CurrentLimit>当前限额：{0}</CSP_CurrentLimit>
+	<CSP_IncubateTo>培育至</CSP_IncubateTo>
+	<CSP_Age>{0} 岁</CSP_Age>
+
 
 </LanguageData>

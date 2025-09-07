@@ -14,5 +14,14 @@
 			<CarryingCapacity>75</CarryingCapacity>
 		</value>
 	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="GrowthVat"]/comps</xpath>
+		<value>
+			<li>
+				<compClass>Core_SK_Patch.CompAgeSetting</compClass>
+			</li>
+		</value>
+	</Operation>
 	
 </Patch>

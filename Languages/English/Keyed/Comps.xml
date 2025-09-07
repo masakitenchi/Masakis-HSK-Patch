@@ -4,5 +4,7 @@
 	<CSP_BillableDrillLimit>Set Limit</CSP_BillableDrillLimit>
 	<CSP_BillableDrillDesc>Set Limit for {0_label}</CSP_BillableDrillDesc>
 	<CSP_CurrentLimit>Current Limit: {0}</CSP_CurrentLimit>
+	<CSP_IncubateTo>Incubate To</CSP_IncubateTo>
+	<CSP_Age>{0} years old</CSP_Age>
 
 </LanguageData>

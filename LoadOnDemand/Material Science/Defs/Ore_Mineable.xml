@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
-	<ThingDef ParentName="SK_RockBase">
+	<ThingDef ParentName="RockBase">
 		<defName>MineableSphalerite</defName>
 		<label>Sphalerite Deposits</label>
 		<graphicData>
@@ -26,7 +26,7 @@
 		</building>
 	</ThingDef>
 
-	<ThingDef ParentName="SK_RockBase">
+	<ThingDef ParentName="RockBase">
 		<defName>MineableQuartz</defName>
 		<label>Quartz Deposits</label>
 		<graphicData>

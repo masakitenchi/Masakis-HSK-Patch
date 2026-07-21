@@ -9,18 +9,10 @@ global using UnityEngine;
 global using Verse;
 using System.IO;
 using System.Reflection;
+using Unity.Collections;
 
 namespace Core_SK_Patch;
 
-#if ODT
-[DefOf]
-public static class HediffDefOfLocal
-{
-    public static HediffDef MethadoneHigh;
-
-    static HediffDefOfLocal() => DefOfHelper.EnsureInitializedInCtor(typeof(HediffDefOfLocal)); 
-}
-#endif
 
 public class Main : Mod
 {
@@ -40,14 +32,8 @@ public class Main : Mod
     {
         if (instance != null) return;
         instance = this;
+        this.GetSettings<Settings>();
         harmony = new Harmony("com.reggex.HSKPatch");
-        this.modSettings = GetSettings<Settings>();
-#if ODT
-        //Methadone Fix (Disabled in 1.4 since 1.4 has already added Methadone back)
-        harmony.Patch(AccessTools.Method(typeof(ThoughtWorker_Hediff), "CurrentStateInternal"), null, new HarmonyMethod(patchType, "MethadoneHigh"));
-        harmony.Patch(AccessTools.Method(typeof(AddictionUtility), "CanBingeOnNow"), null, new HarmonyMethod(patchType, "CanBingeOnNowPostfix"));
-        sb.AppendLine(" - Methadone Fix (1.3 only)");
-#endif
         if (Settings.EnableBulkRecipe)
         {
             LongEventHandler.QueueLongEvent(() =>
@@ -117,27 +103,67 @@ public class Main : Mod
                 if (x.IsBuildingArtificial && !x.IsFrame && x.selectable && x.useHitPoints && x.statBases is null) Log.Warning($"{x.defName} is building with null statBases");
             });
         });*/
+        if (Settings.ErrorChecks)
+        {
+            LongEventHandler.ExecuteWhenFinished(() =>
+            {
+                CheckDuplicateComps();
+                //CheckBlockingThings();
+                CheckNullPlants();
+            });
+        }
         sb.AppendLine("Initialization Complete");
         Logger.Message(sb.ToString());
     }
-#if ODT
-    public static void MethadoneHigh(ThoughtWorker_Hediff __instance, ref ThoughtState __result, Pawn p)
+
+    public static void CheckDuplicateComps()
     {
-        if (__result.StageIndex != ThoughtState.Inactive.StageIndex)
+        StringBuilder sb = new StringBuilder();
+        foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs)
         {
-            //Hediff firstHediffOfDef = p.health.hediffSet.GetFirstHediffOfDef(__instance.def.hediff);
-            if (__instance.def.defName.Contains("Withdrawal") && p.health.hediffSet.HasHediff(HediffDefOfLocal.MethadoneHigh))
+            if (def.comps is null || def.comps.Count <= 1) continue;
+            var set = new HashSet<(Type propType, Type compClass)>();
+            foreach (var comp in def.comps)
             {
-                __result = ThoughtState.Inactive;
+                var key = (comp.GetType(), comp.compClass);
+                if (!set.Add(key))
+                {
+                    sb.AppendLine($"\t - {comp.GetType().FullName} -> {comp.compClass?.FullName} in {def.defName} ({def.modContentPack?.Name})");
+                }
             }
         }
+        if (sb.Length > 0) { Logger.Message("[Core SK Patch] Duplicate Comps Found:\n" + sb.ToString()); }
     }
-    public static void CanBingeOnNowPostfix(ref bool __result, Pawn pawn)
+
+    public static void CheckBlockingThings()
     {
-        if (pawn.health.hediffSet.HasHediff(HediffDefOfLocal.MethadoneHigh))
-            __result = false;
+        StringBuilder sb = new StringBuilder();
+        foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs.Where(x => !x.generated))
+        {
+            if (def.preventGravshipLandingOn || (!def.building?.canLandGravshipOn ?? false))
+            {
+                sb.AppendLine($"\t - {def.defName} ({def.modContentPack?.Name})");
+            }
+        }
+        if (sb.Length > 0) { Logger.Message("[Core SK Patch] Things Blocking Gravship Landing:\n" + sb.ToString()); }
     }
-#endif
+
+    public static void CheckNullPlants()
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs.Where(x => x.category == ThingCategory.Plant))
+        {
+            if (def.plant is null)
+            {
+                sb.AppendLine($"\t - {def.defName} is plant yet has null plantProperties");
+            }
+            else if (def.plant!.sowTags is null)
+            {
+                sb.AppendLine($"\t - {def.defName} has null sowTags");
+            }
+        }
+        if (sb.Length > 0) { Logger.Message("[Core SK Patch] Plants with null plantProperties:\n" + sb.ToString()); }
+    }
 
     public override string SettingsCategory() => this.Content.Name;
     public override void DoSettingsWindowContents(Rect inRect)
@@ -150,6 +176,11 @@ public class Main : Mod
         ls.CheckboxLabeled("Never die by low health", ref Settings.NeverDieByLowHealth, "Removes the health check for death.\n(Need restart after changing the value)");
         ls.CheckboxLabeled("Auto-forbid rotten mush & meat out of home area", ref Settings.AutoForbidSpoiled, "Automatically forbid rotten mush & meat generated outside of home area. No more pawn walking across the whole map just to get 1 pile of rotten mush to your storage");
         ls.CheckboxLabeled("Log All PatchOperatoinPathed", ref Settings.LogAllPatchOperations, "Should auto disable itself once enabled & restarted");
+        ls.CheckboxLabeled("Debug Only: Check Duplicate Comps and so on", ref Settings.ErrorChecks);
+        ls.CheckboxLabeled("CoreSK_FactionDiscovery_Enable".Translate(), ref Settings.EnableFactionDiscovery, "CoreSK_FactionDiscovery_EnableTip".Translate());
+        ls.CheckboxLabeled("CoreSK_AllowTamingDownedAnimals".Translate(), ref Settings.AllowTamingDownedAnimals, "CoreSK_AllowTamingDownedAnimalsTip".Translate());
+        if (ls.ButtonText("CoreSK_FactionDiscovery_Scan".Translate()))
+            FactionDiscoveryUtility.ScanAndPrompt(clearIgnored: true);
         ls.End();
     }
 
@@ -159,7 +190,7 @@ public class Main : Mod
     {
         assembly = null;
         //DirectoryInfo locationInfo = new DirectoryInfo(this.Content.RootDir).GetDirectories("\\AssembliesCompat").FirstOrFallback(null);
-        FileInfo assemblyFile = new DirectoryInfo(this.Content.RootDir).GetDirectories(Path.Combine("v" + VersionControl.versionStringWithoutBuild, "AssembliesCompat"))?.FirstOrDefault()?.GetFiles(name + ".dll")?.FirstOrDefault();
+        FileInfo assemblyFile = new DirectoryInfo(this.Content.RootDir).GetDirectories(Path.Combine("v" + VersionControl.CurrentVersionStringWithoutBuild, "AssembliesCompat"))?.FirstOrDefault()?.GetFiles(name + ".dll")?.FirstOrDefault();
         if (assemblyFile is not null)
         {
             byte[] rawAssembly = File.ReadAllBytes(assemblyFile.FullName);

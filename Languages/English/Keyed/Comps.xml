@@ -6,5 +6,21 @@
 	<CSP_CurrentLimit>Current Limit: {0}</CSP_CurrentLimit>
 	<CSP_IncubateTo>Incubate To</CSP_IncubateTo>
 	<CSP_Age>{0} years old</CSP_Age>
+    <CoreSK_FactionDiscovery_Enable>Enable faction discovery</CoreSK_FactionDiscovery_Enable>
+    <CoreSK_FactionDiscovery_EnableTip>After loading a save, offer to add factions introduced by newly enabled mods.</CoreSK_FactionDiscovery_EnableTip>
+    <CoreSK_FactionDiscovery_Scan>Scan for missing factions</CoreSK_FactionDiscovery_Scan>
+    <CoreSK_FactionDiscovery_None>No missing factions were found.</CoreSK_FactionDiscovery_None>
+    <CoreSK_FactionDiscovery_Title>Add faction: {0}</CoreSK_FactionDiscovery_Title>
+    <CoreSK_FactionDiscovery_Source>Source mod: {0}</CoreSK_FactionDiscovery_Source>
+    <CoreSK_FactionDiscovery_Description>This faction is available but is absent from the current world.</CoreSK_FactionDiscovery_Description>
+    <CoreSK_FactionDiscovery_Count>Settlements to create: {0}</CoreSK_FactionDiscovery_Count>
+    <CoreSK_FactionDiscovery_Distance>Minimum distance from player settlements: {0}</CoreSK_FactionDiscovery_Distance>
+    <CoreSK_FactionDiscovery_Add>Add faction and settlements</CoreSK_FactionDiscovery_Add>
+    <CoreSK_FactionDiscovery_Skip>Skip for now</CoreSK_FactionDiscovery_Skip>
+    <CoreSK_FactionDiscovery_Ignore>Ignore in this world</CoreSK_FactionDiscovery_Ignore>
+    <CoreSK_FactionDiscovery_Success>Added {0} with {1} settlements.</CoreSK_FactionDiscovery_Success>
+    <CoreSK_FactionDiscovery_Failed>Failed to add {0}; no valid settlement tile was found.</CoreSK_FactionDiscovery_Failed>
+    <CoreSK_AllowTamingDownedAnimals>Allow taming downed animals</CoreSK_AllowTamingDownedAnimals>
+    <CoreSK_AllowTamingDownedAnimalsTip>Allow handlers to perform taming work on downed but living wild animals. Takes effect immediately.</CoreSK_AllowTamingDownedAnimalsTip>
 
 </LanguageData>

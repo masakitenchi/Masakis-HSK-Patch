@@ -6,6 +6,22 @@
 	<CSP_CurrentLimit>当前限额：{0}</CSP_CurrentLimit>
 	<CSP_IncubateTo>培育至</CSP_IncubateTo>
 	<CSP_Age>{0} 岁</CSP_Age>
+    <CoreSK_FactionDiscovery_Enable>启用派系发现</CoreSK_FactionDiscovery_Enable>
+    <CoreSK_FactionDiscovery_EnableTip>载入存档后，询问是否添加由新启用模组引入的派系。</CoreSK_FactionDiscovery_EnableTip>
+    <CoreSK_FactionDiscovery_Scan>扫描缺失派系</CoreSK_FactionDiscovery_Scan>
+    <CoreSK_FactionDiscovery_None>没有发现缺失的派系。</CoreSK_FactionDiscovery_None>
+    <CoreSK_FactionDiscovery_Title>添加派系：{0}</CoreSK_FactionDiscovery_Title>
+    <CoreSK_FactionDiscovery_Source>来源模组：{0}</CoreSK_FactionDiscovery_Source>
+    <CoreSK_FactionDiscovery_Description>该派系已加载，但当前世界中没有它的实例。</CoreSK_FactionDiscovery_Description>
+    <CoreSK_FactionDiscovery_Count>生成基地数量：{0}</CoreSK_FactionDiscovery_Count>
+    <CoreSK_FactionDiscovery_Distance>距玩家基地的最小距离：{0}</CoreSK_FactionDiscovery_Distance>
+    <CoreSK_FactionDiscovery_Add>添加派系及基地</CoreSK_FactionDiscovery_Add>
+    <CoreSK_FactionDiscovery_Skip>暂时跳过</CoreSK_FactionDiscovery_Skip>
+    <CoreSK_FactionDiscovery_Ignore>在本世界中忽略</CoreSK_FactionDiscovery_Ignore>
+    <CoreSK_FactionDiscovery_Success>已添加 {0}，并生成 {1} 个基地。</CoreSK_FactionDiscovery_Success>
+    <CoreSK_FactionDiscovery_Failed>无法添加 {0}：没有找到有效的基地位置。</CoreSK_FactionDiscovery_Failed>
+    <CoreSK_AllowTamingDownedAnimals>允许驯服倒地动物</CoreSK_AllowTamingDownedAnimals>
+    <CoreSK_AllowTamingDownedAnimalsTip>允许饲养员对倒地但仍存活的野生动物执行驯服工作。切换后立即生效。</CoreSK_AllowTamingDownedAnimalsTip>
 
 
 </LanguageData>

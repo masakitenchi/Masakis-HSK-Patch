@@ -157,3 +157,14 @@ public static class CompAffectedByFacilitiesTestPatch
         return true;
     }*/
 }
+
+/* [HarmonyPatch]
+public static class ValidPlantTypesPatch
+{
+    [HarmonyPatch(typeof(PlantUtility), nameof(PlantUtility.ValidPlantTypesForGrowers))]
+    [HarmonyPrefix]
+    public static void CheckPlantDef(ThingDef plantDef, System.Object obj)
+    {
+
+    }
+} */

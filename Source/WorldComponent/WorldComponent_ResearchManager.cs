@@ -29,25 +29,12 @@ public class GameComponent_ResearchManager : WorldComponent
     {
         var ext = def.GetModExtension<ModExtension_RepeatableResearch>();
         if (ext is null) return;
-        if (_repeatCount.TryGetValue(def, out int count))
-        {
-            count++;
-            _repeatCount[def] = count;
-        }
-        else
-        {
-            count = 1;
-            _repeatCount.TryAdd(def, count);
-        }
-        _initialCost.TryAdd(def, def.baseCost);
-        //Will change the description & label accordingly some day
-        //Somehow not working?
-        /*if (!labelEndReg.Match(def.label).Value.NullOrEmpty())
-            def.label.Replace(labelEndReg.Match(def.label).Value, $"+{count}");
-        else
-            def.label += $" +{count}";*/
+        var count = _repeatCount.TryGetValue(def, out var previousCount) ? previousCount + 1 : 1;
+        if (ext.MaxRepeatableCount > 0)
+            count = Math.Min(count, ext.MaxRepeatableCount);
+        _repeatCount[def] = count;
         if (ext.MaxRepeatableCount > count)
-            ResetProgressAndAdjustCost(def);
+            ResetProgressAndAdjustCost(def, count);
     }
 
     public override void ExposeData()
@@ -56,36 +43,41 @@ public class GameComponent_ResearchManager : WorldComponent
         Scribe_Collections.Look(ref _repeatCount, "researchCounts", LookMode.Def, LookMode.Value);
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
-            foreach (var def in _repeatCount)
+            _repeatCount ??= new Dictionary<ResearchProjectDef, int>();
+            foreach (var entry in _repeatCount.ToList())
             {
-                var Key = def.Key;
-                var Value = def.Value - 1; //Game re-apply all ResearchMods when loading 
-                for (var i = 0; i < Value; i++)
+                var def = entry.Key;
+                var ext = def?.GetModExtension<ModExtension_RepeatableResearch>();
+                if (ext is null) continue;
+
+                var count = Math.Max(entry.Value, 0);
+                if (ext.MaxRepeatableCount > 0 && count > ext.MaxRepeatableCount)
                 {
-                    foreach (var mod in Key.researchMods)
-                    {
-                        mod.Apply();
-                        Notify_ResearchFinished(Key);
-                    }
-                    Key.baseCost *= Key.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
+                    Logger.Warning($"Clamping corrupted repeat count for {def.defName} from {count} to {ext.MaxRepeatableCount}.");
+                    count = ext.MaxRepeatableCount;
                 }
-                //The extra cost when game applies mods
-                Key.baseCost *= Key.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
+                _repeatCount[def] = count;
+
+                ApplyResearchMods(def, count);
+                ResearchScriber.RegisterAppliedMods(def);
+                AdjustCostForRepeatCount(def, count);
             }
         }
     }
 
 
     //For back-compatiblity
-    public override void FinalizeInit(bool fromload)
+    public override void FinalizeInit(bool fromLoad)
     {
-        base.FinalizeInit(fromload);
-        foreach (var def in DefDatabase<ResearchProjectDef>.AllDefs.Where(x => x.GetModExtension<ModExtension_RepeatableResearch>() != null))
+        base.FinalizeInit(fromLoad);
+        foreach (var def in DefDatabase<ResearchProjectDef>.AllDefs.Where(x => x.HasModExtension<ModExtension_RepeatableResearch>()))
         {
             if (def.IsFinished && !this._repeatCount.TryGetValue(def, out _))
             {
                 _repeatCount.Add(def, 1);
-                ResetProgressAndAdjustCost(def);
+                ApplyResearchMods(def, 1);
+                ResearchScriber.RegisterAppliedMods(def);
+                ResetProgressAndAdjustCost(def, 1);
             }
         }
     }
@@ -98,13 +90,43 @@ public class GameComponent_ResearchManager : WorldComponent
             kvpair.Key.baseCost = kvpair.Value;
         }
     }
-    private static void ResetProgressAndAdjustCost(ResearchProjectDef def)
+    private static void ApplyResearchMods(ResearchProjectDef def, int count)
+    {
+        if (def.researchMods is null) return;
+        for (var i = 0; i < count; i++)
+        {
+            foreach (var mod in def.researchMods)
+                mod.Apply();
+        }
+    }
+
+    private static void AdjustCostForRepeatCount(ResearchProjectDef def, int count)
+    {
+        var ext = def.GetModExtension<ModExtension_RepeatableResearch>();
+        if (ext is null || !_initialCost.TryGetValue(def, out var initialCost)) return;
+
+        var costIncreases = count;
+        if (ext.MaxRepeatableCount > 0)
+            costIncreases = Math.Min(costIncreases, Math.Max(ext.MaxRepeatableCount - 1, 0));
+        def.baseCost = initialCost * Mathf.Pow(ext.CostMultiplier, costIncreases);
+    }
+
+    private static void ResetProgressAndAdjustCost(ResearchProjectDef def, int count)
     {
         Find.ResearchManager.progress[def] = 0f;
-        def.baseCost *= def.GetModExtension<ModExtension_RepeatableResearch>().CostMultiplier;
+        AdjustCostForRepeatCount(def, count);
     }
 
     [HarmonyPatch(typeof(ResearchManager), nameof(ResearchManager.FinishProject))]
+    [HarmonyPrefix]
+    public static void Prefix(ResearchProjectDef proj)
+    {
+        if (proj.HasModExtension<ModExtension_RepeatableResearch>())
+            ResearchScriber.AllowNextApplication(proj);
+    }
+
+    [HarmonyPatch(typeof(ResearchManager), nameof(ResearchManager.FinishProject))]
+    [HarmonyPostfix]
     public static void Postfix(ResearchProjectDef proj)
     {
         Current.Game.World.GetComponent<GameComponent_ResearchManager>().Notify_ResearchFinished(proj);

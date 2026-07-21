@@ -17,71 +17,22 @@ public enum TargetMode
     Set
 };
 
-public static class Utilities
-{
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void Invert_Bool(ref this bool a)
-    {
-        a = !a;
-    }
-
-    /// <summary>
-    /// A simple method for those who only want to tweak a few values. Currently unused due to unsolveable NullReferenceException issue.
-    /// </summary>
-    /// <param name="proj">The projectile instance to create an explosion from.</param>
-    /// <returns>An explosion instance. You need to manually set these parameters:<br/><b>needLOSToCell1<br/>needLOSToCell2<br/>excludeRadius<br/>affectedAngle</b></returns>
-    [Obsolete]
-    public static Explosion CreateExplosionFrom(Projectile proj, IntVec3 @pos, Map @map)
-    {
-        ProjectileProperties projectile = proj.def.projectile;
-        CompProperties_Explosive comp = proj.def.GetCompProperties<CompProperties_Explosive>();
-        Explosion explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, pos, map);
-        explosion.radius = projectile.explosionRadius;
-        explosion.damType = projectile.damageDef;
-        explosion.instigator = proj.launcher;
-        explosion.damAmount = projectile.damageAmountBase;
-        explosion.armorPenetration = projectile.armorPenetrationBase;
-        explosion.weapon = proj.equipmentDef;
-        explosion.projectile = proj.def;
-        //explosion.intendedTarget = proj.intendedTarget.Thing;
-        //explosion.preExplosionSpawnThingDef = projectile.preExplosionSpawnThingDef;
-        explosion.preExplosionSpawnChance = projectile.preExplosionSpawnChance;
-        explosion.preExplosionSpawnThingCount = projectile.preExplosionSpawnThingCount;
-        //explosion.postExplosionSpawnThingDef = projectile.postExplosionSpawnThingDef;
-        //explosion.postExplosionSpawnThingDefWater = projectile.postExplosionSpawnThingDefWater;
-        explosion.postExplosionSpawnChance = projectile.postExplosionSpawnChance;
-        explosion.postExplosionSpawnThingCount = projectile.postExplosionSpawnThingCount;
-        explosion.postExplosionGasType = projectile.postExplosionGasType;
-        explosion.applyDamageToExplosionCellsNeighbors = projectile.applyDamageToExplosionCellsNeighbors;
-        explosion.chanceToStartFire = comp.chanceToStartFire;
-        explosion.damageFalloff = comp.damageFalloff;
-        explosion.doSoundEffects = true;
-        explosion.screenShakeFactor = projectile.screenShakeFactor;
-        explosion.doVisualEffects = true;
-        explosion.propagationSpeed = comp.propagationSpeed;
-        return explosion;
-    }
-
-    /*[DebugOutput(name = "OutputTerrains")]
-    public static void TerrainDefs()
-    {
-        XmlDocument doc = new XmlDocument();
-        doc.AppendChild(doc.CreateXmlDeclaration("1.0", "UTF-8", null));
-        XmlElement Defs = doc.CreateElement("Defs");
-        foreach(var def in DefDatabase<TerrainDef>.AllDefs)
-        {
-            XmlElement defele = doc.CreateElement(def.defName);
-            
-        }
-        doc.AppendChild(Defs);
-    }*/
-}
-
 [HarmonyPatch]
 public static class ResearchScriber
 {
     //Every ResearchProjectDef has a HashSet of ResearchMods to apply
     public static Dictionary<string, HashSet<ResearchMod>> modLister = new();
+
+    public static void RegisterAppliedMods(ResearchProjectDef def)
+    {
+        if (def.researchMods is null || def.researchMods.Count == 0) return;
+        modLister[def.defName] = def.researchMods.ToHashSet();
+    }
+
+    public static void AllowNextApplication(ResearchProjectDef def)
+    {
+        modLister.Remove(def.defName);
+    }
 
     [HarmonyPatch(typeof(ResearchProjectDef), nameof(ResearchProjectDef.ReapplyAllMods))]
     [HarmonyPrefix]
@@ -91,15 +42,15 @@ public static class ResearchScriber
         {
             return true;
         }
-        if (!modLister.TryGetValue(__instance.defName, out var _))
+        if (!modLister.ContainsKey(__instance.defName))
         {
-            modLister.TryAdd(__instance.defName, __instance.researchMods?.ToHashSet() ?? new HashSet<ResearchMod>());
+            RegisterAppliedMods(__instance);
 #if DEBUG
             Logger.Message($"Applying {__instance.researchMods?.Count} mods for {__instance.defName}");
 #endif
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     [HarmonyPatch(typeof(MemoryUtility), nameof(MemoryUtility.ClearAllMapsAndWorld))]

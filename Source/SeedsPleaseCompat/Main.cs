@@ -38,6 +38,16 @@ public static class SeedPatch
                     501,
                     hyperlinks: seed.plant.plant.sowResearchPrerequisites.Select(x => new Dialog_InfoCard.Hyperlink(x))
                     );
+            if (seed.plant.plant.mustBeWildToSow && seed.plant.plant.wildBiomes != null)
+            {
+                yield return new StatDrawEntry(
+                    StatCategoryDefOf.BasicsImportant, "LblBiomes".Translate(),
+                    seed.plant.plant.wildBiomes.Select(x => x.biome.LabelCap).Join(),
+                    "LblBiomeDesc".Translate(),
+                    502,
+                    hyperlinks: seed.plant.plant.wildBiomes.Select(x => new Dialog_InfoCard.Hyperlink(x.biome))
+                );
+            }
         }
     }
 }

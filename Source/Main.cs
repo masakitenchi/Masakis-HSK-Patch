@@ -135,6 +135,7 @@ public class Main : Mod
         if (sb.Length > 0) { Logger.Message("[Core SK Patch] Duplicate Comps Found:\n" + sb.ToString()); }
     }
 
+#if !RW_1_5
     public static void CheckBlockingThings()
     {
         StringBuilder sb = new StringBuilder();
@@ -147,6 +148,7 @@ public class Main : Mod
         }
         if (sb.Length > 0) { Logger.Message("[Core SK Patch] Things Blocking Gravship Landing:\n" + sb.ToString()); }
     }
+#endif
 
     public static void CheckNullPlants()
     {

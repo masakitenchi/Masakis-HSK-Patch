@@ -44,7 +44,11 @@ public class CompAgeSetting : ThingComp
         }
     }
 
+#if RW_1_5
+    public override void CompTick()
+#else
     public override void CompTickInterval(int delta)
+#endif
     {
         if (vat.SelectedPawn is Pawn pawn && pawn.ageTracker.AgeBiologicalYears >= vatUntil)
         {
@@ -79,7 +83,9 @@ public class Gizmo_SetAge : Gizmo_Slider
         set => this.comp.SetAge(Mathf.RoundToInt(value * CompAgeSetting.MaxAge));
     }
 
+#if !RW_1_5
     public override bool DraggingBar { get; set; }
+#endif
     public override bool IsDraggable => true;
     public override string BarLabel => "CSP_Age".Translate((int)this.comp.vatUntil);
     public override string GetTooltip() => "";

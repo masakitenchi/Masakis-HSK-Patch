@@ -5,7 +5,7 @@
     <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
     <LangVersion>preview</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>1.6</Version>
+    <Version Condition="'$(Version)' == ''">1.6</Version>
     <OutputPath>..\v$(Version)\Assemblies\</OutputPath>
     <AssemblyTitle>Core_SK_Patch</AssemblyTitle>
     <Product>Main</Product>
@@ -23,9 +23,12 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Version)' == '1.5'">
+    <DefineConstants>$(DefineConstants);RW_1_5</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer" Version="2" />
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="$(Version).*" />
     <PackageReference Include="Lib.Harmony" Version="2.3.*" ExcludeAssets="runtime" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +49,10 @@
     <Compile Remove="Patches\Rimatomic_RemoveWarning.cs" />
     <Compile Remove="ResearchReinvented\**" />
     <Compile Remove="Patches\Patch_NonStunnableMannedTurret.cs" /> <!-- Turrets use CompStunnable since 1.5-->
+  </ItemGroup>
+  <ItemGroup Condition="'$(Version)' == '1.5'">
+    <!-- Fishing and water-body APIs are provided by Odyssey in RimWorld 1.6. -->
+    <Compile Remove="Patches\Patch_TerraformWaterFish.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CombatExtended">

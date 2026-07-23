@@ -110,7 +110,11 @@ public static class AllowTamingDownedAnimals
             || Settings.AllowTamingDownedAnimals && pawn.Downed && TameUtility.CanTame(pawn);
     }
 
+#if RW_1_5
+    [HarmonyPatch(typeof(InteractionUtility), nameof(InteractionUtility.CanReceiveInteraction))]
+#else
     [HarmonyPatch(typeof(SocialInteractionUtility), nameof(SocialInteractionUtility.CanReceiveInteraction))]
+#endif
     private static class ReceiveInteractionPatch
     {
         public static void Postfix(Pawn pawn, InteractionDef interactionDef, ref bool __result)
@@ -123,7 +127,9 @@ public static class AllowTamingDownedAnimals
                 return;
 
             __result = !pawn.IsBurning()
+#if !RW_1_5
                 && !(pawn.IsMutant && pawn.mutant.Def.incapableOfSocialInteractions)
+#endif
                 && !pawn.IsInteractionBlocked(interactionDef, isInitiator: false, isRandom: false);
         }
     }

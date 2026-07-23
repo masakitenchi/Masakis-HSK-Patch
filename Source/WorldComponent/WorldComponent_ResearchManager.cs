@@ -67,9 +67,15 @@ public class GameComponent_ResearchManager : WorldComponent
 
 
     //For back-compatiblity
+#if RW_1_5
+    public override void FinalizeInit()
+    {
+        base.FinalizeInit();
+#else
     public override void FinalizeInit(bool fromLoad)
     {
         base.FinalizeInit(fromLoad);
+#endif
         foreach (var def in DefDatabase<ResearchProjectDef>.AllDefs.Where(x => x.HasModExtension<ModExtension_RepeatableResearch>()))
         {
             if (def.IsFinished && !this._repeatCount.TryGetValue(def, out _))

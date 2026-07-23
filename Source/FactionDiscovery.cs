@@ -120,12 +120,21 @@ public static class FactionDiscoveryUtility
     private static int CreateSettlements(Faction faction, int amount, int minimumDistance)
     {
         int spawned = 0;
+#if RW_1_5
+        HashSet<int> attemptedTiles = new();
+#else
         HashSet<PlanetTile> attemptedTiles = new();
+#endif
 
         for (int attempt = 0; attempt < amount * 4 && spawned < amount; attempt++)
         {
+#if RW_1_5
+            int tile = TileFinder.RandomSettlementTileFor(faction);
+            if (tile < 0 || !attemptedTiles.Add(tile) || !FarEnoughFromPlayer(tile, minimumDistance))
+#else
             PlanetTile tile = TileFinder.RandomSettlementTileFor(faction);
             if (!tile.Valid || !attemptedTiles.Add(tile) || !FarEnoughFromPlayer(tile, minimumDistance))
+#endif
                 continue;
 
             var settlement = (Settlement)WorldObjectMaker.MakeWorldObject(WorldObjectDefOf.Settlement);
@@ -139,7 +148,11 @@ public static class FactionDiscoveryUtility
         return spawned;
     }
 
+#if RW_1_5
+    private static bool FarEnoughFromPlayer(int tile, int minimumDistance)
+#else
     private static bool FarEnoughFromPlayer(PlanetTile tile, int minimumDistance)
+#endif
     {
         foreach (Settlement settlement in Find.WorldObjects.SettlementBases)
         {

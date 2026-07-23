@@ -37,6 +37,7 @@
 	</loadBefore>
 	<loadAfter>
 		<li>skyarkhangel.HSK</li>
+		<li>Thomotron.Phinix</li>
 		<li>vanillaexpanded.vnutriente</li>
 		<li>vitech.materialsscience</li>
 	</loadAfter>

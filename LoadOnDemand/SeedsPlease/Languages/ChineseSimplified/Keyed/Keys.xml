@@ -4,4 +4,6 @@
 	<LblSkillDesc>种植该种植物所需的最低种植技能等级。</LblSkillDesc>
 	<LblTech>研究需求</LblTech>
 	<LblTechDesc>种植该种植物所需的研究项目。</LblTechDesc>
+	<LblBiomes>野生分布群系</LblBiomes>
+	<LblBiomeDesc>该植物会自然生长的生物群系。</LblBiomeDesc>
 </LanguageData>

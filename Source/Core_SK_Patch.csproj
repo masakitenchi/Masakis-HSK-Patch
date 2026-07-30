@@ -47,7 +47,9 @@
     <Compile Remove="StatPart\StatPart_Upgradeable.cs" />
     <Compile Remove="Patches\Patch_NightVision.cs" />
     <Compile Remove="Patches\Rimatomic_RemoveWarning.cs" />
+    <Compile Remove="Patches\RimThemesCharacterEditorWindowFix.cs" />
     <Compile Remove="ResearchReinvented\**" />
+    <Compile Remove="RimThemesCharacterEditorCompat\**" />
     <Compile Remove="Patches\Patch_NonStunnableMannedTurret.cs" /> <!-- Turrets use CompStunnable since 1.5-->
   </ItemGroup>
   <ItemGroup Condition="'$(Version)' == '1.5'">
@@ -63,5 +65,9 @@
       <HintPath>..\..\Core_SK\Assemblies\Core_SK.dll</HintPath>
       <Private>False</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="RimThemesCharacterEditorCompat\RimThemesCharacterEditorCompat.csproj"
+                      ReferenceOutputAssembly="false" />
   </ItemGroup>
 </Project>

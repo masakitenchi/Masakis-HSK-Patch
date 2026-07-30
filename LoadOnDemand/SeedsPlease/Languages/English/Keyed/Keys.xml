@@ -4,4 +4,6 @@
 	<LblSkillDesc>Minimum planting skill required to sow this plant.</LblSkillDesc>
 	<LblTech>Research Requirement</LblTech>
 	<LblTechDesc>Research projects needed to be finished to sow this plant.</LblTechDesc>
+	<LblBiomes>Wild Biomes</LblBiomes>
+	<LblBiomeDesc>Biomes where this plant grows wild.</LblBiomeDesc>
 </LanguageData>

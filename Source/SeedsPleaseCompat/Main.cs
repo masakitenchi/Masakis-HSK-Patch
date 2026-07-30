@@ -38,14 +38,17 @@ public static class SeedPatch
                     501,
                     hyperlinks: seed.plant.plant.sowResearchPrerequisites.Select(x => new Dialog_InfoCard.Hyperlink(x))
                     );
-            if (seed.plant.plant.mustBeWildToSow && seed.plant.plant.wildBiomes != null)
+            var wildBiomes = DefDatabase<BiomeDef>.AllDefsListForReading
+                .Where(biome => biome.CommonalityOfPlant(seed.plant) > 0f)
+                .ToList();
+            if (!wildBiomes.NullOrEmpty())
             {
                 yield return new StatDrawEntry(
                     StatCategoryDefOf.BasicsImportant, "LblBiomes".Translate(),
-                    seed.plant.plant.wildBiomes.Select(x => x.biome.LabelCap).Join(),
+                    wildBiomes.Select(x => x.LabelCap).Join(),
                     "LblBiomeDesc".Translate(),
                     502,
-                    hyperlinks: seed.plant.plant.wildBiomes.Select(x => new Dialog_InfoCard.Hyperlink(x.biome))
+                    hyperlinks: wildBiomes.Select(x => new Dialog_InfoCard.Hyperlink(x))
                 );
             }
         }

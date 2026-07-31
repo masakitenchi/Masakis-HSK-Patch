@@ -28,6 +28,7 @@
     <li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li>
     <li IfModActive="jangodsoul.simplestorage">LoadOnDemand/Simple Storage</li>
     <li IfModActive="fxz.ratkinanomaly.update">LoadOnDemand/RatKinAnomalyPlus</li>
+    <li IfModActive="ludeon.rimworld.anomaly">LoadOnDemand/Anomaly</li>
   </v1.5>
   <v1.6>
     <li>/</li>
@@ -43,5 +44,6 @@
     <li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li>
     <li IfModActive="jangodsoul.simplestorage">LoadOnDemand/Simple Storage</li>
     <li IfModActive="fxz.ratkinanomaly.update">LoadOnDemand/RatKinAnomalyPlus</li>
+    <li IfModActive="ludeon.rimworld.anomaly">LoadOnDemand/Anomaly</li>
   </v1.6>
 </loadFolders>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <CoreSKP_EradicateCultists.label>断绝邪教</CoreSKP_EradicateCultists.label>
+  <CoreSKP_EradicateCultists.description>向虚空投射猛烈的反向共鸣。所有正在吟唱心灵仪式或进行仇恨咏唱的邪教徒都会立即死亡；他们身上的死亡回避会在死亡前被清除。其他邪教徒不受影响。</CoreSKP_EradicateCultists.description>
+  <CoreSKP_EradicateCultists.outcomeDescription>所有正在吟唱心灵仪式或进行仇恨咏唱的邪教徒都会立即死亡，并预先清除其死亡回避。其他邪教徒不受影响。</CoreSKP_EradicateCultists.outcomeDescription>
+</LanguageData>

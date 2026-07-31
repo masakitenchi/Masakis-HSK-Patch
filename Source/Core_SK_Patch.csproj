@@ -50,6 +50,7 @@
     <Compile Remove="Patches\RimThemesCharacterEditorWindowFix.cs" />
     <Compile Remove="ResearchReinvented\**" />
     <Compile Remove="RimThemesCharacterEditorCompat\**" />
+    <Compile Remove="AnomalyCompat\**" />
     <Compile Remove="Patches\Patch_NonStunnableMannedTurret.cs" /> <!-- Turrets use CompStunnable since 1.5-->
   </ItemGroup>
   <ItemGroup Condition="'$(Version)' == '1.5'">
@@ -67,6 +68,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="AnomalyCompat\AnomalyCompat.csproj"
+                      ReferenceOutputAssembly="false" />
     <ProjectReference Include="RimThemesCharacterEditorCompat\RimThemesCharacterEditorCompat.csproj"
                       ReferenceOutputAssembly="false" />
   </ItemGroup>

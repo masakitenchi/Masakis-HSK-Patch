@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <CoreSKP_PsychicRitualTimeAndOfferings>Duration: {0}; required offerings: {1}, {2}</CoreSKP_PsychicRitualTimeAndOfferings>
+  <CoreSKP_PsychicRitualInvokerSensitivityTooLow>{PAWN_labelShort} must have at least {1} psychic sensitivity</CoreSKP_PsychicRitualInvokerSensitivityTooLow>
+  <CoreSKP_PsychicRitualAdditionalOfferingMissing>The ritual was canceled because a required offering ({0}) is no longer available.</CoreSKP_PsychicRitualAdditionalOfferingMissing>
+  <CoreSKP_EradicateCultistsCompleteLabel>Cult severed</CoreSKP_EradicateCultistsCompleteLabel>
+  <CoreSKP_EradicateCultistsCompleteText>The counter-ritual killed {0} cultist ritualist(s) who were invoking, chanting, or performing a hate chant and stripped away their death refusal.</CoreSKP_EradicateCultistsCompleteText>
+</LanguageData>

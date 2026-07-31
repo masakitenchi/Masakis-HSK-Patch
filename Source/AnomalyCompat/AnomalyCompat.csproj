@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>preview</LangVersion>
+    <Version Condition="'$(Version)' == ''">1.6</Version>
+    <OutputPath>..\..\v$(Version)\Assemblies\</OutputPath>
+    <AssemblyName>Core_SK_Patch.Anomaly</AssemblyName>
+    <RootNamespace>Core_SK_Patch</RootNamespace>
+    <Deterministic>true</Deterministic>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer" Version="2" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="$(Version).*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Publicize Include="Assembly-CSharp" />
+  </ItemGroup>
+</Project>

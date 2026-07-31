@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <CoreSKP_PsychicRitualTimeAndOfferings>持续时间：{0}；所需祭品：{1}、{2}</CoreSKP_PsychicRitualTimeAndOfferings>
+  <CoreSKP_PsychicRitualInvokerSensitivityTooLow>{PAWN_labelShort}的心灵敏感度必须达到至少{1}</CoreSKP_PsychicRitualInvokerSensitivityTooLow>
+  <CoreSKP_PsychicRitualAdditionalOfferingMissing>所需祭品（{0}）已无法取得，仪式被取消。</CoreSKP_PsychicRitualAdditionalOfferingMissing>
+  <CoreSKP_EradicateCultistsCompleteLabel>邪教已断绝</CoreSKP_EradicateCultistsCompleteLabel>
+  <CoreSKP_EradicateCultistsCompleteText>反制仪式杀死了{0}名正在吟唱心灵仪式或进行仇恨咏唱的邪教徒，并清除了他们的死亡回避。</CoreSKP_EradicateCultistsCompleteText>
+</LanguageData>

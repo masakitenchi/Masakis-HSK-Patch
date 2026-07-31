@@ -38,18 +38,21 @@ public static class SeedPatch
                     501,
                     hyperlinks: seed.plant.plant.sowResearchPrerequisites.Select(x => new Dialog_InfoCard.Hyperlink(x))
                     );
-            var wildBiomes = DefDatabase<BiomeDef>.AllDefsListForReading
-                .Where(biome => biome.CommonalityOfPlant(seed.plant) > 0f)
-                .ToList();
-            if (!wildBiomes.NullOrEmpty())
+            if (seed.plant.plant.mustBeWildToSow)
             {
-                yield return new StatDrawEntry(
-                    StatCategoryDefOf.BasicsImportant, "LblBiomes".Translate(),
-                    wildBiomes.Select(x => x.LabelCap).Join(),
-                    "LblBiomeDesc".Translate(),
-                    502,
-                    hyperlinks: wildBiomes.Select(x => new Dialog_InfoCard.Hyperlink(x))
-                );
+                var sowableBiomes = DefDatabase<BiomeDef>.AllDefsListForReading
+                    .Where(biome => biome.CommonalityOfPlant(seed.plant) > 0f)
+                    .ToList();
+                if (!sowableBiomes.NullOrEmpty())
+                {
+                    yield return new StatDrawEntry(
+                        StatCategoryDefOf.BasicsImportant, "LblBiomes".Translate(),
+                        sowableBiomes.Select(x => x.LabelCap).Join(),
+                        "LblBiomeDesc".Translate(),
+                        502,
+                        hyperlinks: sowableBiomes.Select(x => new Dialog_InfoCard.Hyperlink(x))
+                    );
+                }
             }
         }
     }

@@ -173,12 +173,17 @@ public class Main : Mod
         base.DoSettingsWindowContents(inRect);
         Listing_Standard ls = new Listing_Standard();
         ls.Begin(inRect);
-        ls.CheckboxLabeled("Enable Bulk Recipe", ref Settings.EnableBulkRecipe, "Check to generate bulk recipes for patched recipes (Needs restart)");
-        Settings.InfestationPreventionRadius = ls.SliderLabeled($"Deep Infestation Radius : {Settings.InfestationPreventionRadius:F2}", Settings.InfestationPreventionRadius, 10f, 150f, tooltip: "If one deep drill has an infestation recently, it will prevent all deep drills in a certain radius from being infested again. This slider lets you change how big that circle is");
-        ls.CheckboxLabeled("Never die by low health", ref Settings.NeverDieByLowHealth, "Removes the health check for death.\n(Need restart after changing the value)");
-        ls.CheckboxLabeled("Auto-forbid rotten mush & meat out of home area", ref Settings.AutoForbidSpoiled, "Automatically forbid rotten mush & meat generated outside of home area. No more pawn walking across the whole map just to get 1 pile of rotten mush to your storage");
-        ls.CheckboxLabeled("Log All PatchOperatoinPathed", ref Settings.LogAllPatchOperations, "Should auto disable itself once enabled & restarted");
-        ls.CheckboxLabeled("Debug Only: Check Duplicate Comps and so on", ref Settings.ErrorChecks);
+        ls.CheckboxLabeled("CoreSK_EnableBulkRecipe".Translate(), ref Settings.EnableBulkRecipe, "CoreSK_EnableBulkRecipeTip".Translate());
+        Settings.InfestationPreventionRadius = ls.SliderLabeled(
+            "CoreSK_InfestationPreventionRadius".Translate(Settings.InfestationPreventionRadius.ToString("F2")),
+            Settings.InfestationPreventionRadius,
+            10f,
+            150f,
+            tooltip: "CoreSK_InfestationPreventionRadiusTip".Translate());
+        ls.CheckboxLabeled("CoreSK_NeverDieByLowHealth".Translate(), ref Settings.NeverDieByLowHealth, "CoreSK_NeverDieByLowHealthTip".Translate());
+        ls.CheckboxLabeled("CoreSK_AutoForbidSpoiled".Translate(), ref Settings.AutoForbidSpoiled, "CoreSK_AutoForbidSpoiledTip".Translate());
+        ls.CheckboxLabeled("CoreSK_LogAllPatchOperations".Translate(), ref Settings.LogAllPatchOperations, "CoreSK_LogAllPatchOperationsTip".Translate());
+        ls.CheckboxLabeled("CoreSK_ErrorChecks".Translate(), ref Settings.ErrorChecks);
         ls.CheckboxLabeled("CoreSK_FactionDiscovery_Enable".Translate(), ref Settings.EnableFactionDiscovery, "CoreSK_FactionDiscovery_EnableTip".Translate());
         ls.CheckboxLabeled("CoreSK_AllowTamingDownedAnimals".Translate(), ref Settings.AllowTamingDownedAnimals, "CoreSK_AllowTamingDownedAnimalsTip".Translate());
         if (ls.ButtonText("CoreSK_FactionDiscovery_Scan".Translate()))

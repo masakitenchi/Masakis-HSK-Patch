@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CoreSK_EnableBulkRecipe>Enable bulk recipes</CoreSK_EnableBulkRecipe>
+	<CoreSK_EnableBulkRecipeTip>Generate bulk variants for patched recipes. Requires a restart.</CoreSK_EnableBulkRecipeTip>
+	<CoreSK_InfestationPreventionRadius>Deep-drill infestation prevention radius: {0}</CoreSK_InfestationPreventionRadius>
+	<CoreSK_InfestationPreventionRadiusTip>After a deep drill triggers an infestation, all deep drills within this radius are temporarily prevented from triggering another one. Use this slider to adjust that radius.</CoreSK_InfestationPreventionRadiusTip>
+	<CoreSK_NeverDieByLowHealth>Prevent death from low health</CoreSK_NeverDieByLowHealth>
+	<CoreSK_NeverDieByLowHealthTip>Remove the health-based death check.\nRequires a restart after changing this setting.</CoreSK_NeverDieByLowHealthTip>
+	<CoreSK_AutoForbidSpoiled>Auto-forbid spoiled mush and meat outside the home area</CoreSK_AutoForbidSpoiled>
+	<CoreSK_AutoForbidSpoiledTip>Automatically forbid spoiled mush and meat generated outside the home area, so pawns do not cross the map to haul it into storage.</CoreSK_AutoForbidSpoiledTip>
+	<CoreSK_LogAllPatchOperations>Log all matched patch operations</CoreSK_LogAllPatchOperations>
+	<CoreSK_LogAllPatchOperationsTip>After this is enabled and the game is restarted, the setting should turn itself off automatically.</CoreSK_LogAllPatchOperationsTip>
+	<CoreSK_ErrorChecks>Debug only: check duplicate comps and other errors</CoreSK_ErrorChecks>
+
+</LanguageData>

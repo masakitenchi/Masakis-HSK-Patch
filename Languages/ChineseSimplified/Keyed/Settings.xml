@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CoreSK_EnableBulkRecipe>启用批量配方</CoreSK_EnableBulkRecipe>
+	<CoreSK_EnableBulkRecipeTip>为已应用补丁的配方生成批量版本。需要重启游戏。</CoreSK_EnableBulkRecipeTip>
+	<CoreSK_InfestationPreventionRadius>深钻井虫害预防半径：{0}</CoreSK_InfestationPreventionRadius>
+	<CoreSK_InfestationPreventionRadiusTip>一台深钻井引发虫害后，此半径内的所有深钻井都会暂时避免再次引发虫害。使用此滑块调整该范围。</CoreSK_InfestationPreventionRadiusTip>
+	<CoreSK_NeverDieByLowHealth>不会因健康值过低而死亡</CoreSK_NeverDieByLowHealth>
+	<CoreSK_NeverDieByLowHealthTip>移除基于健康值的死亡判定。\n更改此设置后需要重启游戏。</CoreSK_NeverDieByLowHealthTip>
+	<CoreSK_AutoForbidSpoiled>自动禁止家园区域外的腐烂糊状物和肉类</CoreSK_AutoForbidSpoiled>
+	<CoreSK_AutoForbidSpoiledTip>自动禁止在家园区域外生成的腐烂糊状物和肉类，避免角色穿越整张地图将其搬入储存区。</CoreSK_AutoForbidSpoiledTip>
+	<CoreSK_LogAllPatchOperations>记录所有已匹配的补丁操作</CoreSK_LogAllPatchOperations>
+	<CoreSK_LogAllPatchOperationsTip>启用并重启游戏后，此设置应自动关闭。</CoreSK_LogAllPatchOperationsTip>
+	<CoreSK_ErrorChecks>仅调试：检查重复组件及其他错误</CoreSK_ErrorChecks>
+
+</LanguageData>

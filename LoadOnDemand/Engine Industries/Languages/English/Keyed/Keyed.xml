@@ -6,4 +6,5 @@
 	<RemoveEngineDesc>Click to remove current installed engine.</RemoveEngineDesc>
 	<RemoveEngine>Remove Engine</RemoveEngine>
 	<NoAvailableEngine> No available engine on the map</NoAvailableEngine>
+	<NoEngine>No engine installed</NoEngine>
 </LanguageData>

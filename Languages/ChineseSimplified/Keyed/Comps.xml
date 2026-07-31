@@ -6,6 +6,9 @@
 	<CSP_CurrentLimit>当前限额：{0}</CSP_CurrentLimit>
 	<CSP_IncubateTo>培育至</CSP_IncubateTo>
 	<CSP_Age>{0} 岁</CSP_Age>
+	<CoreSK_SetGrowthVatAge>设置目标年龄</CoreSK_SetGrowthVatAge>
+	<CoreSK_SetGrowthVatAgeTip>设置该生物将被培育至的年龄。</CoreSK_SetGrowthVatAgeTip>
+	<CoreSK_SetGrowthVatAgePrompt>将目标年龄设为：</CoreSK_SetGrowthVatAgePrompt>
     <CoreSK_FactionDiscovery_Enable>启用派系发现</CoreSK_FactionDiscovery_Enable>
     <CoreSK_FactionDiscovery_EnableTip>载入存档后，询问是否添加由新启用模组引入的派系。</CoreSK_FactionDiscovery_EnableTip>
     <CoreSK_FactionDiscovery_Scan>扫描缺失派系</CoreSK_FactionDiscovery_Scan>

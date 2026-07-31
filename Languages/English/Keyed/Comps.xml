@@ -6,6 +6,9 @@
 	<CSP_CurrentLimit>Current Limit: {0}</CSP_CurrentLimit>
 	<CSP_IncubateTo>Incubate To</CSP_IncubateTo>
 	<CSP_Age>{0} years old</CSP_Age>
+	<CoreSK_SetGrowthVatAge>Set target age</CoreSK_SetGrowthVatAge>
+	<CoreSK_SetGrowthVatAgeTip>Set the age this creature will be grown to.</CoreSK_SetGrowthVatAgeTip>
+	<CoreSK_SetGrowthVatAgePrompt>Set target age:</CoreSK_SetGrowthVatAgePrompt>
     <CoreSK_FactionDiscovery_Enable>Enable faction discovery</CoreSK_FactionDiscovery_Enable>
     <CoreSK_FactionDiscovery_EnableTip>After loading a save, offer to add factions introduced by newly enabled mods.</CoreSK_FactionDiscovery_EnableTip>
     <CoreSK_FactionDiscovery_Scan>Scan for missing factions</CoreSK_FactionDiscovery_Scan>

@@ -6,4 +6,5 @@
 	<RemoveEngineDesc>点击以移除当前建筑安装的引擎</RemoveEngineDesc>
 	<RemoveEngine>移除引擎</RemoveEngine>
 	<NoAvailableEngine> 地图上没有可用引擎</NoAvailableEngine>
+	<NoEngine>未安装引擎</NoEngine>
 </LanguageData>

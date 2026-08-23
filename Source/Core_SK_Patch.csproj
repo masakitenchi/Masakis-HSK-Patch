@@ -67,10 +67,4 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="AnomalyCompat\AnomalyCompat.csproj"
-                      ReferenceOutputAssembly="false" />
-    <ProjectReference Include="RimThemesCharacterEditorCompat\RimThemesCharacterEditorCompat.csproj"
-                      ReferenceOutputAssembly="false" />
-  </ItemGroup>
 </Project>

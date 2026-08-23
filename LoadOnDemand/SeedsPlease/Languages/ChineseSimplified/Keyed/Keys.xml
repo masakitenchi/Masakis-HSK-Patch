@@ -6,4 +6,6 @@
 	<LblTechDesc>种植该种植物所需的研究项目。</LblTechDesc>
 	<LblBiomes>可种植群系</LblBiomes>
 	<LblBiomeDesc>可以种植该植物的生物群系。</LblBiomeDesc>
+	<LblSowTags>可种植建筑</LblSowTags>
+	<LblSowTagsDesc>仅能种植在以下建筑中：</LblSowTagsDesc>
 </LanguageData>

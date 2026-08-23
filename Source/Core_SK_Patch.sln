@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core_SK_Patch", "Core_SK_Patch.csproj", "{B61E2EC5-DACF-487B-B528-87EF0532E8B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeedsPleaseCompat", "SeedsPleaseCompat\SeedsPleaseCompat.csproj", "{F78A2B8F-2761-4117-8D43-65FE816ED501}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B61E2EC5-DACF-487B-B528-87EF0532E8B8} = {B61E2EC5-DACF-487B-B528-87EF0532E8B8}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnomalyCompat", "AnomalyCompat\AnomalyCompat.csproj", "{C5449BA3-4B74-49B1-8DD2-A041EBF0B560}"
 EndProject

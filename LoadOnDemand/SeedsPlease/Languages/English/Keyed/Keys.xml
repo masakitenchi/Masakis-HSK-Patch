@@ -6,4 +6,6 @@
 	<LblTechDesc>Research projects needed to be finished to sow this plant.</LblTechDesc>
 	<LblBiomes>Sowable Biomes</LblBiomes>
 	<LblBiomeDesc>Biomes where this plant can be sown.</LblBiomeDesc>
+	<LblSowTags>Sowable Buildings</LblSowTags>
+	<LblSowTagsDesc>This plant can only be sown in the following buildings:</LblSowTagsDesc>
 </LanguageData>

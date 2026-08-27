@@ -4,6 +4,10 @@
 	<CSP_BillableDrillLimit>Set Limit</CSP_BillableDrillLimit>
 	<CSP_BillableDrillDesc>Set Limit for {0_label}</CSP_BillableDrillDesc>
 	<CSP_CurrentLimit>Current Limit: {0}</CSP_CurrentLimit>
+	<CSP_DrillResourceMode>Drill resource: {0}</CSP_DrillResourceMode>
+	<CSP_DrillResourceModeDesc>Select whether this drill extracts scanned minerals or common bulk material.</CSP_DrillResourceModeDesc>
+	<CSP_DrillResourceMinerals>Scanned minerals</CSP_DrillResourceMinerals>
+	<CSP_DrillResourceInspect>Selected resource: {0_label}</CSP_DrillResourceInspect>
 	<CSP_IncubateTo>Incubate To</CSP_IncubateTo>
 	<CSP_Age>{0} years old</CSP_Age>
 	<CoreSK_SetGrowthVatAge>Set target age</CoreSK_SetGrowthVatAge>

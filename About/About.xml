@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>Masakis HSK Patch</name>
 	<author>regex</author>
@@ -15,6 +15,7 @@
 		QoL Features:
 		- Auto forbid rotted meat &amp; rotten mush outside home area;
 		- Set threshold for Deep Drill resources;
+		- Select sand or rubble as Deep Drill resources after research;
 		- Remove monument quest completely;
 		- ... and more!
 		Cross-mod Features:

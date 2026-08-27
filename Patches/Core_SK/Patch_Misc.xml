@@ -20,4 +20,18 @@
 		</value>
 	</Operation>
 
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="SandResource"]</xpath>
+		<value>
+			<deepCountPerPortion>50</deepCountPerPortion>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="CrushedStone"]</xpath>
+		<value>
+			<deepCountPerPortion>10</deepCountPerPortion>
+		</value>
+	</Operation>
+
 </Patch>

@@ -4,6 +4,10 @@
 	<CSP_BillableDrillLimit>设置限额</CSP_BillableDrillLimit>
 	<CSP_BillableDrillDesc>给{0_label}设置限额</CSP_BillableDrillDesc>
 	<CSP_CurrentLimit>当前限额：{0}</CSP_CurrentLimit>
+	<CSP_DrillResourceMode>钻取资源：{0}</CSP_DrillResourceMode>
+	<CSP_DrillResourceModeDesc>选择这台钻井开采已扫描到的矿物，或常见的大宗基质。</CSP_DrillResourceModeDesc>
+	<CSP_DrillResourceMinerals>已扫描矿物</CSP_DrillResourceMinerals>
+	<CSP_DrillResourceInspect>当前钻取：{0_label}</CSP_DrillResourceInspect>
 	<CSP_IncubateTo>培育至</CSP_IncubateTo>
 	<CSP_Age>{0} 岁</CSP_Age>
 	<CoreSK_SetGrowthVatAge>设置目标年龄</CoreSK_SetGrowthVatAge>

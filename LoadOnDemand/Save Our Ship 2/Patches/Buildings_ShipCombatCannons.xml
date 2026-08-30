@@ -115,7 +115,7 @@
 
 				<!-- Change to VerbProperties_CE-->
 				<li Class="PatchOperationAttributeSet">
-					<xpath>Defs/ThingDef[@ParentName="BaseShipArtilleryWeapon"]/verbs/li</xpath>
+					<xpath>Defs/ThingDef[@ParentName="BaseShipArtilleryWeapon"]/verbs/li[not(defaultProjectileGround)]</xpath>
 					<attribute>Class</attribute>
 					<value>CombatExtended.VerbPropertiesCE</value>
 				</li>

@@ -1,114 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-
 	<Operation Class="PatchOperationFindMod">
-	<mods>
-		<li>Save Our Ship 2</li>
-	</mods>
+		<mods>
+			<li>Save Our Ship 2</li>
+		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-			
-				<!-- ========== HullFoam ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/RecipeDef[defName="MakeHullFoam"]/ingredients</xpath>
-					<value>
-						<ingredients>
-							  <li>
-								<filter>
-									<categories>
-										<li>SLDBar</li>
-										<li>USLDBar</li>
-									</categories>
-								</filter>
-								<count>3</count>
-							  </li>
-							  <li>
-								<filter>
-									<thingDefs>
-										<li>ComponentIndustrial</li>
-									</thingDefs>
-								</filter>
-								<count>1</count>
-							  </li>
-							  <li>
-								<filter>
-									<thingDefs>
-										<li>Compaste</li>
-									</thingDefs>
-								</filter>
-								<count>5</count>
-							  </li>
-							  <li>
-								<filter>
-									<thingDefs>
-										<li>Ceramics</li>
-									</thingDefs>
-								</filter>
-								<count>5</count>
-							  </li>
+				<!-- Single hullfoam canister; shared by legacy and 1.6. -->
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/RecipeDef[defName="MakeHullFoam"]</xpath>
+					<value Merge="true">
+						<ingredients DeepReplace="true">
+							<li><filter><categories><li>SLDBar</li><li>USLDBar</li></categories></filter><count>3</count></li>
+							<li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>1</count></li>
+							<li><filter><thingDefs><li>Compaste</li></thingDefs></filter><count>5</count></li>
+							<li><filter><thingDefs><li>Ceramics</li></thingDefs></filter><count>5</count></li>
 						</ingredients>
-					</value>
-				</li>
-				
-				<!-- ========== FuelPods ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/RecipeDef[defName="MakeShuttleFuelPods"]/ingredients</xpath>
-					<value>
-						<ingredients>
-							  <li>
-								<filter>
-							  <thingDefs>
-								<li>Antimatter</li>
-							  </thingDefs>
-							</filter>
-							<count>30</count>
-							  </li>
-							  <li>
-								<filter>
-							  <thingDefs>
-								<li>Uranium</li>
-							  </thingDefs>
-							</filter>
-							<count>80</count>
-							  </li>
-							  <li>
-								<filter>
-							  <categories>
-								<li>HeavyBar</li>
-							  </categories>
-							</filter>
-							<count>30</count>
-							  </li>
-						</ingredients>
-					</value>
-				</li>
-				
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/RecipeDef[defName="MakeShuttleFuelPods"]/fixedIngredientFilter</xpath>
-					<value>
-						<fixedIngredientFilter>
-							<thingDefs>
-								<li>Antimatter</li>
-								<li>Uranium</li>
-							</thingDefs>
-							<categories>
-								<li>HeavyBar</li>
-							</categories>
-						</fixedIngredientFilter>
-					</value>
-				</li>
-				
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/RecipeDef[defName="MakeShuttleFuelPods"]/recipeUsers</xpath>
-					<value>
-						<recipeUsers>
-							<li>Matterfab</li>
-						</recipeUsers>
+						<fixedIngredientFilter DeepReplace="true"><thingDefs><li>ComponentIndustrial</li><li>Compaste</li><li>Ceramics</li></thingDefs><categories><li>SLDBar</li><li>USLDBar</li></categories></fixedIngredientFilter>
 					</value>
 				</li>
 
+				<!-- SOS2 1.6 adds a ten-canister hullfoam batch. -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/RecipeDef[defName="MakeHullFoam10"]</xpath>
+					<match Class="SK.PatchOperationReplaceExtended">
+						<xpath>Defs/RecipeDef[defName="MakeHullFoam10"]</xpath>
+						<value Merge="true">
+							<ingredients DeepReplace="true">
+								<li><filter><categories><li>SLDBar</li><li>USLDBar</li></categories></filter><count>30</count></li>
+								<li><filter><thingDefs><li>ComponentIndustrial</li></thingDefs></filter><count>10</count></li>
+								<li><filter><thingDefs><li>Compaste</li></thingDefs></filter><count>50</count></li>
+								<li><filter><thingDefs><li>Ceramics</li></thingDefs></filter><count>50</count></li>
+							</ingredients>
+							<fixedIngredientFilter DeepReplace="true"><thingDefs><li>ComponentIndustrial</li><li>Compaste</li><li>Ceramics</li></thingDefs><categories><li>SLDBar</li><li>USLDBar</li></categories></fixedIngredientFilter>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/RecipeDef[defName="MakeShuttleFuelPods100"]</xpath>
+					<match Class="PatchOperationSequence">
+						<operations>
+							<!-- The legacy recipe produced 100 pods, so its HSK cost maps 1:1 here. -->
+							<li Class="SK.PatchOperationReplaceExtended">
+								<xpath>Defs/RecipeDef[defName="MakeShuttleFuelPods100"]</xpath>
+								<value Merge="true">
+									<ingredients DeepReplace="true">
+										<li><filter><thingDefs><li>Antimatter</li></thingDefs></filter><count>30</count></li>
+										<li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>80</count></li>
+										<li><filter><categories><li>HeavyBar</li></categories></filter><count>30</count></li>
+									</ingredients>
+									<fixedIngredientFilter DeepReplace="true"><thingDefs><li>Antimatter</li><li>Uranium</li></thingDefs><categories><li>HeavyBar</li></categories></fixedIngredientFilter>
+									<recipeUsers DeepReplace="true"><li>Matterfab</li></recipeUsers>
+								</value>
+							</li>
+							<!-- Preserve the 1.6 batch ratio and upstream work/product values. -->
+							<li Class="SK.PatchOperationReplaceExtended">
+								<xpath>Defs/RecipeDef[defName="MakeShuttleFuelPods1000"]</xpath>
+								<value Merge="true">
+									<ingredients DeepReplace="true">
+										<li><filter><thingDefs><li>Antimatter</li></thingDefs></filter><count>300</count></li>
+										<li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>800</count></li>
+										<li><filter><categories><li>HeavyBar</li></categories></filter><count>300</count></li>
+									</ingredients>
+									<fixedIngredientFilter DeepReplace="true"><thingDefs><li>Antimatter</li><li>Uranium</li></thingDefs><categories><li>HeavyBar</li></categories></fixedIngredientFilter>
+									<recipeUsers DeepReplace="true"><li>Matterfab</li></recipeUsers>
+								</value>
+							</li>
+						</operations>
+					</match>
+					<nomatch Class="SK.PatchOperationReplaceExtended">
+						<xpath>Defs/RecipeDef[defName="MakeShuttleFuelPods"]</xpath>
+						<value Merge="true">
+							<ingredients DeepReplace="true">
+								<li><filter><thingDefs><li>Antimatter</li></thingDefs></filter><count>30</count></li>
+								<li><filter><thingDefs><li>Uranium</li></thingDefs></filter><count>80</count></li>
+								<li><filter><categories><li>HeavyBar</li></categories></filter><count>30</count></li>
+							</ingredients>
+							<fixedIngredientFilter DeepReplace="true"><thingDefs><li>Antimatter</li><li>Uranium</li></thingDefs><categories><li>HeavyBar</li></categories></fixedIngredientFilter>
+							<recipeUsers DeepReplace="true"><li>Matterfab</li></recipeUsers>
+						</value>
+					</nomatch>
+				</li>
 			</operations>
 		</match>
-    </Operation>
-	
+	</Operation>
 </Patch>

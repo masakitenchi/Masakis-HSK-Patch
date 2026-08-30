@@ -9,7 +9,7 @@
 	<packageId>regex.SKP</packageId>
 	<description>My own patch collection.
 		Main Features:
-		- SOS2 support (1.4, 1.5) (up to V99, so expect bugs in 1.5 right now)
+		- SOS2 support (1.4, 1.5, 1.6)
 		- Vanilla Nutrient Paste Expanded Support (feat. @Matt-MentTao)
 		- Repeatable Research (WIP)
 		QoL Features:
@@ -38,6 +38,8 @@
 	</loadBefore>
 	<loadAfter>
 		<li>skyarkhangel.HSK</li>
+		<li>smashphil.vehicleframework</li>
+		<li>kentington.saveourship2</li>
 		<li>Thomotron.Phinix</li>
 		<li>vanillaexpanded.vnutriente</li>
 		<li>vitech.materialsscience</li>

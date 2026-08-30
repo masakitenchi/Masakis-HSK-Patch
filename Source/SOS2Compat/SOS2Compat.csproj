@@ -3,8 +3,13 @@
     <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
     <RuntimeIdentifiers>win;linux</RuntimeIdentifiers>
-    <Version>1.6</Version>
-    <OutputPath>..\..\..\v$(Version)\AssembliesCompat</OutputPath>
+    <GameVersion Condition="'$(GameVersion)' == ''">1.6</GameVersion>
+    <CoreSKPatchRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))</CoreSKPatchRoot>
+    <RimWorldRoot>$([System.IO.Path]::GetFullPath('$(CoreSKPatchRoot)\..\..'))</RimWorldRoot>
+    <SteamAppsRoot>$([System.IO.Path]::GetFullPath('$(CoreSKPatchRoot)\..\..\..\..'))</SteamAppsRoot>
+    <SOS2Root Condition="'$(SOS2Root)' == ''">$(SteamAppsRoot)\workshop\content\294100\1909914131</SOS2Root>
+    <MineralsRoot Condition="'$(MineralsRoot)' == ''">$(RimWorldRoot)\Mods\Minerals</MineralsRoot>
+    <OutputPath>$(CoreSKPatchRoot)\v$(GameVersion)\AssembliesCompat</OutputPath>
     <LangVersion>preview</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AssemblyTitle>SOS2Compat</AssemblyTitle>
@@ -27,22 +32,24 @@
     <Compile Remove="Replacement\CompBecomePawn.cs" />
     <Compile Remove="Replacement\CompProperties_BecomeBuilding.cs" />
     <Compile Remove="Replacement\CompProperties_BecomePawn.cs" />
+    <Compile Remove="Harmony.cs" Condition="'$(GameVersion)' == '1.6'" />
+    <Compile Remove="Comp\CompShuttleStuff.cs" Condition="'$(GameVersion)' == '1.6'" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ShipsHaveInsides">
-      <HintPath>..\..\..\..\SaveOurShip2Experimental\$(Version)\Assemblies\ShipsHaveInsides.dll</HintPath>
+      <HintPath>$(SOS2Root)\$(GameVersion)\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Minerals">
-      <HintPath>..\..\..\..\Minerals\Assemblies\Minerals.dll</HintPath>
+      <HintPath>$(MineralsRoot)\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Core_SK_Patch">
-      <HintPath>..\..\..\v$(Version)\Assemblies\Core_SK_Patch.dll</HintPath>
+      <HintPath>$(CoreSKPatchRoot)\v$(GameVersion)\Assemblies\Core_SK_Patch.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <PackageReference Include="Krafs.Publicizer" Version="2.2.1" />
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.*" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="$(GameVersion).*" />
     <PackageReference Include="Lib.Harmony" Version="2.3.*" ExcludeAssets="runtime" />
   </ItemGroup>
 </Project>

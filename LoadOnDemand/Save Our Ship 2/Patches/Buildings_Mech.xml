@@ -202,25 +202,16 @@
 				</li>
 
 				<!-- ========== ShipInside_PassiveCoolerMechanoid ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerMechanoid"]/costList</xpath>
-					<value>
-						<costList>
-							<ComponentSpacer>2</ComponentSpacer>
-							<ComponentAdvanced>4</ComponentAdvanced>
-							<AdvMechanism>1</AdvMechanism>
-						</costList>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAdd">
+				<li Class="PatchOperationConditional">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerMechanoid"]</xpath>
-					<value>
-						<stuffCategories>
-							<li>RuggedMetallic</li>
-						</stuffCategories>
-						<costStuffCount>80</costStuffCount>
-					</value>
+					<match Class="SK.PatchOperationReplaceExtended">
+						<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerMechanoid"]</xpath>
+						<value Merge="true">
+							<costList DeepReplace="true"><ComponentSpacer>2</ComponentSpacer><ComponentAdvanced>4</ComponentAdvanced><AdvMechanism>1</AdvMechanism></costList>
+							<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
+							<costStuffCount>80</costStuffCount>
+						</value>
+					</match>
 				</li>
 
 			</operations>

@@ -45,10 +45,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/statBases</xpath>
-					<value>
-						<statBases>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]</xpath>
+					<value Merge="true">
+						<statBases Merge="true">
 							<WorkToMake>28000</WorkToMake>
 							<MaxHitPoints>300</MaxHitPoints>
 							<Flammability>0.5</Flammability>
@@ -68,10 +68,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/equippedStatOffsets</xpath>
-					<value>
-						<equippedStatOffsets>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]</xpath>
+					<value Merge="true">
+						<equippedStatOffsets Merge="true">
 							<CarryWeight>10</CarryWeight>
 							<CarryBulk>20</CarryBulk>
 							<MoveSpeed>-0.3</MoveSpeed>
@@ -94,19 +94,19 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]/recipeMaker</xpath>
-					<value>
-						<recipeMaker>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBody"]</xpath>
+					<value Merge="true">
+						<recipeMaker Merge="true">
 							<researchPrerequisite>ShipSpaceSuits</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
 							<soundWorking>Recipe_Tailor</soundWorking>
-							<recipeUsers Inherit="False">
+							<recipeUsers Inherit="False" DeepReplace="true">
 								<li>HyperTailoringBench</li>
 							</recipeUsers>
-							<skillRequirements>
+							<skillRequirements DeepReplace="true">
 								<Crafting>15</Crafting>
 							</skillRequirements>
 							<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
@@ -147,10 +147,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/statBases</xpath>
-					<value>
-						<statBases>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]</xpath>
+					<value Merge="true">
+						<statBases Merge="true">
 							<WorkToMake>18000</WorkToMake>
 							<MaxHitPoints>150</MaxHitPoints>
 							<Flammability>0.2</Flammability>
@@ -170,10 +170,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/equippedStatOffsets</xpath>
-					<value>
-						<equippedStatOffsets>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]</xpath>
+					<value Merge="true">
+						<equippedStatOffsets Merge="true">
 							<MoveSpeed>-0.02</MoveSpeed>
 							<WorkSpeedGlobal>-0.02</WorkSpeedGlobal>
 							<MentalBreakThreshold>-0.05</MentalBreakThreshold>
@@ -192,19 +192,19 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]/recipeMaker</xpath>
-					<value>
-						<recipeMaker>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmet"]</xpath>
+					<value Merge="true">
+						<recipeMaker Merge="true">
 							<researchPrerequisite>ShipSpaceSuits</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
 							<soundWorking>Recipe_Tailor</soundWorking>
-							<recipeUsers Inherit="False">
+							<recipeUsers Inherit="False" DeepReplace="true">
 								<li>HyperTailoringBench</li>
 							</recipeUsers>
-							<skillRequirements>
+							<skillRequirements DeepReplace="true">
 								<Crafting>15</Crafting>
 							</skillRequirements>
 							<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
@@ -237,10 +237,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]/statBases</xpath>
-					<value>
-						<statBases>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]</xpath>
+					<value Merge="true">
+						<statBases Merge="true">
 							<WorkToMake>62000</WorkToMake>
 							<MaxHitPoints>300</MaxHitPoints>
 							<Flammability>0</Flammability>
@@ -260,10 +260,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]/equippedStatOffsets</xpath>
-					<value>
-						<equippedStatOffsets>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]</xpath>
+					<value Merge="true">
+						<equippedStatOffsets Merge="true">
 							<CarryWeight>45</CarryWeight>
 							<CarryBulk>20</CarryBulk>
 							<MoveSpeed>-0.8</MoveSpeed>
@@ -286,19 +286,19 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]/recipeMaker</xpath>
-					<value>
-						<recipeMaker>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitBodyHeavy"]</xpath>
+					<value Merge="true">
+						<recipeMaker Merge="true">
 							<researchPrerequisite>ShipSpaceSuitsHeavy</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
 							<soundWorking>Recipe_Tailor</soundWorking>
-							<recipeUsers Inherit="False">
+							<recipeUsers Inherit="False" DeepReplace="true">
 								<li>HyperTailoringBench</li>
 							</recipeUsers>
-							<skillRequirements>
+							<skillRequirements DeepReplace="true">
 								<Crafting>17</Crafting>
 							</skillRequirements>
 							<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
@@ -340,10 +340,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]/statBases</xpath>
-					<value>
-						<statBases>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]</xpath>
+					<value Merge="true">
+						<statBases Merge="true">
 							<WorkToMake>32000</WorkToMake>
 							<EnergyShieldRechargeRate>0.05</EnergyShieldRechargeRate>
 							<EnergyShieldEnergyMax>0.9</EnergyShieldEnergyMax>
@@ -365,10 +365,10 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]/equippedStatOffsets</xpath>
-					<value>
-						<equippedStatOffsets>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]</xpath>
+					<value Merge="true">
+						<equippedStatOffsets Merge="true">
 							<MoveSpeed>-0.1</MoveSpeed>
 							<WorkSpeedGlobal>-0.1</WorkSpeedGlobal>
 							<MentalBreakThreshold>-0.08</MentalBreakThreshold>
@@ -389,19 +389,19 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]/recipeMaker</xpath>
-					<value>
-						<recipeMaker>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSuitHelmetHeavy"]</xpath>
+					<value Merge="true">
+						<recipeMaker Merge="true">
 							<researchPrerequisite>ShipSpaceSuitsHeavy</researchPrerequisite>
 							<workSpeedStat>TailoringSpeed</workSpeedStat>
 							<workSkill>Crafting</workSkill>
 							<effectWorking>Tailor</effectWorking>
 							<soundWorking>Recipe_Tailor</soundWorking>
-							<recipeUsers Inherit="False">
+							<recipeUsers Inherit="False" DeepReplace="true">
 								<li>HyperTailoringBench</li>
 							</recipeUsers>
-							<skillRequirements>
+							<skillRequirements DeepReplace="true">
 								<Crafting>17</Crafting>
 							</skillRequirements>
 							<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
@@ -410,67 +410,27 @@
 				</li>
 
 				<!-- ========== Apparel_SpaceSurvivalBelt ========== -->
-				<!-- Deprecated in latest SOS2exp -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/costList</xpath>
-					<value>
-						<costList>
-							<ComponentSpacer>2</ComponentSpacer>
-							<ElectronicComponents>2</ElectronicComponents>
-							<BiosyntheticMaterial>10</BiosyntheticMaterial>
-							<Hexcell>1</Hexcell>
-						</costList>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/thingCategories</xpath>
-					<value>
-						<thingCategories>
-							<li>SpecialApparelCat</li>
-							<li>ApparelUtility</li>
-						</thingCategories>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/statBases</xpath>
-					<value>
-						<statBases>
-							<WorkToMake>3000</WorkToMake>
-							<MaxHitPoints>50</MaxHitPoints>
-							<Flammability>1</Flammability>
-							<Mass>2</Mass>
-							<Bulk>2</Bulk>
-							<WornBulk>1</WornBulk>
-							<EquipDelay>1</EquipDelay>
-							<StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold>
-							<StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
-							<StuffEffectMultiplierArmor>0.8</StuffEffectMultiplierArmor>
-							<ArmorRating_Sharp>0</ArmorRating_Sharp>
-							<ArmorRating_Blunt>0</ArmorRating_Blunt>
-							<ArmorRating_Heat>0</ArmorRating_Heat>
-						</statBases>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]/recipeMaker</xpath>
-					<value>
-						<recipeMaker>
-							<workSpeedStat>TailoringSpeed</workSpeedStat>
-							<workSkill>Crafting</workSkill>
-							<effectWorking>Tailor</effectWorking>
-							<soundWorking>Recipe_Tailor</soundWorking>
-							<recipeUsers Inherit="False">
-								<li>HyperTailoringBench</li>
-							</recipeUsers>
-							<skillRequirements>
-								<Crafting>15</Crafting>
-							</skillRequirements>
-							<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
-						</recipeMaker>
-					</value>
+				<!-- Keep the survival belt balance when the optional Def is present. -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]</xpath>
+					<match Class="SK.PatchOperationReplaceExtended">
+						<xpath>Defs/ThingDef[defName="Apparel_SpaceSurvivalBelt"]</xpath>
+						<value Merge="true">
+							<costList DeepReplace="true"><ComponentSpacer>2</ComponentSpacer><ElectronicComponents>2</ElectronicComponents><BiosyntheticMaterial>10</BiosyntheticMaterial><Hexcell>1</Hexcell></costList>
+							<thingCategories DeepReplace="true"><li>SpecialApparelCat</li><li>ApparelUtility</li></thingCategories>
+							<statBases Merge="true">
+								<WorkToMake>3000</WorkToMake><MaxHitPoints>50</MaxHitPoints><Flammability>1</Flammability><Mass>2</Mass><Bulk>2</Bulk><WornBulk>1</WornBulk><EquipDelay>1</EquipDelay>
+								<StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold><StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat><StuffEffectMultiplierArmor>0.8</StuffEffectMultiplierArmor>
+								<ArmorRating_Sharp>0</ArmorRating_Sharp><ArmorRating_Blunt>0</ArmorRating_Blunt><ArmorRating_Heat>0</ArmorRating_Heat>
+							</statBases>
+							<recipeMaker Merge="true">
+								<workSpeedStat>TailoringSpeed</workSpeedStat><workSkill>Crafting</workSkill><effectWorking>Tailor</effectWorking><soundWorking>Recipe_Tailor</soundWorking>
+								<recipeUsers Inherit="False" DeepReplace="true"><li>HyperTailoringBench</li></recipeUsers>
+								<skillRequirements DeepReplace="true"><Crafting>15</Crafting></skillRequirements>
+								<unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+							</recipeMaker>
+						</value>
+					</match>
 				</li>
 
 				<li Class="PatchOperationConditional">
@@ -479,7 +439,7 @@
 						<xpath>Defs/ThingDef[@Name="ApparelArmorHelmetMechanitorBase"]/comps</xpath>
 						<value>
 							<li>
-								<compClass>SaveOurShip2.Comp_EVA</compClass>
+								<compClass>SaveOurShip2.CompEVA</compClass>
 							</li>
 						</value>
 					</match>
@@ -488,7 +448,7 @@
 						<value>
 							<comps>
 								<li>
-									<compClass>SaveOurShip2.Comp_EVA</compClass>
+									<compClass>SaveOurShip2.CompEVA</compClass>
 								</li>
 							</comps>
 						</value>

@@ -95,6 +95,13 @@
 					</value>
 				</li>
 
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/PawnKindDef[defName="SpaceCrewEVA"]/weaponMoney</xpath>
+					<value>
+						<weaponMoney>1300~1500</weaponMoney>
+					</value>
+				</li>
+
 				<!-- <li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/weaponMoney</xpath>
 					<value>
@@ -117,104 +124,58 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/TerrainDef[defName="SoilShip"]/statBases</xpath>
-					<value>
-						<WorkToBuild>2000</WorkToBuild>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/TerrainDef[defName="SoilShip"]</xpath>
+					<value Merge="true">
+						<statBases Merge="true">
+							<WorkToBuild>2000</WorkToBuild>
+						</statBases>
 					</value>
 				</li>
 
-				<!-- ========== ShipCorner/ShipCornerMech ========== -->
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown</xpath>
+				<!-- Remove legacy designator fields only when the current SOS2 branch still defines them. -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown |
+						Defs/ThingDef[@Name="ShipHardpoint"]/constructEffect |
+						Defs/ThingDef[@Name="ShipHardpoint"]/designatorDropdown |
+						Defs/ThingDef[@Name="BaseShipTorpedoBuilding"]/designatorDropdown |
+						Defs/ThingDef[@Name="ShipHeatsinkBase"]/constructEffect |
+						Defs/ThingDef[@Name="ShipHeatsinkBase"]/designatorDropdown</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown |
+							Defs/ThingDef[@Name="ShipHardpoint"]/constructEffect |
+							Defs/ThingDef[@Name="ShipHardpoint"]/designatorDropdown |
+							Defs/ThingDef[@Name="BaseShipTorpedoBuilding"]/designatorDropdown |
+							Defs/ThingDef[@Name="ShipHeatsinkBase"]/constructEffect |
+							Defs/ThingDef[@Name="ShipHeatsinkBase"]/designatorDropdown</xpath>
+					</match>
 				</li>
 
-				<!-- ========== ShipHardpoint ========== -->
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[@Name="ShipHardpoint"]/constructEffect</xpath>
-				</li>
-
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[@Name="ShipHardpoint"]/designatorDropdown</xpath>
-				</li>
-
-				<!-- ========== BaseShipTorpedoBuilding ========== -->
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[@Name="BaseShipTorpedoBuilding"]/designatorDropdown</xpath>
-				</li>
-
-				<!-- ========== ShipHeatsinkBase ========== -->
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[@Name="ShipHeatsinkBase"]/constructEffect</xpath>
-				</li>
-
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[@Name="ShipHeatsinkBase"]/designatorDropdown</xpath>
-				</li>
-
-
-				<!-- Mechs lowest comfy temp to -100-->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="SK_MechanoidThingBase"]/statBases/ComfyTemperatureMin</xpath>
-					<value>
-						<ComfyTemperatureMin>-100</ComfyTemperatureMin>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]</xpath>
-					<value>
-						<tab>ResearchTabShip</tab>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]</xpath>
-					<value>
-						<requiredResearchFacilities Inherit="False">
-							<li>LabStation</li>
-							<li>MultiAnalyzer</li>
-						</requiredResearchFacilities>
-					</value>
-				</li>
-
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]/researchViewX |
-						Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]/researchViewY
-					</xpath>
-				</li>
-
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ResearchProjectDef[defName="ShipBasics" and @ParentName="ShipResearchProjectBase"]</xpath>
-					<value>
-						<researchViewX>0</researchViewX>
-						<researchViewY>0</researchViewY>
-					</value>
-				</li>
 
 				<!-- Torpedo market values -->
-				<li Class="PatchOperationAdd">
+				<li Class="SK.PatchOperationReplaceExtended">
 					<xpath>Defs/ThingDef[defName="ShipTorpedo_HighExplosive"]</xpath>
-					<value>
-						<statBases>
+					<value Merge="true">
+						<statBases Merge="true">
 							<MarketValue>2000</MarketValue>
 						</statBases>
 					</value>
 				</li>
-				<li Class="PatchOperationAdd">
+				<li Class="SK.PatchOperationReplaceExtended">
 					<xpath>Defs/ThingDef[defName="ShipTorpedo_EMP"]</xpath>
-					<value>
-						<statBases>
+					<value Merge="true">
+						<statBases Merge="true">
 							<MarketValue>1500</MarketValue>
 						</statBases>
 					</value>
 				</li>
 
-				<!-- Change to SK.PatchOperationReplaceExtended when porting to 1.5 -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]/statBases/MarketValue</xpath>
-					<value>
-						<MarketValue>5000</MarketValue>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]</xpath>
+					<value Merge="true">
+						<statBases Merge="true">
+							<MarketValue>5000</MarketValue>
+						</statBases>
 					</value>
 				</li>
 
@@ -228,16 +189,20 @@
 					<value>Core_SK_Patch.CompProperties_BecomePawn</value>
 				</li> -->
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or 
-						defName="ShuttleCargoRace" or 
-						defName="ShuttleHeavyRace" or 
-						defName="ShuttleDropshipRace"]/comps</xpath>
-					<value>
-						<li>
-							<compClass>Core_SK_Patch.CompShuttleStuff</compClass>
-						</li>
-					</value>
+				<!-- Only the legacy pawn/building shuttle system needs CompShuttleStuff. -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace"]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
+							defName="ShuttleCargoRace" or
+							defName="ShuttleHeavyRace" or
+							defName="ShuttleDropshipRace"]/comps</xpath>
+						<value>
+							<li>
+								<compClass>Core_SK_Patch.CompShuttleStuff</compClass>
+							</li>
+						</value>
+					</match>
 				</li>
 
 
@@ -253,10 +218,6 @@
 					</value>
 				</li> -->
 
-				<!-- Remember to change this to SK.PatchOperationReplaceExtended when porting to 1.5 -->
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[defName="VanometricPowerCell"]/statBases/WorkToBuild[text()="5000"]</xpath>
-				</li>
 			</operations>
 		</match>
 	</Operation>

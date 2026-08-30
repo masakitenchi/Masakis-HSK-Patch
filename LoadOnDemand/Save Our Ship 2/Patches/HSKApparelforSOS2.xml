@@ -15,7 +15,7 @@
 						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/comps</xpath>
 						<value>
 							<li>
-								<compClass>SaveOurShip2.Comp_EVA</compClass>
+								<compClass>SaveOurShip2.CompEVA</compClass>
 							</li>
 						</value>
 					</match>
@@ -24,7 +24,7 @@
 						<value>
 							<comps>
 								<li>
-									<compClass>SaveOurShip2.Comp_EVA</compClass>
+									<compClass>SaveOurShip2.CompEVA</compClass>
 								</li>
 							</comps>
 						</value>
@@ -58,7 +58,7 @@
 						<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/comps</xpath>
 						<value>
 							<li>
-								<compClass>SaveOurShip2.Comp_EVA</compClass>
+								<compClass>SaveOurShip2.CompEVA</compClass>
 							</li>
 						</value>
 					</match>
@@ -67,7 +67,7 @@
 						<value>
 							<comps>
 								<li>
-									<compClass>SaveOurShip2.Comp_EVA</compClass>
+									<compClass>SaveOurShip2.CompEVA</compClass>
 								</li>
 							</comps>
 						</value>

@@ -7,28 +7,6 @@
 		<match Class="PatchOperationSequence">
 			<operations>
 
-				<!-- ========== Base Space Insect ========== -->
-				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[@Name="SpaceInsectThingBase"]</xpath>
-					<value>
-						<li Class="CombatExtended.RacePropertiesExtensionCE">
-							<bodyShape>QuadrupedLow</bodyShape>
-						</li>
-					</value>
-				</li>
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="SpaceInsectThingBase"]/statBases</xpath>
-					<value>
-						<SmokeSensitivity>0</SmokeSensitivity>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAttributeSet">
-					<xpath>Defs/ThingDef[@ParentName="BaseInsect" and @Name="SpaceInsectThingBase"]</xpath>
-					<attribute>ParentName</attribute>
-					<value>SK_AnimalThingBase</value>
-				</li>
-
 				<!-- ========== Astromite ========== -->
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ThingDef[defName="Astromite"]/statBases/MoveSpeed</xpath>
@@ -250,106 +228,91 @@
 					</value>
 				</li>
 
-				<!-- ========== Base Shuttle ========== -->
-				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
-					<value>
-						<li Class="CombatExtended.RacePropertiesExtensionCE">
-							<bodyShape>Vehicle</bodyShape>
-						</li>
-					</value>
-				</li>
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="BaseShuttle"]/statBases</xpath>
-					<value>
-						<SmokeSensitivity>0</SmokeSensitivity>
-						<FilthRate>0</FilthRate>
-					</value>
-				</li>
-
-				<!-- ========== Shuttles Armor & Melee ========== -->
-
-				<li Class="PatchOperationAttributeSet">
-					<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
-					<attribute>ParentName</attribute>
-					<value>SK_BasePawn</value>
-				</li>
-
-				<!-- Still need that CAI comp-->
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
-					<value>
-						<comps Inherit="False">
-							<li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_CombatAI"/>
-							<!-- <li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_Statistics"/> -->
-						</comps>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="BaseShuttle"]/race</xpath>
-					<value>
-						<renderTree>Misc</renderTree>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
-					defName="ShuttleCargoRace" or
-					defName="ShuttleHeavyRace"
-					]/statBases/ArmorRating_Blunt</xpath>
-					<value>
-						<ArmorRating_Blunt>2</ArmorRating_Blunt>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
-					defName="ShuttleCargoRace" or
-					defName="ShuttleHeavyRace"
-					]/statBases/ArmorRating_Sharp</xpath>
-					<value>
-						<ArmorRating_Sharp>5</ArmorRating_Sharp>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
-					defName="ShuttleCargoRace" or
-					defName="ShuttleHeavyRace"
-					]/race/baseHealthScale</xpath>
-					<value>
-						<baseHealthScale>2.5</baseHealthScale>
-					</value>
-				</li>
-
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
-					defName="ShuttleCargoRace" or
-					defName="ShuttleHeavyRace"
-					]/verbs</xpath>
-				</li>
-
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
-					defName="ShuttleCargoRace" or
-					defName="ShuttleHeavyRace"
-					]</xpath>
-					<value>
-						<tools>
-							<li Class="CombatExtended.ToolCE">
-								<label>hull</label>
-								<capacities>
-									<li>Blunt</li>
-								</capacities>
-								<power>10</power>
-								<cooldownTime>3.2</cooldownTime>
-								<armorPenetrationSharp>2</armorPenetrationSharp>
-								<armorPenetrationBlunt>40</armorPenetrationBlunt>
-								<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+				<!-- ========== Shuttles ========== -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/Vehicles.VehicleDef[defName="SoS2_Shuttle_Personal"]</xpath>
+					<match Class="PatchOperationSequence">
+						<operations>
+							<!-- The old pawn-race armor maps to the vehicle-level armor stats. -->
+							<li Class="SK.PatchOperationReplaceExtended">
+								<xpath>Defs/Vehicles.VehicleDef[defName="SoS2_Shuttle_Personal" or defName="SoS2_Shuttle" or defName="SoS2_Shuttle_Heavy"]</xpath>
+								<value Merge="true">
+									<statBases Merge="true">
+										<ArmorRating_Blunt>2</ArmorRating_Blunt>
+										<ArmorRating_Sharp>5</ArmorRating_Sharp>
+									</statBases>
+								</value>
 							</li>
-						</tools>
-					</value>
+						</operations>
+					</match>
+					<nomatch Class="PatchOperationSequence">
+						<operations>
+							<!-- Legacy SOS2 pawn/building conversion branch. -->
+							<li Class="PatchOperationAddModExtension">
+								<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
+								<value>
+									<li Class="CombatExtended.RacePropertiesExtensionCE">
+										<bodyShape>Vehicle</bodyShape>
+									</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[@Name="BaseShuttle"]/statBases</xpath>
+								<value>
+									<SmokeSensitivity>0</SmokeSensitivity>
+									<FilthRate>0</FilthRate>
+								</value>
+							</li>
+							<li Class="PatchOperationAttributeSet">
+								<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
+								<attribute>ParentName</attribute>
+								<value>SK_BasePawn</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[@Name="BaseShuttle"]</xpath>
+								<value>
+									<comps Inherit="False">
+										<li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_CombatAI"/>
+									</comps>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[@Name="BaseShuttle"]/race</xpath>
+								<value><renderTree>Misc</renderTree></value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or defName="ShuttleCargoRace" or defName="ShuttleHeavyRace"]/statBases/ArmorRating_Blunt</xpath>
+								<value><ArmorRating_Blunt>2</ArmorRating_Blunt></value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or defName="ShuttleCargoRace" or defName="ShuttleHeavyRace"]/statBases/ArmorRating_Sharp</xpath>
+								<value><ArmorRating_Sharp>5</ArmorRating_Sharp></value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or defName="ShuttleCargoRace" or defName="ShuttleHeavyRace"]/race/baseHealthScale</xpath>
+								<value><baseHealthScale>2.5</baseHealthScale></value>
+							</li>
+							<li Class="PatchOperationRemove">
+								<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or defName="ShuttleCargoRace" or defName="ShuttleHeavyRace"]/verbs</xpath>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or defName="ShuttleCargoRace" or defName="ShuttleHeavyRace"]</xpath>
+								<value>
+									<tools>
+										<li Class="CombatExtended.ToolCE">
+											<label>hull</label>
+											<capacities><li>Blunt</li></capacities>
+											<power>10</power>
+											<cooldownTime>3.2</cooldownTime>
+											<armorPenetrationSharp>2</armorPenetrationSharp>
+											<armorPenetrationBlunt>40</armorPenetrationBlunt>
+											<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										</li>
+									</tools>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
 				</li>
 
 				<!-- ========== Archospider ========== -->

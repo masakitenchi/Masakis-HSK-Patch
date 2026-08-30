@@ -5,7 +5,7 @@
 
 			<!-- Change enemy ship all steel to plasteel-->
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[stuff="Steel"]/stuff</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[stuff="Steel"]/stuff</xpath>
 				<value>
 					<stuff>Plasteel</stuff>
 				</value>
@@ -13,7 +13,7 @@
 
 			<!-- This is the true shelf in hsk-->
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="Shelf"]/shapeOrDef</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="Shelf"]/shapeOrDef</xpath>
 				<value>
 					<shapeOrDef>LWM_Pallet</shapeOrDef>
 				</value>
@@ -21,14 +21,14 @@
 
 			<!-- Add stuff to stuffable buildings in hsk-->
 			<li Class="PatchOperationAdd">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="Ship_CryptosleepCasket" or shapeOrDef="CryptosleepCasket" or shapeOrDef="ShipTurret_Plasma" or shapeOrDef="ShipTurret_Laser"]</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="Ship_CryptosleepCasket" or shapeOrDef="CryptosleepCasket" or shapeOrDef="ShipTurret_Plasma" or shapeOrDef="ShipTurret_Laser"]</xpath>
 				<value>
 					<stuff>Plasteel</stuff>
 				</value>
 			</li>
 
 			<li Class="PatchOperationAdd">
-				<xpath>Defs/EnemyShipDef/core[shapeOrDef="ShipPilotSeatMini"]</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/core[shapeOrDef="ShipPilotSeatMini"]</xpath>
 				<value>
 					<stuff>Plasteel</stuff>
 				</value>
@@ -36,42 +36,42 @@
 
 			<!-- Disabled due to some generation error -->
 			<!-- <li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="MineableSteel"]/shapeOrDef</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="MineableSteel"]/shapeOrDef</xpath>
 				<value>
 					<shapeOrDef>WeatheredOreSteel</shapeOrDef>
 				</value>
 			</li>
 
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="MineableGold"]/shapeOrDef</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="MineableGold"]/shapeOrDef</xpath>
 				<value>
 					<shapeOrDef>WeatheredOreGold</shapeOrDef>
 				</value>
 			</li>
 
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="MineableUranium"]/shapeOrDef</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="MineableUranium"]/shapeOrDef</xpath>
 				<value>
 					<shapeOrDef>WeatheredOreUranium</shapeOrDef>
 				</value>
 			</li>
 
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="MineablePlasteel"]/shapeOrDef</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="MineablePlasteel"]/shapeOrDef</xpath>
 				<value>
 					<shapeOrDef>WeatheredOreTitanium</shapeOrDef>
 				</value>
 			</li>
 
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="MineableSilver"]/shapeOrDef</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="MineableSilver"]/shapeOrDef</xpath>
 				<value>
 					<shapeOrDef>WeatheredOreSilver</shapeOrDef>
 				</value>
 			</li>
 
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/EnemyShipDef/symbolTable/li/value[shapeOrDef="MineableComponentsIndustrial"]/shapeOrDef</xpath>
+				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="MineableComponentsIndustrial"]/shapeOrDef</xpath>
 				<value>
 					<shapeOrDef>WeatheredOreTech</shapeOrDef>
 				</value>

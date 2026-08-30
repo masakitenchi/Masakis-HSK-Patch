@@ -194,26 +194,16 @@
 				<!--\1-->
 
 				<!-- ========== ShipInside_PassiveCoolerAdvanced ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerAdvanced"]/costList</xpath>
-					<value>
-						<costList>
-							<ComponentSpacer>2</ComponentSpacer>
-							<ComponentAdvanced>5</ComponentAdvanced>
-							<AdvMechanism>2</AdvMechanism>
-							<DepletedUranium>20</DepletedUranium>
-						</costList>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAdd">
+				<li Class="PatchOperationConditional">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerAdvanced"]</xpath>
-					<value>
-						<stuffCategories>
-							<li>RuggedMetallic</li>
-						</stuffCategories>
-						<costStuffCount>80</costStuffCount>
-					</value>
+					<match Class="SK.PatchOperationReplaceExtended">
+						<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerAdvanced"]</xpath>
+						<value Merge="true">
+							<costList DeepReplace="true"><ComponentSpacer>2</ComponentSpacer><ComponentAdvanced>5</ComponentAdvanced><AdvMechanism>2</AdvMechanism><DepletedUranium>20</DepletedUranium></costList>
+							<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
+							<costStuffCount>80</costStuffCount>
+						</value>
+					</match>
 				</li>
 
 
@@ -632,29 +622,21 @@
 
 
 				<!-- ========== ShipPilotSeat ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShipPilotSeat"]/costList</xpath>
-					<value>
-						<costList>
-							<ComponentSpacer>8</ComponentSpacer>
-							<Microchips>2</Microchips>
-							<ReinforcedGlass>60</ReinforcedGlass>
-						</costList>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAdd">
+				<li Class="PatchOperationConditional">
 					<xpath>Defs/ThingDef[defName="ShipPilotSeat"]</xpath>
-					<value>
-						<stuffCategories>
-							<li>RuggedMetallic</li>
-						</stuffCategories>
-						<costStuffCount>150</costStuffCount>
-					</value>
-				</li>
-
-				<li Class="PatchOperationRemove">
-					<xpath>Defs/ThingDef[defName="ShipPilotSeat"]/designatorDropdown</xpath>
+					<match Class="PatchOperationSequence">
+						<operations>
+							<li Class="SK.PatchOperationReplaceExtended">
+								<xpath>Defs/ThingDef[defName="ShipPilotSeat"]</xpath>
+								<value Merge="true">
+									<costList DeepReplace="true"><ComponentSpacer>8</ComponentSpacer><Microchips>2</Microchips><ReinforcedGlass>60</ReinforcedGlass></costList>
+									<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
+									<costStuffCount>150</costStuffCount>
+								</value>
+							</li>
+							<li Class="PatchOperationRemove"><xpath>Defs/ThingDef[defName="ShipPilotSeat"]/designatorDropdown</xpath></li>
+						</operations>
+					</match>
 				</li>
 
 				<!-- ========== Ship_ComputerCore ========== -->

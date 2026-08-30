@@ -407,14 +407,9 @@
 				</li>
 				
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Weapon_GrenadeMechanite"]/recipeMaker</xpath>
+					<xpath>Defs/ThingDef[defName="Weapon_GrenadeMechanite"]/recipeMaker/skillRequirements/Crafting</xpath>
 					<value>
-						<recipeMaker>
-							<researchPrerequisite>ArchotechMechaniteWeapon</researchPrerequisite>
-							<skillRequirements>
-								<Crafting>19</Crafting>
-							</skillRequirements>
-						</recipeMaker>
+						<Crafting>19</Crafting>
 					</value>
 				</li>
 				
@@ -529,26 +524,16 @@
 				</li>
 				
 				<!-- ========== ShipInside_PassiveCoolerArchotech ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerArchotech"]/costList</xpath>
-					<value>
-						<costList>
-							<ComponentSpacer>2</ComponentSpacer>
-							<ComponentAdvanced>5</ComponentAdvanced>
-							<AdvMechanism>2</AdvMechanism>
-							<GoldBar>20</GoldBar>
-						</costList>
-					</value>
-				</li>
-				
-				<li Class="PatchOperationAdd">	
+				<li Class="PatchOperationConditional">
 					<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerArchotech"]</xpath>
-					<value>
-						<stuffCategories>
-							<li>RuggedMetallic</li>
-						</stuffCategories>
-						<costStuffCount>80</costStuffCount>
-					</value>
+					<match Class="SK.PatchOperationReplaceExtended">
+						<xpath>Defs/ThingDef[defName="ShipInside_PassiveCoolerArchotech"]</xpath>
+						<value Merge="true">
+							<costList DeepReplace="true"><ComponentSpacer>2</ComponentSpacer><ComponentAdvanced>5</ComponentAdvanced><AdvMechanism>2</AdvMechanism><GoldBar>20</GoldBar></costList>
+							<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
+							<costStuffCount>80</costStuffCount>
+						</value>
+					</match>
 				</li>
 				
 				<!-- <li Class="PatchOperationRemove">

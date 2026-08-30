@@ -9,9 +9,9 @@
 	<packageId>regex.SKP</packageId>
 	<description>My own patch collection.
 		Main Features:
-		- SOS2 support (1.4, 1.5, 1.6)
+		- SOS2 support (1.6)
 		- Vanilla Nutrient Paste Expanded Support (feat. @Matt-MentTao)
-		- Repeatable Research (WIP)
+		- Repeatable Research
 		QoL Features:
 		- Auto forbid rotted meat &amp; rotten mush outside home area;
 		- Set threshold for Deep Drill resources;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<CSP_IncubateTo>培育至</CSP_IncubateTo>
+	<CSP_Age>{0} 岁</CSP_Age>
+	<CoreSK_SetGrowthVatAge>设置目标年龄</CoreSK_SetGrowthVatAge>
+	<CoreSK_SetGrowthVatAgeTip>设置该生物将被培育至的年龄。</CoreSK_SetGrowthVatAgeTip>
+	<CoreSK_SetGrowthVatAgePrompt>将目标年龄设为：</CoreSK_SetGrowthVatAgePrompt>
+
+</LanguageData>

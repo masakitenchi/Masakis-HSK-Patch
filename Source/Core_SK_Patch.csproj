@@ -35,23 +35,16 @@
     <Publicize Include="Assembly-CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="AlwaysReturnTheFirstProduct.cs" />
-    <Compile Remove="AutoAOEComp.cs" />
-    <Compile Remove="Building_VoidTrashCan.cs" />
-    <Compile Remove="HediffGiver_Fever.cs" />
-    <Compile Remove="MechJobFix.cs" />
-    <Compile Remove="Patch_GenLeaving_DoLeavingsFor.cs" />
-    <Compile Remove="PawnGroupKindWorker_Async.cs" />
+    <!-- All Obsolete Codes Are Stored Here-->
+    <Compile Remove="Obsolete\**" />
+
     <Compile Remove="SeedsPleaseCompat\**" />
     <Compile Remove="SOS2Compat\**" />
     <Compile Remove="StatPart\StatPart_Upgradeable.cs" />
-    <Compile Remove="Patches\Patch_NightVision.cs" />
-    <Compile Remove="Patches\Rimatomic_RemoveWarning.cs" />
     <Compile Remove="Patches\RimThemesCharacterEditorWindowFix.cs" />
     <Compile Remove="ResearchReinvented\**" />
     <Compile Remove="RimThemesCharacterEditorCompat\**" />
     <Compile Remove="AnomalyCompat\**" />
-    <Compile Remove="Patches\Patch_NonStunnableMannedTurret.cs" /> <!-- Turrets use CompStunnable since 1.5-->
   </ItemGroup>
   <ItemGroup Condition="'$(Version)' == '1.5'">
     <!-- Fishing and water-body APIs are provided by Odyssey in RimWorld 1.6. -->

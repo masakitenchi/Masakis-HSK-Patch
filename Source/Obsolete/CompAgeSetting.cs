@@ -69,7 +69,7 @@ public class Command_SetAge : Command
     public override void ProcessInput(Event ev)
     {
         base.ProcessInput(ev);
-        Dialog_Slider slider = new Dialog_Slider("CoreSK_SetGrowthVatAgePrompt".Translate(), 0, 18, (x) => this.target.SetAge(x), (int)this.target.vatUntil);
+        Dialog_Slider slider = new Dialog_Slider("CoreSK_SetGrowthVatAgePrompt".Translate(), 1, 18, (x) => this.target.SetAge(x), (int)this.target.vatUntil);
         Find.WindowStack.Add(slider);
     }
 }

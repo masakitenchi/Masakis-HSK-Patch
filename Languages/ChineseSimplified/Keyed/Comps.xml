@@ -8,6 +8,7 @@
 	<CSP_DrillResourceModeDesc>选择这台钻井开采已扫描到的矿物，或常见的大宗基质。</CSP_DrillResourceModeDesc>
 	<CSP_DrillResourceMinerals>已扫描矿物</CSP_DrillResourceMinerals>
 	<CSP_DrillResourceInspect>当前钻取：{0_label}</CSP_DrillResourceInspect>
+	<CSP_AutoExtractorLimitReached>{0}已自动断电：地图上的{1}现有 {2}，已达到限额 {3}。</CSP_AutoExtractorLimitReached>
 	<CSP_IncubateTo>培育至</CSP_IncubateTo>
 	<CSP_Age>{0} 岁</CSP_Age>
 	<CoreSK_SetGrowthVatAge>设置目标年龄</CoreSK_SetGrowthVatAge>

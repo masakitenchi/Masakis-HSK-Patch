@@ -8,6 +8,7 @@
 	<CSP_DrillResourceModeDesc>Select whether this drill extracts scanned minerals or common bulk material.</CSP_DrillResourceModeDesc>
 	<CSP_DrillResourceMinerals>Scanned minerals</CSP_DrillResourceMinerals>
 	<CSP_DrillResourceInspect>Selected resource: {0_label}</CSP_DrillResourceInspect>
+	<CSP_AutoExtractorLimitReached>{0} switched off: the map now contains {2} {1}, reaching the limit of {3}.</CSP_AutoExtractorLimitReached>
 	<CSP_IncubateTo>Incubate To</CSP_IncubateTo>
 	<CSP_Age>{0} years old</CSP_Age>
 	<CoreSK_SetGrowthVatAge>Set target age</CoreSK_SetGrowthVatAge>

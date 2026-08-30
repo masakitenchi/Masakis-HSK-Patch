@@ -21,6 +21,15 @@
 	</Operation>
 
 	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="Extractor" or defName="RareExtractor"]/comps</xpath>
+		<value>
+			<li>
+				<compClass>Core_SK_Patch.CompAutoExtractorLimit</compClass>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="SandResource"]</xpath>
 		<value>
 			<deepCountPerPortion>50</deepCountPerPortion>
@@ -30,7 +39,7 @@
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="CrushedStone"]</xpath>
 		<value>
-			<deepCountPerPortion>10</deepCountPerPortion>
+			<deepCountPerPortion>30</deepCountPerPortion>
 		</value>
 	</Operation>
 

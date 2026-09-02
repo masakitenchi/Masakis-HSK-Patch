@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<Core_SK_Patch.RimatomicsSOS2HeatBridgeDef>
+		<defName>CoreSK_RimatomicsSOS2HeatBridge</defName>
+		<bridgeThingDefs>
+			<li>ShipHeatConduit</li>
+		</bridgeThingDefs>
+		<!-- heatVent runs once per 120 ticks. These values map 8 heatVent to the
+		     25 kW capacity of one standard Rimatomics cooling radiator. -->
+		<sinkMappings>
+			<li>
+				<thingDef>ShipHeatsink</thingDef>
+				<coolingWatts>25000</coolingWatts>
+			</li>
+			<li>
+				<thingDef>ShipHeatsinkLarge</thingDef>
+				<coolingWatts>100000</coolingWatts>
+			</li>
+			<li>
+				<thingDef>ShipHeatsinkAntiEntropy</thingDef>
+				<coolingWatts>31250</coolingWatts>
+			</li>
+		</sinkMappings>
+		<throttleStartRatio>0.8</throttleStartRatio>
+		<ventIntervalTicks>120</ventIntervalTicks>
+		<refreshIntervalTicks>60</refreshIntervalTicks>
+		<spaceOnly>true</spaceOnly>
+	</Core_SK_Patch.RimatomicsSOS2HeatBridgeDef>
+</Defs>

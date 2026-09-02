@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperation.FindModByID">
+		<mods>
+			<li>Dubwise.Rimatomics</li>
+		</mods>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="ShipHeatConduit"]/comps/li[@Class="Rimatomics.CompProperties_Pipe" and mode="Cooling"]</xpath>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="ShipHeatConduit"]/comps</xpath>
+				<value>
+					<li Class="Rimatomics.CompProperties_Pipe">
+						<mode>Cooling</mode>
+					</li>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+</Patch>

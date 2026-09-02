@@ -8,6 +8,7 @@
     <RimWorldRoot>$([System.IO.Path]::GetFullPath('$(CoreSKPatchRoot)\..\..'))</RimWorldRoot>
     <SteamAppsRoot>$([System.IO.Path]::GetFullPath('$(CoreSKPatchRoot)\..\..\..\..'))</SteamAppsRoot>
     <SOS2Root Condition="'$(SOS2Root)' == ''">$(SteamAppsRoot)\workshop\content\294100\1909914131</SOS2Root>
+    <RimatomicsRoot Condition="'$(RimatomicsRoot)' == ''">$(RimWorldRoot)\Mods\Rimatomics_SK</RimatomicsRoot>
     <MineralsRoot Condition="'$(MineralsRoot)' == ''">$(RimWorldRoot)\Mods\Minerals</MineralsRoot>
     <OutputPath>$(CoreSKPatchRoot)\v$(GameVersion)\AssembliesCompat</OutputPath>
     <LangVersion>preview</LangVersion>
@@ -34,6 +35,7 @@
     <Compile Remove="Replacement\CompProperties_BecomePawn.cs" />
     <Compile Remove="Harmony.cs" Condition="'$(GameVersion)' == '1.6'" />
     <Compile Remove="Comp\CompShuttleStuff.cs" Condition="'$(GameVersion)' == '1.6'" />
+    <Compile Remove="Rimatomics\**" Condition="'$(GameVersion)' != '1.6'" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ShipsHaveInsides">
@@ -42,6 +44,10 @@
     </Reference>
     <Reference Include="Minerals">
       <HintPath>$(MineralsRoot)\Assemblies\Minerals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rimatomics" Condition="'$(GameVersion)' == '1.6'">
+      <HintPath>$(RimatomicsRoot)\Assemblies\Rimatomics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Core_SK_Patch">

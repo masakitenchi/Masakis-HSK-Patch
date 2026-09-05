@@ -40,6 +40,7 @@
 
     <Compile Remove="SeedsPleaseCompat\**" />
     <Compile Remove="SOS2Compat\**" />
+    <Compile Remove="LifterHaulingRepair\**" />
     <Compile Remove="StatPart\StatPart_Upgradeable.cs" />
     <Compile Remove="Patches\RimThemesCharacterEditorWindowFix.cs" />
     <Compile Remove="ResearchReinvented\**" />

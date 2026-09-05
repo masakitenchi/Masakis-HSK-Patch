@@ -3,7 +3,7 @@
 	<!-- Loaded only for SOS2 on RimWorld 1.6 by LoadFolders.xml.
 	     Select concrete Defs: ArmorSpacerBase also contains unsealed equipment.
 	     Match SOS2's 75% body / 25% helmet decompression split.
-	     Helmets supply oxygen; ordinary armor supplies no EVA propulsion.
+	     Helmets supply oxygen; body armor supplies tiered EVA mobility.
 	     Keep Odyssey VacuumResistance and all other equipment stats unchanged. -->
 
 	<!-- Sealed body armor, including HSK's replacements for vanilla armor. -->
@@ -34,7 +34,7 @@
 			<equippedStatOffsets Merge="true">
 				<HypoxiaResistance>0</HypoxiaResistance>
 				<DecompressionResistance>0.75</DecompressionResistance>
-				<VacuumSpeedMultiplier>0</VacuumSpeedMultiplier>
+				<VacuumSpeedMultiplier>2</VacuumSpeedMultiplier>
 			</equippedStatOffsets>
 			<comps Merge="true">
 				<li><compClass>SaveOurShip2.CompEVA</compClass></li>
@@ -80,13 +80,13 @@
 		</value>
 	</Operation>
 
-	<!-- Light and medium power armor explicitly include maneuvering thrusters.
-	     +1 offset gives 2x the default EmptySpace movement multiplier. -->
+	<!-- Mobile power armor and advanced maneuvering suits: base 1 + offset 3. -->
 	<Operation Class="SK.PatchOperationReplaceExtended">
-		<xpath>Defs/ThingDef[defName="Armor_PowerArmorLight" or defName="Armor_PowerArmorMedium"]</xpath>
+		<xpath>Defs/ThingDef[defName="Armor_PowerArmorLight" or defName="Armor_PowerArmorMedium"
+			or defName="Armor_PhaseArmor" or defName="Armor_Commando" or defName="Armor_Interstellar"]</xpath>
 		<value>
 			<equippedStatOffsets Merge="true">
-				<VacuumSpeedMultiplier>1</VacuumSpeedMultiplier>
+				<VacuumSpeedMultiplier>3</VacuumSpeedMultiplier>
 			</equippedStatOffsets>
 		</value>
 	</Operation>
@@ -104,7 +104,17 @@
 		</match>
 	</Operation>
 
-	<!-- Deliberately excluded: Armor_AlloyVest; cloaks, coats and hoods;
+	<!-- Spacer alloy vest: modest mobility only, no sealing, oxygen or EVA comp. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/ThingDef[defName="Armor_AlloyVest"]</xpath>
+		<value>
+			<equippedStatOffsets Merge="true">
+				<VacuumSpeedMultiplier>1</VacuumSpeedMultiplier>
+			</equippedStatOffsets>
+		</value>
+	</Operation>
+
+	<!-- Deliberately excluded: cloaks, coats and hoods;
 	     overalls, jumpsuits and cryptosuits; the open shuttle-pilot helmet.
 	     They receive no SOS2 protection or EVA comp from this patch. -->
 </Patch>

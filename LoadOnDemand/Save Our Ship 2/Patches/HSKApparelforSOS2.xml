@@ -1,82 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
+	<!-- Loaded only for SOS2 on RimWorld 1.6 by LoadFolders.xml.
+	     Select concrete Defs: ArmorSpacerBase also contains unsealed equipment.
+	     Match SOS2's 75% body / 25% helmet decompression split.
+	     Helmets supply oxygen; ordinary armor supplies no EVA propulsion.
+	     Keep Odyssey VacuumResistance and all other equipment stats unchanged. -->
 
-	<Operation Class="PatchOperationFindMod">
-		<mods>
-			<li>Save Our Ship 2</li>
-		</mods>
-		<match Class="PatchOperationSequence">
-			<operations>
+	<!-- Sealed body armor, including HSK's replacements for vanilla armor. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/ThingDef[
+			defName="Apparel_PowerArmor"
+			or defName="Apparel_ArmorRecon"
+			or defName="Apparel_ArmorReconPrestige"
+			or defName="Apparel_ArmorMarinePrestige"
+			or defName="Apparel_ArmorCataphract"
+			or defName="Apparel_ArmorCataphractPrestige"
+			or defName="Apparel_ArmorLocust"
+			or defName="Apparel_ArmorMarineGrenadier"
+			or defName="Apparel_ArmorCataphractPhoenix"
+			or defName="Apparel_MechlordSuit"
+			or defName="Armor_PowerArmorLight"
+			or defName="Armor_PowerArmorMedium"
+			or defName="Armor_PhaseArmor"
+			or defName="Armor_Hive"
+			or defName="Armor_Steamhull"
+			or defName="Armor_HellPowerArmor"
+			or defName="Armor_Siege"
+			or defName="Armor_CQC"
+			or defName="Armor_Commando"
+			or defName="Armor_Interstellar"
+		]</xpath>
+		<value>
+			<equippedStatOffsets Merge="true">
+				<HypoxiaResistance>0</HypoxiaResistance>
+				<DecompressionResistance>0.75</DecompressionResistance>
+				<VacuumSpeedMultiplier>0</VacuumSpeedMultiplier>
+			</equippedStatOffsets>
+			<comps Merge="true">
+				<li><compClass>SaveOurShip2.CompEVA</compClass></li>
+			</comps>
+		</value>
+	</Operation>
 
-				<!-- ========== Apparel_Fullarmor_Spacer ========== -->
-				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/comps</xpath>
-					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/comps</xpath>
-						<value>
-							<li>
-								<compClass>SaveOurShip2.CompEVA</compClass>
-							</li>
-						</value>
-					</match>
-					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]</xpath>
-						<value>
-							<comps>
-								<li>
-									<compClass>SaveOurShip2.CompEVA</compClass>
-								</li>
-							</comps>
-						</value>
-					</nomatch>
-				</li>
+	<!-- Sealed helmets. HSK gives the phase helmet vacuum protection despite
+	     its UpperHead armor coverage; retain that environmental protection role. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/ThingDef[
+			defName="Apparel_PowerArmorHelmet"
+			or defName="Apparel_ArmorHelmetRecon"
+			or defName="Apparel_ArmorHelmetReconPrestige"
+			or defName="Apparel_ArmorMarineHelmetPrestige"
+			or defName="Apparel_ArmorHelmetCataphract"
+			or defName="Apparel_ArmorHelmetCataphractPrestige"
+			or defName="Apparel_ArmorHelmetMechCommander"
+			or defName="Apparel_ArmorHelmetMechlordHelmet"
+			or defName="Helmet_Phase"
+			or defName="Helmet_Siege"
+			or defName="Helmet_CQC"
+			or defName="Helmet_PsyPrototype"
+			or defName="Helmet_PsyPrototypeTwo"
+			or defName="Helmet_PsyPrototypeThree"
+			or defName="Helmet_Enviro"
+			or defName="Helmet_EnviroLight"
+			or defName="Helmet_Hive"
+			or defName="Helmet_Steamhull"
+			or defName="Helmet_PowerArmorLight"
+			or defName="Helmet_Doom"
+			or defName="Helmet_HellPowerArmor"
+		]</xpath>
+		<value>
+			<equippedStatOffsets Merge="true">
+				<HypoxiaResistance>1</HypoxiaResistance>
+				<DecompressionResistance>0.25</DecompressionResistance>
+				<VacuumSpeedMultiplier>0</VacuumSpeedMultiplier>
+			</equippedStatOffsets>
+			<comps Merge="true">
+				<li><compClass>SaveOurShip2.CompEVA</compClass></li>
+			</comps>
+		</value>
+	</Operation>
 
-				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/equippedStatOffsets</xpath>
-					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]/equippedStatOffsets</xpath>
-						<value>
-							<HypoxiaResistance MayRequire="kentington.saveourship2">0.5</HypoxiaResistance>
-							<DecompressionResistance MayRequire="kentington.saveourship2">0.5</DecompressionResistance>
-							<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">0.5</VacuumSpeedMultiplier>
-						</value>
-					</match>
-					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ArmorSpacerBase"]</xpath>
-						<value>
-							<equippedStatOffsets>
-								<HypoxiaResistance MayRequire="kentington.saveourship2">0.5</HypoxiaResistance>
-								<DecompressionResistance MayRequire="kentington.saveourship2">0.5</DecompressionResistance>
-								<VacuumSpeedMultiplier MayRequire="kentington.saveourship2">0.5</VacuumSpeedMultiplier>
-							</equippedStatOffsets>
-						</value>
-					</nomatch>
-				</li>
-				<!-- <li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/comps</xpath>
-					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]/comps</xpath>
-						<value>
-							<li>
-								<compClass>SaveOurShip2.CompEVA</compClass>
-							</li>
-						</value>
-					</match>
-					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@Name="ArmorSpacerSimpleBase"]</xpath>
-						<value>
-							<comps>
-								<li>
-									<compClass>SaveOurShip2.CompEVA</compClass>
-								</li>
-							</comps>
-						</value>
-					</nomatch>
-				</li> -->
+	<!-- Light and medium power armor explicitly include maneuvering thrusters.
+	     +1 offset gives 2x the default EmptySpace movement multiplier. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/ThingDef[defName="Armor_PowerArmorLight" or defName="Armor_PowerArmorMedium"]</xpath>
+		<value>
+			<equippedStatOffsets Merge="true">
+				<VacuumSpeedMultiplier>1</VacuumSpeedMultiplier>
+			</equippedStatOffsets>
+		</value>
+	</Operation>
 
-
-			</operations>
+	<!-- Preserve SOS2's jump-pack propulsion for locust armor (base 1 + offset 4). -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="Apparel_ArmorLocust"]</xpath>
+		<match Class="SK.PatchOperationReplaceExtended">
+			<xpath>Defs/ThingDef[defName="Apparel_ArmorLocust"]</xpath>
+			<value>
+				<equippedStatOffsets Merge="true">
+					<VacuumSpeedMultiplier>4</VacuumSpeedMultiplier>
+				</equippedStatOffsets>
+			</value>
 		</match>
 	</Operation>
 
+	<!-- Deliberately excluded: Armor_AlloyVest; cloaks, coats and hoods;
+	     overalls, jumpsuits and cryptosuits; the open shuttle-pilot helmet.
+	     They receive no SOS2 protection or EVA comp from this patch. -->
 </Patch>

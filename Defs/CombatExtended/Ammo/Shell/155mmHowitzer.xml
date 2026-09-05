@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+	<CombatExtended.AmmoCategoryDef>
+		<defName>HSKAntimatter</defName>
+		<label>antimatter shell</label>
+		<labelShort>AM</labelShort>
+		<description>An antimatter-filled shell that annihilates matter at the point of impact.</description>
+		<advanced>true</advanced>
+	</CombatExtended.AmmoCategoryDef>
+
 	<!-- ==================== Ammo ========================== -->
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="155mmHowitzerShellBase">
 		<defName>Ammo_155mmHowitzerShell_AM</defName>
@@ -12,7 +20,7 @@
 		<statBases>
 			<MarketValue>20000</MarketValue>
 		</statBases>
-		<ammoClass>Antigrain</ammoClass>
+		<ammoClass>HSKAntimatter</ammoClass>
 		<detonateProjectile>Bullet_155mmHowitzerShell_AM</detonateProjectile>
 	</ThingDef>
 	

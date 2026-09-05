@@ -71,7 +71,7 @@
 		<researchPrerequisite>Super_matter_E1</researchPrerequisite>
 	</RecipeDef>
 
-	<RecipeDef>
+<!-- 	<RecipeDef>
 		<defName>CSP_ConvertToCassiterite</defName>
 		<label>Convert to cassiterite ore</label>
 		<description>Convert inorganic matter into cassiterite, the ore of Tin. Produces 50.</description>
@@ -105,5 +105,5 @@
 		<workSkillLearnFactor>0.8</workSkillLearnFactor>
 		<researchPrerequisite>Super_matter_E1</researchPrerequisite>
 	</RecipeDef>
-
+ -->
 </Defs>

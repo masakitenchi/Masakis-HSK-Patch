@@ -165,14 +165,8 @@
 					</value>
 				</li>
 
-				<!-- Kinetic Projectile Rework-->
-				<!-- Disabled as it's a little buggy atm -->
-				<!-- <li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[contains(defName,'Proj_ShipTurretKinetic')]/thingClass</xpath>
-					<value>
-						<thingClass>Projectile_ExplosiveShipCombatKinetic</thingClass>
-					</value>
-				</li> -->
+				<!-- 1.6 kinetic blast cones are handled by SOS2Compat runtime patches.
+				     Keep the native projectile class for shield hooks and save compatibility. -->
 			</operations>
 		</match>
     </Operation>

@@ -28,7 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Replacement\" />
-    <Compile Remove="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" />
+    <Compile Remove="Projectile\Projectile_ExplosiveShipCombatKinetic.cs" Condition="'$(GameVersion)' != '1.6'" />
     <Compile Remove="Replacement\CompBecomeBuilding.cs" />
     <Compile Remove="Replacement\CompBecomePawn.cs" />
     <Compile Remove="Replacement\CompProperties_BecomeBuilding.cs" />
@@ -36,6 +36,8 @@
     <Compile Remove="Harmony.cs" Condition="'$(GameVersion)' == '1.6'" />
     <Compile Remove="Comp\CompShuttleStuff.cs" Condition="'$(GameVersion)' == '1.6'" />
     <Compile Remove="Rimatomics\**" Condition="'$(GameVersion)' != '1.6'" />
+    <Compile Remove="Heat\**" Condition="'$(GameVersion)' != '1.6'" />
+    <Compile Remove="Combat\**" Condition="'$(GameVersion)' != '1.6'" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ShipsHaveInsides">

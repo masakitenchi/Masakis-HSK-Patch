@@ -1,176 +1,97 @@
-﻿using CombatExtended;
-using Core_SK_Patch;
+using System;
+using System.Linq;
+using HarmonyLib;
 using SaveOurShip2;
-using SK.Enlighten;
-using System.Collections;
-using System.Security.Cryptography;
+using UnityEngine;
 using Verse;
-using Verse.Sound;
 
-namespace RimWorld;
+namespace Core_SK_Patch;
 
-public class Projectile_ExplosiveShipCombatKinetic : Projectile_ExplosiveShipCombat
+internal static class KineticExplosionGeometry
 {
-    //Thinking of a chunk of bullet hit the hull. The energy it carries is unaffected but the explosion it creates should be more "directional".
-    private const float _radiusFactor = 5f;
-    private int _ExplosionCounter = 5;
+    internal const float ConeDegrees = 30f;
+    internal static float Length(float originalRadius) => originalRadius * (float)Math.Sqrt(360f / ConeDegrees);
 
-    /*public override void Tick()
+    internal static bool Contains(float x, float z, float forwardX, float forwardZ, float radius)
     {
-        ThingWithCompsReversePatch.Tick(this);
-        #region Vanilla Copied
-        if (this.landed)
+        double distanceSquared = (double)x * x + (double)z * z;
+        if (distanceSquared > (double)radius * radius + 0.00001)
+            return false;
+        if (distanceSquared < 0.00001)
+            return true; // Include the impact cell.
+        double forwardSquared = (double)forwardX * forwardX + (double)forwardZ * forwardZ;
+        double dot = (double)x * forwardX + (double)z * forwardZ;
+        double cos = Math.Cos(ConeDegrees * Math.PI / 360.0);
+        return forwardSquared > 0.00001 && dot > 0
+            && dot * dot + 0.00001 >= distanceSquared * forwardSquared * cos * cos;
+    }
+
+    internal static bool Applies(string defName) => defName == "Proj_ShipTurretKinetic"
+        || defName == "Proj_ShipTurretKinetic_Large";
+}
+
+// Keep native projectile classes, Impact/Destroy hooks, damage and serialization.
+// Carry direction across the synchronous Explode -> StartExplosion call only.
+[HarmonyPatch(typeof(Projectile_Explosive), "Explode")]
+internal static class KineticProjectileExplosionScope
+{
+    internal sealed class Context
+    {
+        internal ThingDef Def;
+        internal Map Map;
+        internal IntVec3 Center;
+        internal Vector3 Forward;
+    }
+
+    [ThreadStatic] internal static Context Current;
+
+    [HarmonyPrefix]
+    private static void Prefix(Projectile_Explosive __instance, out Context __state)
+    {
+        __state = Current;
+        Current = null; // Nested unrelated projectiles cannot inherit this scope.
+        if (__instance is not Projectile_ExplosiveShip || !KineticExplosionGeometry.Applies(__instance.def.defName))
             return;
-        Vector3 exactPosition1 = this.ExactPosition;
-        --this.ticksToImpact;
-        if (!this.ExactPosition.InBounds(this.Map))
-        {
-            ++this.ticksToImpact;
-            this.Position = this.ExactPosition.ToIntVec3();
-            this.Destroy(DestroyMode.Vanish);
-        }
-        else
-        {
-            Vector3 exactPosition2 = this.ExactPosition;
-            if (this.CheckForFreeInterceptBetween(exactPosition1, exactPosition2))
-                return;
-            this.Position = this.ExactPosition.ToIntVec3();
-            if (this.ticksToImpact == 60 && Find.TickManager.CurTimeSpeed == TimeSpeed.Normal && this.def.projectile.soundImpactAnticipate != null)
-                this.def.projectile.soundImpactAnticipate.PlayOneShot((SoundInfo)(Thing)this);
-            if (this.ticksToImpact <= 0)
-            {
-                if (this.DestinationCell.InBounds(this.Map))
-                    this.Position = this.DestinationCell;
-                this.ImpactSomething();
-            }
-            else
-            {
-                if (this.ambientSustainer == null)
-                    return;
-                this.ambientSustainer.Maintain();
-            }
-        }
-        #endregion
-    }*/
-    public override void Impact(Thing hitThing, bool blockedByShield = false)
-    {
-        if (blockedByShield) this.Destroy();
-        /*else if (_ExplosionCounter > 0)
-        {
-            Log.Message($"Explosion Counter:{_ExplosionCounter}\n destination: {this.destination}\n origin: {this.origin}");
-            --this._ExplosionCounter;
-            this.Explodeint();
-            ++ticksToImpact;
-        }*/
-        else
-            this.Explode();
+        Vector3 forward = __instance.destination - __instance.origin;
+        if (forward.x * forward.x + forward.z * forward.z < 0.00001f)
+            return; // No usable trajectory: preserve upstream behavior.
+        Current = new Context { Def = __instance.def, Map = __instance.Map, Center = __instance.Position, Forward = forward };
     }
 
-    public override void Explode() 
+    [HarmonyFinalizer]
+    private static void Finalizer(Context __state)
     {
-        Explodeint();
-        Destroy();
-        /*Explosion explosion = Utilities.CreateExplosionFrom(this, hitThing.Position, hitThing.Map);
-        explosion.intendedTarget = this.intendedTarget.Thing;
-        explosion.radius *= _radiusFactor;
-        explosion.affectedAngle = range;
-        explosion.StartExplosion(this.def.projectile.damageDef.soundExplosion, null);*/
-    }
-
-    private void Explodeint()
-    {
-        //From where the projectile shoots in
-        Vector3 origin = this.origin;
-        float degrees = Mathf.Atan2(-(this.Position.z - origin.z), (this.Position.x - origin.x)) * Mathf.Rad2Deg;
-        //The explosion is restricted into a 30 degrees cone
-        FloatRange range = new FloatRange(degrees - 30f, degrees + 30f);
-        CoroutineDummy._coroutineDummy.StartCoroutine(CoroutineDummy.ExplosionCoroutine(this.Position,
-                                                                                        this.origin,
-                                                                                        this.destination,
-                                                                                        this.Map,
-                                                                                        this.def.projectile.explosionRadius / 3,
-                                                                                        def.projectile.damageDef,
-                                                                                        this.launcher,
-                                                                                        DamageAmount,
-                                                                                        ArmorPenetration,
-                                                                                        def.projectile.soundExplode,
-                                                                                        launcher.def,
-                                                                                        def,
-                                                                                        intendedTarget.Thing,
-                                                                                        affectedAngle: range,
-                                                                                        radiusFactor: _radiusFactor,
-                                                                                        explosionCount: _ExplosionCounter));
+        Current = __state; // Restore on exceptions too; never suppress them.
     }
 }
 
-
-[HarmonyPatch]
-public static class ThingWithCompsReversePatch
+[HarmonyPatch(typeof(Explosion), nameof(Explosion.StartExplosion))]
+internal static class KineticExplosionCellsPatch
 {
-    [HarmonyPatch(typeof(ThingWithComps), nameof(ThingWithComps.Tick))]
-    [HarmonyReversePatch]
-    public static void Tick(ThingWithComps __instance)
+    [HarmonyPrefix]
+    private static void Prefix(Explosion __instance)
     {
-        __instance.Tick();
-    }
-}
+        KineticProjectileExplosionScope.Context context = KineticProjectileExplosionScope.Current;
+        if (context == null || __instance.projectile != context.Def || __instance.Map != context.Map
+            || __instance.Position != context.Center)
+            return;
+        KineticProjectileExplosionScope.Current = null; // Do not transform secondary explosions.
+        if (__instance.radius <= 0 || (__instance.overrideCells != null && __instance.overrideCells.Count > 0)
+            || __instance.affectedAngle.HasValue)
+            return; // Respect explicitly supplied shapes from other mods.
 
-
-internal class CoroutineDummy : MonoBehaviour
-{
-    internal static CoroutineDummy _coroutineDummy;
-
-    static CoroutineDummy()
-    {
-        var DummyObject = new GameObject();
-        UnityEngine.Object.DontDestroyOnLoad(DummyObject);
-        _coroutineDummy = DummyObject.AddComponent<CoroutineDummy>();
-    }
-
-    internal static IEnumerator ExplosionCoroutine(IntVec3 center,
-                                                   Vector3 origin,
-                                                   Vector3 destination,
-                                                   Map map,
-                                                   float radius,
-                                                   DamageDef damType,
-                                                   Thing instigator,
-                                                   int damAmount = -1,
-                                                   float armorPenetration = -1,
-                                                   SoundDef explosionSound = null,
-                                                   ThingDef weapon = null,
-                                                   ThingDef projectile = null,
-                                                   Thing intendedTarget = null,
-                                                   float? direction = null,
-                                                   FloatRange? affectedAngle = null,
-                                                   float radiusFactor = 1,
-                                                   int explosionCount = 1)
-    {
-        Vector3 directionVec = (destination - origin).normalized;
-        directionVec *= radius / 2;
-        var ExplosionPos = center;
-        var PreviousPos = ExplosionPos;
-        for (var i = 0; i < explosionCount; i++)
-        {
-            ExplosionPos += i * directionVec.ToIntVec3();
-            GenExplosion.DoExplosion
-                (ExplosionPos,
-                 map,
-                 radius,
-                 damType,
-                 instigator,
-                 Convert.ToInt32(damAmount * radiusFactor),
-                 armorPenetration,
-                 explosionSound,
-                 weapon,
-                 projectile,
-                 intendedTarget);
-            yield return WaitForFrames(1);
-        }
-    }
-
-    private static IEnumerator WaitForFrames(int frames)
-    {
-        for (int i = 0; i < frames; i++)
-            yield return null;
+        float length = KineticExplosionGeometry.Length(__instance.radius);
+        // Native worker supplies LOS, directional LOS and adjacent wall faces.
+        // Filter its result rather than all cells in the radius: hulls still block.
+        var cells = __instance.damType.Worker.ExplosionCellsToHit(__instance.Position, __instance.Map, length,
+                __instance.needLOSToCell1, __instance.needLOSToCell2, null)
+            .Where(cell => KineticExplosionGeometry.Contains(cell.x - context.Center.x, cell.z - context.Center.z,
+                context.Forward.x, context.Forward.z, length)).Distinct().ToList();
+        // Empty overrides fall back to a circle; always include the impact cell.
+        if (cells.Count == 0 && context.Center.InBounds(__instance.Map))
+            cells.Add(context.Center);
+        __instance.radius = length;
+        __instance.overrideCells = cells;
+        __instance.applyDamageToExplosionCellsNeighbors = false;
     }
 }

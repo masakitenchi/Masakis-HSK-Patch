@@ -17,6 +17,7 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
     {
         RimatomicsSOS2HeatBridgeDef config = Config;
         Map map = pipeMap?.map;
+        bool diagnose = RimatomicsSOS2BridgeDiagnostics.Begin(pipeMap, config);
         if (config == null || map == null || config.spaceOnly && !map.IsSpace())
             return;
 
@@ -25,8 +26,10 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
         if (cache.ShouldRefresh(pipeMap, ticksGame, config.refreshIntervalTicks))
             cache.Rebuild(pipeMap, config, ticksGame);
 
+        if (diagnose)
+            RimatomicsSOS2BridgeDiagnostics.Write(() => $"GROUPS map={map.uniqueID} count={cache.Groups.Count}");
         foreach (BridgeGroup group in cache.Groups)
-            ProcessGroup(group, config);
+            ProcessGroup(group, config, map, diagnose);
     }
 
     internal static float GetAvailableCoolingWatts(ShipHeatNet heatNet)
@@ -37,8 +40,17 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
         return HeatNetState.Create(heatNet, config)?.AvailableCoolingWatts ?? 0f;
     }
 
-    private static void ProcessGroup(BridgeGroup group, RimatomicsSOS2HeatBridgeDef config)
+    private static void ProcessGroup(BridgeGroup group, RimatomicsSOS2HeatBridgeDef config, Map map, bool diagnose)
     {
+        if (diagnose)
+            foreach (ShipHeatNet net in group.HeatNets)
+                RimatomicsSOS2BridgeDiagnostics.Write(() => {
+                    bool connected = group.TryGetConnectedInjector(net, config, out CompShipHeat injector);
+                    return $"HEAT map={map.uniqueID} net={net.GridID} injector={injector?.parent?.ThingID}"
+                        + $" connected={connected} raw={net.StorageCapacityRaw} effective={net.StorageCapacity}"
+                        + $" used={net.StorageUsed} available={net.StorageAvailable} depletion={net.Depletion}"
+                        + $" {RimatomicsSOS2BridgeDiagnostics.Sinks(net, config)}";
+                });
         List<HeatNetState> heatStates = group.HeatNets
             .Where(heatNet => group.TryGetConnectedInjector(heatNet, config, out _))
             .Select(heatNet => HeatNetState.Create(heatNet, config))
@@ -53,6 +65,9 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
 
         float totalUnmetDemand = coolingStates.Sum(state => state.UnmetDemandWatts);
         float totalBridgeUsed = 0f;
+        if (diagnose)
+            RimatomicsSOS2BridgeDiagnostics.Write(() => $"BUDGET map={map.uniqueID} usableHeatNets={heatStates.Count}"
+                + $" bridgeWatts={totalBridgeCapacity} unmetWatts={totalUnmetDemand}");
 
         // Native Rimatomics coolers are used first. The shared SOS2 capacity is then
         // divided between every still-undercooled loop in this connected component.
@@ -72,6 +87,11 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
                 ? state.DemandWatts / combinedCapacity
                 : 0f;
             totalBridgeUsed += bridgeAllocation;
+            if (diagnose)
+                RimatomicsSOS2BridgeDiagnostics.Write(() => $"ALLOCATION map={map.uniqueID} coolingNet={RimatomicsSOS2BridgeDiagnostics.Id(state.Net)}"
+                    + $" demandWatts={state.DemandWatts} physicalWatts={state.PhysicalCoolingWatts}"
+                    + $" unmetWatts={state.UnmetDemandWatts} allocatedWatts={bridgeAllocation}"
+                    + $" resultingCapacity={state.Net.CoolingCapacity} resultingRatio={state.Net.CoolingLoopRatio}");
         }
 
         if (totalBridgeUsed <= 0f || totalBridgeCapacity <= 0f)
@@ -85,7 +105,15 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
             float loadRatio = Mathf.Clamp01(coolingShare / state.AvailableCoolingWatts);
             float heatToAdd = state.AvailableHeatPerTick * loadRatio;
             if (heatToAdd > 0f && group.TryGetConnectedInjector(state.Net, config, out CompShipHeat injector))
-                injector.AddHeatToNetwork(heatToAdd);
+            {
+                float usedBefore = state.Net.StorageUsed;
+                bool accepted = injector.AddHeatToNetwork(heatToAdd);
+                RimatomicsSOS2BridgeDiagnostics.Injection(map, heatToAdd, accepted, state.Net.StorageUsed - usedBefore);
+                if (diagnose)
+                    RimatomicsSOS2BridgeDiagnostics.Write(() => $"INJECT map={map.uniqueID} net={state.Net.GridID}"
+                        + $" coolingWatts={coolingShare} heatRequested={heatToAdd} accepted={accepted}"
+                        + $" usedBefore={usedBefore} usedAfter={state.Net.StorageUsed}");
+            }
         }
     }
 

@@ -3,6 +3,23 @@ using SaveOurShip2;
 
 namespace Core_SK_Patch;
 
+[HarmonyPatch(typeof(Alert_CoolingAlerts), "coolers", MethodType.Getter)]
+internal static class RimatomicsSOS2CoolingAlertPatch
+{
+    [HarmonyPrepare]
+    private static bool Prepare() => ModsConfig.IsActive("dubwise.rimatomics") &&
+        ModsConfig.IsActive("kentington.saveourship2");
+
+    [HarmonyPostfix]
+    private static void Postfix(ref IEnumerable<CoolingSystem> __result)
+    {
+        // The native alert checks each cooler against half its nominal capacity,
+        // so intentionally switched-off backup coolers remain culprits without this filter.
+        __result = __result.Where(cooler =>
+            !RimatomicsSOS2HeatBridgeRuntime.HasSufficientBridgeCooling(cooler));
+    }
+}
+
 [HarmonyPatch(typeof(UniversalPipeMapComp), nameof(UniversalPipeMapComp.MapComponentTick))]
 internal static class RimatomicsSOS2HeatBridgeMapTickPatch
 {

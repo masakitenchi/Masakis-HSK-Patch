@@ -7,6 +7,7 @@ public sealed class RimatomicsSOS2HeatBridgeDef : Def
     public List<ThingDef> bridgeThingDefs = new();
     public List<RimatomicsSOS2SinkMapping> sinkMappings = new();
     public float throttleStartRatio = 0.8f;
+    public float targetCoolingRatio = 0.9f;
     public int ventIntervalTicks = 120;
     public int refreshIntervalTicks = 60;
     public bool spaceOnly = true;
@@ -43,6 +44,8 @@ public sealed class RimatomicsSOS2HeatBridgeDef : Def
             yield return $"{defName} has no sinkMappings";
         if (throttleStartRatio < 0f || throttleStartRatio >= 1f)
             yield return $"{defName} throttleStartRatio must be in [0, 1)";
+        if (!(targetCoolingRatio > 0f && targetCoolingRatio <= 1f))
+            yield return $"{defName} targetCoolingRatio must be in (0, 1]";
         if (ventIntervalTicks <= 0)
             yield return $"{defName} ventIntervalTicks must be positive";
         if (refreshIntervalTicks <= 0)

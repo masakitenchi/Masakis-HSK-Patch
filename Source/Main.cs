@@ -213,6 +213,9 @@ public class Main : Mod
             if (assembly != null)
             {
                 Content.assemblies.loadedAssemblies.Add(assembly);
+                // Mod discovery already cached the type list before this constructor ran.
+                // Include dynamically loaded Def subclasses in the subsequent database registration.
+                GenTypes.ClearCache();
                 sb.AppendLine(" - " + assembly.FullName);
                 return true;
             }

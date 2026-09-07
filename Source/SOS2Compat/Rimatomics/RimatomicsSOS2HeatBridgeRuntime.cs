@@ -13,7 +13,14 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
     internal static RimatomicsSOS2HeatBridgeDef Config =>
         DefDatabase<RimatomicsSOS2HeatBridgeDef>.GetNamedSilentFail(BridgeDefName);
 
-    internal static void Process(UniversalPipeMapComp pipeMap)
+    // Consumer refreshes may run more than once per tick, but never inject heat.
+    internal static void RefreshBeforeConsumer(Turbine turbine)
+    {
+        if (turbine?.Map != null)
+            Process(turbine.Map.GetComponent<MapComponent_Rimatomics>(), false);
+    }
+
+    internal static void Process(UniversalPipeMapComp pipeMap, bool injectHeat = true)
     {
         RimatomicsSOS2HeatBridgeDef config = Config;
         Map map = pipeMap?.map;
@@ -25,8 +32,10 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
         if (cache.ShouldRefresh(pipeMap, ticksGame, config.refreshIntervalTicks))
             cache.Rebuild(pipeMap, config, ticksGame);
 
+        bool transfer = injectHeat && cache.LastInjectionTick != ticksGame;
+        if (transfer) cache.LastInjectionTick = ticksGame;
         foreach (BridgeGroup group in cache.Groups)
-            ProcessGroup(group, config);
+            ProcessGroup(group, config, transfer);
     }
 
     internal static float GetAvailableCoolingWatts(ShipHeatNet heatNet)
@@ -62,7 +71,7 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
                 (HeatNetState.Create(heatNet, config)?.AvailableCoolingWatts ?? 0f) > 0f));
     }
 
-    private static void ProcessGroup(BridgeGroup group, RimatomicsSOS2HeatBridgeDef config)
+    private static void ProcessGroup(BridgeGroup group, RimatomicsSOS2HeatBridgeDef config, bool injectHeat)
     {
         List<HeatNetState> heatStates = group.HeatNets
             .Where(heatNet => group.TryGetConnectedInjector(heatNet, config, out _))
@@ -102,7 +111,7 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
             totalBridgeUsed += bridgeHeatWatts;
         }
 
-        if (totalBridgeUsed <= 0f || totalBridgeCapacity <= 0f)
+        if (!injectHeat || totalBridgeUsed <= 0f || totalBridgeCapacity <= 0f)
             return;
 
         foreach (HeatNetState state in heatStates)
@@ -125,10 +134,14 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
 
         private UniversalPipeMapComp pipeMap;
         private int lastRefreshTick = int.MinValue;
+        private BasePipeNet[] pipeNetsSnapshot;
+        internal int LastInjectionTick = int.MinValue;
 
         internal bool ShouldRefresh(UniversalPipeMapComp currentPipeMap, int ticksGame, int refreshIntervalTicks)
         {
             return pipeMap != currentPipeMap || lastRefreshTick == int.MinValue ||
+                currentPipeMap.PipeNets == null || pipeNetsSnapshot == null ||
+                !pipeNetsSnapshot.SequenceEqual(currentPipeMap.PipeNets) ||
                 ticksGame - lastRefreshTick >= refreshIntervalTicks;
         }
 
@@ -138,6 +151,8 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
             int ticksGame)
         {
             pipeMap = currentPipeMap;
+            // Copy identities: rebuilding can replace entries without replacing the array.
+            pipeNetsSnapshot = currentPipeMap.PipeNets?.ToArray();
             lastRefreshTick = ticksGame;
             Groups.Clear();
 

@@ -85,7 +85,7 @@ public class Main : Mod
         sb.AppendLine(" - Loading Compat dlls:");
         foreach (var mod in CompatAssemblies)
         {
-            if (ModsConfig.IsActive(mod.Key))
+            if ((ModLister.GetActiveModWithIdentifier(mod.Key, ignorePostfix: true) != null))
             {
                 if (TryLoadCompatAssembly(mod.Value, out var assembly))
                 {

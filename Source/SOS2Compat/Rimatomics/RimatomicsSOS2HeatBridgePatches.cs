@@ -7,8 +7,8 @@ namespace Core_SK_Patch;
 internal static class RimatomicsSOS2CoolingAlertPatch
 {
     [HarmonyPrepare]
-    private static bool Prepare() => ModsConfig.IsActive("dubwise.rimatomics") &&
-        ModsConfig.IsActive("kentington.saveourship2");
+    private static bool Prepare() => (ModLister.GetActiveModWithIdentifier("dubwise.rimatomics", ignorePostfix: true) != null) &&
+        (ModLister.GetActiveModWithIdentifier("kentington.saveourship2", ignorePostfix: true) != null);
 
     [HarmonyPostfix]
     private static void Postfix(ref IEnumerable<CoolingSystem> __result)
@@ -26,8 +26,8 @@ internal static class RimatomicsSOS2HeatBridgeMapTickPatch
     [HarmonyPrepare]
     private static bool Prepare()
     {
-        return ModsConfig.IsActive("dubwise.rimatomics") &&
-            ModsConfig.IsActive("kentington.saveourship2");
+        return (ModLister.GetActiveModWithIdentifier("dubwise.rimatomics", ignorePostfix: true) != null) &&
+            (ModLister.GetActiveModWithIdentifier("kentington.saveourship2", ignorePostfix: true) != null);
     }
 
     [HarmonyPostfix]
@@ -43,8 +43,8 @@ internal static class RimatomicsSOS2HeatBridgeInspectPatch
     [HarmonyPrepare]
     private static bool Prepare()
     {
-        return ModsConfig.IsActive("dubwise.rimatomics") &&
-            ModsConfig.IsActive("kentington.saveourship2");
+        return (ModLister.GetActiveModWithIdentifier("dubwise.rimatomics", ignorePostfix: true) != null) &&
+            (ModLister.GetActiveModWithIdentifier("kentington.saveourship2", ignorePostfix: true) != null);
     }
 
     [HarmonyPostfix]

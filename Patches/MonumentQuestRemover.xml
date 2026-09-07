@@ -3,6 +3,7 @@
     <Operation Class="PatchOperationFindMod">
         <mods>
             <li>HMC Nobility Expanded</li>
+            <li>Simple Monument Quest</li>
         </mods>
         <nomatch Class="PatchOperationFindMod">
             <mods>

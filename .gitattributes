@@ -65,7 +65,6 @@
 # Auto detect text files and perform LF normalization
 Source export-ignore
 .gitattributes export-ignore
-LICENCE export-ignore
 README.md export-ignore
 CAIIncidentDiagnostics export-ignore
 BuildTest export-ignore

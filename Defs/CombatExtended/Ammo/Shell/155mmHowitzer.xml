@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<CombatExtended.AmmoCategoryDef>
 		<defName>HSKAntimatter</defName>
@@ -7,7 +7,6 @@
 		<description>An antimatter-filled shell that annihilates matter at the point of impact.</description>
 		<advanced>true</advanced>
 	</CombatExtended.AmmoCategoryDef>
-
 	<!-- ==================== Ammo ========================== -->
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="155mmHowitzerShellBase">
 		<defName>Ammo_155mmHowitzerShell_AM</defName>
@@ -23,7 +22,6 @@
 		<ammoClass>HSKAntimatter</ammoClass>
 		<detonateProjectile>Bullet_155mmHowitzerShell_AM</detonateProjectile>
 	</ThingDef>
-	
 	<!-- ================== Projectiles ================== -->
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Base155mmHowitzerShell">
 		<defName>Bullet_155mmHowitzerShell_AM</defName>
@@ -47,7 +45,6 @@
 			<ai_IsIncendiary>true</ai_IsIncendiary>
 		</projectile>
 	</ThingDef>
-	
 	<!-- ==================== Recipes ========================== -->
 	<RecipeDef ParentName="AmmoRecipeBase">
 		<defName>MakeAmmo_155mmHowitzerShell_AM</defName>

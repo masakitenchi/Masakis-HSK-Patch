@@ -1,112 +1,139 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-	<Operation Class="PatchOperationFindMod">
-		<mods>
-			<li>Save Our Ship 2</li>
-		</mods>
-		<match Class="PatchOperationConditional">
-			<!-- SOS2 1.6 uses Vehicle Framework build Defs. -->
-			<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Personal_Blueprint"]</xpath>
-			<match Class="PatchOperationSequence">
-				<operations>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Personal_Blueprint"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true">
-								<Wire>60</Wire>
-								<ComponentSpacer>24</ComponentSpacer>
-								<ReinforcedGlass>30</ReinforcedGlass>
-								<ElectronicComponents>12</ElectronicComponents>
-								<Microchips>3</Microchips>
-							</costList>
-						</value>
-					</li>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Standard_Blueprint"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true">
-								<Wire>100</Wire>
-								<ComponentSpacer>24</ComponentSpacer>
-								<ReinforcedGlass>80</ReinforcedGlass>
-								<ElectronicComponents>8</ElectronicComponents>
-								<Microchips>3</Microchips>
-							</costList>
-						</value>
-					</li>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Heavy_Blueprint"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true">
-								<Wire>130</Wire>
-								<ComponentSpacer>32</ComponentSpacer>
-								<ReinforcedGlass>80</ReinforcedGlass>
-								<ElectronicComponents>10</ElectronicComponents>
-								<Microchips>3</Microchips>
-							</costList>
-						</value>
-					</li>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Superheavy_Blueprint"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true">
-								<Wire>220</Wire>
-								<ComponentSpacer>60</ComponentSpacer>
-								<ReinforcedGlass>150</ReinforcedGlass>
-								<ElectronicComponents>20</ElectronicComponents>
-								<Microchips>5</Microchips>
-							</costList>
-						</value>
-					</li>
-					<!-- ArchitectSense stores Def names as strings; update only for the VF branch. -->
-					<li Class="PatchOperationRemove">
-						<xpath>Defs/ArchitectSense.DesignationSubCategoryDef[defName="SubCategory_Bay"]/defNames/li[text()="PersonalShuttle" or text()="CargoShuttle" or text()="HeavyShuttle" or text()="DropshipShuttle"]</xpath>
-					</li>
-					<li Class="PatchOperationRemove">
-						<xpath>Defs/ArchitectSense.DesignationSubCategoryDef[defName="SubCategory_ShipCoolingI"]/defNames/li[text()="ShipInside_PassiveCoolerAdvanced" or text()="ShipInside_PassiveCoolerMechanoid" or text()="ShipInside_PassiveCoolerArchotech"]</xpath>
-					</li>
-					<li Class="PatchOperationRemove">
-						<xpath>Defs/ArchitectSense.DesignationSubCategoryDef[defName="SubCategory_ShipCommand"]/defNames/li[text()="ShipPilotSeat"]</xpath>
-					</li>
-					<!-- VehicleBuildDefs remain in VF's VF_Vehicles designation category. -->
-				</operations>
-			</match>
-			<!-- Legacy SOS2 branch retained for RimWorld 1.4/1.5. -->
-			<nomatch Class="PatchOperationSequence">
-				<operations>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/ThingDef[defName="PersonalShuttle"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true"><Wire>60</Wire><ComponentSpacer>24</ComponentSpacer><ReinforcedGlass>30</ReinforcedGlass><ElectronicComponents>12</ElectronicComponents><Microchips>3</Microchips></costList>
-							<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
-							<costStuffCount>200</costStuffCount>
-						</value>
-					</li>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/ThingDef[defName="CargoShuttle"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true"><Wire>100</Wire><ComponentSpacer>24</ComponentSpacer><ReinforcedGlass>80</ReinforcedGlass><ElectronicComponents>8</ElectronicComponents><Microchips>3</Microchips></costList>
-							<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
-							<costStuffCount>450</costStuffCount>
-						</value>
-					</li>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/ThingDef[defName="HeavyShuttle"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true"><Wire>130</Wire><ComponentSpacer>32</ComponentSpacer><ReinforcedGlass>80</ReinforcedGlass><ElectronicComponents>10</ElectronicComponents><Microchips>3</Microchips></costList>
-							<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
-							<costStuffCount>600</costStuffCount>
-						</value>
-					</li>
-					<li Class="SK.PatchOperationReplaceExtended">
-						<xpath>Defs/ThingDef[defName="DropshipShuttle"]</xpath>
-						<value Merge="true">
-							<costList DeepReplace="true"><Wire>220</Wire><ComponentSpacer>60</ComponentSpacer><ReinforcedGlass>150</ReinforcedGlass><ElectronicComponents>20</ElectronicComponents><Microchips>5</Microchips></costList>
-							<stuffCategories DeepReplace="true"><li>RuggedMetallic</li></stuffCategories>
-							<costStuffCount>1000</costStuffCount>
-						</value>
-					</li>
-				</operations>
-			</nomatch>
+	<Operation Class="PatchOperationConditional">
+		<!-- SOS2 1.6 uses Vehicle Framework build Defs. -->
+		<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Personal_Blueprint"]</xpath>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Personal_Blueprint"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>60</Wire>
+							<ComponentSpacer>24</ComponentSpacer>
+							<ReinforcedGlass>30</ReinforcedGlass>
+							<ElectronicComponents>12</ElectronicComponents>
+							<Microchips>3</Microchips>
+						</costList>
+					</value>
+				</li>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Standard_Blueprint"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>100</Wire>
+							<ComponentSpacer>24</ComponentSpacer>
+							<ReinforcedGlass>80</ReinforcedGlass>
+							<ElectronicComponents>8</ElectronicComponents>
+							<Microchips>3</Microchips>
+						</costList>
+					</value>
+				</li>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Heavy_Blueprint"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>130</Wire>
+							<ComponentSpacer>32</ComponentSpacer>
+							<ReinforcedGlass>80</ReinforcedGlass>
+							<ElectronicComponents>10</ElectronicComponents>
+							<Microchips>3</Microchips>
+						</costList>
+					</value>
+				</li>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/Vehicles.VehicleBuildDef[defName="SoS2_Shuttle_Superheavy_Blueprint"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>220</Wire>
+							<ComponentSpacer>60</ComponentSpacer>
+							<ReinforcedGlass>150</ReinforcedGlass>
+							<ElectronicComponents>20</ElectronicComponents>
+							<Microchips>5</Microchips>
+						</costList>
+					</value>
+				</li>
+				<!-- ArchitectSense stores Def names as strings; update only for the VF branch. -->
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ArchitectSense.DesignationSubCategoryDef[defName="SubCategory_Bay"]/defNames/li[text()="PersonalShuttle" or text()="CargoShuttle" or text()="HeavyShuttle" or text()="DropshipShuttle"]</xpath>
+				</li>
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ArchitectSense.DesignationSubCategoryDef[defName="SubCategory_ShipCoolingI"]/defNames/li[text()="ShipInside_PassiveCoolerAdvanced" or text()="ShipInside_PassiveCoolerMechanoid" or text()="ShipInside_PassiveCoolerArchotech"]</xpath>
+				</li>
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ArchitectSense.DesignationSubCategoryDef[defName="SubCategory_ShipCommand"]/defNames/li[text()="ShipPilotSeat"]</xpath>
+				</li>
+				<!-- VehicleBuildDefs remain in VF's VF_Vehicles designation category. -->
+			</operations>
 		</match>
+		<!-- Legacy SOS2 branch retained for RimWorld 1.4/1.5. -->
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="PersonalShuttle"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>60</Wire>
+							<ComponentSpacer>24</ComponentSpacer>
+							<ReinforcedGlass>30</ReinforcedGlass>
+							<ElectronicComponents>12</ElectronicComponents>
+							<Microchips>3</Microchips>
+						</costList>
+						<stuffCategories DeepReplace="true">
+							<li>RuggedMetallic</li>
+						</stuffCategories>
+						<costStuffCount>200</costStuffCount>
+					</value>
+				</li>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="CargoShuttle"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>100</Wire>
+							<ComponentSpacer>24</ComponentSpacer>
+							<ReinforcedGlass>80</ReinforcedGlass>
+							<ElectronicComponents>8</ElectronicComponents>
+							<Microchips>3</Microchips>
+						</costList>
+						<stuffCategories DeepReplace="true">
+							<li>RuggedMetallic</li>
+						</stuffCategories>
+						<costStuffCount>450</costStuffCount>
+					</value>
+				</li>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="HeavyShuttle"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>130</Wire>
+							<ComponentSpacer>32</ComponentSpacer>
+							<ReinforcedGlass>80</ReinforcedGlass>
+							<ElectronicComponents>10</ElectronicComponents>
+							<Microchips>3</Microchips>
+						</costList>
+						<stuffCategories DeepReplace="true">
+							<li>RuggedMetallic</li>
+						</stuffCategories>
+						<costStuffCount>600</costStuffCount>
+					</value>
+				</li>
+				<li Class="SK.PatchOperationReplaceExtended">
+					<xpath>Defs/ThingDef[defName="DropshipShuttle"]</xpath>
+					<value Merge="true">
+						<costList DeepReplace="true">
+							<Wire>220</Wire>
+							<ComponentSpacer>60</ComponentSpacer>
+							<ReinforcedGlass>150</ReinforcedGlass>
+							<ElectronicComponents>20</ElectronicComponents>
+							<Microchips>5</Microchips>
+						</costList>
+						<stuffCategories DeepReplace="true">
+							<li>RuggedMetallic</li>
+						</stuffCategories>
+						<costStuffCount>1000</costStuffCount>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
 	</Operation>
 </Patch>

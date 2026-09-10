@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<SpecialThingFilterDef>
 		<defName>CSP_AllowMealSimple</defName>
 		<label>allow simple meal</label>
@@ -10,7 +9,6 @@
 		<saveKey>allowMealSimple</saveKey>
 		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealSimple</workerClass>
 	</SpecialThingFilterDef>
-
 	<SpecialThingFilterDef>
 		<defName>CSP_AllowMealFine</defName>
 		<label>allow fine meal</label>
@@ -20,7 +18,6 @@
 		<saveKey>allowMealFine</saveKey>
 		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealFine</workerClass>
 	</SpecialThingFilterDef>
-
 	<SpecialThingFilterDef>
 		<defName>CSP_AllowMealLavish</defName>
 		<label>allow lavish meal</label>
@@ -30,7 +27,6 @@
 		<saveKey>allowMealLavish</saveKey>
 		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealLavish</workerClass>
 	</SpecialThingFilterDef>
-
 	<SpecialThingFilterDef>
 		<defName>CSP_AllowMeatRaw</defName>
 		<label>allow raw meat animal</label>
@@ -40,7 +36,6 @@
 		<saveKey>allowMeatRaw</saveKey>
 		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_RawMeat</workerClass>
 	</SpecialThingFilterDef>
-	
 	<SpecialThingFilterDef>
 		<defName>CSP_AllowMeatPrime</defName>
 		<label>allow prime meat animal</label>
@@ -50,7 +45,6 @@
 		<saveKey>allowMeatPrime</saveKey>
 		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_PrimeMeat</workerClass>
 	</SpecialThingFilterDef>
-	
 	<!-- <SpecialThingFilterDef>
 		<defName>CSP_AllowMeatFish</defName>
 		<label>allow fish meat animal</label>
@@ -60,5 +54,4 @@
 		<saveKey>allowMeatFish</saveKey>
 		<workerClass>Core_SK_Patch.SpecialThingFilterWorker_MealLavish</workerClass>
 	</SpecialThingFilterDef> -->
-
 </Defs>

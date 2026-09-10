@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
 	<CoreSK_EnableBulkRecipe>Enable bulk recipes</CoreSK_EnableBulkRecipe>
 	<CoreSK_EnableBulkRecipeTip>Generate bulk variants for patched recipes. Requires a restart.</CoreSK_EnableBulkRecipeTip>
 	<CoreSK_InfestationPreventionRadius>Deep-drill infestation prevention radius: {0}</CoreSK_InfestationPreventionRadius>
@@ -12,5 +11,4 @@
 	<CoreSK_LogAllPatchOperations>Log all matched patch operations</CoreSK_LogAllPatchOperations>
 	<CoreSK_LogAllPatchOperationsTip>After this is enabled and the game is restarted, the setting should turn itself off automatically.</CoreSK_LogAllPatchOperationsTip>
 	<CoreSK_ErrorChecks>Debug only: check duplicate comps and other errors</CoreSK_ErrorChecks>
-
 </LanguageData>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<CoreSK_RimatomicsSOS2BridgeActive>Rimatomics cooling bridge: {0} kW available</CoreSK_RimatomicsSOS2BridgeActive>
 	<CoreSK_RimatomicsSOS2BridgeDisconnected>Rimatomics cooling bridge: disconnected</CoreSK_RimatomicsSOS2BridgeDisconnected>

@@ -7,16 +7,13 @@
 			<li MayRequire="krkr.rule56" Class="CombatAI.Comps.CompProperties_Statistics" />
 		</value>
 	</Operation>
-
 	<Operation Class="PatchOperationConditional">
 		<xpath>Defs/CombatAI.RaidTargetCollectionDef</xpath>
 		<match Class="PatchOperationSequence">
 			<operations>
-
 				<li Class="PatchOperationRemove">
 					<xpath>Defs/CombatAI.RaidTargetCollectionDef[defName="CombatAI_RT_Rimefeller"]/targets/li[text()="SynthyleneRefiner" or text()="SynthamideRefiner"]</xpath>
 				</li>
-
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/CombatAI.RaidTargetCollectionDef[defName="CombatAI_RT_Rimefeller"]/targets</xpath>
 					<value>
@@ -31,5 +28,4 @@
 			</operations>
 		</match>
 	</Operation>
-
 </Patch>

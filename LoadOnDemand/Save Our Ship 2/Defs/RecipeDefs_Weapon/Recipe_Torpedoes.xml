@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<RecipeDef Name="Base_TorpedoRecipe" Abstract="True">
 		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>
@@ -70,7 +69,6 @@
 			<ShipTorpedo_HighExplosive>1</ShipTorpedo_HighExplosive>
 		</products>
 	</RecipeDef>
-
 	<RecipeDef ParentName="Base_TorpedoRecipe">
 		<defName>MakeTorpedo_EMP</defName>
 		<label>make EMP torpedo</label>
@@ -124,7 +122,6 @@
 			<ShipTorpedo_EMP>1</ShipTorpedo_EMP>
 		</products>
 	</RecipeDef>
-
 	<RecipeDef ParentName="Base_TorpedoRecipe">
 		<defName>MakeTorpedo_AM</defName>
 		<label>make antimatter torpedo</label>
@@ -178,5 +175,4 @@
 			<ShipTorpedo_Antimatter>1</ShipTorpedo_Antimatter>
 		</products>
 	</RecipeDef>
-
 </Defs>

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[@ParentName="WorkTable" and comps/li[@Class="CompProperties_Power"]]/comps</xpath>
 		<value>
@@ -16,7 +15,6 @@
 			</li>
 		</value>
 	</Operation>
-
 	<Operation Class="PatchOperationAddModExtension">
 		<xpath>Defs/ThingDef[defName="EngineLight"]</xpath>
 		<value>

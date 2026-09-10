@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
 	<Operation Class="PatchOperationAddModExtension">
 		<xpath>Defs/RecipeDef[defName="MakeMildSteel"]</xpath>
 		<value>
@@ -11,7 +10,6 @@
 			</li>
 		</value>
 	</Operation>
-
 	<Operation Class="PatchOperationAddModExtension">
 		<xpath>Defs/RecipeDef[defName="SmeltNativeGold_Basic"]</xpath>
 		<value>

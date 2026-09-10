@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<RecipeDef>
 		<defName>Make_ExoticParticle</defName>
 		<label>Make Exotic Particle x10</label>

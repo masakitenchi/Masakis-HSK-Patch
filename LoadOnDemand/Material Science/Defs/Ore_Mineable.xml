@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef ParentName="RockBase">
 		<defName>MineableSphalerite</defName>
@@ -25,7 +25,6 @@
 			</mineableScatterLumpSizeRange>
 		</building>
 	</ThingDef>
-
 	<ThingDef ParentName="RockBase">
 		<defName>MineableQuartz</defName>
 		<label>Quartz Deposits</label>

@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
 	<Operation Class="PatchOperationSequence">
 		<operations>
-
 			<!-- Original Patch -->
 			<!-- <li Class="PatchOperationReplace">
 				<xpath>Defs/ThingDef[defName="Shell_AntigrainWarhead"]</xpath>
@@ -29,27 +28,21 @@
 					</recipeMaker>
 				</value>
 			</li> -->
-
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[defName="Shell_AntigrainWarhead"]/costList</xpath>
 			</li>
-
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[defName="Shell_AntigrainWarhead"]/recipeMaker</xpath>
 			</li>
-
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[@Name="ShipTorpedoBase"]/recipeMaker</xpath>
 			</li>
-
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[@ParentName="ShipTorpedoBase" and contains(defName,'ShipTorpedo_')]/recipeMaker</xpath>
 			</li>
-
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[@ParentName="ShipTorpedoBase" and contains(defName,'ShipTorpedo_')]/costList</xpath>
 			</li>
-
 			<!-- Adjust EMP Torpedo's DamageBase, otherwise it's nothing more than useless-->
 			<li Class="SK.PatchOperationReplaceExtended">
 				<xpath>Defs/ThingDef[defName="Bullet_Torpedo_EMP"]</xpath>

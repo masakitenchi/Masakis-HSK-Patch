@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
 	<!-- Loaded only for SOS2 on RimWorld 1.6 by LoadFolders.xml.
 	     Select concrete Defs: ArmorSpacerBase also contains unsealed equipment.
 	     Match SOS2's 75% body / 25% helmet decompression split.
 	     Helmets supply oxygen; body armor supplies tiered EVA mobility.
 	     Keep Odyssey VacuumResistance and all other equipment stats unchanged. -->
-
 	<!-- Sealed body armor, including HSK's replacements for vanilla armor. -->
 	<Operation Class="SK.PatchOperationReplaceExtended">
 		<xpath>Defs/ThingDef[
@@ -37,11 +36,12 @@
 				<VacuumSpeedMultiplier>2</VacuumSpeedMultiplier>
 			</equippedStatOffsets>
 			<comps Merge="true">
-				<li><compClass>SaveOurShip2.CompEVA</compClass></li>
+				<li>
+					<compClass>SaveOurShip2.CompEVA</compClass>
+				</li>
 			</comps>
 		</value>
 	</Operation>
-
 	<!-- Sealed helmets. HSK gives the phase helmet vacuum protection despite
 	     its UpperHead armor coverage; retain that environmental protection role. -->
 	<Operation Class="SK.PatchOperationReplaceExtended">
@@ -75,11 +75,12 @@
 				<VacuumSpeedMultiplier>0</VacuumSpeedMultiplier>
 			</equippedStatOffsets>
 			<comps Merge="true">
-				<li><compClass>SaveOurShip2.CompEVA</compClass></li>
+				<li>
+					<compClass>SaveOurShip2.CompEVA</compClass>
+				</li>
 			</comps>
 		</value>
 	</Operation>
-
 	<!-- Mobile power armor and advanced maneuvering suits: base 1 + offset 3. -->
 	<Operation Class="SK.PatchOperationReplaceExtended">
 		<xpath>Defs/ThingDef[defName="Armor_PowerArmorLight" or defName="Armor_PowerArmorMedium"
@@ -90,7 +91,6 @@
 			</equippedStatOffsets>
 		</value>
 	</Operation>
-
 	<!-- Preserve SOS2's jump-pack propulsion for locust armor (base 1 + offset 4). -->
 	<Operation Class="PatchOperationConditional">
 		<xpath>Defs/ThingDef[defName="Apparel_ArmorLocust"]</xpath>
@@ -103,7 +103,6 @@
 			</value>
 		</match>
 	</Operation>
-
 	<!-- Spacer alloy vest: modest mobility only, no sealing, oxygen or EVA comp. -->
 	<Operation Class="SK.PatchOperationReplaceExtended">
 		<xpath>Defs/ThingDef[defName="Armor_AlloyVest"]</xpath>
@@ -113,7 +112,6 @@
 			</equippedStatOffsets>
 		</value>
 	</Operation>
-
 	<!-- Deliberately excluded: cloaks, coats and hoods;
 	     overalls, jumpsuits and cryptosuits; the open shuttle-pilot helmet.
 	     They receive no SOS2 protection or EVA comp from this patch. -->

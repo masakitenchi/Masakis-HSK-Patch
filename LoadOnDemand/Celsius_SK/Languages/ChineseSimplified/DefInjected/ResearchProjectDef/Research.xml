@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	
 	<CSP_TempOptimizationI.label>温度升级I</CSP_TempOptimizationI.label>
 	<CSP_TempOptimizationI.description>使用未知科技改进工作台的最佳工作温度范围。\n温度下限：-1°C\n温度上限： +1°C</CSP_TempOptimizationI.description>
 	<CSP_TempOptimizationII.label>温度升级II</CSP_TempOptimizationII.label>

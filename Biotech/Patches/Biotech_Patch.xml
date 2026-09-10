@@ -1,20 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
 	<!-- <Operation Class="PatchOperationReplace">
 		<xpath>Defs/StatDef[defName="MechEnergyUsageFactor"]/showIfUndefined</xpath>
 		<value>
 			<showIfUndefined>true</showIfUndefined>
 		</value>
 	</Operation> -->
-
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="Mech_Lifter"]/statBases</xpath>
 		<value>
 			<CarryingCapacity>75</CarryingCapacity>
 		</value>
 	</Operation>
-
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[defName="GrowthVat"]/comps</xpath>
 		<value>
@@ -23,5 +20,4 @@
 			</li>
 		</value>
 	</Operation>
-	
 </Patch>

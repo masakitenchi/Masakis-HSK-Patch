@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<RecipeDef ParentName="GrenadeRecipeBase">
 		<defName>MakeShell_Antimatter</defName>
 		<label>make 81mm Antimatter mortar shells x1</label>
@@ -63,5 +62,4 @@
 		</products>
 		<researchPrerequisite>ArchotechAntimatter</researchPrerequisite>
 	</RecipeDef>
-
 </Defs>

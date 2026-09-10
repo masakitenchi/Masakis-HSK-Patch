@@ -1,44 +1,41 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-  <Core_SK_Patch.PsychicRitualRoleDef_MinimumPsychicSensitivity>
-    <defName>CoreSKP_EradicateCultistsInvoker</defName>
-    <label>invoker</label>
-    <description>The invoker must have at least 200% psychic sensitivity.</description>
-    <allowedCount>1</allowedCount>
-    <canHandleOfferings>true</canHandleOfferings>
-    <showInvocationVfx>true</showInvocationVfx>
-    <allowedConditions>DefaultInvoker</allowedConditions>
-    <minimumPsychicSensitivity>2</minimumPsychicSensitivity>
-  </Core_SK_Patch.PsychicRitualRoleDef_MinimumPsychicSensitivity>
-
-  <Core_SK_Patch.PsychicRitualDef_EradicateCultists>
-    <defName>CoreSKP_EradicateCultists</defName>
-    <label>sever the cult</label>
-    <description>Project a violent counter-resonance through the void. Every cultist who is currently invoking or chanting in a psychic ritual or hate chant will die immediately, and any death refusal they possess will be stripped away before death. Other cultists are unaffected.</description>
-    <researchPrerequisite>AdvancedPsychicRituals</researchPrerequisite>
-    <outcomeDescription>All cultists currently invoking or chanting in a psychic ritual or hate chant will immediately die. Their death refusal will be removed first. Other cultists are unaffected.</outcomeDescription>
-    <hoursUntilOutcome>2</hoursUntilOutcome>
-    <cooldownHours>720</cooldownHours>
-    <invokerRole>CoreSKP_EradicateCultistsInvoker</invokerRole>
-    <chanterRole>ChanterAdvanced</chanterRole>
-    <requiredOffering>
-      <filter>
-        <thingDefs>
-          <li>Bioferrite</li>
-        </thingDefs>
-      </filter>
-      <count>100</count>
-    </requiredOffering>
-    <additionalOffering>
-      <filter>
-        <thingDefs>
-          <li>Shard</li>
-        </thingDefs>
-      </filter>
-      <count>5</count>
-    </additionalOffering>
-    <iconPath>UI/PsychicRituals/PsychicRitual_ImbueDeathRefusal</iconPath>
-  </Core_SK_Patch.PsychicRitualDef_EradicateCultists>
-
+	<Core_SK_Patch.PsychicRitualRoleDef_MinimumPsychicSensitivity>
+		<defName>CoreSKP_EradicateCultistsInvoker</defName>
+		<label>invoker</label>
+		<description>The invoker must have at least 200% psychic sensitivity.</description>
+		<allowedCount>1</allowedCount>
+		<canHandleOfferings>true</canHandleOfferings>
+		<showInvocationVfx>true</showInvocationVfx>
+		<allowedConditions>DefaultInvoker</allowedConditions>
+		<minimumPsychicSensitivity>2</minimumPsychicSensitivity>
+	</Core_SK_Patch.PsychicRitualRoleDef_MinimumPsychicSensitivity>
+	<Core_SK_Patch.PsychicRitualDef_EradicateCultists>
+		<defName>CoreSKP_EradicateCultists</defName>
+		<label>sever the cult</label>
+		<description>Project a violent counter-resonance through the void. Every cultist who is currently invoking or chanting in a psychic ritual or hate chant will die immediately, and any death refusal they possess will be stripped away before death. Other cultists are unaffected.</description>
+		<researchPrerequisite>AdvancedPsychicRituals</researchPrerequisite>
+		<outcomeDescription>All cultists currently invoking or chanting in a psychic ritual or hate chant will immediately die. Their death refusal will be removed first. Other cultists are unaffected.</outcomeDescription>
+		<hoursUntilOutcome>2</hoursUntilOutcome>
+		<cooldownHours>720</cooldownHours>
+		<invokerRole>CoreSKP_EradicateCultistsInvoker</invokerRole>
+		<chanterRole>ChanterAdvanced</chanterRole>
+		<requiredOffering>
+			<filter>
+				<thingDefs>
+					<li>Bioferrite</li>
+				</thingDefs>
+			</filter>
+			<count>100</count>
+		</requiredOffering>
+		<additionalOffering>
+			<filter>
+				<thingDefs>
+					<li>Shard</li>
+				</thingDefs>
+			</filter>
+			<count>5</count>
+		</additionalOffering>
+		<iconPath>UI/PsychicRituals/PsychicRitual_ImbueDeathRefusal</iconPath>
+	</Core_SK_Patch.PsychicRitualDef_EradicateCultists>
 </Defs>

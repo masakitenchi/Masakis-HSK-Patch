@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<RecipeDef>
 		<defName>MakeSilicon_Electric_Bulk</defName>
 		<label>Bulk Make semiconductor material x50</label>
@@ -28,7 +27,7 @@
 				<li>GlassBatch</li>
 			</thingDefs>
 		</fixedIngredientFilter>
-        <recipeUsers>
+		<recipeUsers>
 			<li>GlassworkTable</li>
 		</recipeUsers>
 		<skillRequirements>
@@ -36,7 +35,6 @@
 		</skillRequirements>
 		<workSkill>Crafting</workSkill>
 		<workSkillLearnFactor>0.8</workSkillLearnFactor>
-        <researchPrerequisite>Electronics_D1</researchPrerequisite>
+		<researchPrerequisite>Electronics_D1</researchPrerequisite>
 	</RecipeDef>
-
 </Defs>

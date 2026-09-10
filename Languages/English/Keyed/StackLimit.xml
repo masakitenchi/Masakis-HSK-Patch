@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
 	<CSP_StackLimit>StackLimit</CSP_StackLimit>
 	<CSP_StackLimitDesc>Max item count for a stack of item.</CSP_StackLimitDesc>
 	<CSP_ConversionRate>Nutrition Conversion Rate</CSP_ConversionRate>

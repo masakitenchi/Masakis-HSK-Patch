@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	
 	<ResearchProjectDef ParentName="IndustrialBase">
 		<defName>CSP_MechEnergyReductionI</defName>
 		<label>Mech Energy Optimization I</label>
@@ -23,7 +22,6 @@
 			</li>
 		</researchMods>
 	</ResearchProjectDef>
-
 	<ResearchProjectDef ParentName="HitechBase">
 		<defName>CSP_MechChargerUpgrade</defName>
 		<label>Mech Charger Upgrade</label>
@@ -37,10 +35,9 @@
 		<researchViewY>27.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
-			<li Class="Core_SK_Patch.MechChargerUpgrade"/>
+			<li Class="Core_SK_Patch.MechChargerUpgrade" />
 		</researchMods>
 	</ResearchProjectDef>
-
 	<ResearchProjectDef ParentName="IndustrialBase">
 		<defName>CSP_MechCarryBulkUpgrade</defName>
 		<label>Mech Carry Bulk Upgrade</label>

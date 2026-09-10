@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
 	<Operation Class="PatchOperationAttributeSet">
 		<xpath>Defs/ThingDef[@Name="BasePokerSoldier" or 
 													defName="RA_Obsession" or
@@ -12,7 +11,6 @@
 		<attribute>ParentName</attribute>
 		<value>SK_BasePawn</value>
 	</Operation>
-
 	<Operation Class="PatchOperationRemove">
 		<xpath>Defs/ThingDef[@Name="BasePokerSoldier" or 
 													defName="RA_Obsession" or

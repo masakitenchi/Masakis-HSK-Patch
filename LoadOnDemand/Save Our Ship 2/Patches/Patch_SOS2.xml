@@ -1,43 +1,22 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-	<Operation Class="PatchOperationFindMod">
-		<mods>
-			<li>Save Our Ship 2</li>
-		</mods>
-		<match Class="PatchOperationSequence">
-			<operations>
-
-				<!-- Some Incident shouldn't happen in space-->
-				<li Class="PatchOperationConditional">
-					<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain") and not(allowedBiomes) and not(disallowedBiomes)]</xpath>
-					<match Class="PatchOperationAdd">
-						<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain") and not(allowedBiomes) and not(disallowedBiomes)]</xpath>
-						<value>
-							<disallowedBiomes />
-						</value>
-					</match>
-				</li>
-				<li Class="PatchOperationConditional">
-					<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain") and not(allowedBiomes)]/disallowedBiomes[not(li="OuterSpaceBiome")]</xpath>
-					<match Class="PatchOperationAdd">
-						<xpath>Defs/IncidentDef[(defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain") and not(allowedBiomes)]/disallowedBiomes[not(li="OuterSpaceBiome")]</xpath>
-						<value>
-							<li>OuterSpaceBiome</li>
-						</value>
-					</match>
-				</li>
-
-				<!-- Hologram shouldn't be sensitive to smoke, etc.-->
-				<li Class="PatchOperationConditional">
-					<xpath>Defs/HediffDef[contains(defName,'SoSHologram')]/stages/li/statOffsets[not(SmokeSensitivity)]</xpath>
-					<match Class="PatchOperationAdd">
-						<xpath>Defs/HediffDef[contains(defName,'SoSHologram')]/stages/li/statOffsets[not(SmokeSensitivity)]</xpath>
-						<value>
-							<SmokeSensitivity>-1</SmokeSensitivity>
-						</value>
-					</match>
-				</li>
-			</operations>
+	<!-- Some Incident shouldn't happen in space-->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/IncidentDef[defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="Drought" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain"]</xpath>
+		<value>
+			<disallowedBiomes Merge="True">
+				<li>OuterSpaceBiome</li>
+			</disallowedBiomes>
+		</value>
+	</Operation>
+	<!-- Hologram shouldn't be sensitive to smoke, etc.-->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/HediffDef[contains(defName,'SoSHologram')]/stages/li/statOffsets[not(SmokeSensitivity)]</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[contains(defName,'SoSHologram')]/stages/li/statOffsets[not(SmokeSensitivity)]</xpath>
+			<value>
+				<SmokeSensitivity>-1</SmokeSensitivity>
+			</value>
 		</match>
 	</Operation>
 </Patch>

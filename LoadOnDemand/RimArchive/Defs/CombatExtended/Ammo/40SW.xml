@@ -1,15 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<ThingCategoryDef>
 		<defName>Ammo40SW</defName>
 		<label>.40 SW</label>
 		<parent>AmmoPistols</parent>
 		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
 	</ThingCategoryDef>
-
 	<!-- ==================== AmmoSet ========================== -->
-
 	<CombatExtended.AmmoSetDef>
 		<defName>AmmoSet_40SW</defName>
 		<label>.40 SW</label>
@@ -19,9 +16,7 @@
 			<Ammo_40SW_HP>Bullet_40SW_HP</Ammo_40SW_HP>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
-
 	<!-- ==================== Ammo ========================== -->
-
 	<ThingDef Class="CombatExtended.AmmoDef" Name="40SWBase" ParentName="SmallAmmoBase" Abstract="True">
 		<description>A pistol cartridge designed to match the performance of .38 Special +P in an automatic.</description>
 		<statBases>
@@ -36,7 +31,6 @@
 			<li>Ammo40SW</li>
 		</thingCategories>
 	</ThingDef>
-
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="40SWBase">
 		<defName>Ammo_40SW_FMJ</defName>
 		<label>.40 SW cartridge (FMJ)</label>
@@ -50,7 +44,6 @@
 		<ammoClass>FullMetalJacket</ammoClass>
 		<cookOffProjectile>Bullet_40SW_FMJ</cookOffProjectile>
 	</ThingDef>
-
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="40SWBase">
 		<defName>Ammo_40SW_AP</defName>
 		<label>.40 SW cartridge (AP)</label>
@@ -64,7 +57,6 @@
 		<ammoClass>ArmorPiercing</ammoClass>
 		<cookOffProjectile>Bullet_40SW_AP</cookOffProjectile>
 	</ThingDef>
-
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="40SWBase">
 		<defName>Ammo_40SW_HP</defName>
 		<label>.40 SW cartridge (HP)</label>
@@ -78,9 +70,7 @@
 		<ammoClass>HollowPoint</ammoClass>
 		<cookOffProjectile>Bullet_40SW_HP</cookOffProjectile>
 	</ThingDef>
-
 	<!-- ================== Projectiles ================== -->
-
 	<ThingDef Name="Base40SWBullet" ParentName="SK_BaseBullet" Abstract="true">
 		<graphicData>
 			<texPath>Things/Projectile/Bullet_Small</texPath>
@@ -92,7 +82,6 @@
 			<dropsCasings>true</dropsCasings>
 		</projectile>
 	</ThingDef>
-
 	<ThingDef ParentName="Base40SWBullet">
 		<defName>Bullet_40SW_FMJ</defName>
 		<label>.40 SW bullet (FMJ)</label>
@@ -102,7 +91,6 @@
 			<armorPenetrationBlunt>12.360</armorPenetrationBlunt>
 		</projectile>
 	</ThingDef>
-
 	<ThingDef ParentName="Base40SWBullet">
 		<defName>Bullet_40SW_AP</defName>
 		<label>.40 SW bullet (AP)</label>
@@ -112,7 +100,6 @@
 			<armorPenetrationBlunt>12.360</armorPenetrationBlunt>
 		</projectile>
 	</ThingDef>
-
 	<ThingDef ParentName="Base40SWBullet">
 		<defName>Bullet_40SW_HP</defName>
 		<label>.40 SW bullet (HP)</label>
@@ -122,9 +109,7 @@
 			<armorPenetrationBlunt>12.360</armorPenetrationBlunt>
 		</projectile>
 	</ThingDef>
-
 	<!-- ==================== Recipes ========================== -->
-
 	<RecipeDef ParentName="AmmoRecipeBase">
 		<defName>MakeAmmo_40SW_FMJ</defName>
 		<label>make .40 SW (FMJ) cartridge x500</label>
@@ -150,7 +135,6 @@
 		</products>
 		<workAmount>1800</workAmount>
 	</RecipeDef>
-
 	<RecipeDef ParentName="AmmoRecipeBase">
 		<defName>MakeAmmo_40SW_AP</defName>
 		<label>make .40 SW (AP) cartridge x500</label>
@@ -176,7 +160,6 @@
 		</products>
 		<workAmount>2160</workAmount>
 	</RecipeDef>
-
 	<RecipeDef ParentName="AmmoRecipeBase">
 		<defName>MakeAmmo_40SW_HP</defName>
 		<label>make .40 SW (HP) cartridge x500</label>
@@ -202,5 +185,4 @@
 		</products>
 		<workAmount>1800</workAmount>
 	</RecipeDef>
-
 </Defs>

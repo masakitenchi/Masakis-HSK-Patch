@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
 	<Operation Class="PatchOperationSequence">
 		<operations>
-
 			<!-- Change enemy ship all steel to plasteel-->
 			<li Class="PatchOperationReplace">
 				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[stuff="Steel"]/stuff</xpath>
@@ -10,7 +9,6 @@
 					<stuff>Plasteel</stuff>
 				</value>
 			</li>
-
 			<!-- This is the true shelf in hsk-->
 			<li Class="PatchOperationReplace">
 				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="Shelf"]/shapeOrDef</xpath>
@@ -18,7 +16,6 @@
 					<shapeOrDef>LWM_Pallet</shapeOrDef>
 				</value>
 			</li>
-
 			<!-- Add stuff to stuffable buildings in hsk-->
 			<li Class="PatchOperationAdd">
 				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="Ship_CryptosleepCasket" or shapeOrDef="CryptosleepCasket" or shapeOrDef="ShipTurret_Plasma" or shapeOrDef="ShipTurret_Laser"]</xpath>
@@ -26,14 +23,12 @@
 					<stuff>Plasteel</stuff>
 				</value>
 			</li>
-
 			<li Class="PatchOperationAdd">
 				<xpath>Defs/SaveOurShip2.ShipDef/core[shapeOrDef="ShipPilotSeatMini"]</xpath>
 				<value>
 					<stuff>Plasteel</stuff>
 				</value>
 			</li>
-
 			<!-- Disabled due to some generation error -->
 			<!-- <li Class="PatchOperationReplace">
 				<xpath>Defs/SaveOurShip2.ShipDef/symbolTable/li/value[shapeOrDef="MineableSteel"]/shapeOrDef</xpath>

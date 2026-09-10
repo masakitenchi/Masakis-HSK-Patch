@@ -1,25 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
-    <Operation Class="PatchOperationAttributeSet">
-        <xpath>Defs/FactionDef[defName="Shale"]</xpath>
-        <attribute>ParentName</attribute>
-        <value>SK_HumanFactionBase</value>
-    </Operation>
-
-    <Operation Class="PatchOperationAttributeSet">
-        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]</xpath>
-        <attribute>ParentName</attribute>
-        <value>BaseHumanlikePawn</value>
-    </Operation>
-
-    <Operation Class="PatchOperationAttributeSet">
-        <xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]/race/litterSizeCurve |
+	<Operation Class="PatchOperationAttributeSet">
+		<xpath>Defs/FactionDef[defName="Shale"]</xpath>
+		<attribute>ParentName</attribute>
+		<value>SK_HumanFactionBase</value>
+	</Operation>
+	<Operation Class="PatchOperationAttributeSet">
+		<xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]</xpath>
+		<attribute>ParentName</attribute>
+		<value>BaseHumanlikePawn</value>
+	</Operation>
+	<Operation Class="PatchOperationAttributeSet">
+		<xpath>Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]/race/litterSizeCurve |
             Defs/AlienRace.ThingDef_AlienRace[@Name="StudentThingBase" or defName="RA_Race_Sensei"]/race/lifeStageAges
         </xpath>
-        <attribute>Inherit</attribute>
-        <value>False</value>
-    </Operation>
-
-    
+		<attribute>Inherit</attribute>
+		<value>False</value>
+	</Operation>
 </Patch>

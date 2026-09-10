@@ -34,8 +34,7 @@
 			<downloadUrl>https://github.com/skyarkhangel/Hardcore-SK</downloadUrl>
 		</li>
 	</modDependencies>
-	<loadBefore>
-	</loadBefore>
+	<loadBefore></loadBefore>
 	<loadAfter>
 		<li>skyarkhangel.HSK</li>
 		<li>smashphil.vehicleframework</li>

@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-	
 	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[defName="RottedMush" or defName="RottedMeat"]/comps</xpath> 
+		<xpath>Defs/ThingDef[defName="RottedMush" or defName="RottedMeat"]/comps</xpath>
 		<value>
 			<li>
 				<compClass>Core_SK_Patch.CompAutoForbidden</compClass>

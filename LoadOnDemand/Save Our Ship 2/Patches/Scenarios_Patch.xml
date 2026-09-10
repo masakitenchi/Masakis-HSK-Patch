@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
 	<Operation Class="PatchOperationSequence">
 		<operations>
@@ -6,28 +6,76 @@
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ScenarioDef[defName="SoSDerelict" or defName="SoSDungeon"]/scenario/parts/li[(def="StartingThing_Defined" and (thingDef="Silver" or thingDef="ComponentIndustrial" or thingDef="Gun_BoltActionRifle" or thingDef="Gun_Revolver" or thingDef="Apparel_FlakPants" or thingDef="Apparel_FlakVest" or thingDef="Apparel_AdvancedHelmet" or thingDef="Ammo_303British_FMJ" or thingDef="Ammo_44Magnum_FMJ" or thingDef="Ammo_6x24mmCharged")) or (def="StartingResearch" and project="ShipBasics")]</xpath>
 			</li>
-
 			<li Class="PatchOperationAdd">
 				<xpath>Defs/ScenarioDef[defName="SoSDerelict"]/scenario/parts</xpath>
 				<value>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>TFJ_Tool_Multitool</thingDef><stuff>Plasteel</stuff><count>4</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_MP5Gun</thingDef><count>1</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_PumpShotgun</thingDef><count>1</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>RF_Gun_AT2K</thingDef><count>3</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Ammo_9x19mmPara_FMJ</thingDef><count>600</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Ammo_12Gauge_Buck</thingDef><count>200</count></li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>TFJ_Tool_Multitool</thingDef>
+						<stuff>Plasteel</stuff>
+						<count>4</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Gun_MP5Gun</thingDef>
+						<count>1</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Gun_PumpShotgun</thingDef>
+						<count>1</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>RF_Gun_AT2K</thingDef>
+						<count>3</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Ammo_9x19mmPara_FMJ</thingDef>
+						<count>600</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Ammo_12Gauge_Buck</thingDef>
+						<count>200</count>
+					</li>
 				</value>
 			</li>
-
 			<li Class="PatchOperationAdd">
 				<xpath>Defs/ScenarioDef[defName="SoSDungeon"]/scenario/parts</xpath>
 				<value>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>TFJ_Tool_Multitool</thingDef><stuff>Plasteel</stuff><count>4</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_MP5Gun</thingDef><count>1</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Gun_PumpShotgun</thingDef><count>1</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>RF_Gun_AT2K</thingDef><count>3</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Ammo_9x19mmPara_FMJ</thingDef><count>600</count></li>
-					<li Class="ScenPart_StartingThing_Defined"><def>StartingThing_Defined</def><thingDef>Ammo_12Gauge_Buck</thingDef><count>200</count></li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>TFJ_Tool_Multitool</thingDef>
+						<stuff>Plasteel</stuff>
+						<count>4</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Gun_MP5Gun</thingDef>
+						<count>1</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Gun_PumpShotgun</thingDef>
+						<count>1</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>RF_Gun_AT2K</thingDef>
+						<count>3</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Ammo_9x19mmPara_FMJ</thingDef>
+						<count>600</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Ammo_12Gauge_Buck</thingDef>
+						<count>200</count>
+					</li>
 				</value>
 			</li>
 		</operations>

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
 	<AddOrChangeEngineDesc>Click to add or change engine.</AddOrChangeEngineDesc>
 	<AddEngine>Add engine to this building</AddEngine>
 	<RemoveEngineDesc>Click to remove current installed engine.</RemoveEngineDesc>

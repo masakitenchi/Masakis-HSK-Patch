@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
 	<CoreSK_EnableBulkRecipe>启用批量配方</CoreSK_EnableBulkRecipe>
 	<CoreSK_EnableBulkRecipeTip>为已应用补丁的配方生成批量版本。需要重启游戏。</CoreSK_EnableBulkRecipeTip>
 	<CoreSK_InfestationPreventionRadius>深钻井虫害预防半径：{0}</CoreSK_InfestationPreventionRadius>
@@ -12,5 +11,4 @@
 	<CoreSK_LogAllPatchOperations>记录所有已匹配的补丁操作</CoreSK_LogAllPatchOperations>
 	<CoreSK_LogAllPatchOperationsTip>启用并重启游戏后，此设置应自动关闭。</CoreSK_LogAllPatchOperationsTip>
 	<CoreSK_ErrorChecks>仅调试：检查重复组件及其他错误</CoreSK_ErrorChecks>
-
 </LanguageData>

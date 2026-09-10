@@ -1,215 +1,187 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
-	<Operation Class="PatchOperationFindMod">
-		<mods>
-			<li>Save Our Ship 2</li>
-		</mods>
-		<match Class="PatchOperationSequence">
-			<operations>
-
-				<!-- ========== Archocat ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archocat"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Elephant</useMeatFrom>
-					</value>
-				</li>
-
-				<!-- ========== Archomutt ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archomutt"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Elephant</useMeatFrom>
-					</value>
-				</li>
-
-				<!-- ========== Archostrich ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archostrich"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Elephant</useMeatFrom>
-					</value>
-				</li>
-
-				<!-- ========== Archolope ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archolope"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Elephant</useMeatFrom>
-					</value>
-				</li>
-
-				<!-- ========== Archojerboa ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archojerboa"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Elephant</useMeatFrom>
-					</value>
-				</li>
-
-				<!-- ========== Archotortoise ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archotortoise"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Elephant</useMeatFrom>
-					</value>
-				</li>
-
-				<!-- ========== Archopanda ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archopanda"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Muffalo</useMeatFrom>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archopanda"]/race/leatherDef</xpath>
-					<value>
-						<leatherDef>Leather_Heavy</leatherDef>
-					</value>
-				</li>
-
-				<!-- ========== Archothrumbo ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Archothrumbo"]/race/useMeatFrom</xpath>
-					<value>
-						<useMeatFrom>Muffalo</useMeatFrom>
-					</value>
-				</li>
-
-				<!-- ========== Plant_Meatbush ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="Plant_Meatbush"]/plant/harvestedThingDef</xpath>
-					<value>
-						<harvestedThingDef>Meat_Muffalo</harvestedThingDef>
-					</value>
-				</li>
-
-				<!-- ========== weaponMoney ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/PawnKindDef[defName="SpaceCrew"]/weaponMoney</xpath>
-					<value>
-						<weaponMoney>1300~1500</weaponMoney>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/PawnKindDef[defName="SpaceCrewEVA"]/weaponMoney</xpath>
-					<value>
-						<weaponMoney>1300~1500</weaponMoney>
-					</value>
-				</li>
-
-				<!-- <li Class="PatchOperationReplace">
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- ========== Archocat ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archocat"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Elephant</useMeatFrom>
+				</value>
+			</li>
+			<!-- ========== Archomutt ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archomutt"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Elephant</useMeatFrom>
+				</value>
+			</li>
+			<!-- ========== Archostrich ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archostrich"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Elephant</useMeatFrom>
+				</value>
+			</li>
+			<!-- ========== Archolope ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archolope"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Elephant</useMeatFrom>
+				</value>
+			</li>
+			<!-- ========== Archojerboa ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archojerboa"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Elephant</useMeatFrom>
+				</value>
+			</li>
+			<!-- ========== Archotortoise ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archotortoise"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Elephant</useMeatFrom>
+				</value>
+			</li>
+			<!-- ========== Archopanda ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archopanda"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Muffalo</useMeatFrom>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archopanda"]/race/leatherDef</xpath>
+				<value>
+					<leatherDef>Leather_Heavy</leatherDef>
+				</value>
+			</li>
+			<!-- ========== Archothrumbo ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Archothrumbo"]/race/useMeatFrom</xpath>
+				<value>
+					<useMeatFrom>Muffalo</useMeatFrom>
+				</value>
+			</li>
+			<!-- ========== Plant_Meatbush ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="Plant_Meatbush"]/plant/harvestedThingDef</xpath>
+				<value>
+					<harvestedThingDef>Meat_Muffalo</harvestedThingDef>
+				</value>
+			</li>
+			<!-- ========== weaponMoney ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/PawnKindDef[defName="SpaceCrew"]/weaponMoney</xpath>
+				<value>
+					<weaponMoney>1300~1500</weaponMoney>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/PawnKindDef[defName="SpaceCrewEVA"]/weaponMoney</xpath>
+				<value>
+					<weaponMoney>1300~1500</weaponMoney>
+				</value>
+			</li>
+			<!-- <li Class="PatchOperationReplace">
 					<xpath>Defs/PawnKindDef[defName="SpaceCrewMarine"]/weaponMoney</xpath>
 					<value>
 						<weaponMoney>1500~1800</weaponMoney>
 					</value>
 				</li> -->
-
-				<!-- ========== SoilShip ========== -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/TerrainDef[defName="SoilShip"]/costList</xpath>
-					<value>
-						<costList>
-							<Dirt>40</Dirt>
-							<CrushedStone>20</CrushedStone>
-							<SoftClay>20</SoftClay>
-							<Peat>20</Peat>
-							<SandResource>20</SandResource>
-							<Fertilizer>20</Fertilizer>
-						</costList>
-					</value>
-				</li>
-
-				<li Class="SK.PatchOperationReplaceExtended">
-					<xpath>Defs/TerrainDef[defName="SoilShip"]</xpath>
-					<value Merge="true">
-						<statBases Merge="true">
-							<WorkToBuild>2000</WorkToBuild>
-						</statBases>
-					</value>
-				</li>
-
-				<!-- Remove legacy designator fields only when the current SOS2 branch still defines them. -->
-				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown |
+			<!-- ========== SoilShip ========== -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/TerrainDef[defName="SoilShip"]/costList</xpath>
+				<value>
+					<costList>
+						<Dirt>40</Dirt>
+						<CrushedStone>20</CrushedStone>
+						<SoftClay>20</SoftClay>
+						<Peat>20</Peat>
+						<SandResource>20</SandResource>
+						<Fertilizer>20</Fertilizer>
+					</costList>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/TerrainDef[defName="SoilShip"]</xpath>
+				<value Merge="true">
+					<statBases Merge="true">
+						<WorkToBuild>2000</WorkToBuild>
+					</statBases>
+				</value>
+			</li>
+			<!-- Remove legacy designator fields only when the current SOS2 branch still defines them. -->
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown |
 						Defs/ThingDef[@Name="ShipHardpoint"]/constructEffect |
 						Defs/ThingDef[@Name="ShipHardpoint"]/designatorDropdown |
 						Defs/ThingDef[@Name="BaseShipTorpedoBuilding"]/designatorDropdown |
 						Defs/ThingDef[@Name="ShipHeatsinkBase"]/constructEffect |
 						Defs/ThingDef[@Name="ShipHeatsinkBase"]/designatorDropdown</xpath>
-					<match Class="PatchOperationRemove">
-						<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown |
+				<match Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[@Name="ShipCorner" or @Name="ShipCornerArchotech"]/designatorDropdown |
 							Defs/ThingDef[@Name="ShipHardpoint"]/constructEffect |
 							Defs/ThingDef[@Name="ShipHardpoint"]/designatorDropdown |
 							Defs/ThingDef[@Name="BaseShipTorpedoBuilding"]/designatorDropdown |
 							Defs/ThingDef[@Name="ShipHeatsinkBase"]/constructEffect |
 							Defs/ThingDef[@Name="ShipHeatsinkBase"]/designatorDropdown</xpath>
-					</match>
-				</li>
-
-
-				<!-- Torpedo market values -->
-				<li Class="SK.PatchOperationReplaceExtended">
-					<xpath>Defs/ThingDef[defName="ShipTorpedo_HighExplosive"]</xpath>
-					<value Merge="true">
-						<statBases Merge="true">
-							<MarketValue>2000</MarketValue>
-						</statBases>
-					</value>
-				</li>
-				<li Class="SK.PatchOperationReplaceExtended">
-					<xpath>Defs/ThingDef[defName="ShipTorpedo_EMP"]</xpath>
-					<value Merge="true">
-						<statBases Merge="true">
-							<MarketValue>1500</MarketValue>
-						</statBases>
-					</value>
-				</li>
-
-				<li Class="SK.PatchOperationReplaceExtended">
-					<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]</xpath>
-					<value Merge="true">
-						<statBases Merge="true">
-							<MarketValue>5000</MarketValue>
-						</statBases>
-					</value>
-				</li>
-
-				<!-- Replace their comps to avoid ThingMaker error-->
-				<!-- <li Class="PatchOperationAttributeSet">
-					<xpath>Defs/ThingDef[defName="PersonalShuttle" or 
-						defName="CargoShuttle" or 
-						defName="HeavyShuttle" or 
+				</match>
+			</li>
+			<!-- Torpedo market values -->
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ThingDef[defName="ShipTorpedo_HighExplosive"]</xpath>
+				<value Merge="true">
+					<statBases Merge="true">
+						<MarketValue>2000</MarketValue>
+					</statBases>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ThingDef[defName="ShipTorpedo_EMP"]</xpath>
+				<value Merge="true">
+					<statBases Merge="true">
+						<MarketValue>1500</MarketValue>
+					</statBases>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ThingDef[defName="ShipTorpedo_Antimatter"]</xpath>
+				<value Merge="true">
+					<statBases Merge="true">
+						<MarketValue>5000</MarketValue>
+					</statBases>
+				</value>
+			</li>
+			<!-- Replace their comps to avoid ThingMaker error-->
+			<!-- <li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="PersonalShuttle" or
+						defName="CargoShuttle" or
+						defName="HeavyShuttle" or
 						defName="DropshipShuttle"]/comps/li[@Class="CompProperties_BecomePawn"]</xpath>
 					<attribute>Class</attribute>
 					<value>Core_SK_Patch.CompProperties_BecomePawn</value>
 				</li> -->
-
-				<!-- Only the legacy pawn/building shuttle system needs CompShuttleStuff. -->
-				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace"]</xpath>
-					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
+			<!-- Only the legacy pawn/building shuttle system needs CompShuttleStuff. -->
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="ShuttlePersonalRace"]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
 							defName="ShuttleCargoRace" or
 							defName="ShuttleHeavyRace" or
 							defName="ShuttleDropshipRace"]/comps</xpath>
-						<value>
-							<li>
-								<compClass>Core_SK_Patch.CompShuttleStuff</compClass>
-							</li>
-						</value>
-					</match>
-				</li>
-
-
-				<!-- <li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or 
-						defName="ShuttleCargoRace" or 
-						defName="ShuttleHeavyRace" or 
+					<value>
+						<li>
+							<compClass>Core_SK_Patch.CompShuttleStuff</compClass>
+						</li>
+					</value>
+				</match>
+			</li>
+			<!-- <li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="ShuttlePersonalRace" or
+						defName="ShuttleCargoRace" or
+						defName="ShuttleHeavyRace" or
 						defName="ShuttleDropshipRace"]/comps</xpath>
 					<value>
 						<li>
@@ -217,9 +189,6 @@
 						</li>
 					</value>
 				</li> -->
-
-			</operations>
-		</match>
+		</operations>
 	</Operation>
-
 </Patch>

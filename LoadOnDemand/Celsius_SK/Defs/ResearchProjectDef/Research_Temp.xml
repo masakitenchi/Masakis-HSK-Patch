@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	
 	<ResearchProjectDef ParentName="HitechLabStationBase">
 		<defName>CSP_TempOptimizationI</defName>
 		<label>Temp OptimizationI</label>
@@ -14,10 +13,9 @@
 		<researchViewY>16.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
-			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
+			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange" />
 		</researchMods>
 	</ResearchProjectDef>
-
 	<ResearchProjectDef ParentName="HitechLabStationBase">
 		<defName>CSP_TempOptimizationII</defName>
 		<label>Temp OptimizationII</label>
@@ -31,10 +29,9 @@
 		<researchViewY>16.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
-			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
+			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange" />
 		</researchMods>
 	</ResearchProjectDef>
-
 	<ResearchProjectDef ParentName="HitechLabStationBase">
 		<defName>CSP_TempOptimizationIII</defName>
 		<label>Temp OptimizationIII</label>
@@ -48,8 +45,7 @@
 		<researchViewY>16.00</researchViewY>
 		<tab>Buildings_SK</tab>
 		<researchMods>
-			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange"/>
+			<li Class="Core_SK_Patch.ResearchMod_ExpandOptimalTempRange" />
 		</researchMods>
 	</ResearchProjectDef>
-
 </Defs>

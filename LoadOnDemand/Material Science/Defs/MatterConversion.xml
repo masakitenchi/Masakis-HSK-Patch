@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
 	<RecipeDef>
 		<defName>ConvertToSphalerite</defName>
 		<label>Convert to sphalerite</label>
@@ -35,7 +34,6 @@
 		<workSkillLearnFactor>0.8</workSkillLearnFactor>
 		<researchPrerequisite>Super_matter_E1</researchPrerequisite>
 	</RecipeDef>
-
 	<RecipeDef>
 		<defName>ConvertToTitanomagnetite</defName>
 		<label>Convert to titanomagnetite</label>
@@ -70,8 +68,7 @@
 		<workSkillLearnFactor>0.8</workSkillLearnFactor>
 		<researchPrerequisite>Super_matter_E1</researchPrerequisite>
 	</RecipeDef>
-
-<!-- 	<RecipeDef>
+	<!-- 	<RecipeDef>
 		<defName>CSP_ConvertToCassiterite</defName>
 		<label>Convert to cassiterite ore</label>
 		<description>Convert inorganic matter into cassiterite, the ore of Tin. Produces 50.</description>

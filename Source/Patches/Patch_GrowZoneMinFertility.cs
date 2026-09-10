@@ -5,6 +5,7 @@ namespace Core_SK_Patch;
 
 
 //I could make it search through all sowable plants for a minimum fertility... but 40% should be good enough for most of them
+// 1.5 only as 1.6 integrate this into base HSK
 [HarmonyPatch]
 public static class Patch_GrowZoneMinFertility
 {

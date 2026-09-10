@@ -24,7 +24,8 @@
 		<li IfModActive="vitech.materialsscience">LoadOnDemand/Material Science</li>
 		<li IfModActive="aoba.motorization.engine">LoadOnDemand/Engine Industries</li>
 		<li IfModActive="garwel.celsius.sk">LoadOnDemand/Celsius_SK</li>
-		<li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li>
+		<!-- Functions Fully Integrated Into HSK-->
+		<!-- <li IfModActive="notfood.seedsplease">LoadOnDemand/SeedsPlease</li> -->
 		<li IfModActive="jangodsoul.simplestorage">LoadOnDemand/Simple Storage</li>
 		<li IfModActive="fxz.ratkinanomaly.update">LoadOnDemand/RatKinAnomalyPlus</li>
 		<li IfModActive="ludeon.rimworld.anomaly">LoadOnDemand/Anomaly</li>

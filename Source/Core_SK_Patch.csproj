@@ -51,6 +51,10 @@
     <!-- Fishing and water-body APIs are provided by Odyssey in RimWorld 1.6. -->
     <Compile Remove="Patches\Patch_TerraformWaterFish.cs" />
   </ItemGroup>
+  <ItemGroup Condition="'$(Version)' == '1.6'">
+    <Compile Remove="Patches\Patch_GrowZoneMinfertility.cs" />
+    <Compile Remove="Patches\SpecialDisplayStatsPatch.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="CombatExtended">
       <HintPath>..\..\CombatExtended\Assemblies\CombatExtended.dll</HintPath>

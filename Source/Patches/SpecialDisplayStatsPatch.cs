@@ -1,5 +1,6 @@
 namespace Core_SK_Patch;
 
+// 1.5 Only as this has been integrated into base hsk
 [HarmonyPatch]
 public static class SpecialDisplayStatsPatch
 {

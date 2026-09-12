@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CoreSK_OceanPopulation>鱼群数量：{0} / {1}</CoreSK_OceanPopulation>
+	<CoreSK_OceanRecovery>鱼群恢复：{0} / 天</CoreSK_OceanRecovery>
+	<CoreSK_OceanOffline>设备未运行：钓鱼与恢复暂停</CoreSK_OceanOffline>
+	<CoreSK_OceanRestocking>鱼群休养中，暂不可钓鱼</CoreSK_OceanRestocking>
+	<CoreSK_OceanAllowWork>允许生产钓鱼</CoreSK_OceanAllowWork>
+	<CoreSK_OceanAllowWorkDesc>允许通过驯兽工作安排钓鱼。不影响娱乐钓鱼或鱼群恢复。</CoreSK_OceanAllowWorkDesc>
+	<CoreSK_OceanAllowJoy>允许娱乐钓鱼</CoreSK_OceanAllowJoy>
+	<CoreSK_OceanAllowJoyDesc>允许殖民者在娱乐时间钓鱼。属于冥想类娱乐，同样消耗鱼群并产生渔获。</CoreSK_OceanAllowJoyDesc>
+</LanguageData>

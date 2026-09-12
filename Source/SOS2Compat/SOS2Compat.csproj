@@ -38,6 +38,7 @@
     <Compile Remove="Rimatomics\**" Condition="'$(GameVersion)' != '1.6'" />
     <Compile Remove="Heat\**" Condition="'$(GameVersion)' != '1.6'" />
     <Compile Remove="Combat\**" Condition="'$(GameVersion)' != '1.6'" />
+    <Compile Remove="Ocean\**" Condition="'$(GameVersion)' != '1.6'" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ShipsHaveInsides">

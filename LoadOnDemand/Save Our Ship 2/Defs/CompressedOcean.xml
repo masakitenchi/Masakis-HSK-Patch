@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Optional SOS2 folder + Odyssey guard: no phantom WaterBody or terrain edits. -->
+	<ThingDef ParentName="BuildingBase" MayRequire="ludeon.rimworld.odyssey">
+		<defName>CoreSK_CompressedOcean</defName>
+		<label>compressed ocean</label>
+		<description>A self-contained ocean suspended in a spatial containment field. A little sea, a few fish, and a very expensive excuse to take a break.\n\nOne colonist can fish from the marked interaction cell. Uses animal handling work or recreation and Odyssey fishing stats. Fish stocks recover only while powered, even in space, without natural water or biome restrictions. Switching off or reinstalling preserves the remaining population. Catches are placed beside the fisher for hauling. Requires Odyssey.</description>
+		<thingClass>Core_SK_Patch.Building_CompressedOcean</thingClass>
+		<graphicData>
+			<texPath>Things/Building/CoreSK/CompressedOcean</texPath>
+			<graphicClass>Core_SK_Patch.Graphic_CompressedOcean</graphicClass>
+			<drawSize>(2.2,2.2)</drawSize>
+		</graphicData>
+		<size>(2,2)</size>
+		<rotatable>true</rotatable>
+		<drawerType>RealtimeOnly</drawerType>
+		<!-- Partial cover follows ordinary equipment traversal, not solid-wall rules. -->
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.5</fillPercent>
+		<altitudeLayer>Building</altitudeLayer>
+		<tickerType>Rare</tickerType>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsJoy</li>
+		</thingCategories>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<designationCategory>Joy</designationCategory>
+		<techLevel>Spacer</techLevel>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<researchPrerequisites>
+			<li>ShipBasics</li>
+			<li>Holodeck_Standard</li>
+		</researchPrerequisites>
+		<statBases>
+			<MaxHitPoints>280</MaxHitPoints>
+			<WorkToBuild>24000</WorkToBuild>
+			<Mass>100</Mass>
+			<Flammability>0</Flammability>
+			<Beauty>12</Beauty>
+			<JoyGainFactor>1.2</JoyGainFactor>
+		</statBases>
+		<costList>
+			<Steel>200</Steel>
+			<ReinforcedGlass>30</ReinforcedGlass>
+			<ComponentAdvanced>8</ComponentAdvanced>
+			<Microchips>4</Microchips>
+		</costList>
+		<building>
+			<joyKind>Meditative</joyKind>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1200</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Breakdownable" />
+		</comps>
+		<modExtensions>
+			<li Class="Core_SK_Patch.CompressedOceanProperties">
+				<capacity>120</capacity>
+				<startingPopulation>30</startingPopulation>
+				<regenerationPerDay>24</regenerationPerDay>
+				<minimumPopulation>10</minimumPopulation>
+				<fishingTicks>7500</fishingTicks>
+				<!-- Explicit edible stock: no biome mutation, treasure rolls or pawn spawning. -->
+				<fishTypes>
+					<li>Fish_Salmon</li>
+					<li>Fish_Bass</li>
+					<li>Fish_Tilapia</li>
+					<li>Fish_Cod</li>
+					<li>Fish_Bluefish</li>
+				</fishTypes>
+			</li>
+		</modExtensions>
+	</ThingDef>
+	<JobDef MayRequire="ludeon.rimworld.odyssey">
+		<defName>CoreSK_FishCompressedOcean</defName>
+		<driverClass>Core_SK_Patch.JobDriver_CompressedOcean</driverClass>
+		<reportString>Fishing at TargetA.</reportString>
+		<alwaysShowWeapon>false</alwaysShowWeapon>
+	</JobDef>
+	<JobDef MayRequire="ludeon.rimworld.odyssey">
+		<defName>CoreSK_RelaxCompressedOcean</defName>
+		<driverClass>Core_SK_Patch.JobDriver_CompressedOcean</driverClass>
+		<reportString>Relaxing with a little ocean fishing.</reportString>
+		<alwaysShowWeapon>false</alwaysShowWeapon>
+		<joyKind>Meditative</joyKind>
+		<joyGainRate>1</joyGainRate>
+		<joyMaxParticipants>1</joyMaxParticipants>
+	</JobDef>
+	<WorkGiverDef MayRequire="ludeon.rimworld.odyssey">
+		<defName>CoreSK_FishCompressedOcean</defName>
+		<label>fish at compressed ocean</label>
+		<giverClass>Core_SK_Patch.WorkGiver_CompressedOcean</giverClass>
+		<workType>Handling</workType>
+		<priorityInType>88</priorityInType>
+		<verb>fish at</verb>
+		<gerund>fishing at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	<JoyGiverDef MayRequire="ludeon.rimworld.odyssey">
+		<defName>CoreSK_RelaxCompressedOcean</defName>
+		<giverClass>Core_SK_Patch.JoyGiver_CompressedOcean</giverClass>
+		<baseChance>1</baseChance>
+		<joyKind>Meditative</joyKind>
+		<jobDef>CoreSK_RelaxCompressedOcean</jobDef>
+		<thingDefs>
+			<li>CoreSK_CompressedOcean</li>
+		</thingDefs>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</JoyGiverDef>
+</Defs>

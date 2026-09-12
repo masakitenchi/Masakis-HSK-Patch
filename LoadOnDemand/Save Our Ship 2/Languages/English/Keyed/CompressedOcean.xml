@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CoreSK_OceanPopulation>Fish population: {0} / {1}</CoreSK_OceanPopulation>
+	<CoreSK_OceanRecovery>Population recovery: {0} / day</CoreSK_OceanRecovery>
+	<CoreSK_OceanOffline>Offline: fishing and recovery paused</CoreSK_OceanOffline>
+	<CoreSK_OceanRestocking>Fish population recovering; fishing paused</CoreSK_OceanRestocking>
+	<CoreSK_OceanAllowWork>Allow work fishing</CoreSK_OceanAllowWork>
+	<CoreSK_OceanAllowWorkDesc>Allow fishing through animal handling work. Does not affect recreation fishing or population recovery.</CoreSK_OceanAllowWorkDesc>
+	<CoreSK_OceanAllowJoy>Allow leisure fishing</CoreSK_OceanAllowJoy>
+	<CoreSK_OceanAllowJoyDesc>Allow recreational fishing. Provides meditative recreation, consumes fish population and produces catches.</CoreSK_OceanAllowJoyDesc>
+</LanguageData>

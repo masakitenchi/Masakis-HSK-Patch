@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CoreSK_SOS2LifeSupportAutoWater>SOS2: Life support generates water</CoreSK_SOS2LifeSupportAutoWater>
+  <CoreSK_SOS2LifeSupportAutoWaterTip>Allow the large life support system (Ship_LifeSupport) to generate water without a water source through Dubs Bad Hygiene's SoS2 integration. Uses DBH's existing rate and storage capacity and requires the building to be operational. Disabling stops automatic generation but preserves stored water, plumbing and sewage processing. Does not affect small life support systems. Requires DBH's SoS2 integration. Takes effect immediately.</CoreSK_SOS2LifeSupportAutoWaterTip>
+</LanguageData>

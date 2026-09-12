@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CoreSK_SOS2LifeSupportAutoWater>SOS2：生命支持系统虚空产水</CoreSK_SOS2LifeSupportAutoWater>
+  <CoreSK_SOS2LifeSupportAutoWaterTip>允许大型生命支持系统（Ship_LifeSupport）通过 Dubs Bad Hygiene 的 SoS2 适配，无需水源自动产水。沿用 DBH 原有产量和储水容量，建筑须正常运行。关闭后停止自动产水，保留已有储水、管道连接及污水处理。不影响小型生命支持系统。需要开启 DBH 的 SoS2 适配。修改立即生效。</CoreSK_SOS2LifeSupportAutoWaterTip>
+</LanguageData>

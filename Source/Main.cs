@@ -186,6 +186,9 @@ public class Main : Mod
         ls.CheckboxLabeled("CoreSK_ErrorChecks".Translate(), ref Settings.ErrorChecks);
         ls.CheckboxLabeled("CoreSK_FactionDiscovery_Enable".Translate(), ref Settings.EnableFactionDiscovery, "CoreSK_FactionDiscovery_EnableTip".Translate());
         ls.CheckboxLabeled("CoreSK_AllowTamingDownedAnimals".Translate(), ref Settings.AllowTamingDownedAnimals, "CoreSK_AllowTamingDownedAnimalsTip".Translate());
+        if (ModLister.GetActiveModWithIdentifier("kentington.saveourship2", ignorePostfix: true) != null
+            && AccessTools.TypeByName("DubsBadHygiene.CompWaterStorage") != null)
+            ls.CheckboxLabeled("CoreSK_SOS2LifeSupportAutoWater".Translate(), ref Settings.SOS2LifeSupportAutoWater, "CoreSK_SOS2LifeSupportAutoWaterTip".Translate());
         if (ls.ButtonText("CoreSK_FactionDiscovery_Scan".Translate()))
             FactionDiscoveryUtility.ScanAndPrompt(clearIgnored: true);
         ls.End();

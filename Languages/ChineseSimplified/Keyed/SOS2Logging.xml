@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CoreSK_SuppressSOS2Messages>SOS2：关闭普通日志</CoreSK_SuppressSOS2Messages>
+  <CoreSK_SuppressSOS2MessagesTip>屏蔽 SOS2 程序集内通过 Log.Message 输出的普通日志。保留警告、错误和其他模组日志，不影响游戏内消息。修改立即生效，不会清除已有日志或屏蔽补丁加载前的启动日志。</CoreSK_SuppressSOS2MessagesTip>
+</LanguageData>

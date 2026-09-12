@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CoreSK_SuppressSOS2Messages>SOS2: Suppress informational logs</CoreSK_SuppressSOS2Messages>
+  <CoreSK_SuppressSOS2MessagesTip>Suppress Log.Message calls inside the SOS2 assembly. Preserves warnings, errors, other mods' logs and in-game messages. Takes effect immediately. Does not erase existing logs or suppress startup logs emitted before this patch loads.</CoreSK_SuppressSOS2MessagesTip>
+</LanguageData>

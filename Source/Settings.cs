@@ -12,6 +12,7 @@ public class Settings : ModSettings
     public static bool EnableFactionDiscovery = true;
     public static bool AllowTamingDownedAnimals;
     public static bool SOS2LifeSupportAutoWater = true;
+    public static bool SuppressSOS2Messages;
 
 
     public override void ExposeData()
@@ -26,5 +27,6 @@ public class Settings : ModSettings
         Scribe_Values.Look(ref EnableFactionDiscovery, nameof(EnableFactionDiscovery), true);
         Scribe_Values.Look(ref AllowTamingDownedAnimals, nameof(AllowTamingDownedAnimals), false);
         Scribe_Values.Look(ref SOS2LifeSupportAutoWater, nameof(SOS2LifeSupportAutoWater), true);
+        Scribe_Values.Look(ref SuppressSOS2Messages, nameof(SuppressSOS2Messages), false);
     }
 }

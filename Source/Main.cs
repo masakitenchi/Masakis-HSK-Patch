@@ -189,6 +189,8 @@ public class Main : Mod
         if (ModLister.GetActiveModWithIdentifier("kentington.saveourship2", ignorePostfix: true) != null
             && AccessTools.TypeByName("DubsBadHygiene.CompWaterStorage") != null)
             ls.CheckboxLabeled("CoreSK_SOS2LifeSupportAutoWater".Translate(), ref Settings.SOS2LifeSupportAutoWater, "CoreSK_SOS2LifeSupportAutoWaterTip".Translate());
+        if (ModLister.GetActiveModWithIdentifier("kentington.saveourship2", ignorePostfix: true) != null)
+            ls.CheckboxLabeled("CoreSK_SuppressSOS2Messages".Translate(), ref Settings.SuppressSOS2Messages, "CoreSK_SuppressSOS2MessagesTip".Translate());
         if (ls.ButtonText("CoreSK_FactionDiscovery_Scan".Translate()))
             FactionDiscoveryUtility.ScanAndPrompt(clearIgnored: true);
         ls.End();

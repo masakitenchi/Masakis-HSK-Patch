@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
+	<!-- Bench to ArchotechUplink-->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="HiTechResearchBench"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities[not (li="ArchotechUplink")]</xpath>
+		<value>
+			<li>ArchotechUplink</li>
+		</value>
+	</Operation>
 	<!-- Some Incident shouldn't happen in space-->
 	<Operation Class="SK.PatchOperationReplaceExtended">
 		<xpath>Defs/IncidentDef[defName="Earthquake" or defName="GeoStorm" or defName="SkyFall" or defName="MoonFall" or defName="ToxicWeather" or defName="FleaRaid" or defName="BoulderMassHit" or defName="NuclearIncident" or defName="NuclearFallout" or defName="EclipseFeral" or defName="EclipseMeteorImpact" or defName="BombardmentIncident" or defName="Tornado" or defName="PowerBeamStrikeIncident" or defName="SeismicActivity" or defName="MeteorShower" or defName="RazorRain"]</xpath>

@@ -20,6 +20,12 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
             Process(turbine.Map.GetComponent<MapComponent_Rimatomics>(), false);
     }
 
+    internal static void RefreshAfterHeatRebuild(Map map)
+    {
+        if (map != null)
+            Process(map.GetComponent<MapComponent_Rimatomics>(), false);
+    }
+
     internal static void Process(UniversalPipeMapComp pipeMap, bool injectHeat = true)
     {
         RimatomicsSOS2HeatBridgeDef config = Config;
@@ -67,7 +73,7 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
         // A disconnected or full SOS2 network must not hide native cooling warnings.
         return cache.Groups.Any(group => group.CoolingNets.Contains(net) &&
             group.HeatNets.Any(heatNet =>
-                group.TryGetConnectedInjector(heatNet, config, out _) &&
+                group.TryGetConnectedInjector(heatNet, config, out _, net) &&
                 (HeatNetState.Create(heatNet, config)?.AvailableCoolingWatts ?? 0f) > 0f));
     }
 
@@ -81,44 +87,51 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
 
         float totalBridgeCapacity = heatStates.Sum(state => state.AvailableCoolingWatts);
         List<CoolingNetState> coolingStates = group.CoolingNets
-            .Select(net => CoolingNetState.Create(net, config.targetCoolingRatio))
+            .Select(CoolingNetState.Create)
             .Where(state => state != null)
             .ToList();
 
-        float totalUnmetDemand = coolingStates.Sum(state => state.UnmetDemandWatts);
-        float totalBridgeUsed = 0f;
+        // Fixed hardware shares, not demand / 0.9. Idle turbines keep their share
+        // so a load change cannot continually resize everybody else's cooler.
+        // Allocate each heat net only to directly attached cooling loops: a
+        // transitive graph connection must not create a fictitious heat route.
+        var allocations = new Dictionary<HeatNetState, Dictionary<CoolingNetState, float>>();
+        foreach (HeatNetState heat in heatStates)
+        {
+            var attached = coolingStates.Where(state => state.TurbineCount > 0
+                && group.TryGetConnectedInjector(heat.Net, config, out _, state.Net)).ToList();
+            int turbines = attached.Sum(state => state.TurbineCount);
+            var shares = new Dictionary<CoolingNetState, float>();
+            allocations[heat] = shares;
+            foreach (CoolingNetState state in attached)
+            {
+                float share = heat.AvailableCoolingWatts * state.TurbineCount / turbines;
+                shares[state] = share;
+                state.BridgeAllocation += share;
+            }
+        }
 
-        // Native Rimatomics coolers are used first. The shared SOS2 capacity is then
-        // divided between loops to reach the target load ratio, including reserve capacity.
         foreach (CoolingNetState state in coolingStates)
         {
-            float bridgeAllocation = 0f;
-            if (totalBridgeCapacity > 0f && totalUnmetDemand > 0f && state.UnmetDemandWatts > 0f)
-            {
-                bridgeAllocation = Mathf.Min(
-                    state.UnmetDemandWatts,
-                    totalBridgeCapacity * state.UnmetDemandWatts / totalUnmetDemand);
-            }
-
-            float combinedCapacity = state.PhysicalCoolingWatts + bridgeAllocation;
+            float combinedCapacity = state.PhysicalCoolingWatts + state.BridgeAllocation;
             state.Net.CoolingCapacity = combinedCapacity;
             state.Net.CoolingLoopRatio = combinedCapacity > 1f
                 ? state.DemandWatts / combinedCapacity
                 : 0f;
             // Reserved capacity is not heat. Only transfer demand unmet by native coolers.
-            float bridgeHeatWatts = Mathf.Min(bridgeAllocation,
+            float bridgeHeatWatts = Mathf.Min(state.BridgeAllocation,
                 Mathf.Max(0f, state.DemandWatts - state.PhysicalCoolingWatts));
-            totalBridgeUsed += bridgeHeatWatts;
+            state.BridgeUseRatio = state.BridgeAllocation > 0f ? bridgeHeatWatts / state.BridgeAllocation : 0f;
         }
 
-        if (!injectHeat || totalBridgeUsed <= 0f || totalBridgeCapacity <= 0f)
+        if (!injectHeat || totalBridgeCapacity <= 0f)
             return;
 
         foreach (HeatNetState state in heatStates)
         {
             // A mapping contributes both Rimatomics watts and the corresponding
             // fraction of the sink's native SOS2 heatVent load. No heat is deleted.
-            float coolingShare = totalBridgeUsed * state.AvailableCoolingWatts / totalBridgeCapacity;
+            float coolingShare = allocations[state].Sum(pair => pair.Value * pair.Key.BridgeUseRatio);
             float loadRatio = Mathf.Clamp01(coolingShare / state.AvailableCoolingWatts);
             float heatToAdd = state.AvailableHeatPerTick * loadRatio;
             if (heatToAdd > 0f && group.TryGetConnectedInjector(state.Net, config, out CompShipHeat injector))
@@ -130,11 +143,12 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
 
     private sealed class BridgeCache
     {
-        internal readonly List<BridgeGroup> Groups = new();
+        internal List<BridgeGroup> Groups = new();
 
         private UniversalPipeMapComp pipeMap;
         private int lastRefreshTick = int.MinValue;
         private BasePipeNet[] pipeNetsSnapshot;
+        private ShipHeatNet[] heatNetsSnapshot;
         internal int LastInjectionTick = int.MinValue;
 
         internal bool ShouldRefresh(UniversalPipeMapComp currentPipeMap, int ticksGame, int refreshIntervalTicks)
@@ -142,6 +156,10 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
             return pipeMap != currentPipeMap || lastRefreshTick == int.MinValue ||
                 currentPipeMap.PipeNets == null || pipeNetsSnapshot == null ||
                 !pipeNetsSnapshot.SequenceEqual(currentPipeMap.PipeNets) ||
+                heatNetsSnapshot == null || !heatNetsSnapshot.SequenceEqual(
+                    currentPipeMap.map.GetComponent<ShipMapComp>()?.cachedNets ?? new List<ShipHeatNet>()) ||
+                Groups.Any(group => group.Injectors.Any(pair => pair.Value.Any(comp =>
+                    comp?.parent == null || !comp.parent.Spawned || comp.parent.Destroyed || comp.myNet != pair.Key))) ||
                 ticksGame - lastRefreshTick >= refreshIntervalTicks;
         }
 
@@ -150,11 +168,9 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
             RimatomicsSOS2HeatBridgeDef config,
             int ticksGame)
         {
-            pipeMap = currentPipeMap;
-            // Copy identities: rebuilding can replace entries without replacing the array.
-            pipeNetsSnapshot = currentPipeMap.PipeNets?.ToArray();
-            lastRefreshTick = ticksGame;
-            Groups.Clear();
+            // Build the replacement completely before publishing it. Do not expose
+            // an empty cache during refresh, and never reset LastInjectionTick.
+            var nextGroups = new List<BridgeGroup>();
 
             List<CoolingNet> coolingNets = currentPipeMap.PipeNets?
                 .OfType<CoolingNet>()
@@ -163,13 +179,14 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
 
             Dictionary<CoolingNet, HashSet<ShipHeatNet>> coolingToHeat = new();
             Dictionary<ShipHeatNet, HashSet<CoolingNet>> heatToCooling = new();
-            Dictionary<ShipHeatNet, CompShipHeat> injectors = new();
+            Dictionary<ShipHeatNet, List<CompShipHeat>> injectors = new();
 
             foreach (CoolingNet coolingNet in coolingNets)
             {
                 foreach (ThingWithComps thing in coolingNet.PipedThings ?? Enumerable.Empty<ThingWithComps>())
                 {
-                    if (thing == null || !config.IsBridgeThing(thing.def))
+                    if (thing == null || !thing.Spawned || thing.Destroyed || !config.IsBridgeThing(thing.def)
+                        || !thing.GetComps<CompPipe>().Any(pipe => pipe.mode == PipeType.Cooling && pipe.net == coolingNet))
                         continue;
 
                     CompShipHeat heatComp = thing.TryGetComp<CompShipHeat>();
@@ -184,7 +201,9 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
 
                     heatNets.Add(heatNet);
                     attachedCoolingNets.Add(coolingNet);
-                    injectors[heatNet] = heatComp;
+                    if (!injectors.TryGetValue(heatNet, out var candidates))
+                        injectors[heatNet] = candidates = new List<CompShipHeat>();
+                    if (!candidates.Contains(heatComp)) candidates.Add(heatComp);
                 }
             }
 
@@ -228,7 +247,23 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
                 }
 
                 if (group.CoolingNets.Count > 0 && group.HeatNets.Count > 0)
-                    Groups.Add(group);
+                    nextGroups.Add(group);
+            }
+
+            var connected = new HashSet<CoolingNet>(nextGroups.SelectMany(group => group.CoolingNets));
+            var detached = Groups.SelectMany(group => group.CoolingNets).Distinct().Where(net => !connected.Contains(net)).ToList();
+            Groups = nextGroups;
+            pipeMap = currentPipeMap;
+            pipeNetsSnapshot = currentPipeMap.PipeNets?.ToArray();
+            heatNetsSnapshot = currentPipeMap.map.GetComponent<ShipMapComp>()?.cachedNets?.ToArray() ?? Array.Empty<ShipHeatNet>();
+            lastRefreshTick = ticksGame;
+            // A real disconnection must remove the old bridge contribution now,
+            // even if native CoolingNet.Tick has not overwritten it yet.
+            foreach (CoolingNet net in detached)
+            {
+                CoolingNetState state = CoolingNetState.Create(net);
+                net.CoolingCapacity = state.PhysicalCoolingWatts;
+                net.CoolingLoopRatio = state.PhysicalCoolingWatts > 1f ? state.DemandWatts / state.PhysicalCoolingWatts : 0f;
             }
         }
     }
@@ -237,21 +272,25 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
     {
         internal readonly List<CoolingNet> CoolingNets = new();
         internal readonly List<ShipHeatNet> HeatNets = new();
-        internal readonly Dictionary<ShipHeatNet, CompShipHeat> Injectors = new();
+        internal readonly Dictionary<ShipHeatNet, List<CompShipHeat>> Injectors = new();
 
         internal bool TryGetConnectedInjector(
             ShipHeatNet heatNet,
             RimatomicsSOS2HeatBridgeDef config,
-            out CompShipHeat injector)
+            out CompShipHeat injector, CoolingNet requiredNet = null)
         {
-            if (!Injectors.TryGetValue(heatNet, out injector) || injector?.parent == null ||
-                !injector.parent.Spawned || injector.myNet != heatNet ||
-                !config.IsBridgeThing(injector.parent.def))
-                return false;
-
-            return injector.parent.GetComps<CompPipe>().Any(pipe =>
-                pipe.mode == PipeType.Cooling && pipe.net is CoolingNet coolingNet &&
-                CoolingNets.Contains(coolingNet));
+            injector = null;
+            if (!Injectors.TryGetValue(heatNet, out var candidates)) return false;
+            foreach (CompShipHeat candidate in candidates)
+                if (candidate?.parent != null && candidate.parent.Spawned && !candidate.parent.Destroyed
+                    && candidate.myNet == heatNet && config.IsBridgeThing(candidate.parent.def)
+                    && candidate.parent.GetComps<CompPipe>().Any(pipe => pipe.mode == PipeType.Cooling
+                        && pipe.net is CoolingNet net && CoolingNets.Contains(net) && (requiredNet == null || net == requiredNet)))
+                {
+                    injector = candidate;
+                    return true;
+                }
+            return false;
         }
     }
 
@@ -260,23 +299,23 @@ internal static class RimatomicsSOS2HeatBridgeRuntime
         internal CoolingNet Net;
         internal float DemandWatts;
         internal float PhysicalCoolingWatts;
-        internal float UnmetDemandWatts;
+        internal int TurbineCount;
+        internal float BridgeAllocation;
+        internal float BridgeUseRatio;
 
-        internal static CoolingNetState Create(CoolingNet net, float targetCoolingRatio)
+        internal static CoolingNetState Create(CoolingNet net)
         {
             if (net == null)
                 return null;
 
             float demand = net.Turbines?.Sum(turbine => Mathf.Max(0f, turbine.UncappedPowerGeneration)) ?? 0f;
             float physicalCooling = net.Coolers?.Sum(cooler => Mathf.Max(0f, cooler.coolingCapacity)) ?? 0f;
-            float targetRatio = targetCoolingRatio > 0f && targetCoolingRatio <= 1f
-                ? targetCoolingRatio : 0.9f;
             return new CoolingNetState
             {
                 Net = net,
                 DemandWatts = demand,
                 PhysicalCoolingWatts = physicalCooling,
-                UnmetDemandWatts = Mathf.Max(0f, demand / targetRatio - physicalCooling)
+                TurbineCount = net.Turbines?.Count(turbine => turbine != null && turbine.Spawned && !turbine.Destroyed) ?? 0
             };
         }
     }

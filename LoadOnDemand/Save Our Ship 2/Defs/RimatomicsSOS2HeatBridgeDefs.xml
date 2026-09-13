@@ -22,7 +22,6 @@
 			</li>
 		</sinkMappings>
 		<throttleStartRatio>0.8</throttleStartRatio>
-		<targetCoolingRatio>0.9</targetCoolingRatio>
 		<ventIntervalTicks>120</ventIntervalTicks>
 		<refreshIntervalTicks>60</refreshIntervalTicks>
 		<spaceOnly>true</spaceOnly>

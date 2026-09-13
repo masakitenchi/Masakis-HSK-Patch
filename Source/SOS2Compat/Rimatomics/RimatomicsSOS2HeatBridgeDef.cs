@@ -7,6 +7,7 @@ public sealed class RimatomicsSOS2HeatBridgeDef : Def
     public List<ThingDef> bridgeThingDefs = new();
     public List<RimatomicsSOS2SinkMapping> sinkMappings = new();
     public float throttleStartRatio = 0.8f;
+    // Legacy XML compatibility only. Capacity now follows hardware, not a target load ratio.
     public float targetCoolingRatio = 0.9f;
     public int ventIntervalTicks = 120;
     public int refreshIntervalTicks = 60;

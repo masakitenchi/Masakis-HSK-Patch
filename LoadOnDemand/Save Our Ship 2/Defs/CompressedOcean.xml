@@ -4,7 +4,7 @@
 	<ThingDef ParentName="BuildingBase" MayRequire="ludeon.rimworld.odyssey">
 		<defName>CoreSK_CompressedOcean</defName>
 		<label>compressed ocean</label>
-		<description>A self-contained ocean suspended in a spatial containment field. A little sea, a few fish, and a very expensive excuse to take a break.\n\nOne colonist can fish from the marked interaction cell. Uses animal handling work or recreation and Odyssey fishing stats. Fish stocks recover only while powered, even in space, without natural water or biome restrictions. Switching off or reinstalling preserves the remaining population. Catches are placed beside the fisher for hauling. Requires Odyssey.</description>
+		<description>A self-contained ocean suspended in a spatial containment field. A little sea, a few fish, and a very expensive excuse to take a break.\n\nUp to four colonists can fish together, one on each side. Blocked or occupied fishing spots are skipped. Work and recreation share the same fish population and recovery rate. Uses animal handling work or recreation and Odyssey fishing stats. Fish stocks recover only while powered, even in space, without natural water or biome restrictions. Switching off or reinstalling preserves the remaining population. Catches are placed beside the fisher for hauling.\n\nDraws sea fish from different biomes, with a 5% uncommon-fish roll. Each completed catch also has a 1% chance of special loot from the biomes' original fishing reward pools, including less pleasant finds. Successful special catches share Odyssey's five-day map cooldown with other compressed oceans and natural fishing. Special loot replaces the fish catch and does not consume fish stocks. Requires Odyssey.</description>
 		<thingClass>Core_SK_Patch.Building_CompressedOcean</thingClass>
 		<graphicData>
 			<texPath>Things/Building/CoreSK/CompressedOcean</texPath>
@@ -24,8 +24,13 @@
 		<thingCategories>
 			<li>BuildingsJoy</li>
 		</thingCategories>
-		<hasInteractionCell>true</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<!-- One spot per edge of the north-facing 2x2 footprint; vanilla rotates all four. -->
+		<multipleInteractionCellOffsets>
+			<li>(0,0,-1)</li>
+			<li>(2,0,0)</li>
+			<li>(1,0,2)</li>
+			<li>(-1,0,1)</li>
+		</multipleInteractionCellOffsets>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<designationCategory>Joy</designationCategory>
 		<techLevel>Spacer</techLevel>
@@ -91,7 +96,7 @@
 		<alwaysShowWeapon>false</alwaysShowWeapon>
 		<joyKind>Meditative</joyKind>
 		<joyGainRate>1</joyGainRate>
-		<joyMaxParticipants>1</joyMaxParticipants>
+		<joyMaxParticipants>4</joyMaxParticipants>
 	</JobDef>
 	<WorkGiverDef MayRequire="ludeon.rimworld.odyssey">
 		<defName>CoreSK_FishCompressedOcean</defName>

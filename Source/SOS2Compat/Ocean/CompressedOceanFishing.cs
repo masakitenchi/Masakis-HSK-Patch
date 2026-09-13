@@ -7,35 +7,53 @@ internal static class CompressedOceanFishing
     internal const string BuildingDefName = "CoreSK_CompressedOcean";
     internal const string WorkJobName = "CoreSK_FishCompressedOcean";
     internal const string JoyJobName = "CoreSK_RelaxCompressedOcean";
+    internal const int MaxFishers = 4;
 
     internal static bool AllowedByIdeology(Pawn pawn) => pawn.Ideo == null
         || new HistoryEvent(HistoryEventDefOf.SlaughteredFish, pawn.Named(HistoryEventArgsNames.Doer)).Notify_PawnAboutToDo_Job();
 
     internal static bool CanUse(Pawn pawn, Building_CompressedOcean ocean, bool recreation, bool forced = false)
+        => TryFindStand(pawn, ocean, recreation, out _);
+
+    internal static bool StandUsable(Pawn pawn, IntVec3 stand) =>
+        stand.InBounds(pawn.Map) && stand.Standable(pawn.Map) && !stand.IsForbidden(pawn)
+        && !stand.VacuumConcernTo(pawn)
+        && !stand.GetThingList(pawn.Map).OfType<Pawn>().Any(other => other != pawn)
+        && pawn.CanReserveAndReach(stand, PathEndMode.OnCell, Danger.Some, 1, -1, ReservationLayerDefOf.Floor);
+
+    internal static bool TryFindStand(Pawn pawn, Building_CompressedOcean ocean, bool recreation, out IntVec3 stand)
     {
+        stand = IntVec3.Invalid;
         if (!ModsConfig.OdysseyActive || ocean == null || ocean.Map != pawn.Map || ocean.Faction != pawn.Faction
             || !ocean.CanFish(recreation) || ocean.IsForbidden(pawn) || ocean.Fogged()
             || !pawn.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation) || !AllowedByIdeology(pawn))
             return false;
-        IntVec3 stand = ocean.InteractionCell;
-        return stand.InBounds(pawn.Map) && stand.Standable(pawn.Map) && !stand.IsForbidden(pawn)
-            && !stand.VacuumConcernTo(pawn)
-            && pawn.CanReserve(ocean, 1, -1, null, forced)
-            && pawn.CanReserveAndReach(stand, PathEndMode.OnCell, Danger.Some, 1, -1, ReservationLayerDefOf.Floor, forced);
+        // Zero stack count reserves a participation slot, not the entire single
+        // building stack. Both work and joy jobs must use identical limits.
+        if (!pawn.CanReserve(ocean, MaxFishers, 0)) return false;
+        int distance = int.MaxValue;
+        foreach (IntVec3 candidate in ocean.InteractionCells)
+            if (StandUsable(pawn, candidate) && pawn.Position.DistanceToSquared(candidate) < distance)
+            {
+                stand = candidate;
+                distance = pawn.Position.DistanceToSquared(candidate);
+            }
+        return stand.IsValid;
     }
 
-    internal static Job MakeJob(Building_CompressedOcean ocean, bool recreation) =>
-        JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed(recreation ? JoyJobName : WorkJobName), ocean, ocean.InteractionCell);
+    internal static Job MakeJob(Pawn pawn, Building_CompressedOcean ocean, bool recreation) =>
+        TryFindStand(pawn, ocean, recreation, out IntVec3 stand)
+            ? JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed(recreation ? JoyJobName : WorkJobName), ocean, stand) : null;
 }
 
 public sealed class WorkGiver_CompressedOcean : WorkGiver_Scanner
 {
     public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(DefDatabase<ThingDef>.GetNamed(CompressedOceanFishing.BuildingDefName));
-    public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
+    public override PathEndMode PathEndMode => PathEndMode.Touch;
     public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false) =>
         CompressedOceanFishing.CanUse(pawn, t as Building_CompressedOcean, false, forced);
     public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false) =>
-        HasJobOnThing(pawn, t, forced) ? CompressedOceanFishing.MakeJob((Building_CompressedOcean)t, false) : null;
+        HasJobOnThing(pawn, t, forced) ? CompressedOceanFishing.MakeJob(pawn, (Building_CompressedOcean)t, false) : null;
 }
 
 public sealed class JoyGiver_CompressedOcean : JoyGiver
@@ -46,10 +64,10 @@ public sealed class JoyGiver_CompressedOcean : JoyGiver
         var candidates = new List<Thing>();
         GetSearchSet(pawn, candidates);
         Thing best = GenClosest.ClosestThing_Global_Reachable(pawn.Position, pawn.Map, candidates,
-            PathEndMode.InteractionCell, TraverseParms.For(pawn), 9999f,
+            PathEndMode.Touch, TraverseParms.For(pawn), 9999f,
             t => t.IsSociallyProper(pawn) && t.IsPoliticallyProper(pawn)
                 && CompressedOceanFishing.CanUse(pawn, t as Building_CompressedOcean, true));
-        return best is Building_CompressedOcean ocean ? CompressedOceanFishing.MakeJob(ocean, true) : null;
+        return best is Building_CompressedOcean ocean ? CompressedOceanFishing.MakeJob(pawn, ocean, true) : null;
     }
 }
 
@@ -65,14 +83,25 @@ public sealed class JobDriver_CompressedOcean : JobDriver
         Scribe_Values.Look(ref fishingDuration, "compressedOceanFishingDuration");
     }
 
-    public override bool TryMakePreToilReservations(bool errorOnFailed) =>
-        pawn.Reserve(TargetA, job, 1, -1, null, errorOnFailed)
-        && pawn.Reserve(TargetB, job, 1, -1, ReservationLayerDefOf.Floor, errorOnFailed);
+    public override bool TryMakePreToilReservations(bool errorOnFailed)
+    {
+        if (Ocean == null || !Ocean.InteractionCells.Contains(TargetB.Cell)
+            || !Ocean.CanFish(Recreation) || !CompressedOceanFishing.StandUsable(pawn, TargetB.Cell)
+            || !pawn.CanReserve(TargetA, CompressedOceanFishing.MaxFishers, 0)
+            || !pawn.Reserve(TargetA, job, CompressedOceanFishing.MaxFishers, 0, null, errorOnFailed))
+            return false;
+        if (pawn.Reserve(TargetB, job, 1, -1, ReservationLayerDefOf.Floor, errorOnFailed))
+            return true;
+        // Do not strand a building slot if reserving the chosen floor cell fails.
+        pawn.Map.reservationManager.Release(TargetA, pawn, job);
+        return false;
+    }
 
     public override IEnumerable<Toil> MakeNewToils()
     {
         this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
         this.FailOn(() => Ocean == null || !Ocean.CanFish(Recreation)
+            || !Ocean.InteractionCells.Contains(TargetB.Cell)
             || !CompressedOceanFishing.AllowedByIdeology(pawn));
         yield return Toils_Goto.GotoCell(TargetIndex.B, PathEndMode.OnCell);
         // Reuse Odyssey's duration/stats/skill/effect, but never invent a fake

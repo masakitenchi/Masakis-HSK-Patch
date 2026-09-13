@@ -97,7 +97,8 @@ public sealed class Building_CompressedOcean : Building
     internal bool TryCatch(Pawn pawn, bool recreation)
     {
         if (!CanFish(recreation) || pawn?.Map != Map) return false;
-        ThingDef fish = Properties.fishTypes.RandomElement();
+        if (OceanCatches.TryRareCatch(pawn, out bool rarePlaced)) return rarePlaced;
+        ThingDef fish = OceanCatches.SelectFish(Properties.fishTypes);
         float requested = FishingUtility.PopulationToFishYieldCurve.Evaluate(population) * pawn.GetStatValue(StatDefOf.FishingYield);
         int count = OceanStock.CatchCount(population, requested, fish.stackLimit);
         if (count == 0) return false;

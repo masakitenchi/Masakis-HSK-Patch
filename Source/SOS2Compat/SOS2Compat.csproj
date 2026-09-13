@@ -9,7 +9,6 @@
     <SteamAppsRoot>$([System.IO.Path]::GetFullPath('$(CoreSKPatchRoot)\..\..\..\..'))</SteamAppsRoot>
     <SOS2Root Condition="'$(SOS2Root)' == ''">$(SteamAppsRoot)\workshop\content\294100\1909914131</SOS2Root>
     <RimatomicsRoot Condition="'$(RimatomicsRoot)' == ''">$(RimWorldRoot)\Mods\Rimatomics_SK</RimatomicsRoot>
-    <MineralsRoot Condition="'$(MineralsRoot)' == ''">$(RimWorldRoot)\Mods\Minerals</MineralsRoot>
     <OutputPath>$(CoreSKPatchRoot)\v$(GameVersion)\AssembliesCompat</OutputPath>
     <LangVersion>preview</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -43,10 +42,6 @@
   <ItemGroup>
     <Reference Include="ShipsHaveInsides">
       <HintPath>$(SOS2Root)\$(GameVersion)\Assemblies\ShipsHaveInsides.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Minerals">
-      <HintPath>$(MineralsRoot)\Assemblies\Minerals.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Rimatomics" Condition="'$(GameVersion)' == '1.6'">

@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- Layout only: preserve HSK tech levels, prerequisites, costs and research locks.
+	     Industrial columns 7-16; Spacer 17-20; Ultra 21-27; Archotech 28+.
+	     ShipBasics is Ultra in HSK; ResearchTreeSK promotes its descendants.
+	     Rows 74-115 sit below the current HSK tree (maximum row 71).
+	     Every prerequisite is strictly left of its child. Extend Ultra by three columns.
+	     Merge preserves other mod extensions and matches the marker by Class. -->
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipBasics"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipEngine"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipPilotSeat"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipComputerCore"]</xpath>
+				<value Merge="true">
+					<researchViewX>25</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipAvatarCasket"]</xpath>
+				<value Merge="true">
+					<researchViewX>26</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipReactor"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>78</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShuttlePersonal"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>77</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShuttleCargo"]</xpath>
+				<value Merge="true">
+					<researchViewX>25</researchViewX>
+					<researchViewY>78</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShuttleHeavy"]</xpath>
+				<value Merge="true">
+					<researchViewX>26</researchViewX>
+					<researchViewY>78</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShuttleDropship"]</xpath>
+				<value Merge="true">
+					<researchViewX>27</researchViewX>
+					<researchViewY>78</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipShuttleBay"]</xpath>
+				<value Merge="true">
+					<researchViewX>25</researchViewX>
+					<researchViewY>80</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipLifeSupport"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>82</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipSpaceSuits"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>82</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipSpaceSuitsHeavy"]</xpath>
+				<value Merge="true">
+					<researchViewX>25</researchViewX>
+					<researchViewY>82</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipSensorCluster"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>85</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipSensorClusterAdv"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>85</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipSalvageBay"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>86</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipSalvageBayGlitter"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>86</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="SoSJTDrive"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>87</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipCryptosleep"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>88</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="Crittersleep"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>89</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipCapacitor"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>90</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipShields"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>91</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipHeatsink"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>92</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipHeatManifold"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>91</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipCloaking"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>93</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipTurretAC"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>94</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipTurretLaser"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>95</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipTurretPlasma"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>96</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipTurretKinetic"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>97</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipTurretMedium"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>97</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipTurretLarge"]</xpath>
+				<value Merge="true">
+					<researchViewX>25</researchViewX>
+					<researchViewY>97</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ShipTorpedoes"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>98</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="HullFoam"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>99</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="Holodeck_Basic"]</xpath>
+				<value Merge="true">
+					<researchViewX>16</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="Holodeck_Standard"]</xpath>
+				<value Merge="true">
+					<researchViewX>18</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="Holodeck_AI"]</xpath>
+				<value Merge="true">
+					<researchViewX>19</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMechanites"]</xpath>
+				<value Merge="true">
+					<researchViewX>21</researchViewX>
+					<researchViewY>102</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechBioMechanites"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>101</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechBioMechanitesTwo"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>100</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechArchites"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>100</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="SoSArchotechOrgans"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>102</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechAnimals"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>101</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPlants"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>102</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMechaniteWeapon"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>104</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechHullConversion"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>103</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPsychicField"]</xpath>
+				<value Merge="true">
+					<researchViewX>21</researchViewX>
+					<researchViewY>107</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPsychicManipulation"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>107</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechBroadManipulation"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>107</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPsylink"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>108</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPsychicEffectors"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>105</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPsychicWeapon"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>105</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPsychicSoulLink"]</xpath>
+				<value Merge="true">
+					<researchViewX>27</researchViewX>
+					<researchViewY>74</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechExotics"]</xpath>
+				<value Merge="true">
+					<researchViewX>21</researchViewX>
+					<researchViewY>112</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechVanometrics"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>111</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechShields"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>112</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechHeatsink"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>112</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechAntimatter"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>113</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechEngine"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>114</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechReactor"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>113</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPillarA"]</xpath>
+				<value Merge="true">
+					<researchViewX>21</researchViewX>
+					<researchViewY>115</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPillarB"]</xpath>
+				<value Merge="true">
+					<researchViewX>22</researchViewX>
+					<researchViewY>115</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPillarC"]</xpath>
+				<value Merge="true">
+					<researchViewX>23</researchViewX>
+					<researchViewY>115</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+			<li Class="SK.PatchOperationReplaceExtended">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechPillarD"]</xpath>
+				<value Merge="true">
+					<researchViewX>24</researchViewX>
+					<researchViewY>115</researchViewY>
+					<modExtensions>
+						<li Class="ResearchTreeSK.ResearchTreeSKModExtension" />
+					</modExtensions>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+	<!-- Move only the five existing HSK Archotech anchors to make room for the
+	     longer Ultra chains. Keep their rows, eras and all gameplay fields. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/ResearchProjectDef[defName="Stargate_F1" or defName="Melee_Archotech" or defName="Bow_Archotech" or defName="SMG_Archotech" or defName="Blaster_weapons_Archotech"]</xpath>
+		<value Merge="true">
+			<researchViewX>28</researchViewX>
+		</value>
+	</Operation>
+	<!-- Shared vanilla/SOS2 defs can inherit an additional marker from HSK.
+	     Keep one marker without removing any unrelated extension. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="ShipBasics" or defName="ShipEngine" or defName="ShipPilotSeat" or defName="ShipComputerCore" or defName="ShipAvatarCasket" or defName="ShipReactor" or defName="ShuttlePersonal" or defName="ShuttleCargo" or defName="ShuttleHeavy" or defName="ShuttleDropship" or defName="ShipShuttleBay" or defName="ShipLifeSupport" or defName="ShipSpaceSuits" or defName="ShipSpaceSuitsHeavy" or defName="ShipSensorCluster" or defName="ShipSensorClusterAdv" or defName="ShipSalvageBay" or defName="ShipSalvageBayGlitter" or defName="SoSJTDrive" or defName="ShipCryptosleep" or defName="Crittersleep" or defName="ShipCapacitor" or defName="ShipShields" or defName="ShipHeatsink" or defName="ShipHeatManifold" or defName="ShipCloaking" or defName="ShipTurretAC" or defName="ShipTurretLaser" or defName="ShipTurretPlasma" or defName="ShipTurretKinetic" or defName="ShipTurretMedium" or defName="ShipTurretLarge" or defName="ShipTorpedoes" or defName="HullFoam" or defName="Holodeck_Basic" or defName="Holodeck_Standard" or defName="Holodeck_AI" or defName="ArchotechMechanites" or defName="ArchotechBioMechanites" or defName="ArchotechBioMechanitesTwo" or defName="ArchotechArchites" or defName="SoSArchotechOrgans" or defName="ArchotechAnimals" or defName="ArchotechPlants" or defName="ArchotechMechaniteWeapon" or defName="ArchotechHullConversion" or defName="ArchotechPsychicField" or defName="ArchotechPsychicManipulation" or defName="ArchotechBroadManipulation" or defName="ArchotechPsylink" or defName="ArchotechPsychicEffectors" or defName="ArchotechPsychicWeapon" or defName="ArchotechPsychicSoulLink" or defName="ArchotechExotics" or defName="ArchotechVanometrics" or defName="ArchotechShields" or defName="ArchotechHeatsink" or defName="ArchotechAntimatter" or defName="ArchotechEngine" or defName="ArchotechReactor" or defName="ArchotechPillarA" or defName="ArchotechPillarB" or defName="ArchotechPillarC" or defName="ArchotechPillarD"]/modExtensions/li[@Class="ResearchTreeSK.ResearchTreeSKModExtension"][preceding-sibling::li[@Class="ResearchTreeSK.ResearchTreeSKModExtension"]]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="ShipBasics" or defName="ShipEngine" or defName="ShipPilotSeat" or defName="ShipComputerCore" or defName="ShipAvatarCasket" or defName="ShipReactor" or defName="ShuttlePersonal" or defName="ShuttleCargo" or defName="ShuttleHeavy" or defName="ShuttleDropship" or defName="ShipShuttleBay" or defName="ShipLifeSupport" or defName="ShipSpaceSuits" or defName="ShipSpaceSuitsHeavy" or defName="ShipSensorCluster" or defName="ShipSensorClusterAdv" or defName="ShipSalvageBay" or defName="ShipSalvageBayGlitter" or defName="SoSJTDrive" or defName="ShipCryptosleep" or defName="Crittersleep" or defName="ShipCapacitor" or defName="ShipShields" or defName="ShipHeatsink" or defName="ShipHeatManifold" or defName="ShipCloaking" or defName="ShipTurretAC" or defName="ShipTurretLaser" or defName="ShipTurretPlasma" or defName="ShipTurretKinetic" or defName="ShipTurretMedium" or defName="ShipTurretLarge" or defName="ShipTorpedoes" or defName="HullFoam" or defName="Holodeck_Basic" or defName="Holodeck_Standard" or defName="Holodeck_AI" or defName="ArchotechMechanites" or defName="ArchotechBioMechanites" or defName="ArchotechBioMechanitesTwo" or defName="ArchotechArchites" or defName="SoSArchotechOrgans" or defName="ArchotechAnimals" or defName="ArchotechPlants" or defName="ArchotechMechaniteWeapon" or defName="ArchotechHullConversion" or defName="ArchotechPsychicField" or defName="ArchotechPsychicManipulation" or defName="ArchotechBroadManipulation" or defName="ArchotechPsylink" or defName="ArchotechPsychicEffectors" or defName="ArchotechPsychicWeapon" or defName="ArchotechPsychicSoulLink" or defName="ArchotechExotics" or defName="ArchotechVanometrics" or defName="ArchotechShields" or defName="ArchotechHeatsink" or defName="ArchotechAntimatter" or defName="ArchotechEngine" or defName="ArchotechReactor" or defName="ArchotechPillarA" or defName="ArchotechPillarB" or defName="ArchotechPillarC" or defName="ArchotechPillarD"]/modExtensions/li[@Class="ResearchTreeSK.ResearchTreeSKModExtension"][preceding-sibling::li[@Class="ResearchTreeSK.ResearchTreeSKModExtension"]]</xpath>
+		</match>
+	</Operation>
+</Patch>

@@ -13,11 +13,6 @@
 							<li>Plant_Vanoroot</li>
 						</sources>
 					</SeedsPlease.SeedDef>
-				</value>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>Defs</xpath>
-				<value>
 					<SeedsPlease.SeedDef ParentName="SeedBase">
 						<defName>Seed_Slaughtermelon</defName>
 						<label>slaughtermelon seeds</label>
@@ -25,11 +20,6 @@
 							<li>Plant_Slaughtermelon</li>
 						</sources>
 					</SeedsPlease.SeedDef>
-				</value>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>Defs</xpath>
-				<value>
 					<SeedsPlease.SeedDef ParentName="SeedBase">
 						<defName>Seed_Pharma</defName>
 						<label>pharma seeds</label>
@@ -37,11 +27,6 @@
 							<li>Plant_Pharmatree</li>
 						</sources>
 					</SeedsPlease.SeedDef>
-				</value>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>Defs</xpath>
-				<value>
 					<SeedsPlease.SeedDef ParentName="SeedBase">
 						<defName>Seed_AmbrosiaArchotech</defName>
 						<label>ambrosiaarchotech seeds</label>
@@ -49,11 +34,6 @@
 							<li>Plant_AmbrosiaArchotech</li>
 						</sources>
 					</SeedsPlease.SeedDef>
-				</value>
-			</li>
-			<li Class="PatchOperationAdd">
-				<xpath>Defs</xpath>
-				<value>
 					<SeedsPlease.SeedDef ParentName="SeedBase">
 						<defName>Seed_Meatbush</defName>
 						<label>meatbush seeds</label>

@@ -45,12 +45,6 @@
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[defName="Ship_Beam"]/designatorDropdown</xpath>
 			</li>
-			<li Class="PatchOperationRemove">
-				<xpath>Defs/ThingDef[defName="Ship_Beam"]/costStuffCount</xpath>
-			</li>
-			<li Class="PatchOperationRemove">
-				<xpath>Defs/ThingDef[defName="Ship_Beam"]/stuffCategories</xpath>
-			</li>
 			<!-- ========== Ship_Corner_OneOne/Ship_Corner_OneOneFlip ========== -->
 			<li Class="PatchOperationRemove">
 				<xpath>Defs/ThingDef[@Name="ShipCorner" and @ParentName="ShipCornerBase"]/designatorDropdown</xpath>

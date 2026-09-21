@@ -2,43 +2,6 @@
 <Patch>
 	<Operation Class="PatchOperationSequence">
 		<operations>
-			<!-- ========== Archomutt ========== -->
-			<!-- ========== Archostrich ========== -->
-			<!-- ========== Archolope ========== -->
-			<!-- ========== Archojerboa ========== -->
-			<!-- ========== Archotortoise ========== -->
-			<!-- ========== Archocat ========== -->
-			<li Class="PatchOperationReplace">
-				<xpath>Defs/ThingDef[defName="Archocat" or 
-					defName="Archomutt" or 
-					defName="Archolope" or 
-					defName="Archojerbos" or 
-					defName="Archotortoise"]/race/useMeatFrom</xpath>
-				<value>
-					<useMeatFrom>Elephant</useMeatFrom>
-				</value>
-			</li>
-			<!-- ========== Archothrumbo ========== -->
-			<li Class="PatchOperationReplace">
-				<xpath>Defs/ThingDef[defName="Archothrumbo"]/race/useMeatFrom</xpath>
-				<value>
-					<useMeatFrom>Muffalo</useMeatFrom>
-				</value>
-			</li>
-			<!-- ========== Archopanda ========== -->
-			<li Class="PatchOperationReplace">
-				<xpath>Defs/ThingDef[defName="Archopanda"]/race/useMeatFrom</xpath>
-				<value>
-					<useMeatFrom>Muffalo</useMeatFrom>
-				</value>
-			</li>
-			<li Class="PatchOperationReplace">
-				<xpath>Defs/ThingDef[defName="Archopanda"]/race/leatherDef</xpath>
-				<value>
-					<leatherDef>Leather_Heavy</leatherDef>
-				</value>
-			</li>
-
 			<!-- ========== Plant_Meatbush ========== -->
 			<li Class="PatchOperationReplace">
 				<xpath>Defs/ThingDef[defName="Plant_Meatbush"]/plant/harvestedThingDef</xpath>

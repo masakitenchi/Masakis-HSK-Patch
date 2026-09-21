@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- Keep SOS2 organ effects; align installation effort with HSK and gate it behind Organ redesign. -->
+	<!-- HSK reference: InstallGTEar. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechEar"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>2700</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>16</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTEar (same-tier sensory surgery). -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechNose"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>2700</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>16</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTDentures. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechJaw"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>3400</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>16</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTHeart. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechHeart"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>4200</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>19</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTLung. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechLung"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>3800</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>17</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTStomach. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechStomach"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>3800</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>17</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTKidney. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechKidney"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>3800</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>17</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTLiver. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechLiver"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>3800</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>17</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTSpine. -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="SoSInstallArchotechSpine"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>4800</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>19</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+	<!-- HSK reference: InstallGTHeart (complex full-body implant). -->
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="InstallSoSArchotechSkin"]</xpath>
+		<value Merge="true">
+			<researchPrerequisite>SoSArchotechOrgans</researchPrerequisite>
+			<workAmount>4200</workAmount>
+			<skillRequirements Merge="true">
+				<Medicine>19</Medicine>
+			</skillRequirements>
+		</value>
+	</Operation>
+</Patch>

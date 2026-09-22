@@ -666,4 +666,16 @@
 			<xpath>Defs/ResearchProjectDef[defName="ShipBasics" or defName="ShipEngine" or defName="ShipPilotSeat" or defName="ShipComputerCore" or defName="ShipAvatarCasket" or defName="ShipReactor" or defName="ShuttlePersonal" or defName="ShuttleCargo" or defName="ShuttleHeavy" or defName="ShuttleDropship" or defName="ShipShuttleBay" or defName="ShipLifeSupport" or defName="ShipSpaceSuits" or defName="ShipSpaceSuitsHeavy" or defName="ShipSensorCluster" or defName="ShipSensorClusterAdv" or defName="ShipSalvageBay" or defName="ShipSalvageBayGlitter" or defName="SoSJTDrive" or defName="ShipCryptosleep" or defName="Crittersleep" or defName="ShipCapacitor" or defName="ShipShields" or defName="ShipHeatsink" or defName="ShipHeatManifold" or defName="ShipCloaking" or defName="ShipTurretAC" or defName="ShipTurretLaser" or defName="ShipTurretPlasma" or defName="ShipTurretKinetic" or defName="ShipTurretMedium" or defName="ShipTurretLarge" or defName="ShipTorpedoes" or defName="HullFoam" or defName="Holodeck_Basic" or defName="Holodeck_Standard" or defName="Holodeck_AI" or defName="ArchotechMechanites" or defName="ArchotechBioMechanites" or defName="ArchotechBioMechanitesTwo" or defName="ArchotechArchites" or defName="SoSArchotechOrgans" or defName="ArchotechAnimals" or defName="ArchotechPlants" or defName="ArchotechMechaniteWeapon" or defName="ArchotechHullConversion" or defName="ArchotechPsychicField" or defName="ArchotechPsychicManipulation" or defName="ArchotechBroadManipulation" or defName="ArchotechPsylink" or defName="ArchotechPsychicEffectors" or defName="ArchotechPsychicWeapon" or defName="ArchotechPsychicSoulLink" or defName="ArchotechExotics" or defName="ArchotechVanometrics" or defName="ArchotechShields" or defName="ArchotechHeatsink" or defName="ArchotechAntimatter" or defName="ArchotechEngine" or defName="ArchotechReactor" or defName="ArchotechPillarA" or defName="ArchotechPillarB" or defName="ArchotechPillarC" or defName="ArchotechPillarD"]/modExtensions/li[@Class="ResearchTreeSK.ResearchTreeSKModExtension"][preceding-sibling::li[@Class="ResearchTreeSK.ResearchTreeSKModExtension"]]</xpath>
 		</match>
 	</Operation>
+
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/RecipeDef[defName="MakePsychicInsanityLance" or defName="MakePsychicShockLance" or defName="MakePsychicAnimalPulser" or defName="MakePsychicSoothePulser"]</xpath>
+		<value>
+			<researchPrerequisite IsNull="true" />
+			<researchPrerequisites>
+				<li>Melee_E1</li>
+				<li>ArchotechPsychicWeapon</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
 </Patch>

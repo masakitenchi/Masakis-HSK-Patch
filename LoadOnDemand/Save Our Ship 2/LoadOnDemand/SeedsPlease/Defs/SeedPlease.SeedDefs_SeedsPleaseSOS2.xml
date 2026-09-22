@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<SeedsPlease.SeedDef ParentName="SeedBase">
+		<defName>Seed_Vanoroot</defName>
+		<label>vanoroot seeds</label>
+		<sources>
+			<li>Plant_Vanoroot</li>
+		</sources>
+	</SeedsPlease.SeedDef>
+	<SeedsPlease.SeedDef ParentName="SeedBase">
+		<defName>Seed_Slaughtermelon</defName>
+		<label>slaughtermelon seeds</label>
+		<sources>
+			<li>Plant_Slaughtermelon</li>
+		</sources>
+	</SeedsPlease.SeedDef>
+	<SeedsPlease.SeedDef ParentName="SeedBase">
+		<defName>Seed_Pharma</defName>
+		<label>pharma seeds</label>
+		<sources>
+			<li>Plant_Pharmatree</li>
+		</sources>
+	</SeedsPlease.SeedDef>
+	<SeedsPlease.SeedDef ParentName="SeedBase">
+		<defName>Seed_AmbrosiaArchotech</defName>
+		<label>ambrosiaarchotech seeds</label>
+		<sources>
+			<li>Plant_AmbrosiaArchotech</li>
+		</sources>
+	</SeedsPlease.SeedDef>
+	<SeedsPlease.SeedDef ParentName="SeedBase">
+		<defName>Seed_Meatbush</defName>
+		<label>meatbush seeds</label>
+		<sources>
+			<li>Plant_Meatbush</li>
+		</sources>
+	</SeedsPlease.SeedDef>
+
+</Defs>

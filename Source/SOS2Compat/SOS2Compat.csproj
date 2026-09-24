@@ -40,6 +40,10 @@
     <Compile Remove="Ocean\**" Condition="'$(GameVersion)' != '1.6'" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="SolarWeb.Stratum" Condition="'$(GameVersion)' == '1.6'">
+      <HintPath>$(RimWorldRoot)\Mods\Core_SK_Stratum\1.6\Assemblies\SolarWeb.Stratum.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ShipsHaveInsides">
       <HintPath>$(SOS2Root)\$(GameVersion)\Assemblies\ShipsHaveInsides.dll</HintPath>
       <Private>False</Private>

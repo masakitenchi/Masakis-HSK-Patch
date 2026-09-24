@@ -9,18 +9,28 @@ namespace Core_SK_Patch;
 
 internal static class WreckDeathTrace
 {
-    // Scope tokens retain nested-call restoration without diagnostic state.
+    // Preserve nested damage scopes for wreck generation and quick salvage.
     internal sealed class Generation { }
     internal sealed class Death { }
     [ThreadStatic] internal static Generation Generating;
     [ThreadStatic] internal static Death Dying;
+    [ThreadStatic] private static bool salvaging;
+    internal static bool HandlingShipPawns => Generating != null || salvaging;
     private static readonly List<Hediff> EmptyInjuries = new();
+
+    internal static void DamageUntilDeadForSalvage(Pawn pawn)
+    {
+        bool previous = salvaging;
+        salvaging = true;
+        try { HealthUtility.DamageUntilDead(pawn); }
+        finally { salvaging = previous; }
+    }
 
     // Replace only the list read for this enumeration. Do not mutate DamageResult.
     internal static List<Hediff> InjuriesForEnumeration(DamageWorker.DamageResult result)
     {
         List<Hediff> injuries = result.hediffs; // A null result remains an error.
-        if (injuries == null && Generating != null && Dying != null)
+        if (injuries == null && HandlingShipPawns && Dying != null)
         {
             return EmptyInjuries;
         }
@@ -54,7 +64,7 @@ internal static class WreckPawnDeathPatch
     private static void Prefix(out WreckDeathTrace.Death __state)
     {
         __state = WreckDeathTrace.Dying;
-        WreckDeathTrace.Dying = WreckDeathTrace.Generating == null ? null : new WreckDeathTrace.Death();
+        WreckDeathTrace.Dying = WreckDeathTrace.HandlingShipPawns ? new WreckDeathTrace.Death() : null;
     }
 
     [HarmonyFinalizer]

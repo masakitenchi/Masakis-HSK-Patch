@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CoreSK_QuickSalvage>Quick salvage</CoreSK_QuickSalvage>
+	<CoreSK_QuickSalvageDesc>Dismantle buildings on the selected post-battle wreck map, including its main wreck and detached fragments, without retrieving the hull. Then select pawns and items to recover. Each available salvage bay provides 1000 kg of capacity. Existing wreck retrieval remains available.</CoreSK_QuickSalvageDesc>
+	<CoreSK_QuickSalvageUnavailable>Salvage is unavailable: check the bay and battle state, and wait for incoming skyfallers to land.</CoreSK_QuickSalvageUnavailable>
+	<CoreSK_QuickSalvageNoWreck>No eligible post-battle wreck map or salvage was found.</CoreSK_QuickSalvageNoWreck>
+	<CoreSK_QuickSalvagePawnWarning>Warning: legacy pawn handling applies regardless of faction to every spawned pawn on the target map. Those that can survive vacuum take damage until downed; the others are killed. This happens before cargo selection and regardless of receiving capacity. Occupants released by deconstruction receive the same treatment; intact containers retain their occupants. Evacuate anyone you want to protect before confirming.</CoreSK_QuickSalvagePawnWarning>
+	<CoreSK_QuickSalvageConfirm>Salvage the entire target map, including intact hulls, detached wrecks and fogged buildings?\n\nMovable buildings are recovered intact. Other buildings return 50% of their material cost, or 25% for plasteel. Every 20 recovered steel becomes one slag chunk; every 10 advanced components in the original cost becomes one minified salvage chunk. Loose non-explosive items take random crush damage.\n\nDismantling and pawn damage cannot be undone. You then choose cargo within 1000 kg per available bay, including pawns and their belongings. The wreck map expiry timer still applies.</CoreSK_QuickSalvageConfirm>
+	<CoreSK_QuickSalvageWorking>Salvaging wreck</CoreSK_QuickSalvageWorking>
+	<CoreSK_QuickSalvageFull>No safe bay landing cell is available, or delivery failed. Undelivered cargo remains on the wreck map.</CoreSK_QuickSalvageFull>
+	<CoreSK_QuickSalvageDelivered>Recovered {0} items or pawns.</CoreSK_QuickSalvageDelivered>
+	<CoreSK_QuickSalvageMass>Selected mass: {0} / {1} kg (1000 kg per available salvage bay)</CoreSK_QuickSalvageMass>
+	<CoreSK_QuickSalvageSelectionInfo>Choose pawns and items to send in pods. Closing this window retains the selection pool for later; it does not undo dismantling. Confirming delivery ends quick salvage for this wreck.</CoreSK_QuickSalvageSelectionInfo>
+	<CoreSK_QuickSalvageOverweight>The selected cargo exceeds bay capacity, or the bay/source map is no longer available.</CoreSK_QuickSalvageOverweight>
+	<CoreSK_QuickSalvageAbandon>Leave unselected cargo on the wreck map and finish salvage? This wreck cannot receive another quick-salvage allowance. You can still recover abandoned cargo manually before the map expires.</CoreSK_QuickSalvageAbandon>
+</LanguageData>

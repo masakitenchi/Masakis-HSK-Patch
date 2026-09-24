@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CoreSK_QuickSalvage>一键打捞</CoreSK_QuickSalvage>
+	<CoreSK_QuickSalvageDesc>直接拆解所选战后残骸地图上的建筑，包括主体残骸和分离碎片，无需拖回。随后选择要回收的人员和物资，每个可用回收港提供1000 kg载重。原有拖回残骸功能不变。</CoreSK_QuickSalvageDesc>
+	<CoreSK_QuickSalvageUnavailable>当前无法打捞：请检查回收港状态、战斗状态，并等待在途空投落地。</CoreSK_QuickSalvageUnavailable>
+	<CoreSK_QuickSalvageNoWreck>未找到可打捞的战后残骸地图或物资。</CoreSK_QuickSalvageNoWreck>
+	<CoreSK_QuickSalvagePawnWarning>警告：采用旧版人员处理规则，不区分敌我。目标地图上所有已生成单位中，能在真空生存的会受到伤害直至倒地，不能的会被致死。此步骤不受回收港容量限制，发生在物资选择之前。拆解容器释放的单位同样处理；完整搬运的容器保留内部乘员。请提前撤离不想受伤或死亡的单位。</CoreSK_QuickSalvagePawnWarning>
+	<CoreSK_QuickSalvageConfirm>确定打捞整张目标地图，包括完整船体、分离残骸和迷雾中的建筑？\n\n可搬运建筑保留成品。其余建筑按旧版规则换算：一般材料返还造价的50%，塑钢25%；每20个回收钢换成1块钢渣，原造价中每10个高级零部件换成1个可搬运打捞残块。散落的非爆炸物品会受到随机挤压伤害。\n\n拆解及人员伤害不可撤销。随后选择要运回的物资，每个可用回收港提供1000 kg载重，人员及随身物品计重。原地图的消失倒计时仍有效。</CoreSK_QuickSalvageConfirm>
+	<CoreSK_QuickSalvageWorking>正在打捞残骸</CoreSK_QuickSalvageWorking>
+	<CoreSK_QuickSalvageFull>没有可用的港内降落点，或交付失败。未交付物资仍保留在残骸地图。</CoreSK_QuickSalvageFull>
+	<CoreSK_QuickSalvageDelivered>已回收 {0} 件物品或单位。</CoreSK_QuickSalvageDelivered>
+	<CoreSK_QuickSalvageMass>已选重量：{0} / {1} kg（每个可用回收港1000 kg）</CoreSK_QuickSalvageMass>
+	<CoreSK_QuickSalvageSelectionInfo>选择要装入运输舱的人员及物资。关闭窗口会保留待选物资，可再次打开，不会撤销拆解。确认交付后，此地图的一键打捞即结束。</CoreSK_QuickSalvageSelectionInfo>
+	<CoreSK_QuickSalvageOverweight>超过回收港载重，或回收港／目标地图已不可用。</CoreSK_QuickSalvageOverweight>
+	<CoreSK_QuickSalvageAbandon>将未选物资留在残骸地图，并结束本次打捞？此地图不能再次获得一键打捞载重额度；地图消失前仍可手动收取遗留物资。</CoreSK_QuickSalvageAbandon>
+</LanguageData>

@@ -78,6 +78,91 @@
 					</li>
 				</value>
 			</li>
+			<!-- Three-pawn space starts: complete EVA sets and an HSK emergency repair reserve.
+			     Template loot is extra, not the source of guaranteed starting equipment.
+			     StartingResearch completes HSK prerequisites through the vanilla API.
+			     Do not apply to Load Ship (imported research/cargo) or Afterlife Vault
+			     (surface formgels and deliberately limited power, not a vacuum start). -->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ScenarioDef[defName="SoSDerelict" or defName="SoSDungeon"]/scenario/parts</xpath>
+				<value>
+					<li Class="ScenPart_StartingResearch">
+						<def>StartingResearch</def>
+						<project>ShipBasics</project>
+					</li>
+					<li Class="ScenPart_StartingResearch">
+						<def>StartingResearch</def>
+						<project>ShipLifeSupport</project>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Apparel_SpaceSuitBody</thingDef>
+						<stuff>Synthread</stuff>
+						<count>3</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Apparel_SpaceSuitHelmet</thingDef>
+						<stuff>Synthread</stuff>
+						<count>3</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Steel</thingDef>
+						<count>400</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>ComponentAdvanced</thingDef>
+						<count>40</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>ComponentSpacer</thingDef>
+						<count>8</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Electronics</thingDef>
+						<count>8</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>AdvMechanism</thingDef>
+						<count>2</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Wire</thingDef>
+						<count>200</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Glass</thingDef>
+						<count>80</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Plastic</thingDef>
+						<count>60</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Dirt</thingDef>
+						<count>80</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Chemfuel</thingDef>
+						<count>100</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>HullFoam</thingDef>
+						<count>60</count>
+					</li>
+				</value>
+			</li>
 		</operations>
 	</Operation>
 </Patch>

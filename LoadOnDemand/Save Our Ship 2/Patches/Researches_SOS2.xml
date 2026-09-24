@@ -678,4 +678,13 @@
 		</value>
 	</Operation>
 
+	<Operation Class="SK.PatchOperationReplaceExtended">
+		<xpath>Defs/ThingDef[defName="HullFoamWall" or defName="ShipHullfoamTile"]</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>HullFoam</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
 </Patch>

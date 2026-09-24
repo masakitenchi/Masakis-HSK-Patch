@@ -14,6 +14,7 @@
 			<li>ShipAirlockArchotech</li>
 			<!-- New Defs in 1.4-->
 			<li>ShipAirlockBeam</li>
+			<li>HullFoamWall</li>
 		</defNames>
 		<designationCategory>Ship</designationCategory>
 		<debug>false</debug>
@@ -26,6 +27,7 @@
 			<li>ShipHullTileArchotech</li>
 			<li>ShipHullTileMech</li>
 			<li>ShipHullTile</li>
+			<li>ShipHullFoamTile</li>
 		</defNames>
 		<designationCategory>Ship</designationCategory>
 		<debug>false</debug>
